@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>子ども向けコース | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+  </style>
+</head>
+<body class="bg-green-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← トップへ</a>
+      <span class="text-gray-300">|</span>
+      <span class="text-2xl">📊</span>
+      <h1 class="text-lg font-black text-gray-800">ながのデータ探検隊</h1>
+    </div>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- ヒーロー -->
+    <section class="text-center mb-10">
+      <div class="text-6xl mb-3">🧒🏔️📈</div>
+      <h2 class="text-3xl font-black text-green-700 mb-2">こどもコース</h2>
+      <p class="text-gray-600">
+        長野県の人口をしらべてみよう！<br />
+        グラフをつくったり、市をくらべたり、いろんな発見があるよ。
+      </p>
+    </section>
+
+    <!-- 使い方説明 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 mb-8 border-l-4 border-green-400">
+      <h3 class="font-black text-gray-800 mb-3">📌 やりかた</h3>
+      <ol class="text-sm text-gray-600 space-y-2 list-decimal list-inside">
+        <li>レッスンを1からじゅんにやってみよう</li>
+        <li>「スプレッドシートを開く」ボタンをおす</li>
+        <li>「コピーを作成」をえらんで、じぶんのものにする</li>
+        <li>説明を読みながら、じっさいにやってみよう！</li>
+      </ol>
+    </section>
+
+    <!-- レッスン一覧 -->
+    <section class="space-y-4">
+      <h3 class="text-lg font-black text-gray-700 mb-2">レッスン一らん</h3>
+
+      <!-- レッスン1 -->
+      <a href="lesson01/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-green-300 flex items-start gap-4 block">
+        <div class="bg-green-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-green-600 shrink-0">1</div>
+        <div class="flex-1">
+          <h4 class="font-black text-gray-800 group-hover:text-green-700">長野県ってどんなところ？</h4>
+          <p class="text-sm text-gray-500 mt-1">ひょうを見て、長野県の市や人口をしらべてみよう。</p>
+          <div class="mt-2 flex gap-2">
+            <span class="bg-green-50 text-green-600 text-xs px-2 py-0.5 rounded-full font-bold">ひょうをよむ</span>
+            <span class="bg-green-50 text-green-600 text-xs px-2 py-0.5 rounded-full font-bold">データってなに？</span>
+          </div>
+        </div>
+        <span class="text-green-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
+      </a>
+
+      <!-- レッスン2 -->
+      <a href="lesson02/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-green-300 flex items-start gap-4 block">
+        <div class="bg-green-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-green-600 shrink-0">2</div>
+        <div class="flex-1">
+          <h4 class="font-black text-gray-800 group-hover:text-green-700">市の人口をくらべよう</h4>
+          <p class="text-sm text-gray-500 mt-1">ぼうグラフをつくって、市ごとの人口をくらべよう。いちばん多いのはどこ？</p>
+          <div class="mt-2 flex gap-2">
+            <span class="bg-green-50 text-green-600 text-xs px-2 py-0.5 rounded-full font-bold">ぼうグラフ</span>
+            <span class="bg-green-50 text-green-600 text-xs px-2 py-0.5 rounded-full font-bold">くらべる</span>
+          </div>
+        </div>
+        <span class="text-green-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
+      </a>
+
+      <!-- レッスン3 -->
+      <a href="lesson03/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-green-300 flex items-start gap-4 block">
+        <div class="bg-green-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-green-600 shrink-0">3</div>
+        <div class="flex-1">
+          <h4 class="font-black text-gray-800 group-hover:text-green-700">人口はどうかわってきた？</h4>
+          <p class="text-sm text-gray-500 mt-1">おれ線グラフで、年ごとのうつりかわりを見てみよう。ふえてる？へってる？</p>
+          <div class="mt-2 flex gap-2">
+            <span class="bg-green-50 text-green-600 text-xs px-2 py-0.5 rounded-full font-bold">おれ線グラフ</span>
+            <span class="bg-green-50 text-green-600 text-xs px-2 py-0.5 rounded-full font-bold">年ごとのへんか</span>
+          </div>
+        </div>
+        <span class="text-green-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
+      </a>
+
+      <!-- レッスン4 -->
+      <a href="lesson04/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-green-300 flex items-start gap-4 block">
+        <div class="bg-green-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-green-600 shrink-0">4</div>
+        <div class="flex-1">
+          <h4 class="font-black text-gray-800 group-hover:text-green-700">いちばん人口が多い市はどこ？</h4>
+          <p class="text-sm text-gray-500 mt-1">ならびかえをつかって、いちばん多い市・少ない市をさがしてみよう。</p>
+          <div class="mt-2 flex gap-2">
+            <span class="bg-green-50 text-green-600 text-xs px-2 py-0.5 rounded-full font-bold">ならびかえ</span>
+            <span class="bg-green-50 text-green-600 text-xs px-2 py-0.5 rounded-full font-bold">いちばんをさがす</span>
+          </div>
+        </div>
+        <span class="text-green-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
+      </a>
+
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | 子どもコース</p>
+  </footer>
+
+</body>
+</html>
