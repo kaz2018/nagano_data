@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>レッスン2: 市の人口をくらべよう | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+  </style>
+</head>
+<body class="bg-green-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+      <span class="text-gray-300">|</span>
+      <span class="text-sm font-bold text-green-600">レッスン 2 / 4</span>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <!-- タイトル -->
+    <section class="text-center">
+      <div class="inline-block bg-green-100 text-green-700 text-sm font-bold px-4 py-1 rounded-full mb-3">レッスン 2</div>
+      <h1 class="text-3xl font-black text-gray-800 mb-2">市の人口をくらべよう</h1>
+      <p class="text-gray-500">ぼうグラフをつくってみよう</p>
+    </section>
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="font-black text-gray-800 mb-3">🎯 このレッスンでわかること</h2>
+      <ul class="space-y-2 text-gray-600 text-sm">
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> ぼうグラフがどんなグラフかわかる</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> スプレッドシートでグラフのつくりかたがわかる</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 長野県でいちばん人口が多い市がわかる</li>
+      </ul>
+    </section>
+
+    <!-- 説明 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📖 ぼうグラフってなに？</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        「ぼうグラフ」は、数の大きさをぼうの高さであらわしたグラフです。<br />
+        ぼうが高いほど、数が大きいことを意味します。
+      </p>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        たとえば、市ごとの人口をぼうグラフにすると、<strong>どの市が多くてどの市が少ないか</strong>がひと目でわかります。
+      </p>
+      <div class="bg-amber-50 rounded-xl p-4 text-sm text-amber-800">
+        <p class="font-bold mb-1">📝 ポイント</p>
+        <p>今回は<strong>2025年の総人口</strong>をつかって、長野県の19市をくらべてみよう。</p>
+      </div>
+    </section>
+
+    <!-- スプレッドシートをひらく -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 スプレッドシートをひらこう</h2>
+      <p class="text-gray-600 text-sm">下のボタンをおしてひらいてね。</p>
+      <p class="text-gray-600 text-sm">ひらいたら「コピーを作成」をえらんで、じぶんのものにしよう。</p>
+
+      <a href="https://docs.google.com/spreadsheets/d/1GAt8JexG_lT5njSKnFgZaVUeL-ma5vsAwJvGPzaT3Kc/edit?usp=sharing" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをひらく
+      </a>
+
+      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
+        <p class="font-bold text-gray-700">コピーのしかた</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>スプレッドシートをひらく</li>
+          <li>上のメニューから「ファイル」をおす</li>
+          <li>「コピーを作成」をおす</li>
+          <li>じぶんのGoogleドライブにほぞんされるよ</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- グラフのつくりかた -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">🛠️ グラフのつくりかた</h2>
+
+      <div class="space-y-4">
+
+        <div class="flex gap-4">
+          <div class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">1</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">A列とB列をぜんぶえらぶ</p>
+            <p class="text-gray-600 text-sm mt-1">いちばん上の「市町村名」のセル（A1）をクリックして、そのまま右下の最後のセル（B22）までドラッグしよう。全部のデータがえらばれるよ。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">2</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">グラフをそう入する</p>
+            <p class="text-gray-600 text-sm mt-1">上のメニューから「そう入」→「グラフ」をおそう。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">3</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">グラフのしゅるいを「棒グラフ」にする</p>
+            <p class="text-gray-600 text-sm mt-1">グラフエディタが出てきたら「グラフのしゅるい」から「棒グラフ」をえらぼう。ぼうが横むきのときは「縦棒グラフ」にするとわかりやすいよ。</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bg-blue-50 rounded-xl p-4 text-sm text-blue-800">
+        <p class="font-bold mb-1">💡 ヒント</p>
+        <p>グラフができたら、タイトルを「長野県の市の人口（2025年）」などに変えてみよう！</p>
+      </div>
+    </section>
+
+    <!-- やってみよう -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
+      <p class="text-gray-600 text-sm">グラフをつくったら、もんだいにこたえてみよう！</p>
+
+      <div class="space-y-3">
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-bold text-green-800 text-sm">もんだい 1</p>
+          <p class="text-gray-700 text-sm mt-1">2025年にいちばん人口が多い市はどこですか？</p>
+        </div>
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-bold text-green-800 text-sm">もんだい 2</p>
+          <p class="text-gray-700 text-sm mt-1">2番めに人口が多い市はどこですか？</p>
+        </div>
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-bold text-green-800 text-sm">もんだい 3</p>
+          <p class="text-gray-700 text-sm mt-1">いちばん多い市といちばん少ない市の人口の差は、どのくらいありますか？</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ナビゲーション -->
+    <div class="flex justify-between items-center pt-4">
+      <a href="../lesson01/index.html" class="text-gray-400 hover:text-gray-600 text-sm">← まえのレッスンへ</a>
+      <a href="../lesson03/index.html" class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        つぎのレッスンへ →
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | こどもコース</p>
+  </footer>
+
+</body>
+</html>
