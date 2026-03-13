@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>レッスン3: 人口はどうかわってきた？ | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+  </style>
+</head>
+<body class="bg-green-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+      <span class="text-gray-300">|</span>
+      <span class="text-sm font-bold text-green-600">レッスン 3 / 4</span>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <!-- タイトル -->
+    <section class="text-center">
+      <div class="inline-block bg-green-100 text-green-700 text-sm font-bold px-4 py-1 rounded-full mb-3">レッスン 3</div>
+      <h1 class="text-3xl font-black text-gray-800 mb-2">人口はどうかわってきた？</h1>
+      <p class="text-gray-500">おれ線グラフをつくってみよう</p>
+    </section>
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="font-black text-gray-800 mb-3">🎯 このレッスンでわかること</h2>
+      <ul class="space-y-2 text-gray-600 text-sm">
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> おれ線グラフがどんなグラフかわかる</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> スプレッドシートでおれ線グラフのつくりかたがわかる</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 長野県の人口がふえているか、へっているかわかる</li>
+      </ul>
+    </section>
+
+    <!-- 説明 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📖 おれ線グラフってなに？</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        「おれ線グラフ」は、数のうつりかわりを線であらわしたグラフです。<br />
+        左から右に向かって、年ごとの数がどうかわったかがひと目でわかります。
+      </p>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        線が右下がりなら<strong>へってきている</strong>、右上がりなら<strong>ふえてきている</strong>ということです。
+      </p>
+      <div class="bg-amber-50 rounded-xl p-4 text-sm text-amber-800">
+        <p class="font-bold mb-1">📝 ポイント</p>
+        <p>今回は<strong>麻績村・筑北村・青木村・生坂村・白馬村・野沢温泉村の6つの村</strong>の2017〜2025年の人口をくらべてみよう。</p>
+      </div>
+    </section>
+
+    <!-- スプレッドシートをひらく -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 スプレッドシートをひらこう</h2>
+      <p class="text-gray-600 text-sm">下のボタンをおしてひらいてね。</p>
+      <p class="text-gray-600 text-sm">ひらいたら「コピーを作成」をえらんで、じぶんのものにしよう。</p>
+
+      <a href="https://docs.google.com/spreadsheets/d/1PFRrECxXxLXZ5dNS3_6cvvcsgUTt5m0wJMUT8UzmNCc/edit?usp=sharing" target="_blank" rel="noopener" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをひらく
+      </a>
+
+      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
+        <p class="font-bold text-gray-700">コピーのしかた</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>スプレッドシートをひらく</li>
+          <li>上のメニューから「ファイル」をおす</li>
+          <li>「コピーを作成」をおす</li>
+          <li>じぶんのGoogleドライブにほぞんされるよ</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- グラフのつくりかた -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">🛠️ グラフのつくりかた</h2>
+
+      <div class="space-y-4">
+
+        <div class="flex gap-4">
+          <div class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">1</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">全部のデータをえらぶ</p>
+            <p class="text-gray-600 text-sm mt-1">いちばん上の「年」のセル（A1）をクリックして、そのまま右下の最後のセル（G10）までドラッグしよう。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">2</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">グラフをそう入する</p>
+            <p class="text-gray-600 text-sm mt-1">上のメニューから「そう入」→「グラフ」をおそう。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">3</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">グラフのしゅるいを「折れ線グラフ」にする</p>
+            <p class="text-gray-600 text-sm mt-1">グラフエディタが出てきたら「グラフのしゅるい」から「折れ線グラフ」をえらぼう。6本の線がならんだグラフができるよ。</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bg-blue-50 rounded-xl p-4 text-sm text-blue-800">
+        <p class="font-bold mb-1">💡 ヒント</p>
+        <p>線ごとに色がちがうよ。どの色がどの村かは、グラフのよこにある「はんれい」で確かめてみよう！</p>
+      </div>
+    </section>
+
+    <!-- やってみよう -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
+      <p class="text-gray-600 text-sm">グラフをつくったら、もんだいにこたえてみよう！</p>
+
+      <div class="space-y-3">
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-bold text-green-800 text-sm">もんだい 1</p>
+          <p class="text-gray-700 text-sm mt-1">6つの村のなかで、人口がふえている村はありますか？</p>
+        </div>
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-bold text-green-800 text-sm">もんだい 2</p>
+          <p class="text-gray-700 text-sm mt-1">麻績村の2017年と2025年の人口の差は何人ですか？</p>
+        </div>
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-bold text-green-800 text-sm">もんだい 3</p>
+          <p class="text-gray-700 text-sm mt-1">白馬村の線を見てみよう。2021年・2022年にがくっとへって、またもどってきているよ。なぜだと思いますか？</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ナビゲーション -->
+    <div class="flex justify-between items-center pt-4">
+      <a href="../lesson02/index.html" class="text-gray-400 hover:text-gray-600 text-sm">← まえのレッスンへ</a>
+      <a href="../lesson04/index.html" class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        つぎのレッスンへ →
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | こどもコース</p>
+  </footer>
+
+</body>
+</html>
