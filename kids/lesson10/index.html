@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>レッスン10: じぶんで調べてみよう | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+  </style>
+</head>
+<body class="bg-green-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+      <span class="text-gray-300">|</span>
+      <span class="text-sm font-bold text-yellow-600">レッスン 10 / 10</span>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <!-- タイトル -->
+    <section class="text-center">
+      <div class="inline-block bg-yellow-100 text-yellow-700 text-sm font-bold px-4 py-1 rounded-full mb-3">レッスン 10</div>
+      <h1 class="text-3xl font-black text-gray-800 mb-2">じぶんで調べてみよう</h1>
+      <p class="text-gray-500">気になることを、じぶんで問いをたてて調べよう</p>
+    </section>
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="font-black text-gray-800 mb-3">🎯 このレッスンでやること</h2>
+      <ul class="space-y-2 text-gray-600 text-sm">
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 「調べたいこと」をじぶんで決める</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> これまでのレッスンで学んだわざをつかう</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 調べた結果と気づいたことをまとめる</li>
+      </ul>
+    </section>
+
+    <!-- これまでのまとめ -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📚 これまでに学んだわざ</h2>
+      <div class="grid grid-cols-2 gap-3 text-sm">
+        <div class="bg-green-50 rounded-xl p-3">
+          <p class="font-bold text-green-700">L1〜L2</p>
+          <p class="text-gray-600 mt-1">ひょうをよむ・くらべる</p>
+        </div>
+        <div class="bg-blue-50 rounded-xl p-3">
+          <p class="font-bold text-blue-700">L3</p>
+          <p class="text-gray-600 mt-1">おれ線グラフ・うつりかわりを見る</p>
+        </div>
+        <div class="bg-orange-50 rounded-xl p-3">
+          <p class="font-bold text-orange-700">L4</p>
+          <p class="text-gray-600 mt-1">ならびかえ・ランキング</p>
+        </div>
+        <div class="bg-red-50 rounded-xl p-3">
+          <p class="font-bold text-red-700">L5</p>
+          <p class="text-gray-600 mt-1">ひき算でへんかを調べる</p>
+        </div>
+        <div class="bg-amber-50 rounded-xl p-3">
+          <p class="font-bold text-amber-700">L6</p>
+          <p class="text-gray-600 mt-1">パーセントで変化率を出す</p>
+        </div>
+        <div class="bg-pink-50 rounded-xl p-3">
+          <p class="font-bold text-pink-700">L7</p>
+          <p class="text-gray-600 mt-1">SUM関数で合計を出す</p>
+        </div>
+        <div class="bg-indigo-50 rounded-xl p-3">
+          <p class="font-bold text-indigo-700">L8</p>
+          <p class="text-gray-600 mt-1">COUNTIF・全体と部分</p>
+        </div>
+        <div class="bg-teal-50 rounded-xl p-3">
+          <p class="font-bold text-teal-700">L9</p>
+          <p class="text-gray-600 mt-1">未来を予測する</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 調べかたのヒント -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">💡 調べかたのヒント</h2>
+      <p class="text-gray-600 text-sm">どんなことを調べればいいか、こんな「問い」を参考にしてみてね。</p>
+
+      <div class="space-y-3">
+        <div class="bg-gray-50 rounded-xl p-4 text-sm">
+          <p class="font-bold text-gray-700 mb-2">🏔️ じぶんの住んでいる市町村</p>
+          <ul class="text-gray-600 space-y-1">
+            <li>・じぶんの市町村の人口は77市町村のなかで何番め？</li>
+            <li>・2017年から2025年でふえた？へった？</li>
+            <li>・男と女どちらが多い？</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-4 text-sm">
+          <p class="font-bold text-gray-700 mb-2">📈 ふえている市町村</p>
+          <ul class="text-gray-600 space-y-1">
+            <li>・人口がふえている6つの市町村はどこにある？</li>
+            <li>・なぜふえていると思う？</li>
+            <li>・2033年の予測はどうなる？</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-4 text-sm">
+          <p class="font-bold text-gray-700 mb-2">🔍 気になる市町村</p>
+          <ul class="text-gray-600 space-y-1">
+            <li>・名前が気になる市町村を選んで調べてみよう</li>
+            <li>・変化率がいちばん大きい村はどこ？ふえた・へったどっちが多い？</li>
+            <li>・男の方が多い市町村はいくつ？どこ？</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- つかえるデータ -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📂 つかえるデータ</h2>
+      <div class="space-y-2 text-sm">
+        <a href="https://docs.google.com/spreadsheets/d/1HjTbRqW85qg22EHLtht3GaLi-SZp9woBu0hmIykIaxk/edit?usp=drive_link" target="_blank" rel="noopener"
+          class="flex items-center gap-3 bg-red-50 hover:bg-red-100 rounded-xl p-3 transition-colors">
+          <span class="text-lg">📋</span>
+          <div>
+            <p class="font-bold text-red-700">L5・L6・L9のデータ</p>
+            <p class="text-gray-500 text-xs">2017年・2025年の全市町村人口</p>
+          </div>
+          <span class="ml-auto text-red-400">→</span>
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/1n9RCKCRSk2pl90Wzdj7QroETMkYYFN3mgvUtHynndyQ/edit?gid=2051052360#gid=2051052360" target="_blank" rel="noopener"
+          class="flex items-center gap-3 bg-pink-50 hover:bg-pink-100 rounded-xl p-3 transition-colors">
+          <span class="text-lg">📋</span>
+          <div>
+            <p class="font-bold text-pink-700">L7のデータ</p>
+            <p class="text-gray-500 text-xs">2025年の全市町村・男女別人口</p>
+          </div>
+          <span class="ml-auto text-pink-400">→</span>
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/1-d4jhAnABO_l2VATw4a39DMvmSpmEJbwewvQ4nDxdkM/edit?usp=sharing" target="_blank" rel="noopener"
+          class="flex items-center gap-3 bg-indigo-50 hover:bg-indigo-100 rounded-xl p-3 transition-colors">
+          <span class="text-lg">📋</span>
+          <div>
+            <p class="font-bold text-indigo-700">L4・L8のデータ</p>
+            <p class="text-gray-500 text-xs">2025年の全市町村人口</p>
+          </div>
+          <span class="ml-auto text-indigo-400">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- じぶんでまとめよう -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">✏️ じぶんでまとめよう</h2>
+      <p class="text-gray-600 text-sm">調べたことをここに書いてみよう。（このページをとじると消えるので、ノートにも書いておこう）</p>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-bold text-gray-700 mb-1">調べたこと（問い）</label>
+          <input type="text"
+            class="w-full border-2 border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-yellow-400"
+            placeholder="例：じぶんの住む市の人口は何番め？" />
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-gray-700 mb-1">使ったデータとやりかた</label>
+          <input type="text"
+            class="w-full border-2 border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-yellow-400"
+            placeholder="例：L4のデータをならびかえた" />
+        </div>
+        <div>
+          <label class="block text-sm font-bold text-gray-700 mb-1">わかったこと・発見</label>
+          <textarea
+            class="w-full border-2 border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-yellow-400 resize-none"
+            rows="4" placeholder="じゆうに書いてね"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- コースかんりょう -->
+    <section class="bg-yellow-100 rounded-2xl p-8 text-center space-y-3">
+      <div class="text-5xl">🏆</div>
+      <h2 class="font-black text-yellow-800 text-xl">こどもコース、ぜんぶかんりょう！</h2>
+      <p class="text-yellow-700 text-sm">
+        レッスン1から10まで、よくがんばったね！<br />
+        データをよんで・くらべて・計算して・予測して・じぶんで調べる、<br />
+        データ分析のいろんなわざをみにつけたよ。すごい！
+      </p>
+      <a href="../index.html" class="inline-block mt-2 bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        レッスン一らんにもどる
+      </a>
+    </section>
+
+    <!-- ナビゲーション -->
+    <div class="flex justify-start items-center pt-2">
+      <a href="../lesson09/index.html" class="text-gray-400 hover:text-gray-600 text-sm">← まえのレッスンへ</a>
+    </div>
+
+  </main>
+
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | こどもコース</p>
+  </footer>
+
+</body>
+</html>

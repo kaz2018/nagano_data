@@ -60,6 +60,11 @@
         <p class="font-bold mb-1">📝 ポイント</p>
         <p>このデータは、<strong>長野県が毎月まとめている本物の人口</strong>です。長野県の35の村の、2017年〜2025年の1月1日の人口が入っています。</p>
       </div>
+
+      <div class="bg-green-600 text-white rounded-xl p-4 text-sm">
+        <p class="font-bold mb-1">📂 レッスン1のデータ</p>
+        <p class="text-green-100 leading-relaxed">長野県の<strong class="text-white">村</strong>の人口データを集めたよ。何年ぶんあるかな？村はいくつあるかな？スプレッドシートをひらいて確かめてみよう！</p>
+      </div>
     </section>
 
     <!-- スプレッドシートをひらく -->
@@ -99,8 +104,12 @@
               class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-24 focus:outline-none focus:border-green-400"
               placeholder="数字" />
             <span class="text-sm text-gray-500">村</span>
-            <span id="result1" class="text-sm font-bold hidden"></span>
+            <button onclick="check1()"
+              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+              答え合わせ
+            </button>
           </div>
+          <span id="result1" class="text-sm font-bold hidden"></span>
         </div>
 
         <div class="bg-green-50 rounded-xl p-4 space-y-2">
@@ -111,8 +120,12 @@
               class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-24 focus:outline-none focus:border-green-400"
               placeholder="数字" />
             <span class="text-sm text-gray-500">年分</span>
-            <span id="result2" class="text-sm font-bold hidden"></span>
+            <button onclick="check2()"
+              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+              答え合わせ
+            </button>
           </div>
+          <span id="result2" class="text-sm font-bold hidden"></span>
         </div>
 
         <div class="bg-green-50 rounded-xl p-4 space-y-2">
@@ -137,73 +150,57 @@
                 class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-36 focus:outline-none focus:border-green-400"
                 placeholder="村の名前" />
             </div>
+            <button onclick="check3()"
+              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+              答え合わせ
+            </button>
             <span id="result3" class="text-sm font-bold hidden"></span>
           </div>
         </div>
       </div>
-
-      <button id="checkBtn"
-        class="mt-2 bg-amber-400 hover:bg-amber-500 text-white font-bold px-6 py-3 rounded-xl transition-colors w-full text-sm">
-        ✅ 答え合わせをする
-      </button>
-
-      <div id="scoreBox" class="hidden bg-blue-50 rounded-xl p-4 text-center space-y-1">
-        <p id="scoreText" class="font-black text-blue-700 text-lg"></p>
-        <p id="scoreMsg" class="text-sm text-blue-600"></p>
-      </div>
     </section>
 
     <script>
-      document.getElementById('checkBtn').addEventListener('click', function () {
-        const correct3 = ['南箕輪村', '松川村', '白馬村'];
+      function check1() {
+        const a = parseInt(document.getElementById('ans1').value);
+        const r = document.getElementById('result1');
+        const ok = a === 35;
+        r.textContent = ok ? '⭕ せいかい！' : '❌ もう一かい！';
+        r.className = 'text-sm font-bold ' + (ok ? 'text-green-600' : 'text-red-500');
+        r.classList.remove('hidden');
+      }
 
-        // もんだい1
-        const a1 = parseInt(document.getElementById('ans1').value);
-        const r1 = document.getElementById('result1');
-        const ok1 = a1 === 35;
-        r1.textContent = ok1 ? '⭕ せいかい！' : '❌ もう一かい！';
-        r1.className = 'text-sm font-bold ' + (ok1 ? 'text-green-600' : 'text-red-500');
-        r1.classList.remove('hidden');
+      function check2() {
+        const a = parseInt(document.getElementById('ans2').value);
+        const r = document.getElementById('result2');
+        const ok = a === 9;
+        r.textContent = ok ? '⭕ せいかい！' : '❌ もう一かい！';
+        r.className = 'text-sm font-bold ' + (ok ? 'text-green-600' : 'text-red-500');
+        r.classList.remove('hidden');
+      }
 
-        // もんだい2
-        const a2 = parseInt(document.getElementById('ans2').value);
-        const r2 = document.getElementById('result2');
-        const ok2 = a2 === 9;
-        r2.textContent = ok2 ? '⭕ せいかい！' : '❌ もう一かい！';
-        r2.className = 'text-sm font-bold ' + (ok2 ? 'text-green-600' : 'text-red-500');
-        r2.classList.remove('hidden');
-
-        // もんだい3
-        const inputs3 = [
+      function check3() {
+        const correct = ['南箕輪村', '松川村', '白馬村'];
+        const inputs = [
           document.getElementById('ans3a').value.trim(),
           document.getElementById('ans3b').value.trim(),
           document.getElementById('ans3c').value.trim()
         ];
-        const matched3 = inputs3.filter(v => correct3.includes(v));
-        const ok3 = matched3.length === 3 && new Set(inputs3).size === 3;
-        const r3 = document.getElementById('result3');
-        if (ok3) {
-          r3.textContent = '⭕ せいかい！';
-          r3.className = 'text-sm font-bold text-green-600';
-        } else if (matched3.length > 0) {
-          r3.textContent = `△ ${matched3.length}つ合ってるよ！あと${3 - matched3.length}つさがしてみよう`;
-          r3.className = 'text-sm font-bold text-amber-600';
+        const matched = inputs.filter(v => correct.includes(v));
+        const ok = matched.length === 3 && new Set(inputs).size === 3;
+        const r = document.getElementById('result3');
+        if (ok) {
+          r.textContent = '⭕ せいかい！';
+          r.className = 'text-sm font-bold text-green-600';
+        } else if (matched.length > 0) {
+          r.textContent = `△ ${matched.length}つ合ってるよ！あと${3 - matched.length}つさがしてみよう`;
+          r.className = 'text-sm font-bold text-amber-600';
         } else {
-          r3.textContent = '❌ もう一かい！';
-          r3.className = 'text-sm font-bold text-red-500';
+          r.textContent = '❌ もう一かい！';
+          r.className = 'text-sm font-bold text-red-500';
         }
-        r3.classList.remove('hidden');
-
-        // スコア
-        const score = (ok1 ? 1 : 0) + (ok2 ? 1 : 0) + (ok3 ? 1 : 0);
-        const scoreBox = document.getElementById('scoreBox');
-        const scoreText = document.getElementById('scoreText');
-        const scoreMsg = document.getElementById('scoreMsg');
-        scoreText.textContent = `${score} / 3 もん せいかい！`;
-        const msgs = ['もう一回やってみよう！', 'もう少しだよ！', 'あと1もん！', 'ぜんもんせいかい！すごい！'];
-        scoreMsg.textContent = msgs[score];
-        scoreBox.classList.remove('hidden');
-      });
+        r.classList.remove('hidden');
+      }
     </script>
 
     <!-- ナビゲーション -->

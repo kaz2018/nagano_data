@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>レッスン8: ぜんぶ合わせたら？ | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+  </style>
+</head>
+<body class="bg-green-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+      <span class="text-gray-300">|</span>
+      <span class="text-sm font-bold text-indigo-600">レッスン 8 / 10</span>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <!-- タイトル -->
+    <section class="text-center">
+      <div class="inline-block bg-indigo-100 text-indigo-700 text-sm font-bold px-4 py-1 rounded-full mb-3">レッスン 8</div>
+      <h1 class="text-3xl font-black text-gray-800 mb-2">ぜんぶ合わせたら？</h1>
+      <p class="text-gray-500">長野県の人口を全部たして「全体」を見てみよう</p>
+    </section>
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="font-black text-gray-800 mb-3">🎯 このレッスンでわかること</h2>
+      <ul class="space-y-2 text-gray-600 text-sm">
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 長野県の人口が何人かわかる</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 長野市が長野県全体の何パーセントかわかる</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> COUNTIF関数でじょうけんに合う数を数えることができる</li>
+      </ul>
+    </section>
+
+    <!-- 説明 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📖 「全体」を見ることが大切</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        これまでは「一番多い市」「一番へった村」など、個別の市町村を調べてきたね。
+        でも、<strong>「長野県全部を合わせたら？」</strong>という見かたも大切です。
+      </p>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        全体の人口が分かると、「長野市は長野県全体の何パーセントを占めているの？」という新しい疑問が生まれてくるよ。
+      </p>
+      <div class="bg-indigo-50 rounded-xl p-4 text-sm text-indigo-800 space-y-2">
+        <p class="font-bold">📝 つかう関数</p>
+        <ul class="space-y-1">
+          <li>・<span class="font-mono">SUM</span>：数字を全部たす</li>
+          <li>・<span class="font-mono">COUNTIF</span>：じょうけんに合うセルの数を数える</li>
+        </ul>
+        <p class="text-xs mt-2">例：<span class="font-mono bg-indigo-100 px-1 rounded">=COUNTIF(B2:B78,"&gt;=50000")</span><br/>→ 5万人以上の市町村がいくつあるか数えてくれる</p>
+      </div>
+
+      <div class="bg-indigo-500 text-white rounded-xl p-4 text-sm">
+        <p class="font-bold mb-1">📂 レッスン8のデータ（レッスン4と同じデータだよ！）</p>
+        <p class="text-indigo-100 leading-relaxed">77市町村の2025年の人口データを使うよ。今度は<strong class="text-white">全部たして「長野県全体」</strong>を見てみよう！</p>
+      </div>
+    </section>
+
+    <!-- スプレッドシートをひらく -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 スプレッドシートをひらこう</h2>
+      <p class="text-gray-600 text-sm">下のボタンをおしてひらいてね。</p>
+      <p class="text-gray-600 text-sm">ひらいたら「コピーを作成」をえらんで、じぶんのものにしよう。</p>
+
+      <a href="https://docs.google.com/spreadsheets/d/1-d4jhAnABO_l2VATw4a39DMvmSpmEJbwewvQ4nDxdkM/edit?usp=sharing" target="_blank" rel="noopener" class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをひらく
+      </a>
+    </section>
+
+    <!-- やりかた -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">🛠️ 合計と割合を出すやりかた</h2>
+
+      <div class="space-y-4">
+        <div class="flex gap-4">
+          <div class="bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">1</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">B80に合計を出す</p>
+            <p class="text-gray-600 text-sm mt-1">B80に <span class="font-mono bg-gray-100 px-2 py-0.5 rounded">=SUM(B2:B78)</span> と入力して全市町村の人口合計を出そう。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">2</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">長野市の割合を計算する</p>
+            <p class="text-gray-600 text-sm mt-1">長野市の人口（B2）を合計（B80）でわって100をかけると「何パーセントか」がわかるよ。</p>
+            <p class="text-gray-600 text-sm mt-1"><span class="font-mono bg-gray-100 px-2 py-0.5 rounded text-xs">=ROUND(B2/B80*100, 1)</span></p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">3</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">COUNTIF で5万人以上の市を数える</p>
+            <p class="text-gray-600 text-sm mt-1">空いているセルに <span class="font-mono bg-gray-100 px-2 py-0.5 rounded text-xs">=COUNTIF(B2:B78,"&gt;=50000")</span> と入力しよう。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 rounded-xl p-4 text-sm text-blue-800">
+        <p class="font-bold mb-1">💡 発見してみよう</p>
+        <p>「いちばん人口が多い長野市」は、長野県全体のどのくらいの割合をしめているかな？</p>
+      </div>
+    </section>
+
+    <!-- やってみよう -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
+      <p class="text-gray-600 text-sm">計算したら、もんだいにこたえてみよう！</p>
+
+      <div class="space-y-3">
+
+        <div class="bg-indigo-50 rounded-xl p-4 space-y-2">
+          <p class="font-bold text-indigo-800 text-sm">もんだい 1</p>
+          <p class="text-gray-700 text-sm mt-1">長野県の77市町村の人口を全部合わせると何人ですか？</p>
+          <div class="flex items-center gap-2 flex-wrap">
+            <input id="ans1" type="number" min="0"
+              class="border-2 border-indigo-200 rounded-lg px-3 py-2 text-sm w-40 focus:outline-none focus:border-indigo-400"
+              placeholder="数字" />
+            <span class="text-sm text-gray-500">人</span>
+            <button onclick="check8_1()"
+              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+              答え合わせ
+            </button>
+          </div>
+          <span id="result1" class="text-sm font-bold hidden"></span>
+        </div>
+
+        <div class="bg-indigo-50 rounded-xl p-4 space-y-2">
+          <p class="font-bold text-indigo-800 text-sm">もんだい 2</p>
+          <p class="text-gray-700 text-sm mt-1">長野市の人口は長野県全体のおよそ何パーセントですか？（小数第1位まで）</p>
+          <div class="flex items-center gap-2 flex-wrap">
+            <input id="ans2" type="number" step="0.1"
+              class="border-2 border-indigo-200 rounded-lg px-3 py-2 text-sm w-24 focus:outline-none focus:border-indigo-400"
+              placeholder="数字" />
+            <span class="text-sm text-gray-500">%</span>
+            <button onclick="check8_2()"
+              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+              答え合わせ
+            </button>
+          </div>
+          <span id="result2" class="text-sm font-bold hidden"></span>
+        </div>
+
+        <div class="bg-indigo-50 rounded-xl p-4 space-y-2">
+          <p class="font-bold text-indigo-800 text-sm">もんだい 3</p>
+          <p class="text-gray-700 text-sm mt-1">人口が5万人以上の市は何市ありますか？</p>
+          <div class="flex items-center gap-2 flex-wrap">
+            <input id="ans3" type="number" min="0"
+              class="border-2 border-indigo-200 rounded-lg px-3 py-2 text-sm w-24 focus:outline-none focus:border-indigo-400"
+              placeholder="数字" />
+            <span class="text-sm text-gray-500">市</span>
+            <button onclick="check8_3()"
+              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+              答え合わせ
+            </button>
+          </div>
+          <span id="result3" class="text-sm font-bold hidden"></span>
+        </div>
+
+      </div>
+    </section>
+
+    <script>
+      function showResult(id, ok) {
+        const r = document.getElementById(id);
+        r.textContent = ok ? '⭕ せいかい！' : '❌ もう一かい！';
+        r.className = 'text-sm font-bold ' + (ok ? 'text-green-600' : 'text-red-500');
+        r.classList.remove('hidden');
+      }
+      function check8_1() {
+        const v = parseInt(document.getElementById('ans1').value);
+        showResult('result1', v === 1984926);
+      }
+      function check8_2() {
+        const v = parseFloat(document.getElementById('ans2').value);
+        showResult('result2', Math.abs(v - 18.2) <= 0.2);
+      }
+      function check8_3() {
+        const v = parseInt(document.getElementById('ans3').value);
+        showResult('result3', v === 10);
+      }
+    </script>
+
+    <!-- ナビゲーション -->
+    <div class="flex justify-between items-center pt-2">
+      <a href="../lesson07/index.html" class="text-gray-400 hover:text-gray-600 text-sm">← まえのレッスンへ</a>
+      <a href="../lesson09/index.html" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-5 py-2 rounded-xl text-sm transition-colors">つぎのレッスンへ →</a>
+    </div>
+
+  </main>
+
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | こどもコース</p>
+  </footer>
+
+</body>
+</html>

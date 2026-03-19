@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>レッスン9: このままだとどうなる？ | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+  </style>
+</head>
+<body class="bg-green-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+      <span class="text-gray-300">|</span>
+      <span class="text-sm font-bold text-teal-600">レッスン 9 / 10</span>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <!-- タイトル -->
+    <section class="text-center">
+      <div class="inline-block bg-teal-100 text-teal-700 text-sm font-bold px-4 py-1 rounded-full mb-3">レッスン 9</div>
+      <h1 class="text-3xl font-black text-gray-800 mb-2">このままだとどうなる？</h1>
+      <p class="text-gray-500">過去のデータをもとに、未来の人口を予測してみよう</p>
+    </section>
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="font-black text-gray-800 mb-3">🎯 このレッスンでわかること</h2>
+      <ul class="space-y-2 text-gray-600 text-sm">
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 過去のへんかを使って未来を「予測」できること</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 予測はあくまでも「もしこのままなら」という推測であること</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 市町村によって将来の人口がどうちがうかわかること</li>
+      </ul>
+    </section>
+
+    <!-- 説明 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📖 予測のしかた</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        レッスン5では「2017年→2025年のへんか」を計算したね。
+        このへんかが<strong>このままつづいたら</strong>、2033年はどうなるかな？
+      </p>
+      <div class="bg-teal-50 rounded-xl p-4 text-sm text-teal-800 space-y-2">
+        <p class="font-bold">📝 予測の計算しき</p>
+        <p class="font-mono text-base text-center py-2">2033年の予測 ＝ 2025年の人口 ＋ へんか</p>
+        <p class="text-xs">（「へんか」＝ 2025年 − 2017年）</p>
+      </div>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        たとえば2025年から2033年も<strong>同じだけ</strong>へったりふえたりすると考えるよ。
+      </p>
+
+      <div class="bg-amber-50 rounded-xl p-4 text-sm text-amber-800">
+        <p class="font-bold mb-1">⚠️ 大事なこと</p>
+        <p>これは「もしこのままつづいたら」という<strong>予測</strong>だよ。実際には、引っ越してくる人がふえたり、赤ちゃんがたくさん生まれたりして、ちがう結果になることもあるよ。</p>
+      </div>
+
+      <div class="bg-teal-500 text-white rounded-xl p-4 text-sm">
+        <p class="font-bold mb-1">📂 レッスン9のデータ（レッスン5と同じデータだよ！）</p>
+        <p class="text-teal-100 leading-relaxed">レッスン5でつかった2017年・2025年のデータを使って、2033年を<strong class="text-white">予測</strong>してみよう！</p>
+      </div>
+    </section>
+
+    <!-- スプレッドシートをひらく -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 スプレッドシートをひらこう</h2>
+      <p class="text-gray-600 text-sm">レッスン5でコピーしたスプレッドシートをひらいてね。まだならこちらから：</p>
+
+      <a href="https://docs.google.com/spreadsheets/d/1HjTbRqW85qg22EHLtht3GaLi-SZp9woBu0hmIykIaxk/edit?usp=drive_link" target="_blank" rel="noopener" class="inline-block bg-teal-500 hover:bg-teal-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをひらく
+      </a>
+    </section>
+
+    <!-- やりかた -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">🛠️ 2033年を予測するやりかた</h2>
+
+      <div class="space-y-4">
+        <div class="flex gap-4">
+          <div class="bg-teal-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">1</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">D列に「へんか」を計算する</p>
+            <p class="text-gray-600 text-sm mt-1">レッスン5のとおり、D2に <span class="font-mono bg-gray-100 px-2 py-0.5 rounded">=C2-B2</span> と入れてD78までコピーしよう。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-teal-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">2</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">E列に「2033年予測」の列をつくる</p>
+            <p class="text-gray-600 text-sm mt-1">E1に「2033年予測」と入力しよう。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-teal-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">3</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">E2に予測の計算式を入力する</p>
+            <p class="text-gray-600 text-sm mt-1">E2に <span class="font-mono bg-gray-100 px-2 py-0.5 rounded">=C2+D2</span> と入力しよう。「2025年の人口＋へんか」で2033年の予測になるよ！</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-teal-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">4</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">E2をE78までコピーする</p>
+            <p class="text-gray-600 text-sm mt-1">引っ張って全市町村の2033年予測を出そう。マイナスになった村はないかな？</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 rounded-xl p-4 text-sm text-blue-800">
+        <p class="font-bold mb-1">💡 発見してみよう</p>
+        <p>予測の数字がマイナスになった市町村はどこかな？それはどういう意味だろう？</p>
+      </div>
+    </section>
+
+    <!-- やってみよう -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
+      <p class="text-gray-600 text-sm">予測を計算したら、もんだいにこたえてみよう！</p>
+
+      <div class="space-y-3">
+
+        <div class="bg-teal-50 rounded-xl p-4 space-y-2">
+          <p class="font-bold text-teal-800 text-sm">もんだい 1</p>
+          <p class="text-gray-700 text-sm mt-1">長野市の2033年の人口を予測すると何人になりますか？</p>
+          <div class="flex items-center gap-2 flex-wrap">
+            <input id="ans1" type="number" min="0"
+              class="border-2 border-teal-200 rounded-lg px-3 py-2 text-sm w-40 focus:outline-none focus:border-teal-400"
+              placeholder="数字" />
+            <span class="text-sm text-gray-500">人</span>
+            <button onclick="check9_1()"
+              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+              答え合わせ
+            </button>
+          </div>
+          <span id="result1" class="text-sm font-bold hidden"></span>
+        </div>
+
+        <div class="bg-teal-50 rounded-xl p-4 space-y-2">
+          <p class="font-bold text-teal-800 text-sm">もんだい 2</p>
+          <p class="text-gray-700 text-sm mt-1">天龍村の2033年の人口を予測すると何人になりますか？</p>
+          <div class="flex items-center gap-2 flex-wrap">
+            <input id="ans2" type="number" min="0"
+              class="border-2 border-teal-200 rounded-lg px-3 py-2 text-sm w-32 focus:outline-none focus:border-teal-400"
+              placeholder="数字" />
+            <span class="text-sm text-gray-500">人</span>
+            <button onclick="check9_2()"
+              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+              答え合わせ
+            </button>
+          </div>
+          <span id="result2" class="text-sm font-bold hidden"></span>
+        </div>
+
+        <div class="bg-teal-50 rounded-xl p-4 space-y-2">
+          <p class="font-bold text-teal-800 text-sm">もんだい 3（じゆうきじゅつ）</p>
+          <p class="text-gray-700 text-sm mt-1">予測の結果を見て、気になったことや思ったことを書いてみよう。</p>
+          <textarea id="ans3free"
+            class="w-full border-2 border-teal-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-teal-400 resize-none"
+            rows="3" placeholder="じゆうに書いてね"></textarea>
+          <button onclick="showSample3()"
+            class="bg-teal-500 hover:bg-teal-600 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+            こたえのれいを見る
+          </button>
+          <div id="sample3" class="hidden bg-white border border-teal-200 rounded-lg p-3 text-sm text-gray-700">
+            <p class="font-bold text-teal-700 mb-1">こたえのれい</p>
+            <p>このままへりつづけると、天龍村のような小さな村はいつかゼロになってしまうかもしれない。でも、実際には引っ越してくる人や赤ちゃんが生まれることもあるので、かならずしも予測通りにはならないと思う。</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <script>
+      function showResult(id, ok) {
+        const r = document.getElementById(id);
+        r.textContent = ok ? '⭕ せいかい！' : '❌ もう一かい！';
+        r.className = 'text-sm font-bold ' + (ok ? 'text-green-600' : 'text-red-500');
+        r.classList.remove('hidden');
+      }
+      function check9_1() {
+        const v = parseInt(document.getElementById('ans1').value);
+        showResult('result1', v === 346180);
+      }
+      function check9_2() {
+        const v = parseInt(document.getElementById('ans2').value);
+        showResult('result2', v === 668);
+      }
+      function showSample3() {
+        document.getElementById('sample3').classList.remove('hidden');
+      }
+    </script>
+
+    <!-- ナビゲーション -->
+    <div class="flex justify-between items-center pt-2">
+      <a href="../lesson08/index.html" class="text-gray-400 hover:text-gray-600 text-sm">← まえのレッスンへ</a>
+      <a href="../lesson10/index.html" class="bg-teal-500 hover:bg-teal-600 text-white font-bold px-5 py-2 rounded-xl text-sm transition-colors">つぎのレッスンへ →</a>
+    </div>
+
+  </main>
+
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | こどもコース</p>
+  </footer>
+
+</body>
+</html>

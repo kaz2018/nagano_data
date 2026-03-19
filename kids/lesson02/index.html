@@ -58,17 +58,23 @@
         <p class="font-bold mb-1">📝 ポイント</p>
         <p>今回は<strong>2025年の人口</strong>をつかって、長野県の19市と麻績村・筑北村をくらべてみよう。</p>
       </div>
+
+      <div class="bg-blue-600 text-white rounded-xl p-4 text-sm">
+        <p class="font-bold mb-1">📂 レッスン2のデータ（レッスン1とはちがうよ！）</p>
+        <p class="text-blue-100 leading-relaxed">長野県の<strong class="text-white">市</strong>の人口データを集めたよ。レッスン1の「村」とくらべて、どんなちがいがあるかな？</p>
+      </div>
     </section>
 
     <!-- スプレッドシートをひらく -->
     <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
       <h2 class="font-black text-gray-800">📊 スプレッドシートをひらこう</h2>
+
       <p class="text-gray-600 text-sm">下のボタンをおしてひらいてね。</p>
       <p class="text-gray-600 text-sm">ひらいたら「コピーを作成」をえらんで、じぶんのものにしよう。</p>
 
       <a href="https://docs.google.com/spreadsheets/d/1GAt8JexG_lT5njSKnFgZaVUeL-ma5vsAwJvGPzaT3Kc/edit?usp=sharing"
         target="_blank" rel="noopener"
-        class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
         📋 スプレッドシートをひらく
       </a>
 
@@ -134,20 +140,80 @@
       <p class="text-gray-600 text-sm">グラフをつくったら、もんだいにこたえてみよう！</p>
 
       <div class="space-y-3">
-        <div class="bg-green-50 rounded-xl p-4">
+        <div class="bg-green-50 rounded-xl p-4 space-y-2">
           <p class="font-bold text-green-800 text-sm">もんだい 1</p>
           <p class="text-gray-700 text-sm mt-1">2025年にいちばん人口が多い市はどこですか？</p>
+          <div class="flex items-center gap-2 flex-wrap">
+            <input id="ans1" type="text"
+              class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-36 focus:outline-none focus:border-green-400"
+              placeholder="市の名前" />
+            <button onclick="check2_1()"
+              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+              答え合わせ
+            </button>
+          </div>
+          <span id="result1" class="text-sm font-bold hidden"></span>
         </div>
-        <div class="bg-green-50 rounded-xl p-4">
+
+        <div class="bg-green-50 rounded-xl p-4 space-y-2">
           <p class="font-bold text-green-800 text-sm">もんだい 2</p>
           <p class="text-gray-700 text-sm mt-1">2番めに人口が多い市はどこですか？</p>
+          <div class="flex items-center gap-2 flex-wrap">
+            <input id="ans2" type="text"
+              class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-36 focus:outline-none focus:border-green-400"
+              placeholder="市の名前" />
+            <button onclick="check2_2()"
+              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+              答え合わせ
+            </button>
+          </div>
+          <span id="result2" class="text-sm font-bold hidden"></span>
         </div>
-        <div class="bg-green-50 rounded-xl p-4">
+
+        <div class="bg-green-50 rounded-xl p-4 space-y-2">
           <p class="font-bold text-green-800 text-sm">もんだい 3</p>
           <p class="text-gray-700 text-sm mt-1">いちばん多い市といちばん少ない市の人口の差は、どのくらいありますか？</p>
+          <div class="flex items-center gap-2 flex-wrap">
+            <input id="ans3" type="number" min="0"
+              class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-32 focus:outline-none focus:border-green-400"
+              placeholder="数字" />
+            <span class="text-sm text-gray-500">人</span>
+            <button onclick="check2_3()"
+              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+              答え合わせ
+            </button>
+          </div>
+          <span id="result3" class="text-sm font-bold hidden"></span>
         </div>
       </div>
     </section>
+
+    <script>
+      function check2_1() {
+        const a = document.getElementById('ans1').value.trim();
+        const r = document.getElementById('result1');
+        const ok = a === '長野市';
+        r.textContent = ok ? '⭕ せいかい！' : '❌ もう一かい！';
+        r.className = 'text-sm font-bold ' + (ok ? 'text-green-600' : 'text-red-500');
+        r.classList.remove('hidden');
+      }
+      function check2_2() {
+        const a = document.getElementById('ans2').value.trim();
+        const r = document.getElementById('result2');
+        const ok = a === '松本市';
+        r.textContent = ok ? '⭕ せいかい！' : '❌ もう一かい！';
+        r.className = 'text-sm font-bold ' + (ok ? 'text-green-600' : 'text-red-500');
+        r.classList.remove('hidden');
+      }
+      function check2_3() {
+        const a = parseInt(document.getElementById('ans3').value);
+        const r = document.getElementById('result3');
+        const ok = a === 343099;
+        r.textContent = ok ? '⭕ せいかい！' : '❌ もう一かい！';
+        r.className = 'text-sm font-bold ' + (ok ? 'text-green-600' : 'text-red-500');
+        r.classList.remove('hidden');
+      }
+    </script>
 
     <!-- ナビゲーション -->
     <div class="flex justify-between items-center pt-4">

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>レッスン5: ふえた？へった？ | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+  </style>
+</head>
+<body class="bg-green-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+      <span class="text-gray-300">|</span>
+      <span class="text-sm font-bold text-red-600">レッスン 5 / 8</span>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <!-- タイトル -->
+    <section class="text-center">
+      <div class="inline-block bg-red-100 text-red-700 text-sm font-bold px-4 py-1 rounded-full mb-3">レッスン 5</div>
+      <h1 class="text-3xl font-black text-gray-800 mb-2">ふえた？へった？</h1>
+      <p class="text-gray-500">2017年と2025年をくらべて、人口のへんかを調べよう</p>
+    </section>
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="font-black text-gray-800 mb-3">🎯 このレッスンでわかること</h2>
+      <ul class="space-y-2 text-gray-600 text-sm">
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 2つの数のちがい（ひき算）でへんかがわかること</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 長野県でいちばん人口がへった市がわかること</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 人口がふえた市町村の数がわかること</li>
+      </ul>
+    </section>
+
+    <!-- 説明 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📖 「へんか」をひき算で調べよう</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        人口が去年より「ふえた」か「へった」かを調べるには、<strong>あたらしい数字から古い数字をひく</strong>と分かります。
+      </p>
+      <div class="bg-red-50 rounded-xl p-4 text-sm text-red-800 space-y-2">
+        <p class="font-bold">📝 計算のしかた</p>
+        <p class="font-mono text-base text-center py-2">2025年の人口 − 2017年の人口 ＝ へんか</p>
+        <ul class="space-y-1">
+          <li>・答えが <strong class="text-red-600">プラス（+）</strong> → ふえた！</li>
+          <li>・答えが <strong class="text-blue-600">マイナス（−）</strong> → へった！</li>
+        </ul>
+      </div>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        77市町村ぜんぶについてこの計算をすると、どの市町村がいちばん変わったかわかります。
+      </p>
+      <div class="bg-amber-50 rounded-xl p-4 text-sm text-amber-800">
+        <p class="font-bold mb-1">📝 ポイント</p>
+        <p>スプレッドシートでは「＝C2−B2」と入力するだけで自動で計算してくれるよ！</p>
+      </div>
+
+      <div class="bg-red-500 text-white rounded-xl p-4 text-sm">
+        <p class="font-bold mb-1">📂 レッスン5のデータ（レッスン4とはちがうよ！）</p>
+        <p class="text-red-100 leading-relaxed">2017年と2025年、<strong class="text-white">2つの年</strong>の人口データがはいっているよ。くらべると「へんか」が計算できるね！</p>
+      </div>
+    </section>
+
+    <!-- スプレッドシートをひらく -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 スプレッドシートをひらこう</h2>
+      <p class="text-gray-600 text-sm">下のボタンをおしてひらいてね。</p>
+      <p class="text-gray-600 text-sm">ひらいたら「コピーを作成」をえらんで、じぶんのものにしよう。</p>
+
+      <a href="https://docs.google.com/spreadsheets/d/1HjTbRqW85qg22EHLtht3GaLi-SZp9woBu0hmIykIaxk/edit?usp=drive_link" target="_blank" rel="noopener" class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをひらく
+      </a>
+
+      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
+        <p class="font-bold text-gray-700">コピーのしかた</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>スプレッドシートをひらく</li>
+          <li>上のメニューから「ファイル」をおす</li>
+          <li>「コピーを作成」をおす</li>
+          <li>じぶんのGoogleドライブにほぞんされるよ</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- やりかた -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">🛠️ へんかを計算するやりかた</h2>
+
+      <div class="space-y-4">
+        <div class="flex gap-4">
+          <div class="bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">1</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">D列に「へんか」の列をつくる</p>
+            <p class="text-gray-600 text-sm mt-1">D1のセルに「へんか」と入力しよう。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">2</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">D2に計算式を入力する</p>
+            <p class="text-gray-600 text-sm mt-1">D2に <span class="font-mono bg-gray-100 px-2 py-0.5 rounded">＝C2－B2</span> と入力してEnterを押そう。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">3</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">D2の式を77行めまでコピーする</p>
+            <p class="text-gray-600 text-sm mt-1">D2をクリックして、右下の小さい四角をつかんでD78まで引っ張ろう。全部の市町村で計算されるよ！</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">4</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">D列をならびかえる</p>
+            <p class="text-gray-600 text-sm mt-1">D列を小さい順（昇順）にならびかえると、いちばんへった市町村が上にくるよ。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 rounded-xl p-4 text-sm text-blue-800">
+        <p class="font-bold mb-1">💡 ヒント</p>
+        <p>マイナスの数字が大きければ大きいほど、たくさんへったということだよ。</p>
+      </div>
+    </section>
+
+    <!-- やってみよう -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
+      <p class="text-gray-600 text-sm">計算したら、もんだいにこたえてみよう！</p>
+
+      <div class="space-y-3">
+
+        <div class="bg-red-50 rounded-xl p-4 space-y-2">
+          <p class="font-bold text-red-800 text-sm">もんだい 1</p>
+          <p class="text-gray-700 text-sm mt-1">2017年から2025年のあいだに、いちばん人口が「へった」のはどこですか？また、何人へりましたか？</p>
+          <div class="flex items-center gap-2 flex-wrap">
+            <input id="ans1name" type="text"
+              class="border-2 border-red-200 rounded-lg px-3 py-2 text-sm w-28 focus:outline-none focus:border-red-400"
+              placeholder="市の名前" />
+            <input id="ans1diff" type="number" min="0"
+              class="border-2 border-red-200 rounded-lg px-3 py-2 text-sm w-32 focus:outline-none focus:border-red-400"
+              placeholder="人数（数字）" />
+            <span class="text-sm text-gray-500">人へった</span>
+            <button onclick="check5_1()"
+              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+              答え合わせ
+            </button>
+          </div>
+          <span id="result1" class="text-sm font-bold hidden"></span>
+        </div>
+
+        <div class="bg-red-50 rounded-xl p-4 space-y-2">
+          <p class="font-bold text-red-800 text-sm">もんだい 2</p>
+          <p class="text-gray-700 text-sm mt-1">人口が「ふえた」市町村はいくつありますか？</p>
+          <div class="flex items-center gap-2 flex-wrap">
+            <input id="ans2" type="number" min="0"
+              class="border-2 border-red-200 rounded-lg px-3 py-2 text-sm w-24 focus:outline-none focus:border-red-400"
+              placeholder="数字" />
+            <span class="text-sm text-gray-500">市町村</span>
+            <button onclick="check5_2()"
+              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+              答え合わせ
+            </button>
+          </div>
+          <span id="result2" class="text-sm font-bold hidden"></span>
+        </div>
+
+        <div class="bg-red-50 rounded-xl p-4 space-y-2">
+          <p class="font-bold text-red-800 text-sm">もんだい 3</p>
+          <p class="text-gray-700 text-sm mt-1">御代田町の人口は、2017年から2025年のあいだに何人ふえましたか？</p>
+          <div class="flex items-center gap-2 flex-wrap">
+            <input id="ans3" type="number" min="0"
+              class="border-2 border-red-200 rounded-lg px-3 py-2 text-sm w-32 focus:outline-none focus:border-red-400"
+              placeholder="数字" />
+            <span class="text-sm text-gray-500">人ふえた</span>
+            <button onclick="check5_3()"
+              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
+              答え合わせ
+            </button>
+          </div>
+          <span id="result3" class="text-sm font-bold hidden"></span>
+        </div>
+
+      </div>
+    </section>
+
+    <script>
+      function showResult(id, ok) {
+        const r = document.getElementById(id);
+        r.textContent = ok ? '⭕ せいかい！' : '❌ もう一かい！';
+        r.className = 'text-sm font-bold ' + (ok ? 'text-green-600' : 'text-red-500');
+        r.classList.remove('hidden');
+      }
+      function check5_1() {
+        const name = document.getElementById('ans1name').value.trim();
+        const diff = parseInt(document.getElementById('ans1diff').value);
+        showResult('result1', name === '長野市' && diff === 14865);
+      }
+      function check5_2() {
+        const v = parseInt(document.getElementById('ans2').value);
+        showResult('result2', v === 6);
+      }
+      function check5_3() {
+        const v = parseInt(document.getElementById('ans3').value);
+        showResult('result3', v === 1288);
+      }
+    </script>
+
+    <!-- ナビゲーション -->
+    <div class="flex justify-between items-center pt-2">
+      <a href="../lesson04/index.html" class="text-gray-400 hover:text-gray-600 text-sm">← まえのレッスンへ</a>
+      <a href="../lesson06/index.html" class="bg-red-500 hover:bg-red-600 text-white font-bold px-5 py-2 rounded-xl text-sm transition-colors">つぎのレッスンへ →</a>
+    </div>
+
+  </main>
+
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | こどもコース</p>
+  </footer>
+
+</body>
+</html>

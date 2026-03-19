@@ -43,6 +43,12 @@
 |---------|------|------|------|
 | `kids/data/nagano_population_raw.csv` | ワイド形式（市町村×年） | 77行 | 子ども向けレッスン・Google Sheets教材 |
 | `kids/data/nagano_population_long.csv` | ロング形式（市町村・年・人口） | 693行 | 大人向け分析・Python処理 |
+| `kids/data/nagano_population_long_2025only.csv` | ロング形式（2025年のみ） | 77行 | L7の元データ |
+| `kids/data/lesson02_cities_2025.csv` | 市町村名・2025年総人口 | 21行 | L2用 |
+| `kids/data/lesson03_population_trend.csv` | 年×6村（ワイド） | 9行 | L3用 |
+| `kids/data/lesson04_all_2025.csv` | 市町村名・2025年総人口 | 77行 | L4・L8用 |
+| `kids/data/lesson05_change.csv` | 市町村名・2017年・2025年総人口 | 77行 | L5・L6・L9用 |
+| `kids/data/lesson07_gender_2025.csv` | 市町村名・男・女（2025年） | 77行 | L7用（小学生向けシンプル版） |
 
 ### 加工内容
 
