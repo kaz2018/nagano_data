@@ -81,3 +81,87 @@ with open('kids/data/lesson02_cities_2025.csv', encoding='utf-8-sig') as f:
 | L8 | 1984926人 | 18.2%（±0.2許容） | 10市 | — |
 | L9 | 346180人（長野市2033年予測） | 668人（天龍村2033年予測） | 自由記述 → 模範解答表示 | — |
 | L10 | 自由探究（正誤なし） | — | — | — |
+
+---
+
+## 大人コース
+
+### 基本方針
+
+- ディレクトリ: `adults/`
+- **文章レベル**: 中学2〜3年生が読めること。短文・改行多め・平易な日本語
+- **テーマカラー**: インディゴ（`indigo-600` / `indigo-900`）
+- **技術スタック**: Tailwind CSS + Alpine.js（子どもコースとは異なるモダンデザイン）
+
+### ディレクトリ構成
+
+```
+adults/
+  index.html          # コーストップ（レッスン一覧）
+  lesson01/index.html
+  lesson02/index.html  # 以降同様
+  data/
+    lesson01_dirty.csv  # 神Excel風サンプル
+    lesson01_clean.csv  # きれいなデータサンプル
+```
+
+### デザイン規約
+
+- **ヘッダー**: sticky + `backdrop-blur-sm` + `bg-white/90`
+- **ヒーロー**: `bg-gradient-to-r from-indigo-600 to-violet-600`（レッスンページ）/ `from-indigo-900 to-slate-900`（indexページ）
+- **カード**: `bg-white rounded-2xl border border-slate-200`（shadowより borderを基本に）
+- **成功色**: `emerald-600`
+- **エラー色**: `red-500`
+
+### Alpine.js 実装パターン
+
+コンポーネント関数を `<head>` 内の `<script>` に定義し、Alpine は `defer` で読み込む。
+
+```html
+<head>
+  <script>
+    function lesson1() {
+      return { /* state & methods */ };
+    }
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body x-data="lesson1()">
+```
+
+`x-cloak` は `x-show` で初期状態が非表示になる要素にのみ付ける（body全体には付けない）。
+
+### やってみよう（大人コース）UIパターン
+
+子どもコースと異なり Alpine.js で状態管理する：
+
+- `x-model` でラジオ・テキスト入力をバインド
+- 未入力時はボタンを `disabled` + グレーアウト（`:disabled` + `:class`）
+- 結果は `x-show` + `x-transition` でスライドイン表示
+- 正解: `bg-emerald-50 border-emerald-200 text-emerald-800`
+- 不正解: `bg-red-50 border-red-200 text-red-700`
+
+```html
+<div x-show="result !== null" x-cloak
+  x-transition:enter="transition ease-out duration-200"
+  x-transition:enter-start="opacity-0 translate-y-1"
+  x-transition:enter-end="opacity-100 translate-y-0"
+  :class="result === 'ok' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-700'"
+  class="border rounded-xl p-3 text-sm font-bold">
+```
+
+### スプレッドシート URL（大人コース）
+
+| レッスン | 種別 | URL |
+|---------|------|-----|
+| L1 | 神Excel版（dirty） | https://docs.google.com/spreadsheets/d/1vlR7DHRlOCR2LGxL0JLTmF_1WNvq6ZVPwRLtkTZMY7g/edit?gid=2032434459#gid=2032434459 |
+| L1 | きれいなデータ（clean） | https://docs.google.com/spreadsheets/d/1Lfe_jTcJ_Od_R5XO3Yzba0annsaHAHFwpHESYYzvHmY/edit?gid=1772913169#gid=1772913169 |
+
+### 正解一覧（大人コース）
+
+| レッスン | Q1 | Q2 | Q3 |
+|---------|----|----|-----|
+| L1 | ②できない（全角数字・メモが混入しているから） | 4個 | 1件 |

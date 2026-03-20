@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>大人向けコース | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function courseIndex() {
+      return { welcome: true };
+    }
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+
+<body class="bg-slate-50 min-h-screen" x-data="courseIndex()">
+
+  <!-- Sticky header -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="../index.html" class="text-slate-500 hover:text-slate-900 text-sm font-bold transition-colors flex items-center gap-1">
+        ← トップへ
+      </a>
+      <div class="flex items-center gap-2">
+        <span class="font-black text-slate-800 text-sm">ながのデータ探検隊</span>
+        <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-2 py-0.5 rounded-full">大人コース</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="bg-gradient-to-br from-indigo-900 via-indigo-800 to-slate-900 overflow-hidden relative">
+    <!-- Background decoration -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-8 right-12 text-9xl">📊</div>
+    </div>
+    <div class="max-w-4xl mx-auto px-6 py-16 relative">
+      <p class="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-3">Adult Course</p>
+      <h1 class="text-4xl sm:text-5xl font-black text-white mb-4 leading-tight">
+        データを<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-violet-300">使いこなす</span>力をつけよう
+      </h1>
+      <p class="text-indigo-200 text-sm leading-relaxed max-w-sm mb-10">
+        長野県の人口データで、データ分析の基本を学びます。<br>
+        スプレッドシートが初めての方でも大丈夫です。
+      </p>
+    </div>
+  </div>
+
+  <main class="max-w-4xl mx-auto px-6 py-10 space-y-6">
+
+    <!-- Welcome banner (dismissible) -->
+    <div x-show="welcome" x-cloak
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0 -translate-y-2"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-200"
+      x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 -translate-y-2"
+      class="bg-indigo-50 border border-indigo-200 rounded-2xl p-4 flex items-start gap-3">
+      <span class="text-2xl shrink-0">👋</span>
+      <div class="flex-1 text-sm text-indigo-800">
+        <p class="font-bold mb-0.5">はじめての方へ</p>
+        <p class="text-indigo-600">レッスン1から順番に進めましょう。スプレッドシートが初めてでも大丈夫です。</p>
+      </div>
+      <button @click="welcome = false" class="text-indigo-300 hover:text-indigo-700 shrink-0 transition-colors text-lg leading-none">✕</button>
+    </div>
+
+    <!-- 進め方 -->
+    <div class="grid grid-cols-3 gap-3">
+      <div class="bg-white rounded-2xl border border-slate-200 p-4 text-center">
+        <div class="text-2xl mb-2">📖</div>
+        <p class="font-bold text-slate-700 text-sm">読む</p>
+        <p class="text-slate-400 text-xs mt-1">説明を読む</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-slate-200 p-4 text-center">
+        <div class="text-2xl mb-2">✋</div>
+        <p class="font-bold text-slate-700 text-sm">やる</p>
+        <p class="text-slate-400 text-xs mt-1">手を動かす</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-slate-200 p-4 text-center">
+        <div class="text-2xl mb-2">✅</div>
+        <p class="font-bold text-slate-700 text-sm">確認する</p>
+        <p class="text-slate-400 text-xs mt-1">クイズで確認</p>
+      </div>
+    </div>
+
+    <!-- Lesson list -->
+    <div>
+      <h2 class="font-black text-slate-800 mb-4 text-lg">レッスン一覧</h2>
+      <div class="space-y-3">
+
+        <!-- L1 active -->
+        <a href="lesson01/index.html"
+          class="group block bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-lg transition-all duration-200 p-5">
+          <div class="flex items-start gap-4">
+            <div class="bg-indigo-600 text-white rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">1</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 flex-wrap mb-1">
+                <h3 class="font-black text-slate-800 group-hover:text-indigo-700 transition-colors">「神Excel」ってなに？</h3>
+                <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">公開中</span>
+              </div>
+              <p class="text-sm text-slate-500">分析できないデータの問題点を見つけよう。</p>
+              <div class="flex gap-2 mt-2 flex-wrap">
+                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">データの基本</span>
+                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">神Excel</span>
+              </div>
+            </div>
+            <span class="text-indigo-400 text-xl group-hover:translate-x-1 transition-transform shrink-0">→</span>
+          </div>
+        </a>
+
+        <!-- L2 -->
+        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
+          <div class="flex items-start gap-4">
+            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">2</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-black text-slate-400">データを「きれいな形」に整える</h3>
+                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
+              </div>
+              <p class="text-sm text-slate-400">全角数字・日付・書式の統一方法を学ぼう。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- L3 -->
+        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
+          <div class="flex items-start gap-4">
+            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">3</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-black text-slate-400">スプレッドシートのクレンジング機能</h3>
+                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
+              </div>
+              <p class="text-sm text-slate-400">スプレッドシートの機能で効率よくきれいにしよう。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- L4 -->
+        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
+          <div class="flex items-start gap-4">
+            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">4</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-black text-slate-400">ピボットテーブルで集計する</h3>
+                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
+              </div>
+              <p class="text-sm text-slate-400">市町村ごとの人口をまとめて集計しよう。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- L5 -->
+        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
+          <div class="flex items-start gap-4">
+            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">5</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-black text-slate-400">グラフで見える化する</h3>
+                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
+              </div>
+              <p class="text-sm text-slate-400">人口の推移をグラフにして、変化を発見しよう。</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-8 text-slate-400 text-sm border-t border-slate-200 mt-6">
+    <p>ながのデータ探検隊 | 大人コース</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>レッスン1: 神Excelってなに？ | ながのデータ探検隊・大人コース</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function lesson1() {
+      return {
+        hint: null,
+        q1: null, q2: '', q3: '',
+        r1: null, r2: null, r3: null,
+
+        problems: [
+          {
+            id: 1, label: '① 全角数字',
+            desc: '「３６１，０４５」は全角の数字です。スプレッドシートは「文字」として認識するため、SUM関数で合計できません。'
+          },
+          {
+            id: 2, label: '② 小計・合計行',
+            desc: '小計・合計行がデータに混ざっていると、全体を集計するときに数字を二重に数えてしまいます。'
+          },
+          {
+            id: 3, label: '③ 空白行',
+            desc: '見た目を整えるための空白行があると、並び替えやフィルターが途中で止まります。'
+          },
+          {
+            id: 4, label: '④ メモ・空欄',
+            desc: '「★要確認」のようなメモや空欄が数値の欄にあると、関数がエラーになります。'
+          },
+        ],
+
+        get activeProb() {
+          return this.problems.find(p => p.id === this.hint) || null;
+        },
+
+        toggle(id) {
+          this.hint = this.hint === id ? null : id;
+        },
+
+        checkQ1() {
+          if (!this.q1) return;
+          this.r1 = this.q1 === 'b' ? 'ok' : 'ng';
+        },
+        checkQ2() {
+          this.r2 = parseInt(this.q2) === 4 ? 'ok' : 'ng';
+        },
+        checkQ3() {
+          this.r3 = parseInt(this.q3) === 1 ? 'ok' : 'ng';
+        },
+      };
+    }
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+    [x-cloak] { display: none !important; }
+    .xtable { border-collapse: collapse; }
+    .xtable td { border: 1px solid #cbd5e1; padding: 5px 12px; font-size: 12px; white-space: nowrap; transition: background-color 0.25s ease; }
+  </style>
+</head>
+
+<body class="bg-slate-50 min-h-screen" x-data="lesson1()">
+
+  <!-- Sticky header with progress -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-slate-200">
+    <div class="max-w-3xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="../index.html" class="text-slate-500 hover:text-slate-900 text-sm font-bold transition-colors">
+        ← 一覧へ
+      </a>
+      <div class="flex items-center gap-1.5">
+        <div class="w-7 h-1.5 bg-indigo-600 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-slate-200 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-slate-200 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-slate-200 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-slate-200 rounded-full"></div>
+        <span class="text-xs text-slate-400 ml-2 font-bold">1 / 5</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Lesson hero -->
+  <div class="bg-gradient-to-r from-indigo-600 to-violet-600 text-white">
+    <div class="max-w-3xl mx-auto px-6 py-10">
+      <div class="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">レッスン 1</div>
+      <h1 class="text-3xl font-black mb-2">「神Excel」ってなに？</h1>
+      <p class="text-indigo-200 text-sm">分析できないデータの正体</p>
+    </div>
+  </div>
+
+  <main class="max-w-3xl mx-auto px-6 py-8 space-y-6">
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6">
+      <h2 class="font-black text-slate-800 mb-3">🎯 このレッスンでわかること</h2>
+      <ul class="space-y-2 text-sm text-slate-600">
+        <li class="flex gap-2 items-start">
+          <span class="text-indigo-500 font-black shrink-0">✓</span>「神Excel」が何かわかる
+        </li>
+        <li class="flex gap-2 items-start">
+          <span class="text-indigo-500 font-black shrink-0">✓</span>どこが問題かを見つけられる
+        </li>
+        <li class="flex gap-2 items-start">
+          <span class="text-indigo-500 font-black shrink-0">✓</span>分析しやすいデータの形がわかる
+        </li>
+      </ul>
+    </section>
+
+    <!-- データ分析とは -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
+      <h2 class="font-black text-slate-800">データ分析ってなに？</h2>
+      <p class="text-slate-600 text-sm leading-relaxed">
+        数字を見て、答えを出すことです。<br>
+        「どの市町村の人口が一番多い？」「人口は増えてる？減ってる？」<br>
+        こういった問いに、データを使って答えます。
+      </p>
+      <p class="text-slate-600 text-sm leading-relaxed">
+        スプレッドシートが計算してくれますが、<strong>データが「きれい」でないと計算できません。</strong>
+      </p>
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm">
+        <p class="font-bold text-amber-800 mb-1">💡 ポイント</p>
+        <p class="text-amber-700 leading-relaxed">
+          データ分析の時間の80%は「データをきれいにする」作業だと言われています。<br>
+          まず「きれいでないデータ」を知ることが大事です。
+        </p>
+      </div>
+    </section>
+
+    <!-- 神Excelインタラクティブセクション -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-5">
+      <div>
+        <h2 class="font-black text-slate-800 mb-1">「神Excel」を見てみよう</h2>
+        <p class="text-slate-500 text-sm">「見た目はきれいなのに、分析できない」ファイルを<strong class="text-slate-700">「神Excel」</strong>と呼びます。</p>
+      </div>
+
+      <!-- Mock Excel window -->
+      <div class="rounded-xl overflow-hidden border border-slate-300 shadow-sm">
+        <!-- Window chrome -->
+        <div class="bg-slate-700 px-4 py-2.5 flex items-center gap-2">
+          <div class="w-3 h-3 rounded-full bg-red-400"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+          <div class="w-3 h-3 rounded-full bg-green-400"></div>
+          <span class="text-slate-300 text-xs ml-2 font-mono">人口データ.xlsx</span>
+        </div>
+        <!-- Spreadsheet area -->
+        <div class="bg-white p-4 overflow-x-auto">
+          <table class="xtable">
+            <tbody>
+              <!-- タイトル（結合セルのつもり） -->
+              <tr>
+                <td colspan="4" style="background:#dce6f1;font-weight:bold;text-align:center;padding:8px 12px;font-size:13px;color:#1e293b;">
+                  長野県　主要市町村　人口まとめ（令和版）
+                </td>
+              </tr>
+              <!-- ヘッダー -->
+              <tr>
+                <td style="background:#e8edf7;font-weight:bold;color:#1e293b;">市町村名</td>
+                <td style="background:#e8edf7;font-weight:bold;color:#1e293b;">2023年</td>
+                <td style="background:#e8edf7;font-weight:bold;color:#1e293b;">2024年</td>
+                <td style="background:#e8edf7;font-weight:bold;color:#1e293b;">2025年</td>
+              </tr>
+              <!-- 長野市 -->
+              <tr>
+                <td>長野市</td>
+                <td>374,000</td>
+                <td>372,155</td>
+                <td :class="hint === 1 ? 'bg-red-200 font-bold' : 'bg-amber-50 text-amber-800'">３６１，０４５</td>
+              </tr>
+              <!-- 松本市 -->
+              <tr>
+                <td>松本市</td>
+                <td>240,358</td>
+                <td>239,012</td>
+                <td>236,788</td>
+              </tr>
+              <!-- 小計行 -->
+              <tr>
+                <td class="font-bold" :class="hint === 2 ? 'bg-red-200' : 'bg-yellow-50'">小計</td>
+                <td class="font-bold" :class="hint === 2 ? 'bg-red-200' : 'bg-yellow-50'">614,358</td>
+                <td class="font-bold" :class="hint === 2 ? 'bg-red-200' : 'bg-yellow-50'">611,167</td>
+                <td class="font-bold" :class="(hint === 2 || hint === 4) ? 'bg-red-300 text-red-900' : 'bg-amber-100 text-amber-800'">★要確認</td>
+              </tr>
+              <!-- 空白行 -->
+              <tr>
+                <td colspan="4" style="height:18px;" :class="hint === 3 ? 'bg-red-200' : 'bg-slate-50'"></td>
+              </tr>
+              <!-- 上田市 -->
+              <tr>
+                <td>上田市</td>
+                <td>157,200</td>
+                <td>155,845</td>
+                <td>155,012</td>
+              </tr>
+              <!-- 岡谷市 -->
+              <tr>
+                <td>岡谷市</td>
+                <td :class="hint === 4 ? 'bg-red-200' : 'bg-amber-50'">&nbsp;</td>
+                <td>47,890</td>
+                <td>47,200</td>
+              </tr>
+              <!-- 飯田市 -->
+              <tr>
+                <td>飯田市</td>
+                <td>98,451</td>
+                <td :class="hint === 1 ? 'bg-red-200 font-bold' : 'bg-amber-50 text-amber-800'">9８,000</td>
+                <td>96,500</td>
+              </tr>
+              <!-- 合計行 -->
+              <tr>
+                <td class="font-bold" :class="hint === 2 ? 'bg-red-200' : 'bg-yellow-50'">合計</td>
+                <td class="font-bold" :class="hint === 2 ? 'bg-red-200' : 'bg-yellow-50'">870,009</td>
+                <td class="font-bold" :class="hint === 2 ? 'bg-red-200' : 'bg-yellow-50'">814,902</td>
+                <td class="font-bold" :class="hint === 2 ? 'bg-red-200' : 'bg-yellow-50'">495,300</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- スプレッドシートを開くボタン（dirty） -->
+      <a href="https://docs.google.com/spreadsheets/d/1vlR7DHRlOCR2LGxL0JLTmF_1WNvq6ZVPwRLtkTZMY7g/edit?gid=2032434459#gid=2032434459"
+        target="_blank" rel="noopener"
+        class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors">
+        📋 このスプレッドシートを開く
+      </a>
+
+      <!-- 問題ボタン -->
+      <div>
+        <p class="text-sm text-slate-500 mb-3">ボタンを押すと、問題のある場所が光ります。</p>
+        <div class="flex flex-wrap gap-2">
+          <button @click="toggle(1)"
+            :class="hint === 1 ? 'bg-red-500 text-white shadow-md scale-105' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'"
+            class="px-4 py-2 rounded-full text-sm font-bold transition-all duration-200">
+            🔢 全角数字
+          </button>
+          <button @click="toggle(2)"
+            :class="hint === 2 ? 'bg-red-500 text-white shadow-md scale-105' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'"
+            class="px-4 py-2 rounded-full text-sm font-bold transition-all duration-200">
+            ➕ 小計・合計行
+          </button>
+          <button @click="toggle(3)"
+            :class="hint === 3 ? 'bg-red-500 text-white shadow-md scale-105' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'"
+            class="px-4 py-2 rounded-full text-sm font-bold transition-all duration-200">
+            ⬜ 空白行
+          </button>
+          <button @click="toggle(4)"
+            :class="hint === 4 ? 'bg-red-500 text-white shadow-md scale-105' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'"
+            class="px-4 py-2 rounded-full text-sm font-bold transition-all duration-200">
+            ⚠️ メモ・空欄
+          </button>
+        </div>
+
+        <!-- 問題の説明（アニメーション付き） -->
+        <div x-show="hint !== null" x-cloak
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 translate-y-2"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          x-transition:leave="transition ease-in duration-150"
+          x-transition:leave-start="opacity-100 translate-y-0"
+          x-transition:leave-end="opacity-0 translate-y-2"
+          class="mt-3 bg-red-50 border border-red-200 rounded-xl p-4">
+          <template x-if="activeProb">
+            <div>
+              <p class="font-bold text-red-800 text-sm mb-1" x-text="activeProb.label + ' の問題'"></p>
+              <p class="text-slate-700 text-sm leading-relaxed" x-text="activeProb.desc"></p>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- 分析しやすいデータの形 -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
+      <h2 class="font-black text-slate-800">分析しやすいデータの形</h2>
+      <p class="text-slate-600 text-sm">ルールはシンプルです。</p>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-center">
+          <p class="text-2xl mb-2">↕️</p>
+          <p class="font-bold text-indigo-800 text-sm">1行 = 1件</p>
+          <p class="text-slate-500 text-xs mt-1">1市町村・1年分のデータを1行に</p>
+        </div>
+        <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-center">
+          <p class="text-2xl mb-2">↔️</p>
+          <p class="font-bold text-indigo-800 text-sm">1列 = 1種類</p>
+          <p class="text-slate-500 text-xs mt-1">「人口」の列には数字だけ入れる</p>
+        </div>
+      </div>
+
+      <!-- Good table -->
+      <div class="rounded-xl overflow-hidden border border-emerald-300 shadow-sm">
+        <div class="bg-emerald-600 px-4 py-2 flex items-center gap-2">
+          <span class="text-white text-xs font-bold">✅ 分析しやすい形</span>
+        </div>
+        <div class="bg-white p-4 overflow-x-auto">
+          <table class="xtable">
+            <thead>
+              <tr>
+                <td style="background:#d1fae5;font-weight:bold;color:#065f46;">市町村名</td>
+                <td style="background:#d1fae5;font-weight:bold;color:#065f46;">2023年</td>
+                <td style="background:#d1fae5;font-weight:bold;color:#065f46;">2024年</td>
+                <td style="background:#d1fae5;font-weight:bold;color:#065f46;">2025年</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>長野市</td><td>374000</td><td>372155</td><td>361045</td></tr>
+              <tr><td>松本市</td><td>240358</td><td>239012</td><td>236788</td></tr>
+              <tr><td>上田市</td><td>157200</td><td>155845</td><td>155012</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="text-slate-500 text-sm leading-relaxed">
+        空白行・小計行・全角数字なし。<br>
+        この形なら、合計もグラフも自動でできます。
+      </p>
+      <a href="https://docs.google.com/spreadsheets/d/1Lfe_jTcJ_Od_R5XO3Yzba0annsaHAHFwpHESYYzvHmY/edit?gid=1772913169#gid=1772913169"
+        target="_blank" rel="noopener"
+        class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors">
+        📋 きれいなデータを開く
+      </a>
+    </section>
+
+    <!-- やってみよう -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-5">
+      <h2 class="font-black text-slate-800">やってみよう</h2>
+
+      <!-- Q1 -->
+      <div class="bg-slate-50 rounded-xl p-5 space-y-3 border border-slate-100">
+        <p class="font-bold text-slate-800 text-sm">問題 1</p>
+        <p class="text-slate-700 text-sm leading-relaxed">
+          神Excelの「2025年」の列を、SUM関数で合計することはできますか？
+        </p>
+        <div class="space-y-2">
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q1" value="a" x-model="q1" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">① できる</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q1" value="b" x-model="q1" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">② できない（全角数字や「★要確認」が混じっているから）</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q1" value="c" x-model="q1" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">③ 小計行だけ使えばできる</span>
+          </label>
+        </div>
+        <button @click="checkQ1()" :disabled="!q1"
+          :class="q1 ? 'bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer' : 'bg-slate-200 text-slate-400 cursor-not-allowed'"
+          class="px-5 py-2 rounded-lg text-sm font-bold transition-all duration-200">
+          答え合わせ
+        </button>
+        <div x-show="r1 !== null" x-cloak
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 translate-y-1"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          :class="r1 === 'ok' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-700'"
+          class="border rounded-xl p-3 text-sm font-bold leading-relaxed">
+          <span x-show="r1 === 'ok'">⭕ 正解！全角数字や「★要確認」があると、SUM関数は正しく動きません。</span>
+          <span x-show="r1 === 'ng'">❌ もう一度！「2025年」の列をよく見てみましょう。</span>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="bg-slate-50 rounded-xl p-5 space-y-3 border border-slate-100">
+        <p class="font-bold text-slate-800 text-sm">問題 2</p>
+        <p class="text-slate-700 text-sm">神Excelには、問題が何個ありましたか？</p>
+        <div class="flex items-center gap-3">
+          <input x-model="q2" type="number" min="0" max="10"
+            class="border-2 border-slate-200 focus:border-indigo-400 rounded-lg px-3 py-2 text-sm w-20 outline-none transition-colors"
+            placeholder="数字" />
+          <span class="text-sm text-slate-500">個</span>
+          <button @click="checkQ2()" :disabled="!q2"
+            :class="q2 ? 'bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer' : 'bg-slate-200 text-slate-400 cursor-not-allowed'"
+            class="px-5 py-2 rounded-lg text-sm font-bold transition-all duration-200">
+            答え合わせ
+          </button>
+        </div>
+        <div x-show="r2 !== null" x-cloak
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 translate-y-1"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          :class="r2 === 'ok' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-700'"
+          class="border rounded-xl p-3 text-sm font-bold leading-relaxed">
+          <span x-show="r2 === 'ok'">⭕ 正解！①全角数字 ②小計・合計行 ③空白行 ④メモ・空欄、の4つです。</span>
+          <span x-show="r2 === 'ng'">❌ もう一度！ボタンを全部押して確認してみましょう。</span>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="bg-slate-50 rounded-xl p-5 space-y-3 border border-slate-100">
+        <p class="font-bold text-slate-800 text-sm">問題 3</p>
+        <p class="text-slate-700 text-sm">分析しやすいデータでは、1行に何件のデータが入っていますか？</p>
+        <div class="flex items-center gap-3">
+          <input x-model="q3" type="number" min="0" max="10"
+            class="border-2 border-slate-200 focus:border-indigo-400 rounded-lg px-3 py-2 text-sm w-20 outline-none transition-colors"
+            placeholder="数字" />
+          <span class="text-sm text-slate-500">件</span>
+          <button @click="checkQ3()" :disabled="!q3"
+            :class="q3 ? 'bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer' : 'bg-slate-200 text-slate-400 cursor-not-allowed'"
+            class="px-5 py-2 rounded-lg text-sm font-bold transition-all duration-200">
+            答え合わせ
+          </button>
+        </div>
+        <div x-show="r3 !== null" x-cloak
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 translate-y-1"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          :class="r3 === 'ok' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-700'"
+          class="border rounded-xl p-3 text-sm font-bold leading-relaxed">
+          <span x-show="r3 === 'ok'">⭕ 正解！1行に1件（1市町村・1年分）のデータを入れます。</span>
+          <span x-show="r3 === 'ng'">❌ もう一度！「分析しやすいデータの形」の表を見てみましょう。</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center pt-2 pb-10">
+      <a href="../index.html" class="text-slate-400 hover:text-slate-700 text-sm font-bold transition-colors">
+        ← 一覧へ
+      </a>
+      <a href="../lesson02/index.html"
+        class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl transition-colors shadow-sm">
+        次のレッスンへ →
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="text-center py-6 text-slate-400 text-sm border-t border-slate-200">
+    <p>ながのデータ探検隊 | 大人コース</p>
+  </footer>
+
+</body>
+</html>
