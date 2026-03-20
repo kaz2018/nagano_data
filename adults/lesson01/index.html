@@ -332,6 +332,71 @@
       <p class="text-xs text-indigo-600 font-bold">元のデータは閲覧のみです。「ファイル → コピーを作成」で自分のドライブにコピーしてから使ってください。</p>
     </section>
 
+    <!-- 生データをきれいにしてみよう -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-5">
+      <div>
+        <h2 class="font-black text-slate-800 mb-1">実際にやってみよう：生データをきれいにする</h2>
+        <p class="text-slate-500 text-sm">長野県が公開している本物のデータを使います。コピペとフィルターだけでできます。</p>
+      </div>
+
+      <a href="https://docs.google.com/spreadsheets/d/16-pJmYMado9aECy-5I9PQQLbAVVjp-xF/edit?gid=1621259894#gid=1621259894"
+        target="_blank" rel="noopener"
+        class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors">
+        生データを開く
+      </a>
+      <p class="text-xs text-indigo-600 font-bold">元のデータは閲覧のみです。「ファイル → コピーを作成」で自分のドライブにコピーしてから作業してください。</p>
+
+      <ol class="space-y-4">
+        <li class="flex gap-4">
+          <span class="shrink-0 w-7 h-7 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-black">1</span>
+          <div class="text-sm text-slate-700 leading-relaxed">
+            <p class="font-bold text-slate-800 mb-1">使うシートを選ぶ</p>
+            <p>画面下部のシートタブから<strong>「市町村別人口と世帯数及び人口動態 (総数)」</strong>を選びます。</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-7 h-7 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-black">2</span>
+          <div class="text-sm text-slate-700 leading-relaxed">
+            <p class="font-bold text-slate-800 mb-1">新しいシートを追加してヘッダーを入力する</p>
+            <p>画面左下の <strong>「＋」</strong> ボタンで新しいシートを追加します。シート名は「2025きれいなデータ」などにしましょう。<br>A1〜E1に <strong>市町村名 / 世帯数 / 総人口 / 男 / 女</strong> と入力します。</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-7 h-7 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-black">3</span>
+          <div class="text-sm text-slate-700 leading-relaxed">
+            <p class="font-bold text-slate-800 mb-1">必要な範囲をコピーする</p>
+            <p>元のシートに戻ります。画面左上の名前ボックス（セル番地が表示されている欄）に <code class="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-xs">A9:E100</code> と入力して Enter を押すと、市町村のデータ全体が選択されます。<br><code class="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-xs">Ctrl + C</code>（Macは <code class="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-xs">⌘ + C</code>）でコピーします。</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-7 h-7 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-black">4</span>
+          <div class="text-sm text-slate-700 leading-relaxed">
+            <p class="font-bold text-slate-800 mb-1">新しいシートのA2に「値のみ」貼り付ける</p>
+            <p>新しいシートの <strong>A2</strong> を選択し、<code class="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-xs">Ctrl + Shift + V</code>（Macは <code class="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-xs">⌘ + Shift + V</code>）を押します。<br>「値のみ貼り付け」を選ぶと、数字だけがコピーされ、元の書式は引き継がれません。</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-7 h-7 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-black">5</span>
+          <div class="text-sm text-slate-700 leading-relaxed">
+            <p class="font-bold text-slate-800 mb-1">フィルターで不要な行を削除する</p>
+            <p>「データ」メニュー →「フィルターを作成」を選びます。<br>A列のフィルタードロップダウンをクリックし、検索欄に <strong>「郡」</strong> と入力します。<br>「郡」を含む行だけが表示されるので、それらを選択して右クリック→「行を削除」します。<br>同じ手順で <strong>「計」</strong> を含む行（市　計など）も削除します。<br>最後に「データ」→「フィルターをオフ」にして完了です。</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-sm">
+        <p class="font-bold text-emerald-800 mb-1">答え合わせ</p>
+        <p class="text-emerald-700 leading-relaxed">
+          完成したら、下のスプレッドシートの2025年のデータと見比べてみましょう。<br>77市町村・4列（市町村名・総人口・男・女）になっていれば正解です。
+        </p>
+        <a href="https://docs.google.com/spreadsheets/d/1FWIY49b3a9GZJrW6p003DpAvHyZjLGOZDzP5aS7DEPg/edit?gid=294120410#gid=294120410"
+          target="_blank" rel="noopener"
+          class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors mt-3">
+          正解データを確認する
+        </a>
+      </div>
+    </section>
+
     <!-- やってみよう -->
     <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-5">
       <h2 class="font-black text-slate-800">やってみよう</h2>

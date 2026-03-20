@@ -65,7 +65,9 @@
 
 - [x] 要件詳細定義（ターゲット・レッスン構成・L1〜L4確定）
 - [x] 大人向けトップページ（`adults/index.html`）
-- [x] L1ページ（`adults/lesson01/index.html`）— 神Excel・データクレンジング
+- [x] L1ページ（`adults/lesson01/index.html`）— 神Excel・データクレンジング・生データ手順体験
+  - 生データ: `kids/data/raw/1882-R7_1.xlsx`（長野県公式・2025年1月）
+  - 手順体験: コピペ＋フィルターで77市町村のきれいなデータを自作する演習を追加
 - [x] L2ページ（`adults/lesson02/index.html`）— ピボット集計・表記ゆれ・IDの活用
   - データ: `adults/data/lesson02_population.csv`（77市町村×2023〜2025年・231行）
   - スプレッドシート: https://docs.google.com/spreadsheets/d/1FWIY49b3a9GZJrW6p003DpAvHyZjLGOZDzP5aS7DEPg/edit?gid=294120410#gid=294120410

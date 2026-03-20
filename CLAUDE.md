@@ -166,6 +166,7 @@ adults/
 
 | レッスン | 種別 | URL |
 |---------|------|-----|
+| L1 | 生データ（長野県公式・2025年1月） | https://docs.google.com/spreadsheets/d/16-pJmYMado9aECy-5I9PQQLbAVVjp-xF/edit?gid=1621259894#gid=1621259894 |
 | L1 | 神Excel版（dirty） | https://docs.google.com/spreadsheets/d/1vlR7DHRlOCR2LGxL0JLTmF_1WNvq6ZVPwRLtkTZMY7g/edit?gid=2032434459#gid=2032434459 |
 | L1 | きれいなデータ（clean） | https://docs.google.com/spreadsheets/d/1Lfe_jTcJ_Od_R5XO3Yzba0annsaHAHFwpHESYYzvHmY/edit?gid=1772913169#gid=1772913169 |
 | L2 | 人口データ（2023〜2025年・77市町村） | https://docs.google.com/spreadsheets/d/1FWIY49b3a9GZJrW6p003DpAvHyZjLGOZDzP5aS7DEPg/edit?gid=294120410#gid=294120410 |
