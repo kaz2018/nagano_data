@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>レッスン2: pivot集計 | ながのデータ探検隊・大人コース</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function lesson2() {
+      return {
+        pivotShown: false,
+        useId: false,
+        q1: null, q2: null, q3: null,
+        r1: null, r2: null, r3: null,
+
+        checkQ1() { this.r1 = this.q1 === 'b' ? 'ok' : 'ng'; },
+        checkQ2() { this.r2 = this.q2 === 'b' ? 'ok' : 'ng'; },
+        checkQ3() { this.r3 = this.q3 === 'c' ? 'ok' : 'ng'; },
+      };
+    }
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+    [x-cloak] { display: none !important; }
+    .xtable { border-collapse: collapse; }
+    .xtable td { border: 1px solid #cbd5e1; padding: 5px 12px; font-size: 12px; white-space: nowrap; }
+  </style>
+</head>
+
+<body class="bg-slate-50 min-h-screen" x-data="lesson2()">
+
+  <!-- Sticky header -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-slate-200">
+    <div class="max-w-3xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="../index.html" class="text-slate-500 hover:text-slate-900 text-sm font-bold transition-colors">
+        ← 一覧へ
+      </a>
+      <div class="flex items-center gap-1.5">
+        <div class="w-7 h-1.5 bg-indigo-600 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-indigo-600 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-slate-200 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-slate-200 rounded-full"></div>
+        <span class="text-xs text-slate-400 ml-2 font-bold">2 / 4</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="bg-gradient-to-r from-indigo-600 to-violet-600 text-white">
+    <div class="max-w-3xl mx-auto px-6 py-10">
+      <div class="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">レッスン 2</div>
+      <h1 class="text-3xl font-black mb-2">ピボットで集計しよう</h1>
+      <p class="text-indigo-200 text-sm">データをすばやくまとめる方法と、集計を壊す落とし穴</p>
+    </div>
+  </div>
+
+  <main class="max-w-3xl mx-auto px-6 py-8 space-y-6">
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6">
+      <h2 class="font-black text-slate-800 mb-3">このレッスンでわかること</h2>
+      <ul class="space-y-2 text-sm text-slate-600">
+        <li class="flex gap-2 items-start">
+          <span class="text-indigo-500 font-black shrink-0">✓</span>ピボットテーブルで大量のデータを集計できる
+        </li>
+        <li class="flex gap-2 items-start">
+          <span class="text-indigo-500 font-black shrink-0">✓</span>「表記のゆれ」が集計を壊すことがわかる
+        </li>
+        <li class="flex gap-2 items-start">
+          <span class="text-indigo-500 font-black shrink-0">✓</span>IDを使うと表記ゆれを防げることがわかる
+        </li>
+      </ul>
+    </section>
+
+    <!-- ピボットテーブルとは -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
+      <h2 class="font-black text-slate-800">ピボットテーブルって何？</h2>
+      <p class="text-slate-600 text-sm leading-relaxed">
+        たくさんの行があるデータを、<strong>すばやくまとめる機能</strong>です。<br>
+        たとえば 693行 ある人口データも、市町村ごとの平均を一瞬で出せます。
+      </p>
+      <p class="text-slate-600 text-sm leading-relaxed">
+        手で計算する必要はありません。<br>
+        どの列でまとめるかを選ぶだけで、スプレッドシートが自動で集計してくれます。
+      </p>
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm">
+        <p class="font-bold text-amber-800 mb-1">ポイント</p>
+        <p class="text-amber-700 leading-relaxed">
+          ピボットを使うには、まずデータが「きれい」である必要があります。<br>
+          レッスン1で学んだことが、ここで活きてきます。
+        </p>
+      </div>
+    </section>
+
+    <!-- ピボット体験デモ -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-5">
+      <div>
+        <h2 class="font-black text-slate-800 mb-1">集計を体験してみよう</h2>
+        <p class="text-slate-500 text-sm">ボタンを押して、データがまとまる様子を見てみましょう。</p>
+      </div>
+
+      <!-- Raw data -->
+      <div>
+        <p class="text-xs font-bold text-slate-500 mb-2">元のデータ（9行）</p>
+        <div class="overflow-x-auto">
+          <table class="xtable">
+            <tbody>
+              <tr>
+                <td style="background:#e8edf7;font-weight:bold;color:#1e293b;">市町村名</td>
+                <td style="background:#e8edf7;font-weight:bold;color:#1e293b;">年</td>
+                <td style="background:#e8edf7;font-weight:bold;color:#1e293b;">人口</td>
+              </tr>
+              <tr><td>長野市</td><td>2023年</td><td>374,000</td></tr>
+              <tr><td>松本市</td><td>2023年</td><td>240,358</td></tr>
+              <tr><td>上田市</td><td>2023年</td><td>157,200</td></tr>
+              <tr><td>長野市</td><td>2024年</td><td>372,155</td></tr>
+              <tr><td>松本市</td><td>2024年</td><td>239,012</td></tr>
+              <tr><td>上田市</td><td>2024年</td><td>155,845</td></tr>
+              <tr><td>長野市</td><td>2025年</td><td>361,045</td></tr>
+              <tr><td>松本市</td><td>2025年</td><td>236,788</td></tr>
+              <tr><td>上田市</td><td>2025年</td><td>155,012</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Pivot button -->
+      <button @click="pivotShown = !pivotShown"
+        :class="pivotShown ? 'bg-indigo-700' : 'bg-indigo-600 hover:bg-indigo-700'"
+        class="px-5 py-2.5 rounded-xl text-white text-sm font-bold transition-all duration-200">
+        <span x-show="!pivotShown">市町村ごとに集計する</span>
+        <span x-show="pivotShown" x-cloak>元のデータに戻す</span>
+      </button>
+
+      <!-- Pivot result -->
+      <div x-show="pivotShown" x-cloak
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 translate-y-2"
+        x-transition:enter-end="opacity-100 translate-y-0">
+        <p class="text-xs font-bold text-emerald-600 mb-2">ピボットの結果（市町村ごとの平均人口）</p>
+        <div class="overflow-x-auto">
+          <table class="xtable">
+            <tbody>
+              <tr>
+                <td style="background:#d1fae5;font-weight:bold;color:#065f46;">市町村名</td>
+                <td style="background:#d1fae5;font-weight:bold;color:#065f46;">平均人口</td>
+              </tr>
+              <tr><td>長野市</td><td>369,067</td></tr>
+              <tr><td>松本市</td><td>238,719</td></tr>
+              <tr><td>上田市</td><td>156,019</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-slate-500 text-xs mt-2">9行のデータが3行にまとまりました。</p>
+      </div>
+
+      <a href="https://docs.google.com/spreadsheets/d/1FWIY49b3a9GZJrW6p003DpAvHyZjLGOZDzP5aS7DEPg/edit?gid=294120410#gid=294120410"
+        target="_blank" rel="noopener"
+        class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors">
+        スプレッドシートで試してみる
+      </a>
+    </section>
+
+    <!-- ピボットテーブルの作り方 -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-5">
+      <div>
+        <h2 class="font-black text-slate-800 mb-1">ピボットテーブルの作り方</h2>
+        <p class="text-slate-500 text-sm">Google スプレッドシートでの手順です。</p>
+      </div>
+
+      <ol class="space-y-4">
+        <li class="flex gap-4">
+          <span class="shrink-0 w-7 h-7 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-black">1</span>
+          <div class="text-sm text-slate-700 leading-relaxed">
+            <p class="font-bold text-slate-800 mb-1">表の中をクリックする</p>
+            <p>データが入っているセルならどこでも構いません。<br>Google スプレッドシートがデータの範囲を自動で認識します。</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-7 h-7 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-black">2</span>
+          <div class="text-sm text-slate-700 leading-relaxed">
+            <p class="font-bold text-slate-800 mb-1">「挿入」→「ピボットテーブル」を選ぶ</p>
+            <p>画面上部のメニューから「挿入」をクリックし、「ピボットテーブル」を選びます。</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-7 h-7 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-black">3</span>
+          <div class="text-sm text-slate-700 leading-relaxed">
+            <p class="font-bold text-slate-800 mb-1">「新しいシート」を選んで「作成」を押す</p>
+            <p>ダイアログが出ます。「新しいシートに挿入」を選んで「作成」をクリックします。<br>新しいシートが開き、右側に設定パネルが表示されます。</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-7 h-7 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-black">4</span>
+          <div class="text-sm text-slate-700 leading-relaxed">
+            <p class="font-bold text-slate-800 mb-1">「行」に集計したい列を追加する</p>
+            <p>右パネルの「行」の横にある「追加」をクリック。<br>「市町村名」を選ぶと、市町村ごとにまとめられます。</p>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-7 h-7 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs font-black">5</span>
+          <div class="text-sm text-slate-700 leading-relaxed">
+            <p class="font-bold text-slate-800 mb-1">「値」に集計する数値の列を追加する</p>
+            <p>右パネルの「値」の横にある「追加」をクリック。<br>「人口」を選びます。集計方法は「平均」や「合計」などから選べます。</p>
+          </div>
+        </li>
+      </ol>
+
+      <!-- 設定パネルのイメージ -->
+      <div class="rounded-xl overflow-hidden border border-slate-300 shadow-sm">
+        <div class="bg-slate-700 px-4 py-2 flex items-center gap-2">
+          <span class="text-slate-300 text-xs font-mono">ピボットテーブル エディタ</span>
+        </div>
+        <div class="bg-white p-4 space-y-3">
+          <div class="border border-slate-200 rounded-lg p-3">
+            <p class="text-xs font-bold text-slate-500 mb-2">行</p>
+            <div class="bg-indigo-50 border border-indigo-200 rounded px-3 py-1.5 text-xs text-indigo-800 font-bold inline-block">市町村名 ✕</div>
+          </div>
+          <div class="border border-slate-200 rounded-lg p-3">
+            <p class="text-xs font-bold text-slate-500 mb-2">列</p>
+            <p class="text-xs text-slate-400">追加</p>
+          </div>
+          <div class="border border-slate-200 rounded-lg p-3">
+            <p class="text-xs font-bold text-slate-500 mb-2">値</p>
+            <div class="bg-indigo-50 border border-indigo-200 rounded px-3 py-1.5 text-xs text-indigo-800 font-bold inline-block">人口（平均） ✕</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm">
+        <p class="font-bold text-amber-800 mb-1">ポイント</p>
+        <p class="text-amber-700 leading-relaxed">
+          「行」に何を入れるかで、まとめ方が変わります。<br>
+          「年」を行に入れれば年ごとの集計に、「市町村名」を入れれば地域ごとの集計になります。
+        </p>
+      </div>
+    </section>
+
+    <!-- 表記ゆれセクション -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-5">
+      <div>
+        <h2 class="font-black text-slate-800 mb-1">落とし穴：「表記のゆれ」</h2>
+        <p class="text-slate-500 text-sm">データがきれいに見えても、集計が正しくならないことがあります。</p>
+      </div>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm space-y-2">
+        <p class="font-bold text-slate-800">「表記のゆれ」とは？</p>
+        <p class="text-slate-600 leading-relaxed">
+          同じ意味なのに、書き方が違うことです。<br>
+          人が見れば「同じもの」とわかります。でもコンピューターは<strong>文字が1つでも違えば別のもの</strong>として扱います。
+        </p>
+        <ul class="text-slate-600 space-y-1 mt-2">
+          <li>・ 田中 花子 ／ 田中花子 <span class="text-slate-400 text-xs">（スペースの有無）</span></li>
+          <li>・ 営業部 ／ 営業１部 ／ 第一営業部 <span class="text-slate-400 text-xs">（名称の揺れ）</span></li>
+          <li>・ りんご ／ リンゴ ／ 林檎 <span class="text-slate-400 text-xs">（表記の種類）</span></li>
+        </ul>
+      </div>
+
+      <p class="text-slate-600 text-sm leading-relaxed">
+        ピボットで集計するとき、表記のゆれがあると正しい結果になりません。<br>
+        見た目がきれいなデータでも、この落とし穴にはまることがあります。
+      </p>
+
+      <!-- Toggle buttons -->
+      <div class="flex gap-2">
+        <button @click="useId = false"
+          :class="!useId ? 'bg-red-500 text-white shadow-md' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'"
+          class="px-4 py-2 rounded-full text-sm font-bold transition-all duration-200">
+          表記ゆれあり
+        </button>
+        <button @click="useId = true"
+          :class="useId ? 'bg-emerald-600 text-white shadow-md' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'"
+          class="px-4 py-2 rounded-full text-sm font-bold transition-all duration-200">
+          IDで管理
+        </button>
+      </div>
+
+      <!-- 表記ゆれあり -->
+      <div x-show="!useId" class="space-y-3">
+        <div>
+          <p class="text-xs font-bold text-slate-500 mb-2">入力されたデータ</p>
+          <div class="overflow-x-auto">
+            <table class="xtable">
+              <tbody>
+                <tr>
+                  <td style="background:#fee2e2;font-weight:bold;color:#991b1b;">担当者名</td>
+                  <td style="background:#fee2e2;font-weight:bold;color:#991b1b;">件数</td>
+                </tr>
+                <tr><td>田中 花子</td><td>3</td></tr>
+                <tr><td>鈴木 一郎</td><td>5</td></tr>
+                <tr><td style="background:#fef9c3;">田中花子</td><td style="background:#fef9c3;">2</td></tr>
+                <tr><td>佐藤 次郎</td><td>4</td></tr>
+                <tr><td style="background:#fef9c3;">鈴木一郎</td><td style="background:#fef9c3;">1</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-amber-700 mt-1">黄色の行はスペースなし。同じ人なのに、別のデータとして入力されています。</p>
+        </div>
+
+        <div>
+          <p class="text-xs font-bold text-red-600 mb-2">ピボットで集計すると…</p>
+          <div class="overflow-x-auto">
+            <table class="xtable">
+              <tbody>
+                <tr>
+                  <td style="background:#fee2e2;font-weight:bold;color:#991b1b;">担当者名</td>
+                  <td style="background:#fee2e2;font-weight:bold;color:#991b1b;">合計件数</td>
+                </tr>
+                <tr><td>田中 花子</td><td>3</td></tr>
+                <tr><td style="background:#fef9c3;">田中花子</td><td style="background:#fef9c3;">2</td></tr>
+                <tr><td>鈴木 一郎</td><td>5</td></tr>
+                <tr><td style="background:#fef9c3;">鈴木一郎</td><td style="background:#fef9c3;">1</td></tr>
+                <tr><td>佐藤 次郎</td><td>4</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-red-600 mt-1">同じ人が2行に分かれてしまいました。田中花子さんの本当の件数は5件のはずです。</p>
+        </div>
+      </div>
+
+      <!-- IDで管理 -->
+      <div x-show="useId" x-cloak class="space-y-3">
+        <div>
+          <p class="text-xs font-bold text-slate-500 mb-2">IDを使って入力されたデータ</p>
+          <div class="overflow-x-auto">
+            <table class="xtable">
+              <tbody>
+                <tr>
+                  <td style="background:#d1fae5;font-weight:bold;color:#065f46;">ID</td>
+                  <td style="background:#d1fae5;font-weight:bold;color:#065f46;">担当者名</td>
+                  <td style="background:#d1fae5;font-weight:bold;color:#065f46;">件数</td>
+                </tr>
+                <tr><td class="font-bold text-indigo-700">A001</td><td>田中 花子</td><td>3</td></tr>
+                <tr><td class="font-bold text-indigo-700">A002</td><td>鈴木 一郎</td><td>5</td></tr>
+                <tr><td class="font-bold text-indigo-700">A001</td><td>田中花子</td><td>2</td></tr>
+                <tr><td class="font-bold text-indigo-700">A003</td><td>佐藤 次郎</td><td>4</td></tr>
+                <tr><td class="font-bold text-indigo-700">A002</td><td>鈴木一郎</td><td>1</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-slate-500 mt-1">名前にゆれがあっても、IDが同じなら同じ人です。</p>
+        </div>
+
+        <div>
+          <p class="text-xs font-bold text-emerald-600 mb-2">IDでピボットすると…</p>
+          <div class="overflow-x-auto">
+            <table class="xtable">
+              <tbody>
+                <tr>
+                  <td style="background:#d1fae5;font-weight:bold;color:#065f46;">ID</td>
+                  <td style="background:#d1fae5;font-weight:bold;color:#065f46;">担当者名</td>
+                  <td style="background:#d1fae5;font-weight:bold;color:#065f46;">合計件数</td>
+                </tr>
+                <tr><td class="font-bold text-indigo-700">A001</td><td>田中花子</td><td class="font-bold">5</td></tr>
+                <tr><td class="font-bold text-indigo-700">A002</td><td>鈴木一郎</td><td class="font-bold">6</td></tr>
+                <tr><td class="font-bold text-indigo-700">A003</td><td>佐藤次郎</td><td class="font-bold">4</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-emerald-700 mt-1">正しく3人分に集計されました。</p>
+        </div>
+      </div>
+
+      <!-- ID説明ボックス -->
+      <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-4 text-sm space-y-2">
+        <p class="font-bold text-indigo-800">IDとは？</p>
+        <p class="text-slate-600 leading-relaxed">
+          人や物に、ひとつずつ割り当てる番号や記号のことです。<br>
+          名前の書き方がゆれても、IDは変わりません。<br>
+          コンビニのバーコードや学校の出席番号も、一種のIDです。
+        </p>
+      </div>
+    </section>
+
+    <!-- やってみよう -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-5">
+      <h2 class="font-black text-slate-800">やってみよう</h2>
+
+      <!-- Q1 -->
+      <div class="bg-slate-50 rounded-xl p-5 space-y-3 border border-slate-100">
+        <p class="font-bold text-slate-800 text-sm">問題 1</p>
+        <p class="text-slate-700 text-sm leading-relaxed">ピボットテーブルを使うと、何ができますか？</p>
+        <div class="space-y-2">
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q1" value="a" x-model="q1" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">① データのまちがいを自動で直せる</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q1" value="b" x-model="q1" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">② 大量のデータをすばやく集計できる</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q1" value="c" x-model="q1" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">③ データを自動で入力してくれる</span>
+          </label>
+        </div>
+        <button @click="checkQ1()" :disabled="!q1"
+          :class="q1 ? 'bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer' : 'bg-slate-200 text-slate-400 cursor-not-allowed'"
+          class="px-5 py-2 rounded-lg text-sm font-bold transition-all duration-200">
+          答え合わせ
+        </button>
+        <div x-show="r1 !== null" x-cloak
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 translate-y-1"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          :class="r1 === 'ok' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-700'"
+          class="border rounded-xl p-3 text-sm font-bold leading-relaxed">
+          <span x-show="r1 === 'ok'">⭕ 正解！大量のデータも、ボタン一つで集計できます。</span>
+          <span x-show="r1 === 'ng'">❌ もう一度！ピボットは「集計」のための機能です。</span>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="bg-slate-50 rounded-xl p-5 space-y-3 border border-slate-100">
+        <p class="font-bold text-slate-800 text-sm">問題 2</p>
+        <p class="text-slate-700 text-sm leading-relaxed">
+          「田中　花子」（スペースあり）と「田中花子」（スペースなし）を<br>ピボットで集計するとどうなりますか？
+        </p>
+        <div class="space-y-2">
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q2" value="a" x-model="q2" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">① 自動で同じ人として合算される</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q2" value="b" x-model="q2" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">② 別々の行として集計される</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q2" value="c" x-model="q2" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">③ エラーになって集計できない</span>
+          </label>
+        </div>
+        <button @click="checkQ2()" :disabled="!q2"
+          :class="q2 ? 'bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer' : 'bg-slate-200 text-slate-400 cursor-not-allowed'"
+          class="px-5 py-2 rounded-lg text-sm font-bold transition-all duration-200">
+          答え合わせ
+        </button>
+        <div x-show="r2 !== null" x-cloak
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 translate-y-1"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          :class="r2 === 'ok' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-700'"
+          class="border rounded-xl p-3 text-sm font-bold leading-relaxed">
+          <span x-show="r2 === 'ok'">⭕ 正解！コンピューターにはまったく別のデータに見えます。</span>
+          <span x-show="r2 === 'ng'">❌ もう一度！「表記のゆれ」のデモをもう一度見てみましょう。</span>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="bg-slate-50 rounded-xl p-5 space-y-3 border border-slate-100">
+        <p class="font-bold text-slate-800 text-sm">問題 3</p>
+        <p class="text-slate-700 text-sm leading-relaxed">
+          表記のゆれが起きても集計をまちがえないようにするには、どうすればよいですか？
+        </p>
+        <div class="space-y-2">
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q3" value="a" x-model="q3" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">① フリガナを必ず入力する</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q3" value="b" x-model="q3" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">② 名前はひらがなだけで入力する</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q3" value="c" x-model="q3" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">③ 名前の代わりにIDで管理する</span>
+          </label>
+        </div>
+        <button @click="checkQ3()" :disabled="!q3"
+          :class="q3 ? 'bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer' : 'bg-slate-200 text-slate-400 cursor-not-allowed'"
+          class="px-5 py-2 rounded-lg text-sm font-bold transition-all duration-200">
+          答え合わせ
+        </button>
+        <div x-show="r3 !== null" x-cloak
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 translate-y-1"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          :class="r3 === 'ok' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-700'"
+          class="border rounded-xl p-3 text-sm font-bold leading-relaxed">
+          <span x-show="r3 === 'ok'">⭕ 正解！IDは変わらないので、名前の書き方がゆれても正しく集計できます。</span>
+          <span x-show="r3 === 'ng'">❌ もう一度！IDのデモをもう一度確認してみましょう。</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center pt-2 pb-10">
+      <a href="../lesson01/index.html" class="text-slate-400 hover:text-slate-700 text-sm font-bold transition-colors">
+        ← レッスン1へ
+      </a>
+      <a href="../lesson03/index.html"
+        class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl transition-colors shadow-sm">
+        次のレッスンへ →
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="text-center py-6 text-slate-400 text-sm border-t border-slate-200">
+    <p>ながのデータ探検隊 | 大人コース</p>
+  </footer>
+
+</body>
+</html>

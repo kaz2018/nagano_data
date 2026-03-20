@@ -159,9 +159,11 @@ adults/
 |---------|------|-----|
 | L1 | 神Excel版（dirty） | https://docs.google.com/spreadsheets/d/1vlR7DHRlOCR2LGxL0JLTmF_1WNvq6ZVPwRLtkTZMY7g/edit?gid=2032434459#gid=2032434459 |
 | L1 | きれいなデータ（clean） | https://docs.google.com/spreadsheets/d/1Lfe_jTcJ_Od_R5XO3Yzba0annsaHAHFwpHESYYzvHmY/edit?gid=1772913169#gid=1772913169 |
+| L2 | 人口データ（2023〜2025年・77市町村） | https://docs.google.com/spreadsheets/d/1FWIY49b3a9GZJrW6p003DpAvHyZjLGOZDzP5aS7DEPg/edit?gid=294120410#gid=294120410 |
 
 ### 正解一覧（大人コース）
 
 | レッスン | Q1 | Q2 | Q3 |
 |---------|----|----|-----|
 | L1 | ②できない（全角数字・メモが混入しているから） | 4個 | 1件 |
+| L2 | ②大量のデータをすばやく集計できる | ②別々の行として集計される | ③名前の代わりにIDで管理する |

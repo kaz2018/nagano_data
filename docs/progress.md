@@ -59,13 +59,21 @@
 
 ---
 
-## フェーズ2：大人向けサイト（未着手）
+## フェーズ2：大人向けサイト
 
-- [ ] 要件詳細定義
-- [ ] 大人向けトップページ（`adults/index.html`）
-- [ ] Google Sheetsコース設計
-- [ ] Pythonコース設計
-- [ ] コンテンツ作成
+### 完了
+
+- [x] 要件詳細定義（ターゲット・レッスン構成・L1〜L4確定）
+- [x] 大人向けトップページ（`adults/index.html`）
+- [x] L1ページ（`adults/lesson01/index.html`）— 神Excel・データクレンジング
+- [x] L2ページ（`adults/lesson02/index.html`）— ピボット集計・表記ゆれ・IDの活用
+  - データ: `adults/data/lesson02_population.csv`（77市町村×2023〜2025年・231行）
+  - スプレッドシート: https://docs.google.com/spreadsheets/d/1FWIY49b3a9GZJrW6p003DpAvHyZjLGOZDzP5aS7DEPg/edit?gid=294120410#gid=294120410
+
+### 未着手
+
+- [ ] L3ページ（Looker Studio）
+- [ ] L4ページ（Python pandas in Colab）
 
 ---
 
