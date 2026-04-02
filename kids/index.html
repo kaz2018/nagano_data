@@ -36,6 +36,27 @@
       </p>
     </section>
 
+    <!-- ミッション紹介 -->
+    <section class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-6 mb-8">
+      <div class="flex items-start gap-4">
+        <div class="shrink-0 w-14 h-14 bg-amber-400 rounded-full flex items-center justify-center text-2xl shadow">🕵️</div>
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">探偵コータより</p>
+          <p class="text-gray-800 text-sm leading-relaxed font-bold">
+            「ねえ、聞いてよ！ ぼくのおじさんが住んでいる<strong>麻績村（おみむら）</strong>、このまま人がへり続けたら大変なことになるって言うんだ。<br />
+            でも「なぜ減っているのか」がわからない。データを使って、いっしょに謎を解いてくれない？」
+          </p>
+        </div>
+      </div>
+      <div class="mt-4 bg-white rounded-xl p-4 text-sm text-gray-700 border border-amber-200">
+        <p class="font-black text-amber-700 mb-2">🔍 今回のミッション</p>
+        <p class="leading-relaxed">
+          長野県の人口データをレッスン1から順に調べながら、<strong>麻績村と周辺の村でなぜ人口が減っているのか</strong>、その謎に迫ろう。
+          レッスン10でじぶんなりの答えを出せたらクリアだ！
+        </p>
+      </div>
+    </section>
+
     <!-- 使い方説明 -->
     <section class="bg-white rounded-2xl shadow-sm p-6 mb-8 border-l-4 border-green-400">
       <h3 class="font-black text-gray-800 mb-3">📌 やりかた</h3>
@@ -48,148 +69,210 @@
     </section>
 
     <!-- レッスン一覧 -->
-    <section class="space-y-4">
-      <h3 class="text-lg font-black text-gray-700 mb-2">レッスン一らん</h3>
+    <section class="space-y-8">
 
-      <!-- レッスン1 -->
-      <a href="lesson01/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-green-300 flex items-start gap-4 block">
-        <div class="bg-green-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-green-600 shrink-0">1</div>
-        <div class="flex-1">
-          <h4 class="font-black text-gray-800 group-hover:text-green-700">長野県ってどんなところ？</h4>
-          <p class="text-sm text-gray-500 mt-1">ひょうを見て、長野県の市や人口をしらべてみよう。</p>
-          <div class="mt-2 flex gap-2">
-            <span class="bg-green-50 text-green-600 text-xs px-2 py-0.5 rounded-full font-bold">ひょうをよむ</span>
-            <span class="bg-green-50 text-green-600 text-xs px-2 py-0.5 rounded-full font-bold">データってなに？</span>
-          </div>
+      <!-- 第1章 -->
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="h-px flex-1 bg-green-200"></div>
+          <span class="text-xs font-black text-green-600 bg-green-100 px-3 py-1 rounded-full">第1章：はじめの一歩</span>
+          <div class="h-px flex-1 bg-green-200"></div>
         </div>
-        <span class="text-green-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
-      </a>
+        <p class="text-xs text-gray-400 text-center mb-4">データを読んで、長野県を知ろう</p>
+        <div class="space-y-4">
 
-      <!-- レッスン2 -->
-      <a href="lesson02/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-blue-300 flex items-start gap-4 block">
-        <div class="bg-blue-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-blue-600 shrink-0">2</div>
-        <div class="flex-1">
-          <h4 class="font-black text-gray-800 group-hover:text-blue-700">市の人口をくらべよう</h4>
-          <p class="text-sm text-gray-500 mt-1">ぼうグラフをつくって、市ごとの人口をくらべよう。いちばん多いのはどこ？</p>
-          <div class="mt-2 flex gap-2">
-            <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded-full font-bold">ぼうグラフ</span>
-            <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded-full font-bold">くらべる</span>
-          </div>
-        </div>
-        <span class="text-blue-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
-      </a>
+          <!-- レッスン1 -->
+          <a href="lesson01/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-green-300 flex items-start gap-4 block">
+            <div class="bg-green-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-green-600 shrink-0">1</div>
+            <div class="flex-1">
+              <h4 class="font-black text-gray-800 group-hover:text-green-700">長野県ってどんなところ？</h4>
+              <p class="text-sm text-gray-500 mt-1">ひょうを見て、長野県の市や人口をしらべてみよう。</p>
+              <div class="mt-2 flex gap-2">
+                <span class="bg-green-50 text-green-600 text-xs px-2 py-0.5 rounded-full font-bold">ひょうをよむ</span>
+                <span class="bg-green-50 text-green-600 text-xs px-2 py-0.5 rounded-full font-bold">データってなに？</span>
+              </div>
+            </div>
+            <span class="text-green-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
+          </a>
 
-      <!-- レッスン3 -->
-      <a href="lesson03/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-purple-300 flex items-start gap-4 block">
-        <div class="bg-purple-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-purple-600 shrink-0">3</div>
-        <div class="flex-1">
-          <h4 class="font-black text-gray-800 group-hover:text-purple-700">人口はどうかわってきた？</h4>
-          <p class="text-sm text-gray-500 mt-1">おれ線グラフで、年ごとのうつりかわりを見てみよう。ふえてる？へってる？</p>
-          <div class="mt-2 flex gap-2">
-            <span class="bg-purple-50 text-purple-600 text-xs px-2 py-0.5 rounded-full font-bold">おれ線グラフ</span>
-            <span class="bg-purple-50 text-purple-600 text-xs px-2 py-0.5 rounded-full font-bold">年ごとのへんか</span>
-          </div>
-        </div>
-        <span class="text-purple-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
-      </a>
+          <!-- レッスン2 -->
+          <a href="lesson02/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-blue-300 flex items-start gap-4 block">
+            <div class="bg-blue-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-blue-600 shrink-0">2</div>
+            <div class="flex-1">
+              <h4 class="font-black text-gray-800 group-hover:text-blue-700">市の人口をくらべよう</h4>
+              <p class="text-sm text-gray-500 mt-1">ぼうグラフをつくって、市ごとの人口をくらべよう。いちばん多いのはどこ？</p>
+              <div class="mt-2 flex gap-2">
+                <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded-full font-bold">ぼうグラフ</span>
+                <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded-full font-bold">くらべる</span>
+              </div>
+            </div>
+            <span class="text-blue-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
+          </a>
 
-      <!-- レッスン4 -->
-      <a href="lesson04/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-orange-300 flex items-start gap-4 block">
-        <div class="bg-orange-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-orange-500 shrink-0">4</div>
-        <div class="flex-1">
-          <h4 class="font-black text-gray-800 group-hover:text-orange-600">いちばん人口が多い市はどこ？</h4>
-          <p class="text-sm text-gray-500 mt-1">ならびかえをつかって、いちばん多い市・少ない市をさがしてみよう。</p>
-          <div class="mt-2 flex gap-2">
-            <span class="bg-orange-50 text-orange-500 text-xs px-2 py-0.5 rounded-full font-bold">ならびかえ</span>
-            <span class="bg-orange-50 text-orange-500 text-xs px-2 py-0.5 rounded-full font-bold">いちばんをさがす</span>
-          </div>
         </div>
-        <span class="text-orange-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
-      </a>
+      </div>
 
-      <!-- レッスン5 -->
-      <a href="lesson05/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-red-300 flex items-start gap-4 block">
-        <div class="bg-red-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-red-600 shrink-0">5</div>
-        <div class="flex-1">
-          <h4 class="font-black text-gray-800 group-hover:text-red-700">ふえた？へった？</h4>
-          <p class="text-sm text-gray-500 mt-1">2017年と2025年をひき算して、人口のへんかを調べよう。</p>
-          <div class="mt-2 flex gap-2">
-            <span class="bg-red-50 text-red-600 text-xs px-2 py-0.5 rounded-full font-bold">ひき算</span>
-            <span class="bg-red-50 text-red-600 text-xs px-2 py-0.5 rounded-full font-bold">へんかを見る</span>
-          </div>
+      <!-- 第2章 -->
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="h-px flex-1 bg-purple-200"></div>
+          <span class="text-xs font-black text-purple-600 bg-purple-100 px-3 py-1 rounded-full">第2章：変化を追え</span>
+          <div class="h-px flex-1 bg-purple-200"></div>
         </div>
-        <span class="text-red-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
-      </a>
+        <p class="text-xs text-gray-400 text-center mb-4">人口はどう動いた？</p>
+        <div class="space-y-4">
 
-      <!-- レッスン6 -->
-      <a href="lesson06/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-amber-300 flex items-start gap-4 block">
-        <div class="bg-amber-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-amber-600 shrink-0">6</div>
-        <div class="flex-1">
-          <h4 class="font-black text-gray-800 group-hover:text-amber-700">何パーセントへった？</h4>
-          <p class="text-sm text-gray-500 mt-1">「ひき算のあとにわり算」で変化の割合を計算しよう。</p>
-          <div class="mt-2 flex gap-2">
-            <span class="bg-amber-50 text-amber-600 text-xs px-2 py-0.5 rounded-full font-bold">パーセント</span>
-            <span class="bg-amber-50 text-amber-600 text-xs px-2 py-0.5 rounded-full font-bold">変化率</span>
-          </div>
-        </div>
-        <span class="text-amber-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
-      </a>
+          <!-- レッスン3 -->
+          <a href="lesson03/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-purple-300 flex items-start gap-4 block">
+            <div class="bg-purple-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-purple-600 shrink-0">3</div>
+            <div class="flex-1">
+              <h4 class="font-black text-gray-800 group-hover:text-purple-700">人口はどうかわってきた？</h4>
+              <p class="text-sm text-gray-500 mt-1">おれ線グラフで、年ごとのうつりかわりを見てみよう。ふえてる？へってる？</p>
+              <div class="mt-2 flex gap-2">
+                <span class="bg-purple-50 text-purple-600 text-xs px-2 py-0.5 rounded-full font-bold">おれ線グラフ</span>
+                <span class="bg-purple-50 text-purple-600 text-xs px-2 py-0.5 rounded-full font-bold">年ごとのへんか</span>
+              </div>
+            </div>
+            <span class="text-purple-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
+          </a>
 
-      <!-- レッスン7 -->
-      <a href="lesson07/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-pink-300 flex items-start gap-4 block">
-        <div class="bg-pink-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-pink-600 shrink-0">7</div>
-        <div class="flex-1">
-          <h4 class="font-black text-gray-800 group-hover:text-pink-700">おとことおんな</h4>
-          <p class="text-sm text-gray-500 mt-1">市町村ごとに男女の人口をくらべて、ちがいを発見しよう。</p>
-          <div class="mt-2 flex gap-2">
-            <span class="bg-pink-50 text-pink-600 text-xs px-2 py-0.5 rounded-full font-bold">男女比</span>
-            <span class="bg-pink-50 text-pink-600 text-xs px-2 py-0.5 rounded-full font-bold">SUM関数</span>
-          </div>
-        </div>
-        <span class="text-pink-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
-      </a>
+          <!-- レッスン4 -->
+          <a href="lesson04/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-orange-300 flex items-start gap-4 block">
+            <div class="bg-orange-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-orange-500 shrink-0">4</div>
+            <div class="flex-1">
+              <h4 class="font-black text-gray-800 group-hover:text-orange-600">いちばん人口が多い市はどこ？</h4>
+              <p class="text-sm text-gray-500 mt-1">ならびかえをつかって、いちばん多い市・少ない市をさがしてみよう。</p>
+              <div class="mt-2 flex gap-2">
+                <span class="bg-orange-50 text-orange-500 text-xs px-2 py-0.5 rounded-full font-bold">ならびかえ</span>
+                <span class="bg-orange-50 text-orange-500 text-xs px-2 py-0.5 rounded-full font-bold">いちばんをさがす</span>
+              </div>
+            </div>
+            <span class="text-orange-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
+          </a>
 
-      <!-- レッスン8 -->
-      <a href="lesson08/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-indigo-300 flex items-start gap-4 block">
-        <div class="bg-indigo-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-indigo-600 shrink-0">8</div>
-        <div class="flex-1">
-          <h4 class="font-black text-gray-800 group-hover:text-indigo-700">ぜんぶ合わせたら？</h4>
-          <p class="text-sm text-gray-500 mt-1">長野県の人口を全部たして、「全体」の見かたをおぼえよう。</p>
-          <div class="mt-2 flex gap-2">
-            <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded-full font-bold">合計</span>
-            <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded-full font-bold">COUNTIF</span>
-          </div>
         </div>
-        <span class="text-indigo-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
-      </a>
+      </div>
 
-      <!-- レッスン9 -->
-      <a href="lesson09/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-teal-300 flex items-start gap-4 block">
-        <div class="bg-teal-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-teal-600 shrink-0">9</div>
-        <div class="flex-1">
-          <h4 class="font-black text-gray-800 group-hover:text-teal-700">このままだとどうなる？</h4>
-          <p class="text-sm text-gray-500 mt-1">過去のへんかをもとに、2033年の人口を予測してみよう。</p>
-          <div class="mt-2 flex gap-2">
-            <span class="bg-teal-50 text-teal-600 text-xs px-2 py-0.5 rounded-full font-bold">予測</span>
-            <span class="bg-teal-50 text-teal-600 text-xs px-2 py-0.5 rounded-full font-bold">外挿</span>
-          </div>
+      <!-- 第3章 -->
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="h-px flex-1 bg-red-200"></div>
+          <span class="text-xs font-black text-red-600 bg-red-100 px-3 py-1 rounded-full">第3章：数字で深掘り</span>
+          <div class="h-px flex-1 bg-red-200"></div>
         </div>
-        <span class="text-teal-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
-      </a>
+        <p class="text-xs text-gray-400 text-center mb-4">計算で本当のことがわかる</p>
+        <div class="space-y-4">
 
-      <!-- レッスン10 -->
-      <a href="lesson10/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-yellow-300 flex items-start gap-4 block">
-        <div class="bg-yellow-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-yellow-600 shrink-0">10</div>
-        <div class="flex-1">
-          <h4 class="font-black text-gray-800 group-hover:text-yellow-700">じぶんで調べてみよう</h4>
-          <p class="text-sm text-gray-500 mt-1">気になることを、じぶんで問いをたてて自由に調べてみよう。</p>
-          <div class="mt-2 flex gap-2">
-            <span class="bg-yellow-50 text-yellow-600 text-xs px-2 py-0.5 rounded-full font-bold">自由探究</span>
-            <span class="bg-yellow-50 text-yellow-600 text-xs px-2 py-0.5 rounded-full font-bold">まとめる</span>
-          </div>
+          <!-- レッスン5 -->
+          <a href="lesson05/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-red-300 flex items-start gap-4 block">
+            <div class="bg-red-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-red-600 shrink-0">5</div>
+            <div class="flex-1">
+              <h4 class="font-black text-gray-800 group-hover:text-red-700">ふえた？へった？</h4>
+              <p class="text-sm text-gray-500 mt-1">2017年と2025年をひき算して、人口のへんかを調べよう。</p>
+              <div class="mt-2 flex gap-2">
+                <span class="bg-red-50 text-red-600 text-xs px-2 py-0.5 rounded-full font-bold">ひき算</span>
+                <span class="bg-red-50 text-red-600 text-xs px-2 py-0.5 rounded-full font-bold">へんかを見る</span>
+              </div>
+            </div>
+            <span class="text-red-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
+          </a>
+
+          <!-- レッスン6 -->
+          <a href="lesson06/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-amber-300 flex items-start gap-4 block">
+            <div class="bg-amber-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-amber-600 shrink-0">6</div>
+            <div class="flex-1">
+              <h4 class="font-black text-gray-800 group-hover:text-amber-700">何パーセントへった？</h4>
+              <p class="text-sm text-gray-500 mt-1">「ひき算のあとにわり算」で変化の割合を計算しよう。</p>
+              <div class="mt-2 flex gap-2">
+                <span class="bg-amber-50 text-amber-600 text-xs px-2 py-0.5 rounded-full font-bold">パーセント</span>
+                <span class="bg-amber-50 text-amber-600 text-xs px-2 py-0.5 rounded-full font-bold">変化率</span>
+              </div>
+            </div>
+            <span class="text-amber-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
+          </a>
+
+          <!-- レッスン7 -->
+          <a href="lesson07/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-pink-300 flex items-start gap-4 block">
+            <div class="bg-pink-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-pink-600 shrink-0">7</div>
+            <div class="flex-1">
+              <h4 class="font-black text-gray-800 group-hover:text-pink-700">おとことおんな</h4>
+              <p class="text-sm text-gray-500 mt-1">市町村ごとに男女の人口をくらべて、ちがいを発見しよう。</p>
+              <div class="mt-2 flex gap-2">
+                <span class="bg-pink-50 text-pink-600 text-xs px-2 py-0.5 rounded-full font-bold">男女比</span>
+                <span class="bg-pink-50 text-pink-600 text-xs px-2 py-0.5 rounded-full font-bold">SUM関数</span>
+              </div>
+            </div>
+            <span class="text-pink-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
+          </a>
+
         </div>
-        <span class="text-yellow-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
-      </a>
+      </div>
+
+      <!-- 第4章 -->
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="h-px flex-1 bg-indigo-200"></div>
+          <span class="text-xs font-black text-indigo-600 bg-indigo-100 px-3 py-1 rounded-full">第4章：全体と未来</span>
+          <div class="h-px flex-1 bg-indigo-200"></div>
+        </div>
+        <p class="text-xs text-gray-400 text-center mb-4">長野全体と、この先を見通す</p>
+        <div class="space-y-4">
+
+          <!-- レッスン8 -->
+          <a href="lesson08/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-indigo-300 flex items-start gap-4 block">
+            <div class="bg-indigo-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-indigo-600 shrink-0">8</div>
+            <div class="flex-1">
+              <h4 class="font-black text-gray-800 group-hover:text-indigo-700">ぜんぶ合わせたら？</h4>
+              <p class="text-sm text-gray-500 mt-1">長野県の人口を全部たして、「全体」の見かたをおぼえよう。</p>
+              <div class="mt-2 flex gap-2">
+                <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded-full font-bold">合計</span>
+                <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded-full font-bold">COUNTIF</span>
+              </div>
+            </div>
+            <span class="text-indigo-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
+          </a>
+
+          <!-- レッスン9 -->
+          <a href="lesson09/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-teal-300 flex items-start gap-4 block">
+            <div class="bg-teal-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-teal-600 shrink-0">9</div>
+            <div class="flex-1">
+              <h4 class="font-black text-gray-800 group-hover:text-teal-700">このままだとどうなる？</h4>
+              <p class="text-sm text-gray-500 mt-1">過去のへんかをもとに、2033年の人口を予測してみよう。</p>
+              <div class="mt-2 flex gap-2">
+                <span class="bg-teal-50 text-teal-600 text-xs px-2 py-0.5 rounded-full font-bold">予測</span>
+                <span class="bg-teal-50 text-teal-600 text-xs px-2 py-0.5 rounded-full font-bold">外挿</span>
+              </div>
+            </div>
+            <span class="text-teal-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- 最終章 -->
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="h-px flex-1 bg-yellow-300"></div>
+          <span class="text-xs font-black text-yellow-700 bg-yellow-100 px-3 py-1 rounded-full">最終章：謎を解け！</span>
+          <div class="h-px flex-1 bg-yellow-300"></div>
+        </div>
+        <p class="text-xs text-gray-400 text-center mb-4">自分だけの発見を発表しよう</p>
+
+        <!-- レッスン10 -->
+        <a href="lesson10/index.html" class="group bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border-2 border-transparent hover:border-yellow-300 flex items-start gap-4 block">
+          <div class="bg-yellow-100 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-black text-yellow-600 shrink-0">10</div>
+          <div class="flex-1">
+            <h4 class="font-black text-gray-800 group-hover:text-yellow-700">じぶんで調べてみよう</h4>
+            <p class="text-sm text-gray-500 mt-1">気になることを、じぶんで問いをたてて自由に調べてみよう。</p>
+            <div class="mt-2 flex gap-2">
+              <span class="bg-yellow-50 text-yellow-600 text-xs px-2 py-0.5 rounded-full font-bold">自由探究</span>
+              <span class="bg-yellow-50 text-yellow-600 text-xs px-2 py-0.5 rounded-full font-bold">まとめる</span>
+            </div>
+          </div>
+          <span class="text-yellow-400 group-hover:translate-x-1 transition-transform text-lg">→</span>
+        </a>
+
+      </div>
 
     </section>
   </main>
