@@ -2,6 +2,20 @@
 
 このプロジェクトでの作業時に守るべき規約をまとめています。
 
+## アナリティクス
+
+HTML を新規作成するときは、必ず `</head>` の直前に以下の2つのスクリプトを記載すること。
+
+```html
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
+</head>
+```
+
+- **Umami**: ユーザー行動（PV・レッスン別アクセス・リファラー）の把握
+- **Cloudflare Analytics**: 実際のリクエスト数の把握（広告ブロッカーに左右されない。Workers 経由で自動収集のため HTML への追記は不要）
+
+---
+
 ## Python の実行
 
 Python スクリプトは必ず `uv` 経由で実行すること。
