@@ -149,40 +149,55 @@
       <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
       <p class="text-gray-600 text-sm">予測を計算したら、もんだいにこたえてみよう！</p>
 
-      <div class="space-y-3">
+      <div class="space-y-6">
 
-        <div class="bg-teal-50 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-teal-800 text-sm">もんだい 1</p>
-          <p class="text-gray-700 text-sm mt-1">長野市の2033年の人口を予測すると何人になりますか？</p>
-          <div class="flex items-center gap-2 flex-wrap">
-            <input id="ans1" type="number" min="0"
-              class="border-2 border-teal-200 rounded-lg px-3 py-2 text-sm w-40 focus:outline-none focus:border-teal-400"
-              placeholder="数字" />
-            <span class="text-sm text-gray-500">人</span>
-            <button onclick="check9_1()"
-              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
-              答え合わせ
-            </button>
+        <!-- もんだい1 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 1. 長野市の2033年の人口を予測すると何人になりますか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q9_1" value="a" class="accent-teal-500" />
+              <span>① 約430,000人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q9_1" value="b" class="accent-teal-500" />
+              <span>② 346,180人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q9_1" value="c" class="accent-teal-500" />
+              <span>③ 約200,000人</span>
+            </label>
           </div>
-          <span id="result1" class="text-sm font-bold hidden"></span>
+          <button onclick="check9_1()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result1" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
-        <div class="bg-teal-50 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-teal-800 text-sm">もんだい 2</p>
-          <p class="text-gray-700 text-sm mt-1">天龍村の2033年の人口を予測すると何人になりますか？</p>
-          <div class="flex items-center gap-2 flex-wrap">
-            <input id="ans2" type="number" min="0"
-              class="border-2 border-teal-200 rounded-lg px-3 py-2 text-sm w-32 focus:outline-none focus:border-teal-400"
-              placeholder="数字" />
-            <span class="text-sm text-gray-500">人</span>
-            <button onclick="check9_2()"
-              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
-              答え合わせ
-            </button>
+        <hr class="border-gray-100" />
+
+        <!-- もんだい2 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 2. 天龍村の2033年の人口を予測すると何人になりますか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q9_2" value="a" class="accent-teal-500" />
+              <span>① 約2,000人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q9_2" value="b" class="accent-teal-500" />
+              <span>② 668人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q9_2" value="c" class="accent-teal-500" />
+              <span>③ 約1,200人</span>
+            </label>
           </div>
-          <span id="result2" class="text-sm font-bold hidden"></span>
+          <button onclick="check9_2()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result2" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
+        <hr class="border-gray-100" />
+
+        <!-- もんだい3 -->
         <div class="bg-teal-50 rounded-xl p-4 space-y-2">
           <p class="font-bold text-teal-800 text-sm">もんだい 3（じゆうきじゅつ）</p>
           <p class="text-gray-700 text-sm mt-1">予測の結果を見て、気になったことや思ったことを書いてみよう。</p>
@@ -203,19 +218,24 @@
     </section>
 
     <script>
-      function showResult(id, ok) {
-        const r = document.getElementById(id);
-        r.textContent = ok ? '⭕ せいかい！' : '❌ もう一かい！';
-        r.className = 'text-sm font-bold ' + (ok ? 'text-green-600' : 'text-red-500');
-        r.classList.remove('hidden');
+      function showResult(id, ok, okMsg, ngMsg) {
+        const result = document.getElementById(id);
+        result.classList.remove('hidden');
+        if (ok) {
+          result.textContent = okMsg;
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+        } else {
+          result.textContent = ngMsg;
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+        }
       }
       function check9_1() {
-        const v = parseInt(document.getElementById('ans1').value);
-        showResult('result1', v === 346180);
+        const s = document.querySelector('input[name="q9_1"]:checked');
+        showResult('result1', s && s.value === 'b', '⭕ せいかい！ 長野市の2033年予測は346,180人だよ！', '❌ もう一かい！ ヒント：E列に「2025年＋へんか」の式を入れて長野市の行を確認しよう。');
       }
       function check9_2() {
-        const v = parseInt(document.getElementById('ans2').value);
-        showResult('result2', v === 668);
+        const s = document.querySelector('input[name="q9_2"]:checked');
+        showResult('result2', s && s.value === 'b', '⭕ せいかい！ 天龍村の予測は668人にへってしまうんだね…', '❌ もう一かい！ ヒント：天龍村の予測の行を確認しよう。');
       }
       function showSample3() {
         document.getElementById('sample3').classList.remove('hidden');

@@ -156,114 +156,128 @@
       <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
       <p class="text-gray-600 text-sm">ならびかえたら、もんだいにこたえてみよう！</p>
 
-      <div class="space-y-3">
-        <div class="bg-green-50 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-green-800 text-sm">もんだい 1</p>
-          <p class="text-gray-700 text-sm mt-1">長野県でいちばん人口が多い市はどこですか？人口は何人ですか？</p>
-          <div class="flex items-center gap-2 flex-wrap">
-            <input id="ans1name" type="text"
-              class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-28 focus:outline-none focus:border-green-400"
-              placeholder="市の名前" />
-            <input id="ans1pop" type="number" min="0"
-              class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-32 focus:outline-none focus:border-green-400"
-              placeholder="人口（数字）" />
-            <span class="text-sm text-gray-500">人</span>
-            <button onclick="check4_1()"
-              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
-              答え合わせ
-            </button>
+      <div class="space-y-6">
+
+        <!-- もんだい1 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 1. 長野県でいちばん人口が多い市と、その人口は？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q4_1" value="a" class="accent-green-500" />
+              <span>① 松本市・約240,000人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q4_1" value="b" class="accent-green-500" />
+              <span>② 長野市・361,045人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q4_1" value="c" class="accent-green-500" />
+              <span>③ 上田市・約150,000人</span>
+            </label>
           </div>
-          <span id="result1" class="text-sm font-bold hidden"></span>
+          <button onclick="check4_1()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result1" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
-        <div class="bg-green-50 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-green-800 text-sm">もんだい 2</p>
-          <p class="text-gray-700 text-sm mt-1">長野県でいちばん人口が少ない村はどこですか？人口は何人ですか？</p>
-          <div class="flex items-center gap-2 flex-wrap">
-            <input id="ans2name" type="text"
-              class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-28 focus:outline-none focus:border-green-400"
-              placeholder="村の名前" />
-            <input id="ans2pop" type="number" min="0"
-              class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-28 focus:outline-none focus:border-green-400"
-              placeholder="人口（数字）" />
-            <span class="text-sm text-gray-500">人</span>
-            <button onclick="check4_2()"
-              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
-              答え合わせ
-            </button>
+        <hr class="border-gray-100" />
+
+        <!-- もんだい2 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 2. 長野県でいちばん人口が少ない村と、その人口は？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q4_2" value="a" class="accent-green-500" />
+              <span>① 天龍村・約1,000人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q4_2" value="b" class="accent-green-500" />
+              <span>② 平谷村・368人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q4_2" value="c" class="accent-green-500" />
+              <span>③ 麻績村・約1,800人</span>
+            </label>
           </div>
-          <span id="result2" class="text-sm font-bold hidden"></span>
+          <button onclick="check4_2()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result2" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
-        <div class="bg-green-50 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-green-800 text-sm">もんだい 3</p>
-          <p class="text-gray-700 text-sm mt-1">麻績村は77市町村のなかで何番めですか？筑北村は何番めですか？</p>
-          <div class="space-y-2">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-sm text-gray-600 w-16">麻績村</span>
-              <input id="ans3omi" type="number" min="1" max="77"
-                class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-24 focus:outline-none focus:border-green-400"
-                placeholder="数字" />
-              <span class="text-sm text-gray-500">番め</span>
-            </div>
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-sm text-gray-600 w-16">筑北村</span>
-              <input id="ans3chiku" type="number" min="1" max="77"
-                class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-24 focus:outline-none focus:border-green-400"
-                placeholder="数字" />
-              <span class="text-sm text-gray-500">番め</span>
-            </div>
-            <button onclick="check4_3()"
-              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
-              答え合わせ
-            </button>
+        <hr class="border-gray-100" />
+
+        <!-- もんだい3 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 3. 麻績村は77市町村のなかで何番め？筑北村は何番め？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q4_3" value="a" class="accent-green-500" />
+              <span>① 麻績村 40番め・筑北村 30番め</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q4_3" value="b" class="accent-green-500" />
+              <span>② 麻績村 65番め・筑北村 55番め</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q4_3" value="c" class="accent-green-500" />
+              <span>③ 麻績村 77番め・筑北村 76番め</span>
+            </label>
           </div>
-          <span id="result3" class="text-sm font-bold hidden"></span>
+          <button onclick="check4_3()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result3" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
-        <div class="bg-green-50 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-green-800 text-sm">もんだい 4 （チャレンジ）</p>
-          <p class="text-gray-700 text-sm mt-1">いちばん多い長野市といちばん少ない村の人口の差は何人ですか？</p>
-          <div class="flex items-center gap-2 flex-wrap">
-            <input id="ans4" type="number" min="0"
-              class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-32 focus:outline-none focus:border-green-400"
-              placeholder="数字" />
-            <span class="text-sm text-gray-500">人</span>
-            <button onclick="check4_4()"
-              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
-              答え合わせ
-            </button>
+        <hr class="border-gray-100" />
+
+        <!-- もんだい4 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 4（チャレンジ）. いちばん多い長野市といちばん少ない村の人口の差は何人ですか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q4_4" value="a" class="accent-green-500" />
+              <span>① 約36,000人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q4_4" value="b" class="accent-green-500" />
+              <span>② 約360,677人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q4_4" value="c" class="accent-green-500" />
+              <span>③ 約160,000人</span>
+            </label>
           </div>
-          <span id="result4" class="text-sm font-bold hidden"></span>
+          <button onclick="check4_4()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result4" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
+
       </div>
     </section>
 
     <script>
-      function showResult(id, ok) {
-        const r = document.getElementById(id);
-        r.textContent = ok ? '⭕ せいかい！' : '❌ もう一かい！';
-        r.className = 'text-sm font-bold ' + (ok ? 'text-green-600' : 'text-red-500');
-        r.classList.remove('hidden');
+      function showResult(id, ok, okMsg, ngMsg) {
+        const result = document.getElementById(id);
+        result.classList.remove('hidden');
+        if (ok) {
+          result.textContent = okMsg;
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+        } else {
+          result.textContent = ngMsg;
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+        }
       }
       function check4_1() {
-        const name = document.getElementById('ans1name').value.trim();
-        const pop = parseInt(document.getElementById('ans1pop').value);
-        showResult('result1', name === '長野市' && pop === 361045);
+        const s = document.querySelector('input[name="q4_1"]:checked');
+        showResult('result1', s && s.value === 'b', '⭕ せいかい！ 長野市が361,045人でいちばん多いよ！', '❌ もう一かい！ ヒント：ならびかえて1番めを確認しよう。');
       }
       function check4_2() {
-        const name = document.getElementById('ans2name').value.trim();
-        const pop = parseInt(document.getElementById('ans2pop').value);
-        showResult('result2', name === '平谷村' && pop === 368);
+        const s = document.querySelector('input[name="q4_2"]:checked');
+        showResult('result2', s && s.value === 'b', '⭕ せいかい！ 平谷村が368人でいちばん少ないよ！', '❌ もう一かい！ ヒント：昇順にならびかえると1番めに出てくるよ。');
       }
       function check4_3() {
-        const omi = parseInt(document.getElementById('ans3omi').value);
-        const chiku = parseInt(document.getElementById('ans3chiku').value);
-        showResult('result3', omi === 65 && chiku === 55);
+        const s = document.querySelector('input[name="q4_3"]:checked');
+        showResult('result3', s && s.value === 'b', '⭕ せいかい！ 麻績村は65番め、筑北村は55番めだよ！', '❌ もう一かい！ ヒント：ならびかえた後に麻績村と筑北村の位置を確認しよう。');
       }
       function check4_4() {
-        const a = parseInt(document.getElementById('ans4').value);
-        showResult('result4', a === 360677);
+        const s = document.querySelector('input[name="q4_4"]:checked');
+        showResult('result4', s && s.value === 'b', '⭕ せいかい！ 約360,677人のちがいがあるよ！', '❌ もう一かい！ ヒント：いちばん多い市といちばん少ない村の数字をひいてみよう。');
       }
     </script>
 

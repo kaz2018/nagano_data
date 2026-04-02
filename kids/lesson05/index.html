@@ -161,81 +161,101 @@
       <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
       <p class="text-gray-600 text-sm">計算したら、もんだいにこたえてみよう！</p>
 
-      <div class="space-y-3">
+      <div class="space-y-6">
 
-        <div class="bg-red-50 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-red-800 text-sm">もんだい 1</p>
-          <p class="text-gray-700 text-sm mt-1">2017年から2025年のあいだに、いちばん人口が「へった」のはどこですか？また、何人へりましたか？</p>
-          <div class="flex items-center gap-2 flex-wrap">
-            <input id="ans1name" type="text"
-              class="border-2 border-red-200 rounded-lg px-3 py-2 text-sm w-28 focus:outline-none focus:border-red-400"
-              placeholder="市の名前" />
-            <input id="ans1diff" type="number" min="0"
-              class="border-2 border-red-200 rounded-lg px-3 py-2 text-sm w-32 focus:outline-none focus:border-red-400"
-              placeholder="人数（数字）" />
-            <span class="text-sm text-gray-500">人へった</span>
-            <button onclick="check5_1()"
-              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
-              答え合わせ
-            </button>
+        <!-- もんだい1 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 1. いちばん人口が「へった」のはどこで、何人へりましたか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q5_1" value="a" class="accent-green-500" />
+              <span>① 松本市・約10,000人へった</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q5_1" value="b" class="accent-green-500" />
+              <span>② 長野市・14,865人へった</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q5_1" value="c" class="accent-green-500" />
+              <span>③ 上田市・約5,000人へった</span>
+            </label>
           </div>
-          <span id="result1" class="text-sm font-bold hidden"></span>
+          <button onclick="check5_1()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result1" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
-        <div class="bg-red-50 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-red-800 text-sm">もんだい 2</p>
-          <p class="text-gray-700 text-sm mt-1">人口が「ふえた」市町村はいくつありますか？</p>
-          <div class="flex items-center gap-2 flex-wrap">
-            <input id="ans2" type="number" min="0"
-              class="border-2 border-red-200 rounded-lg px-3 py-2 text-sm w-24 focus:outline-none focus:border-red-400"
-              placeholder="数字" />
-            <span class="text-sm text-gray-500">市町村</span>
-            <button onclick="check5_2()"
-              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
-              答え合わせ
-            </button>
+        <hr class="border-gray-100" />
+
+        <!-- もんだい2 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 2. 人口が「ふえた」市町村はいくつありますか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q5_2" value="a" class="accent-green-500" />
+              <span>① 3市町村</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q5_2" value="b" class="accent-green-500" />
+              <span>② 6市町村</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q5_2" value="c" class="accent-green-500" />
+              <span>③ 15市町村</span>
+            </label>
           </div>
-          <span id="result2" class="text-sm font-bold hidden"></span>
+          <button onclick="check5_2()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result2" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
-        <div class="bg-red-50 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-red-800 text-sm">もんだい 3</p>
-          <p class="text-gray-700 text-sm mt-1">御代田町の人口は、2017年から2025年のあいだに何人ふえましたか？</p>
-          <div class="flex items-center gap-2 flex-wrap">
-            <input id="ans3" type="number" min="0"
-              class="border-2 border-red-200 rounded-lg px-3 py-2 text-sm w-32 focus:outline-none focus:border-red-400"
-              placeholder="数字" />
-            <span class="text-sm text-gray-500">人ふえた</span>
-            <button onclick="check5_3()"
-              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
-              答え合わせ
-            </button>
+        <hr class="border-gray-100" />
+
+        <!-- もんだい3 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 3. 御代田町の人口は、2017年から2025年のあいだに何人ふえましたか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q5_3" value="a" class="accent-green-500" />
+              <span>① 約288人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q5_3" value="b" class="accent-green-500" />
+              <span>② 1,288人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q5_3" value="c" class="accent-green-500" />
+              <span>③ 약 3,288人</span>
+            </label>
           </div>
-          <span id="result3" class="text-sm font-bold hidden"></span>
+          <button onclick="check5_3()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result3" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
       </div>
     </section>
 
     <script>
-      function showResult(id, ok) {
-        const r = document.getElementById(id);
-        r.textContent = ok ? '⭕ せいかい！' : '❌ もう一かい！';
-        r.className = 'text-sm font-bold ' + (ok ? 'text-green-600' : 'text-red-500');
-        r.classList.remove('hidden');
+      function showResult(id, ok, okMsg, ngMsg) {
+        const result = document.getElementById(id);
+        result.classList.remove('hidden');
+        if (ok) {
+          result.textContent = okMsg;
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+        } else {
+          result.textContent = ngMsg;
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+        }
       }
       function check5_1() {
-        const name = document.getElementById('ans1name').value.trim();
-        const diff = parseInt(document.getElementById('ans1diff').value);
-        showResult('result1', name === '長野市' && diff === 14865);
+        const s = document.querySelector('input[name="q5_1"]:checked');
+        showResult('result1', s && s.value === 'b', '⭕ せいかい！ 長野市が14,865人でいちばんへったよ！', '❌ もう一かい！ ヒント：D列をならびかえて、いちばん小さい（マイナスが大きい）数字を確認しよう。');
       }
       function check5_2() {
-        const v = parseInt(document.getElementById('ans2').value);
-        showResult('result2', v === 6);
+        const s = document.querySelector('input[name="q5_2"]:checked');
+        showResult('result2', s && s.value === 'b', '⭕ せいかい！ 6市町村だけがふえたんだね。', '❌ もう一かい！ ヒント：D列でプラスの数字がいくつあるか数えてみよう。');
       }
       function check5_3() {
-        const v = parseInt(document.getElementById('ans3').value);
-        showResult('result3', v === 1288);
+        const s = document.querySelector('input[name="q5_3"]:checked');
+        showResult('result3', s && s.value === 'b', '⭕ せいかい！ 御代田町は1,288人もふえたんだね！', '❌ もう一かい！ ヒント：御代田町のへんかの列の数字を確認しよう。');
       }
     </script>
 

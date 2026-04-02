@@ -145,87 +145,97 @@
       <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
       <p class="text-gray-600 text-sm">合計を出したら、もんだいにこたえてみよう！</p>
 
-      <div class="space-y-3">
+      <div class="space-y-6">
 
-        <div class="bg-pink-50 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-pink-800 text-sm">もんだい 1</p>
-          <p class="text-gray-700 text-sm mt-1">長野県全体（77市町村の合計）で、男と女どちらが多いですか？また、何人多いですか？</p>
-          <div class="flex items-center gap-2 flex-wrap">
-            <select id="ans1gender"
-              class="border-2 border-pink-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-pink-400">
-              <option value="">えらんでね</option>
-              <option value="男">男</option>
-              <option value="女">女</option>
-            </select>
-            <span class="text-sm text-gray-500">の方が</span>
-            <input id="ans1diff" type="number" min="0"
-              class="border-2 border-pink-200 rounded-lg px-3 py-2 text-sm w-32 focus:outline-none focus:border-pink-400"
-              placeholder="数字" />
-            <span class="text-sm text-gray-500">人多い</span>
-            <button onclick="check7_1()"
-              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
-              答え合わせ
-            </button>
+        <!-- もんだい1 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 1. 長野県全体で、男と女どちらが多いですか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-pink-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-pink-300 transition-colors">
+              <input type="radio" name="q7_1" value="a" class="accent-pink-500" />
+              <span>① 男の方が多い（差：約12,000人）</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-pink-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-pink-300 transition-colors">
+              <input type="radio" name="q7_1" value="b" class="accent-pink-500" />
+              <span>② 女の方が多い（差：42,244人）</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-pink-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-pink-300 transition-colors">
+              <input type="radio" name="q7_1" value="c" class="accent-pink-500" />
+              <span>③ 女の方が多い（差：約100,000人）</span>
+            </label>
           </div>
-          <span id="result1" class="text-sm font-bold hidden"></span>
+          <button onclick="check7_1()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result1" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
-        <div class="bg-pink-50 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-pink-800 text-sm">もんだい 2</p>
-          <p class="text-gray-700 text-sm mt-1">77市町村のうち、女の人口の方が多い市町村はいくつありますか？</p>
-          <div class="flex items-center gap-2 flex-wrap">
-            <input id="ans2" type="number" min="0"
-              class="border-2 border-pink-200 rounded-lg px-3 py-2 text-sm w-24 focus:outline-none focus:border-pink-400"
-              placeholder="数字" />
-            <span class="text-sm text-gray-500">市町村</span>
-            <button onclick="check7_2()"
-              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
-              答え合わせ
-            </button>
+        <hr class="border-gray-100" />
+
+        <!-- もんだい2 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 2. 77市町村のうち、女の人口の方が多い市町村はいくつありますか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-pink-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-pink-300 transition-colors">
+              <input type="radio" name="q7_2" value="a" class="accent-pink-500" />
+              <span>① 約40市町村</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-pink-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-pink-300 transition-colors">
+              <input type="radio" name="q7_2" value="b" class="accent-pink-500" />
+              <span>② 62市町村</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-pink-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-pink-300 transition-colors">
+              <input type="radio" name="q7_2" value="c" class="accent-pink-500" />
+              <span>③ 77市町村すべて</span>
+            </label>
           </div>
-          <span id="result2" class="text-sm font-bold hidden"></span>
+          <button onclick="check7_2()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result2" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
-        <div class="bg-pink-50 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-pink-800 text-sm">もんだい 3</p>
-          <p class="text-gray-700 text-sm mt-1">川上村は男と女のどちらが多いですか？</p>
-          <div class="flex items-center gap-2 flex-wrap">
-            <select id="ans3"
-              class="border-2 border-pink-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-pink-400">
-              <option value="">えらんでね</option>
-              <option value="男">男</option>
-              <option value="女">女</option>
-            </select>
-            <button onclick="check7_3()"
-              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
-              答え合わせ
-            </button>
+        <hr class="border-gray-100" />
+
+        <!-- もんだい3 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 3. 川上村は男と女のどちらが多いですか？（2択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-pink-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-pink-300 transition-colors">
+              <input type="radio" name="q7_3" value="a" class="accent-pink-500" />
+              <span>① 男の方が多い</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-pink-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-pink-300 transition-colors">
+              <input type="radio" name="q7_3" value="b" class="accent-pink-500" />
+              <span>② 女の方が多い</span>
+            </label>
           </div>
-          <span id="result3" class="text-sm font-bold hidden"></span>
+          <button onclick="check7_3()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result3" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
       </div>
     </section>
 
     <script>
-      function showResult(id, ok) {
-        const r = document.getElementById(id);
-        r.textContent = ok ? '⭕ せいかい！' : '❌ もう一かい！';
-        r.className = 'text-sm font-bold ' + (ok ? 'text-green-600' : 'text-red-500');
-        r.classList.remove('hidden');
+      function showResult(id, ok, okMsg, ngMsg) {
+        const result = document.getElementById(id);
+        result.classList.remove('hidden');
+        if (ok) {
+          result.textContent = okMsg;
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+        } else {
+          result.textContent = ngMsg;
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+        }
       }
       function check7_1() {
-        const gender = document.getElementById('ans1gender').value;
-        const diff = parseInt(document.getElementById('ans1diff').value);
-        showResult('result1', gender === '女' && diff === 42244);
+        const s = document.querySelector('input[name="q7_1"]:checked');
+        showResult('result1', s && s.value === 'b', '⭕ せいかい！ 女の方が42,244人多いんだね！', '❌ もう一かい！ ヒント：B80とC80のSUM関数の結果をくらべてみよう。');
       }
       function check7_2() {
-        const v = parseInt(document.getElementById('ans2').value);
-        showResult('result2', v === 62);
+        const s = document.querySelector('input[name="q7_2"]:checked');
+        showResult('result2', s && s.value === 'b', '⭕ せいかい！ 62市町村で女の方が多いよ！', '❌ もう一かい！ ヒント：D列（男−女）を入力して、マイナスのセルの数を数えてみよう。');
       }
       function check7_3() {
-        const v = document.getElementById('ans3').value;
-        showResult('result3', v === '男');
+        const s = document.querySelector('input[name="q7_3"]:checked');
+        showResult('result3', s && s.value === 'a', '⭕ せいかい！ 川上村は男の方が多いんだね！', '❌ もう一かい！ ヒント：川上村の行で男と女の数字をくらべてみよう。');
       }
     </script>
 

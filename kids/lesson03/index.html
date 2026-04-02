@@ -148,38 +148,55 @@
       <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
       <p class="text-gray-600 text-sm">グラフをつくったら、もんだいにこたえてみよう！</p>
 
-      <div class="space-y-3">
-        <div class="bg-green-50 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-green-800 text-sm">もんだい 1</p>
-          <p class="text-gray-700 text-sm mt-1">6つの村のなかで、人口がふえている村はありますか？</p>
-          <div class="flex items-center gap-2 flex-wrap">
-            <input id="ans1" type="text"
-              class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-36 focus:outline-none focus:border-green-400"
-              placeholder="村の名前" />
-            <button onclick="check3_1()"
-              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
-              答え合わせ
-            </button>
+      <div class="space-y-6">
+
+        <!-- もんだい1 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 1. 6つの村のなかで、人口がふえている村はありますか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q3_1" value="a" class="accent-green-500" />
+              <span>① 麻績村</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q3_1" value="b" class="accent-green-500" />
+              <span>② 白馬村</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q3_1" value="c" class="accent-green-500" />
+              <span>③ 筑北村</span>
+            </label>
           </div>
-          <span id="result1" class="text-sm font-bold hidden"></span>
+          <button onclick="check3_1()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result1" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
-        <div class="bg-green-50 rounded-xl p-4 space-y-2">
-          <p class="font-bold text-green-800 text-sm">もんだい 2</p>
-          <p class="text-gray-700 text-sm mt-1">麻績村の2017年と2025年の人口の差は何人ですか？</p>
-          <div class="flex items-center gap-2 flex-wrap">
-            <input id="ans2" type="number" min="0"
-              class="border-2 border-green-200 rounded-lg px-3 py-2 text-sm w-28 focus:outline-none focus:border-green-400"
-              placeholder="数字" />
-            <span class="text-sm text-gray-500">人</span>
-            <button onclick="check3_2()"
-              class="bg-amber-400 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors">
-              答え合わせ
-            </button>
+        <hr class="border-gray-100" />
+
+        <!-- もんだい2 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 2. 麻績村の2017年と2025年の人口の差は何人ですか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q3_2" value="a" class="accent-green-500" />
+              <span>① 約145人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q3_2" value="b" class="accent-green-500" />
+              <span>② 約445人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q3_2" value="c" class="accent-green-500" />
+              <span>③ 約1,445人</span>
+            </label>
           </div>
-          <span id="result2" class="text-sm font-bold hidden"></span>
+          <button onclick="check3_2()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result2" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
+        <hr class="border-gray-100" />
+
+        <!-- もんだい3 -->
         <div class="bg-green-50 rounded-xl p-4 space-y-2">
           <p class="font-bold text-green-800 text-sm">もんだい 3</p>
           <p class="text-gray-700 text-sm mt-1">白馬村の線を見てみよう。2021年・2022年にがくっとへって、またもどってきているよ。なぜだと思いますか？</p>
@@ -197,25 +214,34 @@
             <p>コロナウイルスのえいきょうで、2020〜2022年ごろにスキーやかんこうに来る人がへったからだと思われます。その後、かんこう客がもどってきたので人口もふえてきました。</p>
           </div>
         </div>
+
       </div>
     </section>
 
     <script>
       function check3_1() {
-        const a = document.getElementById('ans1').value.trim();
-        const r = document.getElementById('result1');
-        const ok = a === '白馬村';
-        r.textContent = ok ? '⭕ せいかい！' : '❌ もう一かい！';
-        r.className = 'text-sm font-bold ' + (ok ? 'text-green-600' : 'text-red-500');
-        r.classList.remove('hidden');
+        const selected = document.querySelector('input[name="q3_1"]:checked');
+        const result = document.getElementById('result1');
+        result.classList.remove('hidden');
+        if (selected && selected.value === 'b') {
+          result.textContent = '⭕ せいかい！ 白馬村だけが人口がふえているよ！';
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+        } else {
+          result.textContent = '❌ もう一かい！ ヒント：グラフで右上がりの線はどれかな？';
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+        }
       }
       function check3_2() {
-        const a = parseInt(document.getElementById('ans2').value);
-        const r = document.getElementById('result2');
-        const ok = a === 445;
-        r.textContent = ok ? '⭕ せいかい！' : '❌ もう一かい！';
-        r.className = 'text-sm font-bold ' + (ok ? 'text-green-600' : 'text-red-500');
-        r.classList.remove('hidden');
+        const selected = document.querySelector('input[name="q3_2"]:checked');
+        const result = document.getElementById('result2');
+        result.classList.remove('hidden');
+        if (selected && selected.value === 'b') {
+          result.textContent = '⭕ せいかい！ 445人へったんだね。';
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+        } else {
+          result.textContent = '❌ もう一かい！ ヒント：麻績村の2017年と2025年の数字をスプレッドシートで確認してみよう。';
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+        }
       }
       function check3_3() {
         document.getElementById('result3').classList.remove('hidden');
