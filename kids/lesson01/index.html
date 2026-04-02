@@ -127,24 +127,30 @@
         <div class="space-y-3">
           <p class="font-bold text-gray-700 text-sm">もんだい 1. このデータには、村がぜんぶでいくつありますか？（3択）</p>
           <div class="space-y-2 text-sm">
-            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
               <input type="radio" name="q1" value="a" class="accent-green-500" />
-              <span>① 19村</span>
+              <span>① 19</span>
             </label>
-            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
               <input type="radio" name="q1" value="b" class="accent-green-500" />
-              <span>② 35村</span>
+              <span>② 35</span>
             </label>
-            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
               <input type="radio" name="q1" value="c" class="accent-green-500" />
-              <span>③ 77村</span>
+              <span>③ 77</span>
             </label>
           </div>
-          <button onclick="check1()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <button onclick="check1()"
+            class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
           <div id="result1" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
           <div id="kota-react1" class="hidden flex items-start gap-2 mt-2">
-            <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-8 h-8 rounded-full object-cover shadow" />
-            <p class="bg-amber-50 border border-amber-200 rounded-xl px-3 py-2 text-xs text-gray-700">「35の村！ <strong>麻績村</strong>もそのひとつだよ。さあ、次の手がかりを探しに行こう！」</p>
+            <img src="../images/main_character.png" alt="でい太"
+              class="shrink-0 w-8 h-8 rounded-full object-cover shadow" />
+            <p class="bg-amber-50 border border-amber-200 rounded-xl px-3 py-2 text-xs text-gray-700">「35の村！
+              <strong>麻績村</strong>もそのひとつだよ。さあ、次の手がかりを探しに行こう！」</p>
           </div>
         </div>
 
@@ -154,20 +160,24 @@
         <div class="space-y-3">
           <p class="font-bold text-gray-700 text-sm">もんだい 2. いちばん上の行（1行め）を見てみよう。何年分のデータがありますか？（3択）</p>
           <div class="space-y-2 text-sm">
-            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
               <input type="radio" name="q2" value="a" class="accent-green-500" />
               <span>① 5年分</span>
             </label>
-            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
               <input type="radio" name="q2" value="b" class="accent-green-500" />
               <span>② 9年分</span>
             </label>
-            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
               <input type="radio" name="q2" value="c" class="accent-green-500" />
               <span>③ 12年分</span>
             </label>
           </div>
-          <button onclick="check2()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <button onclick="check2()"
+            class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
           <div id="result2" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
@@ -177,32 +187,39 @@
         <div class="space-y-3">
           <p class="font-bold text-gray-700 text-sm">もんだい 3. 「2025年」のれつを見て、数字が大きそうな村を3つえらぼう。（3つえらんでね）</p>
           <div class="space-y-2 text-sm">
-            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
               <input type="checkbox" name="q3" value="南箕輪村" class="accent-green-500 w-4 h-4" />
               <span>南箕輪村</span>
             </label>
-            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
               <input type="checkbox" name="q3" value="松川村" class="accent-green-500 w-4 h-4" />
               <span>松川村</span>
             </label>
-            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
               <input type="checkbox" name="q3" value="白馬村" class="accent-green-500 w-4 h-4" />
               <span>白馬村</span>
             </label>
-            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
               <input type="checkbox" name="q3" value="麻績村" class="accent-green-500 w-4 h-4" />
               <span>麻績村</span>
             </label>
-            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
               <input type="checkbox" name="q3" value="天龍村" class="accent-green-500 w-4 h-4" />
               <span>天龍村</span>
             </label>
-            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
               <input type="checkbox" name="q3" value="売木村" class="accent-green-500 w-4 h-4" />
               <span>売木村</span>
             </label>
           </div>
-          <button onclick="check3()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <button onclick="check3()"
+            class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
           <div id="result3" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
         </div>
 
