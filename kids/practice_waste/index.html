@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>特別レッスン: 信州ごみ減らし大作戦！ | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
+</head>
+
+<body class="bg-teal-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+      <span class="text-gray-300">|</span>
+      <span class="text-sm font-bold text-teal-600">特別れんしゅう</span>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <!-- タイトル -->
+    <section class="text-center">
+      <div class="inline-block bg-teal-100 text-teal-700 text-sm font-bold px-4 py-1 rounded-full mb-3">🌿 特別れんしゅう</div>
+      <h1 class="text-3xl font-black text-gray-800 mb-2">信州ごみ減らし大作戦！</h1>
+      <p class="text-gray-500">データで見つける、わたしたちの一歩</p>
+    </section>
+
+    <!-- 導入キャラクター会話 -->
+    <section class="space-y-3">
+      <div class="flex items-start gap-3">
+        <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div
+            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「ねえポン太、ニュースで見たんだけど、長野県のごみの量が<strong>過去最少</strong>になったんだって！」
+          </div>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <img src="../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+          <div
+            class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「家の前の木の下にカブトムシの幼虫いたよ。」
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="font-black text-gray-800 mb-3">🎯 このれんしゅうでわかること</h2>
+      <ul class="space-y-2 text-gray-600 text-sm">
+        <li class="flex gap-2"><span class="text-teal-500 font-bold">✓</span> AIをつかってPDFのデータをよみとる方法がわかる</li>
+        <li class="flex gap-2"><span class="text-teal-500 font-bold">✓</span> ソート（並べ替え）でデータのちがいを見つけられる</li>
+        <li class="flex gap-2"><span class="text-teal-500 font-bold">✓</span> 数字の裏にある理由を考えられるようになる</li>
+        <li class="flex gap-2"><span class="text-teal-500 font-bold">✓</span> 長野県の77市町村のごみのちがいがわかる</li>
+      </ul>
+    </section>
+
+    <!-- 第1話 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="bg-teal-100 text-teal-700 text-xs font-bold px-3 py-1 rounded-full">第1話</span>
+        <h2 class="font-black text-gray-800">うれしいニュース</h2>
+      </div>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3">
+          <img src="../images/main_character.png" alt="でい太"
+            class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div>
+            <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+            <div
+              class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+              「長野県の77の市町村が出すごみを全部合わせた量が、記録を始めてから一番少なかったんだって。すごくない？」
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 flex-row-reverse">
+          <img src="../images/harmit.png" alt="ものしり仙人" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div class="text-right">
+            <p class="text-xs font-bold text-blue-600 mb-1">ものしり仙人</p>
+            <div
+              class="bg-blue-50 border border-blue-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+              「長野県全体の平均は<strong>1人1日769g</strong>じゃ。全国の平均が839gだから、長野県は少ない方じゃな。」
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <img src="../images/main_character.png" alt="でい太"
+            class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div>
+            <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+            <div
+              class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+              「でも、市町村ごとに見ると差があるって書いてあったんだよね。一番少ないところと一番多いところで、どのくらいちがうんだろ？データで調べてみようよ！」
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-teal-600 text-white rounded-xl p-4 text-sm">
+        <p class="font-bold mb-1">📂 このれんしゅうで使うデータ</p>
+        <p class="text-teal-100 leading-relaxed">長野県の<strong
+            class="text-white">77市町村</strong>のごみ排出量データだよ。「1人1日あたりのごみの量（g）」「生活系ごみ」「事業系ごみ」の内訳も入っているよ。前のレッスンで使った人口データとはちがうデータだよ！
+        </p>
+      </div>
+    </section>
+
+    <!-- 第2話 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="bg-teal-100 text-teal-700 text-xs font-bold px-3 py-1 rounded-full">第2話</span>
+        <h2 class="font-black text-gray-800">AIの力でPDFを解読せよ！</h2>
+      </div>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3">
+          <img src="../images/main_character.png" alt="でい太"
+            class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div>
+            <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+            <div
+              class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+              「長野県のホームページでごみのデータを見つけたよ！でもPDFってファイルで、数字がびっしり並んでて…並べ替えたりグラフにしたりできないんだよね。」
+            </div>
+            <div class="mt-2 ml-1">
+              <a href="https://www.pref.nagano.lg.jp/haikibut/kurashi/recycling/haiki/haishutsuryo-02.html"
+                target="_blank" rel="noopener"
+                class="inline-flex items-center gap-1.5 bg-teal-500 hover:bg-teal-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-colors">
+                🔗 長野県のページをひらく
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <img src="../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div>
+            <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+            <div
+              class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+              「奥田民生いいよね。民生。」
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 flex-row-reverse">
+          <img src="../images/harmit.png" alt="ものしり仙人" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div class="text-right">
+            <p class="text-xs font-bold text-blue-600 mb-1">ものしり仙人</p>
+            <div
+              class="bg-blue-50 border border-blue-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+              「心配するでない。AIに頼めばいいのじゃ。GeminiやChatGPTにPDFのURLをはりつけて、こうたのんでみよ。」
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://www.pref.nagano.lg.jp/haikibut/kurashi/recycling/haiki/documents/shichoson_r6.pdf"
+        target="_blank" rel="noopener"
+        class="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white font-bold px-6 py-3 rounded-xl transition-colors text-sm">
+        📄 PDFをひらく（令和6年度）
+      </a>
+
+      <div class="bg-amber-50 rounded-xl p-4 text-sm text-amber-800 space-y-3">
+        <p class="font-bold">🤖 AIへのたのみ方</p>
+        <p>GeminiやChatGPTをひらいて、PDFのURLをはりつけてこうたのもう：</p>
+        <div class="bg-white rounded-lg p-3 text-gray-700 border border-amber-200 font-mono text-xs leading-relaxed">
+          「このPDFにある表を、表形式のデータにしてください。https://www.pref.nagano.lg.jp/haikibut/kurashi/recycling/haiki/documents/shichoson_r6.pdf」
+        </div>
+        <p>AIがデータを変換してくれたら、スプレッドシートに<strong>貼り付け</strong>よう。</p>
+      </div>
+
+      <div class="flex items-start gap-3 flex-row-reverse">
+        <img src="../images/harmit.png" alt="ものしり仙人" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div class="text-right">
+          <p class="text-xs font-bold text-blue-600 mb-1">ものしり仙人</p>
+          <div
+            class="bg-blue-50 border border-blue-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+            「データ分析では、まず「データを使いやすい形に整える」ことが大切じゃ。これを<strong>前処理（まえしょり）</strong>というのじゃよ。AIはこの作業がとても得意なのじゃ。」
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第3話 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="bg-teal-100 text-teal-700 text-xs font-bold px-3 py-1 rounded-full">第3話</span>
+        <h2 class="font-black text-gray-800">並べ替えてびっくり！約6倍のちがい</h2>
+      </div>
+      <div class="flex items-start gap-3">
+        <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div
+            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「スプレッドシートにデータが入ったよ！「1人1日あたりのごみ（合計）」の列を<strong>少ない順に並べ替え</strong>（ソート）してみよう。」
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
+        <p class="font-bold text-gray-700">📊 スプレッドシートでの並べ替え方</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>「合計（g）」の列のどこかをクリック</li>
+          <li>メニューの「データ」→「範囲を並べ替え」をクリック</li>
+          <li>「A→Z（昇順）」を選んでOK</li>
+          <li>並べ替えた結果で棒グラフを作ってみよう！</li>
+        </ol>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div
+            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「並べ替えたら…えっ！一番少ないところと一番多いところで、こんなに差があるの？！」
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-center">
+          <p class="text-xs text-teal-600 font-bold mb-1">1位（一番少ない）</p>
+          <p class="text-lg font-black text-teal-700">南牧村</p>
+          <p class="text-xs text-teal-500 mb-1">みなみまきむら</p>
+          <p class="text-3xl font-black text-teal-600">282<span class="text-base">g</span></p>
+        </div>
+        <div class="bg-orange-50 border border-orange-200 rounded-xl p-4 text-center">
+          <p class="text-xs text-orange-600 font-bold mb-1">最下位（一番多い）</p>
+          <p class="text-lg font-black text-orange-700">木島平村</p>
+          <p class="text-xs text-orange-500 mb-1">きじまだいらむら</p>
+          <p class="text-3xl font-black text-orange-600">1,651<span class="text-base">g</span></p>
+        </div>
+      </div>
+
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-sm text-amber-800 text-center font-bold">
+        同じ長野県なのに、<span class="text-xl text-amber-600">約6倍</span>もちがう！
+      </div>
+
+      <div class="space-y-3">
+        <div class="flex items-start gap-3">
+          <img src="../images/main_character.png" alt="でい太"
+            class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div>
+            <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+            <div
+              class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+              「おじさんの村、麻績村（おみむら）はどのくらいの位置にあるかな？スプレッドシートで探してみよう！」
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <img src="../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div>
+            <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+            <div
+              class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+              「今年の山雅は調子いいね。」
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第4話 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="bg-teal-100 text-teal-700 text-xs font-bold px-3 py-1 rounded-full">第4話</span>
+        <h2 class="font-black text-gray-800">数字の裏側を読みとく</h2>
+      </div>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3">
+          <img src="../images/main_character.png" alt="でい太"
+            class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div>
+            <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+            <div
+              class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+              「でも、木島平村の人たちはごみをそんなにたくさん捨ててるの？なんで？」
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 flex-row-reverse">
+          <img src="../images/harmit.png" alt="ものしり仙人" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div class="text-right">
+            <p class="text-xs font-bold text-blue-600 mb-1">ものしり仙人</p>
+            <div
+              class="bg-blue-50 border border-blue-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+              「データの内訳を見てみよ。「生活系ごみ」と「事業系ごみ」に分かれておるじゃろ。」
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-4 text-sm space-y-4">
+        <p class="font-bold text-gray-700 text-center">📊 2つの村のごみの内訳を比べてみよう</p>
+        <div class="grid grid-cols-2 gap-4">
+
+          <!-- 南牧村 -->
+          <div class="text-center space-y-2">
+            <p class="font-black text-teal-700 text-sm">南牧村</p>
+            <p class="text-xs text-gray-500">合計 282g</p>
+            <div class="flex justify-center">
+              <div class="w-28 h-28 rounded-full shadow-sm" style="background: #60a5fa;"></div>
+            </div>
+            <div class="space-y-1 text-xs text-left bg-white rounded-xl p-2">
+              <div class="flex items-center gap-1.5">
+                <div class="w-3 h-3 rounded-sm bg-blue-400 shrink-0"></div>
+                <span class="text-gray-700">生活系 282g <strong>(100%)</strong></span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <div class="w-3 h-3 rounded-sm bg-orange-400 shrink-0"></div>
+                <span class="text-gray-500">事業系 0g (0%)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 木島平村 -->
+          <div class="text-center space-y-2">
+            <p class="font-black text-orange-700 text-sm">木島平村</p>
+            <p class="text-xs text-gray-500">合計 1,651g</p>
+            <div class="flex justify-center">
+              <div class="w-28 h-28 rounded-full shadow-sm" style="background: conic-gradient(#60a5fa 0% 35%, #fb923c 35% 100%);"></div>
+            </div>
+            <div class="space-y-1 text-xs text-left bg-white rounded-xl p-2">
+              <div class="flex items-center gap-1.5">
+                <div class="w-3 h-3 rounded-sm bg-blue-400 shrink-0"></div>
+                <span class="text-gray-700">生活系 575g (35%)</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <div class="w-3 h-3 rounded-sm bg-orange-400 shrink-0"></div>
+                <span class="text-gray-700">事業系 1,076g <strong>(65%)</strong></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <p class="text-xs text-gray-500 text-center">🔵 生活系＝住んでいる人が家から出すごみ　🟠 事業系＝お店・ホテルから出るごみ</p>
+      </div>
+
+      <div class="space-y-3">
+        <div class="flex items-start gap-3">
+          <img src="../images/main_character.png" alt="でい太"
+            class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div>
+            <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+            <div
+              class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+              「あ！事業系ごみがすごく多い！木島平村ってスキー場があるところだよね。ホテルとかレストランから出るごみが多いってこと？」
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 flex-row-reverse">
+          <img src="../images/harmit.png" alt="ものしり仙人" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div class="text-right">
+            <p class="text-xs font-bold text-blue-600 mb-1">ものしり仙人</p>
+            <div
+              class="bg-blue-50 border border-blue-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+              「そのとおりじゃ。ごみが多い市町村をよく見てみよ。木島平村・軽井沢町・白馬村・野沢温泉村…みんな観光地やスキーリゾートじゃろ。観光客がたくさん来るとごみも増えるのじゃ。住んでいる人が出すごみが多いわけではないのじゃよ。」
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <img src="../images/main_character.png" alt="でい太"
+            class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div>
+            <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+            <div
+              class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+              「数字が大きいからって「悪い」ってことじゃないんだね。内訳やその土地の特徴を見ないと、本当のことはわからないんだ！」
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 第5話 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="bg-teal-100 text-teal-700 text-xs font-bold px-3 py-1 rounded-full">第5話</span>
+        <h2 class="font-black text-gray-800">自分たちの「あと少し」を考えよう</h2>
+      </div>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3">
+          <img src="../images/main_character.png" alt="でい太"
+            class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div>
+            <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+            <div
+              class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+              「長野県が過去最少になったのはすごいね。でも、もっと減らすこともできるのかな？自分にできることってあるのかな？」
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 flex-row-reverse">
+          <img src="../images/harmit.png" alt="ものしり仙人" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div class="text-right">
+            <p class="text-xs font-bold text-blue-600 mb-1">ものしり仙人</p>
+            <div
+              class="bg-blue-50 border border-blue-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+              「計算してみようぞ。もし一人が1日10gだけごみを減らしたら、1年間でどうなるか分かるかの？」
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-sm space-y-3">
+        <p class="font-bold text-teal-700">🧮 シミュレーション</p>
+        <div class="space-y-3 text-gray-700">
+          <div class="flex items-start gap-3">
+            <span
+              class="bg-teal-500 text-white text-xs font-black rounded-full w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">1</span>
+            <div>
+              <p>もし自分が1日<strong>10g</strong>だけごみを減らしたら…</p>
+              <p class="text-xs text-gray-500 mt-0.5">（水筒を持っていきペットボトルを買わなかった分、お菓子の箱を資源回収に出した分など）</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span
+              class="bg-teal-500 text-white text-xs font-black rounded-full w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">2</span>
+            <div>
+              <p>1年間では？</p>
+              <p class="font-black text-teal-600 text-base mt-0.5">10g × 365日 ＝ 3,650g ≒ 3.7kg</p>
+              <p class="text-xs text-gray-500">2リットルのペットボトル約2本分！</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span
+              class="bg-teal-500 text-white text-xs font-black rounded-full w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">3</span>
+            <div>
+              <p>長野県全体（約200万人）みんなで減らしたら？</p>
+              <p class="font-black text-teal-600 text-base mt-0.5">3.7kg × 200万人 ＝ 約7,400トン／年</p>
+              <p class="text-xs text-gray-500">小さな行動が積み重なると、大きな変化になる！</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <div class="flex items-start gap-3">
+          <img src="../images/main_character.png" alt="でい太"
+            class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div>
+            <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+            <div
+              class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+              「10gって少なそうだけど、みんながやれば7,400トンにもなるんだ！じゃあ自分でもできることをやってみよう。水筒を持っていくとか、お菓子の箱を資源回収に出すとか！」
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 flex-row-reverse">
+          <img src="../images/harmit.png" alt="ものしり仙人" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div class="text-right">
+            <p class="text-xs font-bold text-blue-600 mb-1">ものしり仙人</p>
+            <div
+              class="bg-blue-50 border border-blue-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+              「そもそもあまり必要ではない物を買わないことや、食べ残しをしないことも大切じゃ。データを見て「じゃあ自分はどうするか」を考えることが、一番大事なのじゃよ。」
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <img src="../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+          <div>
+            <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+            <div
+              class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+              「どんぐりは全部自然に帰るのでゴミゼロ。」
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- やってみよう -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
+      <p class="text-gray-600 text-sm">スプレッドシートのデータを見ながら、もんだいにこたえてみよう！</p>
+
+      <div class="space-y-6">
+
+        <!-- もんだい1 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 1. 長野県77市町村の中で、1人1日あたりのごみ排出量が一番少ない市町村はどこ？</p>
+          <div class="space-y-2 text-sm">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q1" value="a" class="accent-teal-500" />
+              <span>① 麻績村（おみむら）</span>
+            </label>
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q1" value="b" class="accent-teal-500" />
+              <span>② 松本市</span>
+            </label>
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q1" value="c" class="accent-teal-500" />
+              <span>③ 南牧村（みなみまきむら）</span>
+            </label>
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q1" value="d" class="accent-teal-500" />
+              <span>④ 長野市</span>
+            </label>
+          </div>
+          <button onclick="check1()"
+            class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result1" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+          <div id="react1" class="hidden">
+            <div class="flex items-start gap-3">
+              <img src="../images/main_character.png" alt="でい太"
+                class="shrink-0 w-8 h-8 rounded-full object-cover shadow" />
+              <p class="bg-amber-50 border border-amber-200 rounded-xl px-3 py-2 text-xs text-gray-700">
+                「南牧村は1人1日282g！長野県で一番ごみが少ない村だよ。」</p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい2 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 2. 一番多い市町村（木島平村・1,651g）と一番少ない市町村（南牧村・282g）では、ごみの量はどのくらいちがう？
+          </p>
+          <div class="space-y-2 text-sm">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q2" value="a" class="accent-teal-500" />
+              <span>① 2倍くらい</span>
+            </label>
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q2" value="b" class="accent-teal-500" />
+              <span>② 3倍くらい</span>
+            </label>
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q2" value="c" class="accent-teal-500" />
+              <span>③ 5〜6倍くらい</span>
+            </label>
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q2" value="d" class="accent-teal-500" />
+              <span>④ 10倍くらい</span>
+            </label>
+          </div>
+          <button onclick="check2()"
+            class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result2" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい3 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 3. ごみが特に多い市町村（木島平村・軽井沢町・白馬村など）の共通点は何でしょう？</p>
+          <div class="space-y-2 text-sm">
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q3" value="a" class="accent-teal-500" />
+              <span>① 人口がとても多い</span>
+            </label>
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q3" value="b" class="accent-teal-500" />
+              <span>② 観光地やスキーリゾートで、お店やホテルが多い</span>
+            </label>
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q3" value="c" class="accent-teal-500" />
+              <span>③ ごみの分別ルールがゆるい</span>
+            </label>
+            <label
+              class="flex items-center gap-3 bg-gray-50 hover:bg-teal-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-teal-300 transition-colors">
+              <input type="radio" name="q3" value="d" class="accent-teal-500" />
+              <span>④ 工場がたくさんある</span>
+            </label>
+          </div>
+          <button onclick="check3()"
+            class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result3" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+          <div id="react3" class="hidden">
+            <div class="flex items-start gap-3">
+              <img src="../images/assistant.png" alt="ポン太" class="shrink-0 w-8 h-8 rounded-full object-cover shadow" />
+              <p class="bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-gray-700">
+                「観光地ってスキー場があるとこか。山の温泉もいいよね。でもごみは持って帰ってほしいな。」</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <script>
+      function check1() {
+        const sel = document.querySelector('input[name="q1"]:checked');
+        const r = document.getElementById('result1');
+        r.classList.remove('hidden');
+        if (sel && sel.value === 'c') {
+          r.textContent = '⭕ せいかい！ 南牧村（みなみまきむら）は1人1日282gで、長野県で一番ごみが少ない市町村だよ。';
+          r.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+          document.getElementById('react1').classList.remove('hidden');
+        } else {
+          r.textContent = '❌ もう一かい！ ヒント：スプレッドシートのデータを少ない順に並べ替えてみよう。';
+          r.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+        }
+      }
+      function check2() {
+        const sel = document.querySelector('input[name="q2"]:checked');
+        const r = document.getElementById('result2');
+        r.classList.remove('hidden');
+        if (sel && sel.value === 'c') {
+          r.textContent = '⭕ せいかい！ 1,651 ÷ 282 ≒ 5.9倍。同じ長野県の中でこれだけちがうんだね！';
+          r.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+        } else {
+          r.textContent = '❌ もう一かい！ ヒント：1,651を282で割ってみよう。';
+          r.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+        }
+      }
+      function check3() {
+        const sel = document.querySelector('input[name="q3"]:checked');
+        const r = document.getElementById('result3');
+        r.classList.remove('hidden');
+        if (sel && sel.value === 'b') {
+          r.textContent = '⭕ せいかい！ ごみが多い市町村はどこも観光地やスキーリゾート。ホテルや飲食店から出る「事業系ごみ」が多いんだ。';
+          r.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+          document.getElementById('react3').classList.remove('hidden');
+        } else {
+          r.textContent = '❌ もう一かい！ ヒント：木島平村・軽井沢町・白馬村・野沢温泉村…どんな場所か思い浮かべてみよう。';
+          r.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+        }
+      }
+    </script>
+
+    <!-- ナビゲーション -->
+    <div class="flex justify-start items-center pt-4">
+      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+    </div>
+
+  </main>
+
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | こどもコース</p>
+  </footer>
+
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+    data-cf-beacon='{"token": "b1f3fc535d864483bdbbf325e9597364"}'></script>
+
+</body>
+
+</html>
