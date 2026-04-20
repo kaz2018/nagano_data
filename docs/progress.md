@@ -1,6 +1,6 @@
 # 進捗管理 - 長野県データ分析教育サイト
 
-最終更新: 2026-03-19（会話セッション5終了時点）
+最終更新: 2026-04-20
 
 ---
 
@@ -51,6 +51,8 @@
   - L10: 自由探究（正誤なし）
 - [x] CLAUDE.md 作成（uv実行規約・答え合わせUIパターン・正解一覧）
 - [x] トップ画像（`kids/images/kids_top_image.png`）追加
+- [x] `kids/practice_waste/` を `kids/extra02/` にリネーム（本番ページのため命名を整理）
+- [x] Cloudflare Web Analytics スクリプトを全17ページに適用（`kids/extra01/index.html` が未適用だったため追加）
 
 ### 未着手
 
