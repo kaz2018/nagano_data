@@ -89,37 +89,34 @@
       <div class="bg-green-600 text-white rounded-xl p-4 text-sm">
         <p class="font-bold mb-1">📂 レッスン1のデータ</p>
         <p class="text-green-100 leading-relaxed">長野県の<strong
-            class="text-white">村</strong>の人口データを集めたよ。何年ぶんあるかな？村はいくつあるかな？スプレッドシートをひらいて確かめてみよう！</p>
+            class="text-white">村</strong>の人口データを集めたよ。何年ぶんあるかな？村はいくつあるかな？この下の表を見てたしかめてみよう！</p>
       </div>
     </section>
 
-    <!-- スプレッドシートをひらく -->
+    <!-- データ表 -->
     <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
-      <h2 class="font-black text-gray-800">📊 スプレッドシートをひらこう</h2>
-      <p class="text-gray-600 text-sm">下のボタンをおしてひらいてね。</p>
-      <p class="text-gray-600 text-sm">ひらいたら「コピーを作成」をえらんで、じぶんのものにしよう。</p>
+      <h2 class="font-black text-gray-800">📊 長野県の村の人口ひょう</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        見出しをタップすると、その年の数字でならびかわるよ。<br />
+        <strong class="text-green-700">「2025年」をタップ</strong>して、一番上にくる村を見つけてみよう。いちばん大きい数字には<span
+          class="bg-green-200 text-green-900 font-bold px-1 rounded">色</span>がつくよ。
+      </p>
 
-      <a href="https://docs.google.com/spreadsheets/d/1x0g6VegtsCjnHUoNphpto4m80bA90mWVNEsXlFyQan8/edit?usp=sharing"
-        target="_blank" rel="noopener"
-        class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
-        📋 スプレッドシートをひらく
-      </a>
-
-      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
-        <p class="font-bold text-gray-700">コピーのしかた</p>
-        <ol class="list-decimal list-inside space-y-1">
-          <li>スプレッドシートをひらく</li>
-          <li>上のメニューから「ファイル」をおす</li>
-          <li>「コピーを作成」をおす</li>
-          <li>じぶんのGoogleドライブにほぞんされるよ</li>
-        </ol>
+      <div class="overflow-x-auto rounded-xl border border-green-100">
+        <table id="lesson1-data-table" class="min-w-full text-sm whitespace-nowrap">
+          <thead>
+            <tr id="lesson1-data-head" class="bg-green-100 text-green-800"></tr>
+          </thead>
+          <tbody id="lesson1-data-body"></tbody>
+        </table>
       </div>
+      <p class="text-xs text-gray-400">数字の列は「大きいじゅん → 小さいじゅん → もとのじゅん」、村の名前は「あいうえおじゅん → ぎゃく → もと」にかわるよ。</p>
     </section>
 
     <!-- やってみよう -->
     <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
       <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
-      <p class="text-gray-600 text-sm">スプレッドシートをひらいて、もんだいにこたえてみよう！</p>
+      <p class="text-gray-600 text-sm">上の表を見て、もんだいにこたえてみよう！</p>
 
       <div class="space-y-6">
 
@@ -226,7 +223,186 @@
       </div>
     </section>
 
+    <!-- 発展 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 もっとやってみたい人へ</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        上の表だけでもレッスンはできるよ。<br />
+        じぶんでならびかえたり、けいさんしたりしてみたい人は、本物のスプレッドシートもさわってみよう。
+      </p>
+
+      <a href="https://docs.google.com/spreadsheets/d/1x0g6VegtsCjnHUoNphpto4m80bA90mWVNEsXlFyQan8/copy"
+        target="_blank" rel="noopener"
+        class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをコピーする
+      </a>
+
+      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
+        <p class="font-bold text-gray-700">ひらいたあとのながれ</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>ボタンをおす</li>
+          <li>「コピーを作成」をえらぶ</li>
+          <li>じぶんのGoogleドライブにほぞんされるよ</li>
+        </ol>
+      </div>
+    </section>
+
     <script>
+      const lesson1TableColumns = [
+        { key: 'name', label: '村の名前', type: 'text', align: 'left' },
+        { key: '2017', label: '2017年', type: 'number', align: 'right' },
+        { key: '2018', label: '2018年', type: 'number', align: 'right' },
+        { key: '2019', label: '2019年', type: 'number', align: 'right' },
+        { key: '2020', label: '2020年', type: 'number', align: 'right' },
+        { key: '2021', label: '2021年', type: 'number', align: 'right' },
+        { key: '2022', label: '2022年', type: 'number', align: 'right' },
+        { key: '2023', label: '2023年', type: 'number', align: 'right' },
+        { key: '2024', label: '2024年', type: 'number', align: 'right' },
+        { key: '2025', label: '2025年', type: 'number', align: 'right' },
+      ];
+
+      const lesson1TableData = [
+        { name: '川上村', 2017: 3925, 2018: 3900, 2019: 3850, 2020: 3861, 2021: 3837, 2022: 3734, 2023: 3694, 2024: 3627, 2025: 3518 },
+        { name: '南牧村', 2017: 3098, 2018: 3071, 2019: 3025, 2020: 3013, 2021: 3086, 2022: 2987, 2023: 2959, 2024: 2941, 2025: 2900 },
+        { name: '南相木村', 2017: 986, 2018: 963, 2019: 936, 2020: 909, 2021: 958, 2022: 931, 2023: 928, 2024: 893, 2025: 888 },
+        { name: '北相木村', 2017: 768, 2018: 750, 2019: 750, 2020: 727, 2021: 738, 2022: 711, 2023: 696, 2024: 683, 2025: 669 },
+        { name: '青木村', 2017: 4266, 2018: 4192, 2019: 4154, 2020: 4101, 2021: 4114, 2022: 4077, 2023: 4024, 2024: 3935, 2025: 3868 },
+        { name: '原村', 2017: 7592, 2018: 7630, 2019: 7677, 2020: 7709, 2021: 7662, 2022: 7668, 2023: 7690, 2024: 7719, 2025: 7716 },
+        { name: '南箕輪村', 2017: 15276, 2018: 15355, 2019: 15454, 2020: 15609, 2021: 15875, 2022: 15955, 2023: 16133, 2024: 16234, 2025: 16179 },
+        { name: '中川村', 2017: 4783, 2018: 4717, 2019: 4697, 2020: 4643, 2021: 4637, 2022: 4587, 2023: 4534, 2024: 4486, 2025: 4444 },
+        { name: '宮田村', 2017: 8761, 2018: 8721, 2019: 8745, 2020: 8667, 2021: 8589, 2022: 8522, 2023: 8454, 2024: 8410, 2025: 8367 },
+        { name: '阿智村', 2017: 6477, 2018: 6414, 2019: 6280, 2020: 6197, 2021: 6034, 2022: 5951, 2023: 5856, 2024: 5790, 2025: 5742 },
+        { name: '平谷村', 2017: 453, 2018: 436, 2019: 417, 2020: 404, 2021: 385, 2022: 380, 2023: 377, 2024: 366, 2025: 368 },
+        { name: '根羽村', 2017: 939, 2018: 916, 2019: 876, 2020: 861, 2021: 845, 2022: 855, 2023: 838, 2024: 797, 2025: 778 },
+        { name: '下條村', 2017: 3752, 2018: 3698, 2019: 3672, 2020: 3625, 2021: 3548, 2022: 3465, 2023: 3410, 2024: 3337, 2025: 3280 },
+        { name: '売木村', 2017: 560, 2018: 532, 2019: 529, 2020: 520, 2021: 540, 2022: 530, 2023: 518, 2024: 496, 2025: 495 },
+        { name: '天龍村', 2017: 1314, 2018: 1277, 2019: 1212, 2020: 1168, 2021: 1169, 2022: 1130, 2023: 1094, 2024: 1051, 2025: 991 },
+        { name: '泰阜村', 2017: 1655, 2018: 1629, 2019: 1586, 2020: 1577, 2021: 1536, 2022: 1508, 2023: 1481, 2024: 1431, 2025: 1378 },
+        { name: '喬木村', 2017: 6283, 2018: 6236, 2019: 6118, 2020: 6067, 2021: 5958, 2022: 5819, 2023: 5752, 2024: 5684, 2025: 5600 },
+        { name: '豊丘村', 2017: 6553, 2018: 6496, 2019: 6466, 2020: 6441, 2021: 6410, 2022: 6389, 2023: 6305, 2024: 6269, 2025: 6202 },
+        { name: '大鹿村', 2017: 1023, 2018: 1000, 2019: 966, 2020: 957, 2021: 1012, 2022: 977, 2023: 962, 2024: 922, 2025: 908 },
+        { name: '木祖村', 2017: 2870, 2018: 2803, 2019: 2775, 2020: 2693, 2021: 2667, 2022: 2612, 2023: 2533, 2024: 2475, 2025: 2412 },
+        { name: '王滝村', 2017: 806, 2018: 778, 2019: 760, 2020: 736, 2021: 732, 2022: 713, 2023: 681, 2024: 657, 2025: 639 },
+        { name: '大桑村', 2017: 3725, 2018: 3674, 2019: 3578, 2020: 3482, 2021: 3429, 2022: 3348, 2023: 3257, 2024: 3182, 2025: 3066 },
+        { name: '麻績村', 2017: 2756, 2018: 2713, 2019: 2648, 2020: 2603, 2021: 2569, 2022: 2481, 2023: 2435, 2024: 2368, 2025: 2311 },
+        { name: '生坂村', 2017: 1791, 2018: 1743, 2019: 1676, 2020: 1663, 2021: 1639, 2022: 1621, 2023: 1615, 2024: 1567, 2025: 1531 },
+        { name: '山形村', 2017: 8368, 2018: 8406, 2019: 8377, 2020: 8314, 2021: 8400, 2022: 8321, 2023: 8270, 2024: 8260, 2025: 8223 },
+        { name: '朝日村', 2017: 4447, 2018: 4411, 2019: 4380, 2020: 4366, 2021: 4249, 2022: 4176, 2023: 4130, 2024: 4088, 2025: 4033 },
+        { name: '筑北村', 2017: 4592, 2018: 4511, 2019: 4378, 2020: 4232, 2021: 4145, 2022: 4082, 2023: 3985, 2024: 3858, 2025: 3788 },
+        { name: '松川村', 2017: 9860, 2018: 9768, 2019: 9686, 2020: 9583, 2021: 9598, 2022: 9557, 2023: 9500, 2024: 9477, 2025: 9541 },
+        { name: '白馬村', 2017: 9207, 2018: 9223, 2019: 9422, 2020: 9462, 2021: 8617, 2022: 8473, 2023: 8743, 2024: 9117, 2025: 9486 },
+        { name: '小谷村', 2017: 2873, 2018: 2820, 2019: 2817, 2020: 2801, 2021: 2637, 2022: 2565, 2023: 2592, 2024: 2594, 2025: 2679 },
+        { name: '高山村', 2017: 6920, 2018: 6858, 2019: 6789, 2020: 6692, 2021: 6597, 2022: 6462, 2023: 6390, 2024: 6266, 2025: 6154 },
+        { name: '木島平村', 2017: 4590, 2018: 4501, 2019: 4460, 2020: 4364, 2021: 4354, 2022: 4285, 2023: 4216, 2024: 4140, 2025: 4014 },
+        { name: '野沢温泉村', 2017: 3517, 2018: 3502, 2019: 3510, 2020: 3526, 2021: 3293, 2022: 3228, 2023: 3217, 2024: 3300, 2025: 3358 },
+        { name: '小川村', 2017: 2549, 2018: 2511, 2019: 2441, 2020: 2342, 2021: 2219, 2022: 2186, 2023: 2147, 2024: 2096, 2025: 2031 },
+        { name: '栄村', 2017: 1899, 2018: 1819, 2019: 1742, 2020: 1686, 2021: 1649, 2022: 1595, 2023: 1545, 2024: 1494, 2025: 1463 },
+      ];
+
+      function initSortableLessonTable({ headId, bodyId, columns, data, theme }) {
+        const headRow = document.getElementById(headId);
+        const body = document.getElementById(bodyId);
+        const sortState = { key: null, direction: null };
+        const maxByKey = Object.fromEntries(
+          columns
+            .filter((column) => column.type === 'number')
+            .map((column) => [column.key, Math.max(...data.map((row) => row[column.key]))])
+        );
+
+        function firstDirectionFor(type) {
+          return type === 'number' ? 'desc' : 'asc';
+        }
+
+        function nextDirection(key, type) {
+          const firstDirection = firstDirectionFor(type);
+          const secondDirection = firstDirection === 'desc' ? 'asc' : 'desc';
+          if (sortState.key !== key) return firstDirection;
+          if (sortState.direction === firstDirection) return secondDirection;
+          return null;
+        }
+
+        function currentRows() {
+          if (!sortState.key || !sortState.direction) {
+            return data;
+          }
+
+          const sortColumn = columns.find((column) => column.key === sortState.key);
+          const sortedRows = [...data];
+          sortedRows.sort((a, b) => {
+            const comparison = sortColumn.type === 'number'
+              ? a[sortColumn.key] - b[sortColumn.key]
+              : String(a[sortColumn.key]).localeCompare(String(b[sortColumn.key]), 'ja');
+            return sortState.direction === 'desc' ? -comparison : comparison;
+          });
+          return sortedRows;
+        }
+
+        function sortArrow(column) {
+          if (sortState.key !== column.key || !sortState.direction) {
+            return '';
+          }
+          return sortState.direction === 'desc' ? '▼' : '▲';
+        }
+
+        function render() {
+          headRow.innerHTML = columns.map((column) => `
+            <th class="px-2 py-2 text-${column.align}">
+              <button
+                type="button"
+                data-col-key="${column.key}"
+                data-col-type="${column.type}"
+                class="w-full font-bold flex items-center ${column.align === 'left' ? 'justify-start' : 'justify-end'} gap-1 hover:underline"
+              >
+                <span>${column.label}</span>
+                <span class="text-xs">${sortArrow(column)}</span>
+              </button>
+            </th>
+          `).join('');
+
+          body.innerHTML = currentRows().map((row) => `
+            <tr class="border-t border-green-50 hover:bg-green-50">
+              ${columns.map((column) => {
+                const value = column.type === 'number'
+                  ? Number(row[column.key]).toLocaleString('ja-JP')
+                  : row[column.key];
+                const highlightClass = column.type === 'number' && row[column.key] === maxByKey[column.key]
+                  ? theme.maxCellClass
+                  : '';
+                const baseClass = column.align === 'left'
+                  ? 'px-3 py-2 text-left font-bold text-gray-700'
+                  : 'px-3 py-2 text-right text-gray-600';
+                return `<td class="${baseClass} ${highlightClass}">${value}</td>`;
+              }).join('')}
+            </tr>
+          `).join('');
+        }
+
+        headRow.addEventListener('click', (event) => {
+          const trigger = event.target.closest('button[data-col-key]');
+          if (!trigger) {
+            return;
+          }
+
+          const { colKey, colType } = trigger.dataset;
+          const direction = nextDirection(colKey, colType);
+          sortState.key = direction ? colKey : null;
+          sortState.direction = direction;
+          render();
+        });
+
+        render();
+      }
+
+      initSortableLessonTable({
+        headId: 'lesson1-data-head',
+        bodyId: 'lesson1-data-body',
+        columns: lesson1TableColumns,
+        data: lesson1TableData,
+        theme: {
+          maxCellClass: 'bg-green-200 text-green-900 font-bold',
+        },
+      });
+
       function check1() {
         const selected = document.querySelector('input[name="q1"]:checked');
         const result = document.getElementById('result1');
@@ -236,7 +412,7 @@
           result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
           document.getElementById('kota-react1').classList.remove('hidden');
         } else {
-          result.textContent = '❌ もう一かい！ ヒント：スプレッドシートの行の数を数えてみよう。';
+          result.textContent = '❌ もう一かい！ ヒント：上の表の行の数を数えてみよう。';
           result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
         }
       }
@@ -249,7 +425,7 @@
           result.textContent = '⭕ せいかい！ 2017年から2025年まで9年分のデータがあるよ。';
           result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
         } else {
-          result.textContent = '❌ もう一かい！ ヒント：いちばん上の行の列のタイトルを確認してみよう。';
+          result.textContent = '❌ もう一かい！ ヒント：上の表の見出しを確認してみよう。';
           result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
         }
       }

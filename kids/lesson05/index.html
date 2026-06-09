@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>レッスン5: ふえた？へった？ | ながのデータ探検隊</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/kids-visuals.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -98,32 +99,22 @@
       </div>
     </section>
 
-    <!-- スプレッドシートをひらく -->
+    <!-- 変化表 -->
     <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
-      <h2 class="font-black text-gray-800">📊 スプレッドシートをひらこう</h2>
-      <p class="text-gray-600 text-sm">下のボタンをおしてひらいてね。</p>
-      <p class="text-gray-600 text-sm">ひらいたら「コピーを作成」をえらんで、じぶんのものにしよう。</p>
-
-      <a href="https://docs.google.com/spreadsheets/d/1HjTbRqW85qg22EHLtht3GaLi-SZp9woBu0hmIykIaxk/edit?usp=drive_link"
-        target="_blank" rel="noopener"
-        class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
-        📋 スプレッドシートをひらく
-      </a>
-
-      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
-        <p class="font-bold text-gray-700">コピーのしかた</p>
-        <ol class="list-decimal list-inside space-y-1">
-          <li>スプレッドシートをひらく</li>
-          <li>上のメニューから「ファイル」をおす</li>
-          <li>「コピーを作成」をおす</li>
-          <li>じぶんのGoogleドライブにほぞんされるよ</li>
-        </ol>
+      <h2 class="font-black text-gray-800">📊 2017年と2025年の人口のちがい</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">「へんか」の列を見ると、ふえたかへったかが一目で分かるよ。<strong class="text-red-600">「へんか」</strong>をタップして、いちばんへった市町村を見つけてみよう。</p>
+      <div id="lesson5-summary" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm"></div>
+      <div class="overflow-x-auto rounded-xl border border-red-100">
+        <table class="min-w-full text-sm whitespace-nowrap">
+          <thead><tr id="lesson5-table-head" class="bg-red-100 text-red-800"></tr></thead>
+          <tbody id="lesson5-table-body"></tbody>
+        </table>
       </div>
     </section>
 
     <!-- やりかた -->
-    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
-      <h2 class="font-black text-gray-800">🛠️ へんかを計算するやりかた</h2>
+    <section id="lesson5-advanced-howto" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">🛠️ じぶんでも計算してみよう</h2>
 
       <div class="space-y-4">
         <div class="flex gap-4">
@@ -175,9 +166,9 @@
     </section>
 
     <!-- やってみよう -->
-    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+    <section id="lesson5-quiz" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
       <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
-      <p class="text-gray-600 text-sm">計算したら、もんだいにこたえてみよう！</p>
+      <p class="text-gray-600 text-sm">上の表を見て、もんだいにこたえてみよう！</p>
 
       <div class="space-y-6">
 
@@ -263,7 +254,81 @@
       </div>
     </section>
 
+    <section id="lesson5-advanced-sheet" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 もっとやってみたい人へ</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">上の表だけでも変化は分かるよ。じぶんで式を入れて計算したい人は、スプレッドシートでも試してみよう。</p>
+      <a href="https://docs.google.com/spreadsheets/d/1HjTbRqW85qg22EHLtht3GaLi-SZp9woBu0hmIykIaxk/copy"
+        target="_blank" rel="noopener"
+        class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをコピーする
+      </a>
+      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
+        <p class="font-bold text-gray-700">コピーのしかた</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>ボタンをおす</li>
+          <li>「コピーを作成」をおす</li>
+          <li>じぶんのGoogleドライブにほぞんされるよ</li>
+        </ol>
+      </div>
+    </section>
+
     <script>
+      loadKidsCsv('../data/lesson05_change.csv').then((rows) => {
+        const data = rows.map((row) => {
+          const start = Number(row['2017年_総人口']);
+          const end = Number(row['2025年_総人口']);
+          return { name: row['市町村名'], start, end, diff: end - start };
+        });
+        const biggestDrop = [...data].sort((a, b) => a.diff - b.diff)[0];
+        const biggestGain = [...data].sort((a, b) => b.diff - a.diff)[0];
+        const increasedCount = data.filter((row) => row.diff > 0).length;
+        document.getElementById('lesson5-summary').innerHTML = `
+          <div class="rounded-xl bg-red-50 p-4">
+            <p class="text-xs font-bold text-red-700">いちばんへった</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${biggestDrop.name}</p>
+            <p class="text-xs text-gray-500">${biggestDrop.diff.toLocaleString('ja-JP')}人</p>
+          </div>
+          <div class="rounded-xl bg-white border border-red-100 p-4">
+            <p class="text-xs font-bold text-red-700">ふえた市町村の数</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${increasedCount}</p>
+            <p class="text-xs text-gray-500">プラスの市町村だけ数えたよ</p>
+          </div>
+          <div class="rounded-xl bg-white border border-red-100 p-4">
+            <p class="text-xs font-bold text-red-700">いちばんふえた</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${biggestGain.name}</p>
+            <p class="text-xs text-gray-500">+${biggestGain.diff.toLocaleString('ja-JP')}人</p>
+          </div>
+        `;
+      });
+
+      initKidsSortableTable({
+        csvUrl: '../data/lesson05_change.csv',
+        headId: 'lesson5-table-head',
+        bodyId: 'lesson5-table-body',
+        defaultSort: { key: 'diff', direction: 'asc' },
+        columns: [
+          { key: 'name', label: '市町村名', type: 'text', align: 'left' },
+          { key: 'start', label: '2017年', type: 'number', align: 'right' },
+          { key: 'end', label: '2025年', type: 'number', align: 'right' },
+          { key: 'diff', label: 'へんか', type: 'number', align: 'right', render: (value) => `${value > 0 ? '+' : ''}${Number(value).toLocaleString('ja-JP')}` },
+        ],
+        transformRow: (row) => {
+          const start = Number(row['2017年_総人口']);
+          const end = Number(row['2025年_総人口']);
+          return { name: row['市町村名'], start, end, diff: end - start };
+        },
+        theme: {
+          rowBorderClass: 'border-red-50',
+          rowHoverClass: 'hover:bg-red-50',
+          maxCellClass: 'bg-red-200 text-red-900 font-bold',
+        },
+      });
+
+      moveKidsSectionsAfter({
+        markerId: 'lesson5-quiz',
+        sectionIds: ['lesson5-advanced-sheet', 'lesson5-advanced-howto'],
+      });
+
       function showResult(id, ok, okMsg, ngMsg) {
         const result = document.getElementById(id);
         result.classList.remove('hidden');
@@ -277,11 +342,11 @@
       }
       function check5_1() {
         const s = document.querySelector('input[name="q5_1"]:checked');
-        showResult('result1', s && s.value === 'b', '⭕ せいかい！ 長野市が14,865人でいちばんへったよ！', '❌ もう一かい！ ヒント：D列をならびかえて、いちばん小さい（マイナスが大きい）数字を確認しよう。');
+        showResult('result1', s && s.value === 'b', '⭕ せいかい！ 長野市が14,865人でいちばんへったよ！', '❌ もう一かい！ ヒント：へんかの列で、いちばん小さい数字を見てみよう。');
       }
       function check5_2() {
         const s = document.querySelector('input[name="q5_2"]:checked');
-        showResult('result2', s && s.value === 'b', '⭕ せいかい！ 6市町村だけがふえたんだね。', '❌ もう一かい！ ヒント：D列でプラスの数字がいくつあるか数えてみよう。');
+        showResult('result2', s && s.value === 'b', '⭕ せいかい！ 6市町村だけがふえたんだね。', '❌ もう一かい！ ヒント：プラスのへんかがいくつあるか数えてみよう。');
       }
       function check5_3() {
         const s = document.querySelector('input[name="q5_3"]:checked');

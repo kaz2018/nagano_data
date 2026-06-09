@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>レッスン4: ならびかえていちばんをさがそう | ながのデータ探検隊</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/kids-visuals.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
   <style>
     body { font-family: 'Noto Sans JP', sans-serif; }
@@ -84,30 +85,28 @@
       </div>
     </section>
 
-    <!-- スプレッドシートをひらく -->
+    <!-- ランキング表 -->
     <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
-      <h2 class="font-black text-gray-800">📊 スプレッドシートをひらこう</h2>
-      <p class="text-gray-600 text-sm">下のボタンをおしてひらいてね。</p>
-      <p class="text-gray-600 text-sm">ひらいたら「コピーを作成」をえらんで、じぶんのものにしよう。</p>
+      <h2 class="font-black text-gray-800">📊 長野県77市町村の人口ランキング</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        2025年の人口をならべた表だよ。<strong class="text-orange-600">「2025年の人口」</strong>をタップすると、多いじゅん・少ないじゅんで見られるよ。<br />
+        麻績村と筑北村が何番めにいるか、さがしてみよう！
+      </p>
 
-      <a href="https://docs.google.com/spreadsheets/d/1-d4jhAnABO_l2VATw4a39DMvmSpmEJbwewvQ4nDxdkM/edit?usp=sharing" target="_blank" rel="noopener" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
-        📋 スプレッドシートをひらく
-      </a>
-
-      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
-        <p class="font-bold text-gray-700">コピーのしかた</p>
-        <ol class="list-decimal list-inside space-y-1">
-          <li>スプレッドシートをひらく</li>
-          <li>上のメニューから「ファイル」をおす</li>
-          <li>「コピーを作成」をおす</li>
-          <li>じぶんのGoogleドライブにほぞんされるよ</li>
-        </ol>
+      <div class="overflow-x-auto rounded-xl border border-orange-100">
+        <table class="min-w-full text-sm whitespace-nowrap">
+          <thead>
+            <tr id="lesson4-table-head" class="bg-orange-100 text-orange-800"></tr>
+          </thead>
+          <tbody id="lesson4-table-body"></tbody>
+        </table>
       </div>
+      <p class="text-xs text-gray-400">見出しをタップすると「大きいじゅん → 小さいじゅん → もとのじゅん」にかわるよ。</p>
     </section>
 
     <!-- ならびかえのやりかた -->
-    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
-      <h2 class="font-black text-gray-800">🛠️ ならびかえのやりかた</h2>
+    <section id="lesson4-advanced-howto" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">🛠️ じぶんでもならびかえてみよう</h2>
 
       <div class="space-y-4">
 
@@ -152,9 +151,9 @@
     </section>
 
     <!-- やってみよう -->
-    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+    <section id="lesson4-quiz" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
       <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
-      <p class="text-gray-600 text-sm">ならびかえたら、もんだいにこたえてみよう！</p>
+      <p class="text-gray-600 text-sm">上の表を見て、もんだいにこたえてみよう！</p>
 
       <div class="space-y-6">
 
@@ -251,7 +250,51 @@
       </div>
     </section>
 
+    <section id="lesson4-advanced-sheet" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 もっとやってみたい人へ</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">上の表だけでもランキングは見つけられるよ。じぶんで並べ替えの練習をしたい人は、スプレッドシートでもやってみよう。</p>
+
+      <a href="https://docs.google.com/spreadsheets/d/1-d4jhAnABO_l2VATw4a39DMvmSpmEJbwewvQ4nDxdkM/copy" target="_blank" rel="noopener" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをコピーする
+      </a>
+
+      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
+        <p class="font-bold text-gray-700">コピーのしかた</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>ボタンをおす</li>
+          <li>「コピーを作成」をおす</li>
+          <li>じぶんのGoogleドライブにほぞんされるよ</li>
+        </ol>
+      </div>
+    </section>
+
     <script>
+      initKidsSortableTable({
+        csvUrl: '../data/lesson04_all_2025.csv',
+        headId: 'lesson4-table-head',
+        bodyId: 'lesson4-table-body',
+        columns: [
+          { key: 'rank', label: '順位', type: 'number', align: 'right' },
+          { key: 'name', label: '市町村名', type: 'text', align: 'left' },
+          { key: 'pop', label: '2025年の人口', type: 'number', align: 'right' },
+        ],
+        transformRow: (row, index) => ({
+          rank: index + 1,
+          name: row['市町村名'],
+          pop: Number(row['2025年_総人口']),
+        }),
+        theme: {
+          rowBorderClass: 'border-orange-50',
+          rowHoverClass: 'hover:bg-orange-50',
+          maxCellClass: 'bg-orange-200 text-orange-900 font-bold',
+        },
+      });
+
+      moveKidsSectionsAfter({
+        markerId: 'lesson4-quiz',
+        sectionIds: ['lesson4-advanced-sheet', 'lesson4-advanced-howto'],
+      });
+
       function showResult(id, ok, okMsg, ngMsg) {
         const result = document.getElementById(id);
         result.classList.remove('hidden');

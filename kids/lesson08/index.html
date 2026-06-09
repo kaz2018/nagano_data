@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>レッスン8: ぜんぶ合わせたら？ | ながのデータ探検隊</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/kids-visuals.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -97,22 +98,22 @@
       </div>
     </section>
 
-    <!-- スプレッドシートをひらく -->
+    <!-- 全体の表 -->
     <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
-      <h2 class="font-black text-gray-800">📊 スプレッドシートをひらこう</h2>
-      <p class="text-gray-600 text-sm">下のボタンをおしてひらいてね。</p>
-      <p class="text-gray-600 text-sm">ひらいたら「コピーを作成」をえらんで、じぶんのものにしよう。</p>
-
-      <a href="https://docs.google.com/spreadsheets/d/1-d4jhAnABO_l2VATw4a39DMvmSpmEJbwewvQ4nDxdkM/edit?usp=sharing"
-        target="_blank" rel="noopener"
-        class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
-        📋 スプレッドシートをひらく
-      </a>
+      <h2 class="font-black text-gray-800">📊 長野県ぜんたいを見てみよう</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">上のカードで長野県全体の数字を見て、その下の表でどの市町村が大きいかくらべてみよう。<strong class="text-indigo-700">2025年の人口</strong>をタップすると並びかえられるよ。</p>
+      <div id="lesson8-summary" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm"></div>
+      <div class="overflow-x-auto rounded-xl border border-indigo-100">
+        <table class="min-w-full text-sm whitespace-nowrap">
+          <thead><tr id="lesson8-table-head" class="bg-indigo-100 text-indigo-800"></tr></thead>
+          <tbody id="lesson8-table-body"></tbody>
+        </table>
+      </div>
     </section>
 
     <!-- やりかた -->
-    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
-      <h2 class="font-black text-gray-800">🛠️ 合計と割合を出すやりかた</h2>
+    <section id="lesson8-advanced-howto" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">🛠️ じぶんでも合計を出してみよう</h2>
 
       <div class="space-y-4">
         <div class="flex gap-4">
@@ -158,9 +159,9 @@
     </section>
 
     <!-- やってみよう -->
-    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+    <section id="lesson8-quiz" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
       <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
-      <p class="text-gray-600 text-sm">計算したら、もんだいにこたえてみよう！</p>
+      <p class="text-gray-600 text-sm">上のカードと表を見て、もんだいにこたえてみよう！</p>
 
       <div class="space-y-6">
 
@@ -246,7 +247,61 @@
       </div>
     </section>
 
+    <section id="lesson8-advanced-sheet" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 もっとやってみたい人へ</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">上のカードだけでも県全体の数字は分かるよ。じぶんで SUM や COUNTIF を入れてみたい人は、スプレッドシートでも試してみよう。</p>
+      <a href="https://docs.google.com/spreadsheets/d/1-d4jhAnABO_l2VATw4a39DMvmSpmEJbwewvQ4nDxdkM/copy"
+        target="_blank" rel="noopener"
+        class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをコピーする
+      </a>
+    </section>
+
     <script>
+      loadKidsCsv('../data/nagano_population_raw.csv').then((rows) => {
+        const data = rows.map((row) => ({ name: row['市町村名'], pop: Number(row['2025年_総人口']) }));
+        const total = data.reduce((sum, row) => sum + row.pop, 0);
+        const nagano = data.find((row) => row.name === '長野市');
+        const share = ((nagano.pop / total) * 100).toFixed(1);
+        const over50k = data.filter((row) => row.pop >= 50000).length;
+        document.getElementById('lesson8-summary').innerHTML = `
+          <div class="rounded-xl bg-indigo-50 p-4">
+            <p class="text-xs font-bold text-indigo-700">長野県の人口</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${total.toLocaleString('ja-JP')}人</p>
+          </div>
+          <div class="rounded-xl bg-white border border-indigo-100 p-4">
+            <p class="text-xs font-bold text-indigo-700">長野市の割合</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${share}%</p>
+          </div>
+          <div class="rounded-xl bg-white border border-indigo-100 p-4">
+            <p class="text-xs font-bold text-indigo-700">5万人以上の市</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${over50k}</p>
+          </div>
+        `;
+      });
+
+      initKidsSortableTable({
+        csvUrl: '../data/nagano_population_raw.csv',
+        headId: 'lesson8-table-head',
+        bodyId: 'lesson8-table-body',
+        defaultSort: { key: 'pop', direction: 'desc' },
+        columns: [
+          { key: 'name', label: '市町村名', type: 'text', align: 'left' },
+          { key: 'pop', label: '2025年の人口', type: 'number', align: 'right' },
+        ],
+        transformRow: (row) => ({ name: row['市町村名'], pop: Number(row['2025年_総人口']) }),
+        theme: {
+          rowBorderClass: 'border-indigo-50',
+          rowHoverClass: 'hover:bg-indigo-50',
+          maxCellClass: 'bg-indigo-200 text-indigo-900 font-bold',
+        },
+      });
+
+      moveKidsSectionsAfter({
+        markerId: 'lesson8-quiz',
+        sectionIds: ['lesson8-advanced-sheet', 'lesson8-advanced-howto'],
+      });
+
       function showResult(id, ok, okMsg, ngMsg) {
         const result = document.getElementById(id);
         result.classList.remove('hidden');
@@ -260,15 +315,15 @@
       }
       function check8_1() {
         const s = document.querySelector('input[name="q8_1"]:checked');
-        showResult('result1', s && s.value === 'b', '⭕ せいかい！ 1,984,926人が長野県の人口だよ！', '❌ もう一かい！ ヒント：B80にSUM(B2:B78)を入れて全体の合計を出してみよう。');
+        showResult('result1', s && s.value === 'b', '⭕ せいかい！ 1,984,926人が長野県の人口だよ！', '❌ もう一かい！ ヒント：上のカードの「長野県の人口」を見てみよう。');
       }
       function check8_2() {
         const s = document.querySelector('input[name="q8_2"]:checked');
-        showResult('result2', s && s.value === 'b', '⭕ せいかい！ 長野市は約18.2%をしめているんだね！', '❌ もう一かい！ ヒント：ROUND(B2/B80*100, 1)の計算をしてみよう。');
+        showResult('result2', s && s.value === 'b', '⭕ せいかい！ 長野市は約18.2%をしめているんだね！', '❌ もう一かい！ ヒント：上のカードの「長野市の割合」を見てみよう。');
       }
       function check8_3() {
         const s = document.querySelector('input[name="q8_3"]:checked');
-        showResult('result3', s && s.value === 'b', '⭕ せいかい！ 5万人以上の市は10市だよ！', '❌ もう一かい！ ヒント：COUNTIF(B2:B78,">=50000")を使ってみよう。');
+        showResult('result3', s && s.value === 'b', '⭕ せいかい！ 5万人以上の市は10市だよ！', '❌ もう一かい！ ヒント：上のカードの「5万人以上の市」を見てみよう。');
       }
     </script>
 

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>レッスン2: 市の人口をくらべよう | ながのデータ探検隊</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/kids-visuals.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -88,33 +89,30 @@
       </div>
     </section>
 
-    <!-- スプレッドシートをひらく -->
+    <!-- ぼうグラフ -->
     <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
-      <h2 class="font-black text-gray-800">📊 スプレッドシートをひらこう</h2>
+      <h2 class="font-black text-gray-800">📊 長野県の市と村の人口（2025年）</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        ぼうが長いほど人口が多いよ。<strong class="text-blue-700">青いぼうが「市」</strong>、<strong class="text-gray-500">グレーのぼうが「村」</strong>。<br />
+        長野市のぼうと、麻績村・筑北村のぼうをくらべてみよう。市と村でどのくらいちがうかな？
+      </p>
 
-      <p class="text-gray-600 text-sm">下のボタンをおしてひらいてね。</p>
-      <p class="text-gray-600 text-sm">ひらいたら「コピーを作成」をえらんで、じぶんのものにしよう。</p>
-
-      <a href="https://docs.google.com/spreadsheets/d/1GAt8JexG_lT5njSKnFgZaVUeL-ma5vsAwJvGPzaT3Kc/edit?usp=sharing"
-        target="_blank" rel="noopener"
-        class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
-        📋 スプレッドシートをひらく
-      </a>
-
-      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
-        <p class="font-bold text-gray-700">コピーのしかた</p>
-        <ol class="list-decimal list-inside space-y-1">
-          <li>スプレッドシートをひらく</li>
-          <li>上のメニューから「ファイル」をおす</li>
-          <li>「コピーを作成」をおす</li>
-          <li>じぶんのGoogleドライブにほぞんされるよ</li>
-        </ol>
+      <div class="flex flex-wrap items-center gap-4 text-xs">
+        <span class="flex items-center gap-1"><span class="inline-block w-3 h-3 rounded bg-blue-500"></span>市</span>
+        <span class="flex items-center gap-1"><span class="inline-block w-3 h-3 rounded bg-gray-400"></span>村</span>
+        <button id="lesson2-sort-btn" type="button"
+          class="ml-auto bg-blue-500 hover:bg-blue-600 text-white font-bold px-3 py-1.5 rounded-lg transition-colors">
+          人口が多いじゅんにならべる
+        </button>
       </div>
+
+      <div id="lesson2-summary" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm"></div>
+      <div id="lesson2-chart" class="space-y-1.5"></div>
     </section>
 
     <!-- グラフのつくりかた -->
-    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
-      <h2 class="font-black text-gray-800">🛠️ グラフのつくりかた</h2>
+    <section id="lesson2-advanced-howto" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">🛠️ じぶんでもグラフを作ってみよう</h2>
 
       <div class="space-y-4">
 
@@ -158,9 +156,9 @@
     </section>
 
     <!-- やってみよう -->
-    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+    <section id="lesson2-quiz" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
       <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
-      <p class="text-gray-600 text-sm">グラフをつくったら、もんだいにこたえてみよう！</p>
+      <p class="text-gray-600 text-sm">上のグラフを見て、もんだいにこたえてみよう！</p>
 
       <div class="space-y-6">
 
@@ -234,7 +232,74 @@
       </div>
     </section>
 
+    <section id="lesson2-advanced-sheet" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 もっとやってみたい人へ</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">上のグラフだけでも答えられるよ。じぶんでグラフを作ったり、数字をさわったりしたい人はスプレッドシートもひらいてみよう。</p>
+
+      <a href="https://docs.google.com/spreadsheets/d/1GAt8JexG_lT5njSKnFgZaVUeL-ma5vsAwJvGPzaT3Kc/copy"
+        target="_blank" rel="noopener"
+        class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをコピーする
+      </a>
+
+      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
+        <p class="font-bold text-gray-700">コピーのしかた</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>ボタンをおす</li>
+          <li>「コピーを作成」をおす</li>
+          <li>じぶんのGoogleドライブにほぞんされるよ</li>
+        </ol>
+      </div>
+    </section>
+
     <script>
+      loadKidsCsv('../data/lesson02_cities_2025.csv').then((rows) => {
+        const cities = rows
+          .filter((row) => !row['市町村名'].endsWith('村'))
+          .map((row) => ({ name: row['市町村名'], pop: Number(row['2025年_総人口']) }))
+          .sort((a, b) => b.pop - a.pop);
+        const maxCity = cities[0];
+        const minCity = cities[cities.length - 1];
+        document.getElementById('lesson2-summary').innerHTML = `
+          <div class="rounded-xl bg-blue-50 p-4">
+            <p class="text-xs font-bold text-blue-700">いちばん多い市</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${maxCity.name}</p>
+            <p class="text-xs text-gray-500">${maxCity.pop.toLocaleString('ja-JP')}人</p>
+          </div>
+          <div class="rounded-xl bg-white border border-blue-100 p-4">
+            <p class="text-xs font-bold text-blue-700">いちばん少ない市</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${minCity.name}</p>
+            <p class="text-xs text-gray-500">${minCity.pop.toLocaleString('ja-JP')}人</p>
+          </div>
+          <div class="rounded-xl bg-white border border-blue-100 p-4">
+            <p class="text-xs font-bold text-blue-700">市どうしの差</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${(maxCity.pop - minCity.pop).toLocaleString('ja-JP')}人</p>
+            <p class="text-xs text-gray-500">村はここに入れないよ</p>
+          </div>
+        `;
+      });
+
+      initKidsBarChart({
+        csvUrl: '../data/lesson02_cities_2025.csv',
+        containerId: 'lesson2-chart',
+        sortButtonId: 'lesson2-sort-btn',
+        transformRows: (rows) => rows.map((row) => ({
+          name: row['市町村名'],
+          value: Number(row['2025年_総人口']),
+          type: row['市町村名'].endsWith('村') ? 'village' : 'city',
+        })),
+        theme: {
+          cityBarClass: 'bg-blue-500',
+          villageBarClass: 'bg-gray-400',
+          maxBarClass: 'bg-blue-600',
+        },
+      });
+
+      moveKidsSectionsAfter({
+        markerId: 'lesson2-quiz',
+        sectionIds: ['lesson2-advanced-sheet', 'lesson2-advanced-howto'],
+      });
+
       function check2_1() {
         const selected = document.querySelector('input[name="q2_1"]:checked');
         const result = document.getElementById('result1');

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>レッスン3: 人口はどうかわってきた？ | ながのデータ探検隊</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/kids-visuals.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
   <style>
     body { font-family: 'Noto Sans JP', sans-serif; }
@@ -84,30 +85,22 @@
       </div>
     </section>
 
-    <!-- スプレッドシートをひらく -->
+    <!-- 折れ線グラフ -->
     <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
-      <h2 class="font-black text-gray-800">📊 スプレッドシートをひらこう</h2>
-      <p class="text-gray-600 text-sm">下のボタンをおしてひらいてね。</p>
-      <p class="text-gray-600 text-sm">ひらいたら「コピーを作成」をえらんで、じぶんのものにしよう。</p>
-
-      <a href="https://docs.google.com/spreadsheets/d/1PFRrECxXxLXZ5dNS3_6cvvcsgUTt5m0wJMUT8UzmNCc/edit?usp=sharing" target="_blank" rel="noopener" class="inline-block bg-purple-500 hover:bg-purple-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
-        📋 スプレッドシートをひらく
-      </a>
-
-      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
-        <p class="font-bold text-gray-700">コピーのしかた</p>
-        <ol class="list-decimal list-inside space-y-1">
-          <li>スプレッドシートをひらく</li>
-          <li>上のメニューから「ファイル」をおす</li>
-          <li>「コピーを作成」をおす</li>
-          <li>じぶんのGoogleドライブにほぞんされるよ</li>
-        </ol>
+      <h2 class="font-black text-gray-800">📊 6つの村の人口のうつりかわり</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        ボタンをタップすると、見たい村を目立たせられるよ。<strong class="text-purple-700">白馬村</strong>の線がどう動くか、<strong class="text-purple-700">麻績村</strong>がどれだけへったかを見てみよう。
+      </p>
+      <div id="lesson3-series-buttons" class="flex flex-wrap gap-2"></div>
+      <div id="lesson3-summary" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm"></div>
+      <div class="overflow-x-auto">
+        <svg id="lesson3-chart" viewBox="0 0 640 280" class="w-full min-w-[620px] rounded-xl bg-purple-50"></svg>
       </div>
     </section>
 
     <!-- グラフのつくりかた -->
-    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
-      <h2 class="font-black text-gray-800">🛠️ グラフのつくりかた</h2>
+    <section id="lesson3-advanced-howto" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">🛠️ じぶんでも折れ線グラフを作ってみよう</h2>
 
       <div class="space-y-4">
 
@@ -144,9 +137,9 @@
     </section>
 
     <!-- やってみよう -->
-    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+    <section id="lesson3-quiz" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
       <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
-      <p class="text-gray-600 text-sm">グラフをつくったら、もんだいにこたえてみよう！</p>
+      <p class="text-gray-600 text-sm">上のグラフを見て、もんだいにこたえてみよう！</p>
 
       <div class="space-y-6">
 
@@ -218,7 +211,151 @@
       </div>
     </section>
 
+    <section id="lesson3-advanced-sheet" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 もっとやってみたい人へ</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">上のグラフだけでも変化は読めるよ。じぶんで折れ線グラフを作ったり、色を変えたりしたい人はスプレッドシートでも試してみよう。</p>
+
+      <a href="https://docs.google.com/spreadsheets/d/1PFRrECxXxLXZ5dNS3_6cvvcsgUTt5m0wJMUT8UzmNCc/copy" target="_blank" rel="noopener" class="inline-block bg-purple-500 hover:bg-purple-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをコピーする
+      </a>
+
+      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
+        <p class="font-bold text-gray-700">コピーのしかた</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>ボタンをおす</li>
+          <li>「コピーを作成」をおす</li>
+          <li>じぶんのGoogleドライブにほぞんされるよ</li>
+        </ol>
+      </div>
+    </section>
+
     <script>
+      const lesson3Colors = {
+        '麻績村': '#7c3aed',
+        '筑北村': '#2563eb',
+        '青木村': '#16a34a',
+        '生坂村': '#ea580c',
+        '白馬村': '#db2777',
+        '野沢温泉村': '#0891b2',
+      };
+      let lesson3State = { years: [], series: [], active: '麻績村' };
+
+      function lesson3PointX(index, count) {
+        return 72 + ((520 / (count - 1)) * index);
+      }
+
+      function lesson3PointY(value, minValue, maxValue) {
+        const chartTop = 28;
+        const chartHeight = 190;
+        const ratio = (value - minValue) / (maxValue - minValue);
+        return chartTop + chartHeight - (ratio * chartHeight);
+      }
+
+      function renderLesson3Buttons() {
+        document.getElementById('lesson3-series-buttons').innerHTML = lesson3State.series.map((series) => `
+          <button
+            type="button"
+            onclick="setLesson3Active('${series.name}')"
+            class="px-3 py-1.5 rounded-full text-xs font-bold border transition-colors ${lesson3State.active === series.name ? 'text-white border-transparent' : 'bg-white text-gray-600 border-purple-200'}"
+            style="${lesson3State.active === series.name ? `background:${lesson3Colors[series.name]};` : ''}"
+          >
+            ${series.name}
+          </button>
+        `).join('');
+      }
+
+      function renderLesson3Summary() {
+        const activeSeries = lesson3State.series.find((series) => series.name === lesson3State.active);
+        const start = activeSeries.values[0];
+        const end = activeSeries.values[activeSeries.values.length - 1];
+        const diff = end - start;
+        document.getElementById('lesson3-summary').innerHTML = `
+          <div class="rounded-xl bg-purple-50 p-4">
+            <p class="text-xs font-bold text-purple-700">${activeSeries.name}の2017年</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${Number(start).toLocaleString('ja-JP')}人</p>
+          </div>
+          <div class="rounded-xl bg-white border border-purple-100 p-4">
+            <p class="text-xs font-bold text-purple-700">${activeSeries.name}の2025年</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${Number(end).toLocaleString('ja-JP')}人</p>
+          </div>
+          <div class="rounded-xl bg-white border border-purple-100 p-4">
+            <p class="text-xs font-bold text-purple-700">8年でどれだけ変わった？</p>
+            <p class="mt-1 text-lg font-black ${diff >= 0 ? 'text-pink-600' : 'text-blue-600'}">${diff >= 0 ? '+' : ''}${Number(diff).toLocaleString('ja-JP')}人</p>
+          </div>
+        `;
+      }
+
+      function renderLesson3Chart() {
+        const svg = document.getElementById('lesson3-chart');
+        const allValues = lesson3State.series.flatMap((series) => series.values);
+        const maxValue = Math.max(...allValues);
+        const minValue = Math.min(...allValues);
+        const gridValues = [0, 0.25, 0.5, 0.75, 1].map((ratio) => Math.round(minValue + ((maxValue - minValue) * ratio)));
+
+        const grid = gridValues.map((value) => {
+          const y = lesson3PointY(value, minValue, maxValue);
+          return `
+            <line x1="72" y1="${y}" x2="592" y2="${y}" stroke="#ddd6fe" stroke-dasharray="4 4"></line>
+            <text x="64" y="${y + 4}" text-anchor="end" font-size="10" fill="#6b7280">${Number(value).toLocaleString('ja-JP')}</text>
+          `;
+        }).join('');
+
+        const xLabels = lesson3State.years.map((year, index) => `
+          <text x="${lesson3PointX(index, lesson3State.years.length)}" y="248" text-anchor="middle" font-size="10" fill="#6b7280">${year.replace('年', '')}</text>
+        `).join('');
+
+        const lines = lesson3State.series.map((series) => {
+          const active = lesson3State.active === series.name;
+          const points = series.values.map((value, index) => `${lesson3PointX(index, lesson3State.years.length)},${lesson3PointY(value, minValue, maxValue)}`).join(' ');
+          const circles = series.values.map((value, index) => `
+            <circle cx="${lesson3PointX(index, lesson3State.years.length)}" cy="${lesson3PointY(value, minValue, maxValue)}" r="${active ? 4 : 2.5}"
+              fill="${lesson3Colors[series.name]}" opacity="${active ? 1 : 0.7}"></circle>
+          `).join('');
+          const labelY = lesson3PointY(series.values[series.values.length - 1], minValue, maxValue);
+          return `
+            <polyline fill="none" stroke="${lesson3Colors[series.name]}" stroke-width="${active ? 4 : 2}" opacity="${active ? 1 : 0.35}" points="${points}"></polyline>
+            ${circles}
+            <text x="602" y="${labelY + 4}" font-size="11" fill="${lesson3Colors[series.name]}" opacity="${active ? 1 : 0.45}">${series.name}</text>
+          `;
+        }).join('');
+
+        svg.innerHTML = `
+          <rect x="0" y="0" width="640" height="280" rx="16" fill="#faf5ff"></rect>
+          ${grid}
+          <line x1="72" y1="218" x2="592" y2="218" stroke="#9ca3af"></line>
+          <line x1="72" y1="28" x2="72" y2="218" stroke="#9ca3af"></line>
+          ${xLabels}
+          ${lines}
+        `;
+      }
+
+      function setLesson3Active(name) {
+        lesson3State.active = name;
+        renderLesson3Buttons();
+        renderLesson3Summary();
+        renderLesson3Chart();
+      }
+
+      loadKidsCsv('../data/lesson03_population_trend.csv').then((rows) => {
+        const villageNames = ['麻績村', '筑北村', '青木村', '生坂村', '白馬村', '野沢温泉村'];
+        lesson3State = {
+          years: rows.map((row) => row['年']),
+          series: villageNames.map((name) => ({
+            name,
+            values: rows.map((row) => Number(row[name])),
+          })),
+          active: '麻績村',
+        };
+        renderLesson3Buttons();
+        renderLesson3Summary();
+        renderLesson3Chart();
+      });
+
+      moveKidsSectionsAfter({
+        markerId: 'lesson3-quiz',
+        sectionIds: ['lesson3-advanced-sheet', 'lesson3-advanced-howto'],
+      });
+
       function check3_1() {
         const selected = document.querySelector('input[name="q3_1"]:checked');
         const result = document.getElementById('result1');
@@ -239,7 +376,7 @@
           result.textContent = '⭕ せいかい！ 445人へったんだね。';
           result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
         } else {
-          result.textContent = '❌ もう一かい！ ヒント：麻績村の2017年と2025年の数字をスプレッドシートで確認してみよう。';
+          result.textContent = '❌ もう一かい！ ヒント：麻績村のボタンをおして、2017年と2025年の数字を見くらべてみよう。';
           result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
         }
       }

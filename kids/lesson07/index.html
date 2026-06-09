@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>レッスン7: おとことおんな | ながのデータ探検隊</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/kids-visuals.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
   <style>
     body { font-family: 'Noto Sans JP', sans-serif; }
@@ -85,20 +86,22 @@
       </div>
     </section>
 
-    <!-- スプレッドシートをひらく -->
+    <!-- 男女の表 -->
     <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
-      <h2 class="font-black text-gray-800">📊 スプレッドシートをひらこう</h2>
-      <p class="text-gray-600 text-sm">下のボタンをおしてひらいてね。</p>
-      <p class="text-gray-600 text-sm">ひらいたら「コピーを作成」をえらんで、じぶんのものにしよう。</p>
-
-      <a href="https://docs.google.com/spreadsheets/d/1n9RCKCRSk2pl90Wzdj7QroETMkYYFN3mgvUtHynndyQ/edit?gid=2051052360#gid=2051052360" target="_blank" rel="noopener" class="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
-        📋 スプレッドシートをひらく
-      </a>
+      <h2 class="font-black text-gray-800">📊 市町村ごとの男・女の人口</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">「男−女」の列がプラスなら男が多く、マイナスなら女が多いよ。上のカードと表を見て、長野県ぜんたいのバランスもたしかめてみよう。</p>
+      <div id="lesson7-summary" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm"></div>
+      <div class="overflow-x-auto rounded-xl border border-pink-100">
+        <table class="min-w-full text-sm whitespace-nowrap">
+          <thead><tr id="lesson7-table-head" class="bg-pink-100 text-pink-800"></tr></thead>
+          <tbody id="lesson7-table-body"></tbody>
+        </table>
+      </div>
     </section>
 
     <!-- やりかた -->
-    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
-      <h2 class="font-black text-gray-800">🛠️ 男女の合計を出すやりかた</h2>
+    <section id="lesson7-advanced-howto" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">🛠️ じぶんでも合計を出してみよう</h2>
 
       <div class="space-y-4">
         <div class="flex gap-4">
@@ -141,9 +144,9 @@
     </section>
 
     <!-- やってみよう -->
-    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+    <section id="lesson7-quiz" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
       <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
-      <p class="text-gray-600 text-sm">合計を出したら、もんだいにこたえてみよう！</p>
+      <p class="text-gray-600 text-sm">上の表を見て、もんだいにこたえてみよう！</p>
 
       <div class="space-y-6">
 
@@ -213,7 +216,73 @@
       </div>
     </section>
 
+    <section id="lesson7-advanced-sheet" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 もっとやってみたい人へ</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">上の表だけでも男女のちがいは分かるよ。SUM関数をじぶんで使ってみたい人は、スプレッドシートでもやってみよう。</p>
+      <a href="https://docs.google.com/spreadsheets/d/1n9RCKCRSk2pl90Wzdj7QroETMkYYFN3mgvUtHynndyQ/copy" target="_blank" rel="noopener" class="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをコピーする
+      </a>
+    </section>
+
     <script>
+      loadKidsCsv('../data/lesson07_gender_2025.csv').then((rows) => {
+        const data = rows.map((row) => ({
+          name: row['市町村名'],
+          male: Number(row['男']),
+          female: Number(row['女']),
+          diff: Number(row['男']) - Number(row['女']),
+        }));
+        const totalMale = data.reduce((sum, row) => sum + row.male, 0);
+        const totalFemale = data.reduce((sum, row) => sum + row.female, 0);
+        const femaleMajority = data.filter((row) => row.female > row.male).length;
+        const kawakami = data.find((row) => row.name === '川上村');
+        document.getElementById('lesson7-summary').innerHTML = `
+          <div class="rounded-xl bg-pink-50 p-4">
+            <p class="text-xs font-bold text-pink-700">長野県ぜんたい</p>
+            <p class="mt-1 text-lg font-black text-gray-800">女が${(totalFemale - totalMale).toLocaleString('ja-JP')}人多い</p>
+            <p class="text-xs text-gray-500">男 ${totalMale.toLocaleString('ja-JP')} / 女 ${totalFemale.toLocaleString('ja-JP')}</p>
+          </div>
+          <div class="rounded-xl bg-white border border-pink-100 p-4">
+            <p class="text-xs font-bold text-pink-700">女のほうが多い市町村</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${femaleMajority}</p>
+            <p class="text-xs text-gray-500">77市町村のうち</p>
+          </div>
+          <div class="rounded-xl bg-white border border-pink-100 p-4">
+            <p class="text-xs font-bold text-pink-700">川上村</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${kawakami.diff > 0 ? '男が多い' : '女が多い'}</p>
+            <p class="text-xs text-gray-500">差 ${Math.abs(kawakami.diff).toLocaleString('ja-JP')}人</p>
+          </div>
+        `;
+      });
+
+      initKidsSortableTable({
+        csvUrl: '../data/lesson07_gender_2025.csv',
+        headId: 'lesson7-table-head',
+        bodyId: 'lesson7-table-body',
+        columns: [
+          { key: 'name', label: '市町村名', type: 'text', align: 'left' },
+          { key: 'male', label: '男', type: 'number', align: 'right' },
+          { key: 'female', label: '女', type: 'number', align: 'right' },
+          { key: 'diff', label: '男−女', type: 'number', align: 'right', render: (value) => `${value > 0 ? '+' : ''}${Number(value).toLocaleString('ja-JP')}` },
+        ],
+        transformRow: (row) => ({
+          name: row['市町村名'],
+          male: Number(row['男']),
+          female: Number(row['女']),
+          diff: Number(row['男']) - Number(row['女']),
+        }),
+        theme: {
+          rowBorderClass: 'border-pink-50',
+          rowHoverClass: 'hover:bg-pink-50',
+          maxCellClass: 'bg-pink-200 text-pink-900 font-bold',
+        },
+      });
+
+      moveKidsSectionsAfter({
+        markerId: 'lesson7-quiz',
+        sectionIds: ['lesson7-advanced-sheet', 'lesson7-advanced-howto'],
+      });
+
       function showResult(id, ok, okMsg, ngMsg) {
         const result = document.getElementById(id);
         result.classList.remove('hidden');
@@ -227,11 +296,11 @@
       }
       function check7_1() {
         const s = document.querySelector('input[name="q7_1"]:checked');
-        showResult('result1', s && s.value === 'b', '⭕ せいかい！ 女の方が42,244人多いんだね！', '❌ もう一かい！ ヒント：B80とC80のSUM関数の結果をくらべてみよう。');
+        showResult('result1', s && s.value === 'b', '⭕ せいかい！ 女の方が42,244人多いんだね！', '❌ もう一かい！ ヒント：上のカードで長野県ぜんたいの男と女をくらべてみよう。');
       }
       function check7_2() {
         const s = document.querySelector('input[name="q7_2"]:checked');
-        showResult('result2', s && s.value === 'b', '⭕ せいかい！ 62市町村で女の方が多いよ！', '❌ もう一かい！ ヒント：D列（男−女）を入力して、マイナスのセルの数を数えてみよう。');
+        showResult('result2', s && s.value === 'b', '⭕ せいかい！ 62市町村で女の方が多いよ！', '❌ もう一かい！ ヒント：上のカードで女のほうが多い市町村の数を見てみよう。');
       }
       function check7_3() {
         const s = document.querySelector('input[name="q7_3"]:checked');
