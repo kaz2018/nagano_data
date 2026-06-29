@@ -1,0 +1,1406 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>番外編：インスタのわな | ながのデータ探検隊</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                font-family: "Noto Sans JP", sans-serif;
+            }
+        </style>
+        <script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"
+        ></script>
+    </head>
+
+    <body class="bg-pink-50 min-h-screen">
+        <!-- ヘッダー -->
+        <header class="bg-white shadow-sm">
+            <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+                <a
+                    href="../index.html"
+                    class="text-gray-400 hover:text-gray-600 text-sm"
+                    >← レッスン一らんへ</a
+                >
+                <span class="text-gray-300">|</span>
+                <span class="text-sm font-bold text-pink-500">★ 番外編</span>
+            </div>
+        </header>
+
+        <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+            <!-- タイトル -->
+            <section class="text-center">
+                <div
+                    class="inline-block bg-pink-100 text-pink-600 text-sm font-bold px-4 py-1 rounded-full mb-3"
+                >
+                    ★ 番外編
+                </div>
+                <h1 class="text-3xl font-black text-gray-800 mb-2">
+                    インスタのわな
+                </h1>
+                <p class="text-gray-500">なぜ見たあとモヤモヤするの？</p>
+            </section>
+
+            <!-- 導入キャラ会話 -->
+            <section class="space-y-3">
+                <!-- くえり -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/kueri.png"
+                        alt="くえり"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-pink-500 mb-1">
+                            くえり
+                        </p>
+                        <div
+                            class="bg-white border border-pink-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「みんなのインスタ見てると楽しそうでキラキラしてるのに、わたしだけなんかふつうで…。見るたびモヤモヤするし、気づいたら1時間もスクロールしてた。なんでだろう…」
+                        </div>
+                    </div>
+                </div>
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「わかるよ。ぼくもYouTubeで同じ経験をしたんだ。きっと何か理由があるはずだよ。」
+                        </div>
+                    </div>
+                </div>
+                <!-- ポン太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/assistant.png"
+                        alt="ポン太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-stone-500 mb-1">
+                            ポン太
+                        </p>
+                        <div
+                            class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「オレのインスタには、大工の職人技リールが大量に流れてくる。」
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- このレッスンでわかること -->
+            <section class="bg-white rounded-2xl shadow-sm p-6">
+                <h2 class="font-black text-gray-800 mb-3">
+                    🎯 このレッスンでわかること
+                </h2>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                    <li class="flex gap-2">
+                        <span class="text-pink-500 font-bold">✓</span>
+                        なぜインスタを見るとモヤモヤするか、しくみがわかる
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-pink-500 font-bold">✓</span>
+                        インフルエンサーとインスタの「本音」がわかる
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-pink-500 font-bold">✓</span>
+                        インスタが止められないように作られているしくみがわかる
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-pink-500 font-bold">✓</span>
+                        罠から抜け出すヒントがわかる
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 場面1：比較の罠 -->
+            <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+                <div class="flex items-center gap-2 mb-2">
+                    <span
+                        class="bg-pink-500 text-white text-xs font-black px-3 py-1 rounded-full"
+                        >場面 1</span
+                    >
+                    <h2 class="font-black text-gray-800">
+                        「なんでわたしだけ…？」
+                    </h2>
+                </div>
+
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    友だちの楽しそうな投稿。おしゃれなカフェの写真。旅行先でのキラキラした笑顔。<br />
+                    それを見ていると、なぜか自分の毎日がつまらなく感じてしまうことがある。
+                </p>
+
+                <div
+                    class="bg-pink-50 rounded-xl p-4 text-sm text-pink-800 border border-pink-200"
+                >
+                    <p class="font-black mb-2">❓ 考えてみよう</p>
+                    <p class="leading-relaxed">
+                        友だちの楽しそうな投稿を見て、モヤッとしたことはある？<br />
+                        でも、<strong
+                            >本当にみんなの毎日はあんなにキラキラしているのかな？</strong
+                        >
+                    </p>
+                </div>
+
+                <!-- くえり -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/kueri.png"
+                        alt="くえり"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-pink-500 mb-1">
+                            くえり
+                        </p>
+                        <div
+                            class="bg-white border border-pink-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「みんなの投稿ってキラキラしてて…わたしの毎日と全然ちがう気がする。正直にいうと、ちょっとつらい。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- キラリ姉さん登場 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/kirari.png"
+                        alt="キラリ姉さん"
+                        class="shrink-0 w-14 h-14 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-fuchsia-500 mb-1">
+                            キラリ姉さん
+                        </p>
+                        <div
+                            class="bg-fuchsia-50 border border-fuchsia-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「あら、くえりちゃん。正直に話すね。<strong>わたしの投稿、ぜんぶ"いちばんいい瞬間"だけを選んで載せてるの。</strong>お部屋が散らかってる写真なんて絶対に載せないし、10枚撮って一番盛れた1枚だけを使ってるの。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- くえり -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/kueri.png"
+                        alt="くえり"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-pink-500 mb-1">
+                            くえり
+                        </p>
+                        <div
+                            class="bg-white border border-pink-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「えっ…じゃあ、あのキラキラは"全部"じゃないってこと？」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- キラリ姉さん -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/kirari.png"
+                        alt="キラリ姉さん"
+                        class="shrink-0 w-14 h-14 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-fuchsia-500 mb-1">
+                            キラリ姉さん
+                        </p>
+                        <div
+                            class="bg-fuchsia-50 border border-fuchsia-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「そう。<strong>SNSに載っているのは、その人の人生のハイライトだけ。</strong>楽しくない日も、うまくいかない日もあるのに、そういう日は誰も投稿しないでしょ？」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 比較の罠 図解 -->
+                <div class="bg-gray-800 rounded-xl p-5 text-white">
+                    <p
+                        class="text-xs font-black text-gray-400 mb-3 text-center"
+                    >
+                        📊 SNSで見えているもの / 見えていないもの
+                    </p>
+                    <div class="grid grid-cols-2 gap-3 text-sm text-center">
+                        <div>
+                            <p class="text-pink-400 font-black text-xs mb-2">
+                                見えている（投稿される）
+                            </p>
+                            <div class="space-y-1">
+                                <div
+                                    class="bg-pink-900/50 rounded-lg px-3 py-2"
+                                >
+                                    おしゃれなカフェ ☕
+                                </div>
+                                <div
+                                    class="bg-pink-900/50 rounded-lg px-3 py-2"
+                                >
+                                    旅行の絶景 🏔️
+                                </div>
+                                <div
+                                    class="bg-pink-900/50 rounded-lg px-3 py-2"
+                                >
+                                    友だちとの楽しい写真 📸
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 font-black text-xs mb-2">
+                                見えない（投稿されない）
+                            </p>
+                            <div class="space-y-1">
+                                <div class="bg-gray-700 rounded-lg px-3 py-2">
+                                    散らかった部屋 🏠
+                                </div>
+                                <div class="bg-gray-700 rounded-lg px-3 py-2">
+                                    つまらなかった休日 😐
+                                </div>
+                                <div class="bg-gray-700 rounded-lg px-3 py-2">
+                                    失敗した料理 🍳
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center text-gray-400 text-xs mt-3">
+                        みんなの投稿＝「人生のハイライト集」。その投稿と自分のふつうの毎日を比べたら、モヤモヤするのは当然だよ。
+                    </p>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「みんなの"いちばんいい瞬間"と、自分の"ふつうの毎日"を比べてたのか…。そりゃモヤモヤするよな。」
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 場面2：いいねと承認欲求 -->
+            <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+                <div class="flex items-center gap-2 mb-2">
+                    <span
+                        class="bg-pink-500 text-white text-xs font-black px-3 py-1 rounded-full"
+                        >場面 2</span
+                    >
+                    <h2 class="font-black text-gray-800">
+                        「いいね」がほしくてたまらない
+                    </h2>
+                </div>
+
+                <!-- くえり -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/kueri.png"
+                        alt="くえり"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-pink-500 mb-1">
+                            くえり
+                        </p>
+                        <div
+                            class="bg-white border border-pink-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「写真を投稿したあと、いいねの数がすごく気になるの。たくさんつくと嬉しいけど、少ないと『わたしの投稿、つまらなかったかな…』ってすごく不安になる。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- キラリ姉さん -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/kirari.png"
+                        alt="キラリ姉さん"
+                        class="shrink-0 w-14 h-14 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-fuchsia-500 mb-1">
+                            キラリ姉さん
+                        </p>
+                        <div
+                            class="bg-fuchsia-50 border border-fuchsia-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「わかるよ。わたしもそう。100いいねつくと嬉しいけど、50しかつかないと<strong>『何がダメだったんだろう？』</strong>って考えこんじゃう。気づいたら、<strong>いいねの数で自分の価値を決めてた</strong>の。でもね、これは<strong>偶然じゃなくて、インスタ側の作戦</strong>なの。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- いいね依存のしくみ -->
+                <div class="space-y-3">
+                    <div
+                        class="flex gap-3 items-start bg-fuchsia-50 rounded-xl p-4 border border-fuchsia-200"
+                    >
+                        <span class="text-2xl shrink-0">❤️</span>
+                        <div class="text-sm text-gray-700">
+                            <p class="font-black mb-1">
+                                いいね＝他人がくれる「点数」
+                            </p>
+                            <p class="text-gray-500 leading-relaxed">
+                                いいねが多い＝自分の価値が高い、と感じてしまう。でも<strong>本当の自分の価値は、他人がつける数字で決まるものじゃない</strong>よね。
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex gap-3 items-start bg-fuchsia-50 rounded-xl p-4 border border-fuchsia-200"
+                    >
+                        <span class="text-2xl shrink-0">📱</span>
+                        <div class="text-sm text-gray-700">
+                            <p class="font-black mb-1">
+                                「映える」かどうかで行動を選んでしまう
+                            </p>
+                            <p class="text-gray-500 leading-relaxed">
+                                「これ投稿したらいいねもらえるかな？」と考えて行動を選ぶようになったら要注意。<strong>自分の「楽しい」より、他人の「いいね」を優先してしまっている</strong>かもしれない。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- キラリ姉さん：無限ループの解説 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/kirari.png"
+                        alt="キラリ姉さん"
+                        class="shrink-0 w-14 h-14 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-fuchsia-500 mb-1">
+                            キラリ姉さん
+                        </p>
+                        <div
+                            class="bg-fuchsia-50 border border-fuchsia-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「実はこれ、<strong>抜け出せない無限ループ</strong>になってるの。いいねがほしい
+                            → もっとキラキラした投稿をがんばる →
+                            それを見た人がモヤモヤする →
+                            その人もキラキラ投稿をがんばる →
+                            みんながもっといいねを求める…。このループが回れば回るほど、<strong>インスタにとっては好都合</strong>なの。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 無限ループ図解 -->
+                <div class="rounded-xl overflow-hidden">
+                    <img
+                        src="../images/moya.png"
+                        alt="モヤモヤの無限ループ：Aさんがキラキラ投稿 → Bさんがモヤモヤ → Bさんもキラキラ投稿 → Aさんがモヤモヤ → くり返し"
+                        class="w-full"
+                    />
+                </div>
+                <div
+                    class="bg-red-50 border-2 border-red-300 rounded-xl px-4 py-3 text-center"
+                >
+                    <p class="text-xs text-gray-500 mb-1">
+                        そしてこのループが回るほど…
+                    </p>
+                    <p class="font-black text-sm text-red-700">
+                        みんながインスタをたくさん使う →
+                        広告がたくさん表示される →
+                        <span class="text-red-900"
+                            >インスタの広告収入がアップ 💰</span
+                        >
+                    </p>
+                </div>
+
+                <!-- でい太の反応 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「みんながモヤモヤすればするほど、インスタが儲かるしくみになってるのか…！」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- キラリ姉さん：フォロー -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/kirari.png"
+                        alt="キラリ姉さん"
+                        class="shrink-0 w-14 h-14 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-fuchsia-500 mb-1">
+                            キラリ姉さん
+                        </p>
+                        <div
+                            class="bg-fuchsia-50 border border-fuchsia-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「インスタは広告で収入を得ているの。ユーザーがたくさん使うほど広告を見せられるから、<strong>みんなが夢中になる仕掛け</strong>をたくさん入れてるの。いいねのループもそのひとつ。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ポン太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/assistant.png"
+                        alt="ポン太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-stone-500 mb-1">
+                            ポン太
+                        </p>
+                        <div
+                            class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「オレはいつもいいね1とか2だから、頑張ろうとも思わない。」
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 場面3：中毒の設計 -->
+            <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+                <div class="flex items-center gap-2 mb-2">
+                    <span
+                        class="bg-pink-500 text-white text-xs font-black px-3 py-1 rounded-full"
+                        >場面 3</span
+                    >
+                    <h2 class="font-black text-gray-800">なぜ止められない？</h2>
+                </div>
+
+                <!-- くえり -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/kueri.png"
+                        alt="くえり"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-pink-500 mb-1">
+                            くえり
+                        </p>
+                        <div
+                            class="bg-white border border-pink-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「比較でモヤモヤするのに、なぜかやめられないの。『ちょっとだけ見よう』と思って開いたのに、気づいたら1時間たってた…。わたしの意志が弱いのかな。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- キラリ姉さん -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/kirari.png"
+                        alt="キラリ姉さん"
+                        class="shrink-0 w-14 h-14 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-fuchsia-500 mb-1">
+                            キラリ姉さん
+                        </p>
+                        <div
+                            class="bg-fuchsia-50 border border-fuchsia-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「くえりちゃんの意志が弱いんじゃないよ。<strong>やめられないように設計されている</strong>の。SNSを作っている人たちは、できるだけたくさん使ってもらうための仕掛けをたくさん入れてるの。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SNSの仕掛け -->
+                <div class="space-y-3">
+                    <div
+                        class="flex gap-3 items-start bg-pink-50 rounded-xl p-4 border border-pink-200"
+                    >
+                        <span class="text-2xl shrink-0">♾️</span>
+                        <div class="text-sm text-gray-700">
+                            <p class="font-black mb-1">
+                                終わりのないスクロール
+                            </p>
+                            <p class="text-gray-500 leading-relaxed">
+                                本には最後のページがあるし、テレビ番組には終わりの時間がある。でもSNSのタイムラインには<strong>「おわり」がない</strong>。下にスクロールすればするほど、新しい投稿がずっと出てくる。「ここまで見たら終わり」という区切りが、<strong>わざと作られていない</strong>んだ。
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex gap-3 items-start bg-pink-50 rounded-xl p-4 border border-pink-200"
+                    >
+                        <span class="text-2xl shrink-0">🎁</span>
+                        <div class="text-sm text-gray-700">
+                            <p class="font-black mb-1">ガチャと同じしくみ</p>
+                            <p class="text-gray-500 leading-relaxed">
+                                画面を引っ張って更新すると、新しい投稿が出てくる。これ、実は<strong>ガチャを引くのと同じしくみ</strong>。「次はもっと面白い投稿が出るかも」「次はもっとすごい写真が見られるかも」。当たりが出るかもしれないと思うと、<strong>何度も何度も引いてしまう</strong>んだ。
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex gap-3 items-start bg-pink-50 rounded-xl p-4 border border-pink-200"
+                    >
+                        <span class="text-2xl shrink-0">🤖</span>
+                        <div class="text-sm text-gray-700">
+                            <p class="font-black mb-1">AIがあなたの「好き」を知っている</p>
+                            <p class="text-gray-500 leading-relaxed">
+                                インスタには<strong>AI（人工知能）</strong>が入っていて、あなたがどんな投稿に「いいね」したか、どの写真を長く見たか、全部覚えている。そして<strong>「この子はこういうのが好きだな」と予測して、つい見たくなる投稿ばかりを並べてくる</strong>。好きなものしか出てこないから、止まれなくなるんだ。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 深みにはまるイメージ -->
+                <div class="bg-gray-800 rounded-xl p-5 text-white">
+                    <p
+                        class="text-xs font-black text-gray-400 mb-3 text-center"
+                    >
+                        📊 罠が深くなるしくみ
+                    </p>
+                    <div
+                        class="flex flex-col items-center gap-1 text-sm text-center"
+                    >
+                        <div class="bg-gray-700 rounded-lg px-4 py-2 w-full">
+                            ちょっとだけ見よう 📱
+                        </div>
+                        <div class="text-gray-500 text-lg">
+                            ↓ 終わりがないスクロール
+                        </div>
+                        <div class="bg-gray-700 rounded-lg px-4 py-2 w-5/6">
+                            「あ、この投稿も気になる」 😮
+                        </div>
+                        <div class="text-gray-500 text-lg">
+                            ↓ ガチャ感覚で引っ張って更新
+                        </div>
+                        <div class="bg-gray-700 rounded-lg px-4 py-2 w-4/6">
+                            「あとちょっとだけ…」 😅
+                        </div>
+                        <div class="text-gray-500 text-lg">
+                            ↓ また新しい投稿が…
+                        </div>
+                        <div
+                            class="bg-pink-900 border border-pink-500 rounded-lg px-4 py-2 w-3/6 font-black"
+                        >
+                            気づいたら1時間！ 😱
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「YouTubeの自動再生と同じだ…！<strong>やめるタイミングを、わざとなくしてる</strong>んだな。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ポン太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/assistant.png"
+                        alt="ポン太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-stone-500 mb-1">
+                            ポン太
+                        </p>
+                        <div
+                            class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「ガチャ、ガチャ、、、今日もログインしたい、ログインしたい、、、ブルブル、、、」
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 場面4：FOMOと狙い撃ち通知 -->
+            <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+                <div class="flex items-center gap-2 mb-2">
+                    <span
+                        class="bg-pink-500 text-white text-xs font-black px-3 py-1 rounded-full"
+                        >場面 4</span
+                    >
+                    <h2 class="font-black text-gray-800">
+                        あなたの時間を狙っている
+                    </h2>
+                </div>
+
+                <!-- くえり -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/kueri.png"
+                        alt="くえり"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-pink-500 mb-1">
+                            くえり
+                        </p>
+                        <div
+                            class="bg-white border border-pink-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「あと気になるのが、ストーリーズ。24時間で消えちゃうから、見逃したくなくて何回もアプリを開いちゃうの。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- キラリ姉さん -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/kirari.png"
+                        alt="キラリ姉さん"
+                        class="shrink-0 w-14 h-14 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-fuchsia-500 mb-1">
+                            キラリ姉さん
+                        </p>
+                        <div
+                            class="bg-fuchsia-50 border border-fuchsia-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「そう、それも仕掛けのひとつ。24時間で消えるから<strong>『今見ないと！』</strong>って思わせる。何度もアプリを開かせるための罠なの。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ストーリーズの仕掛け -->
+                <div
+                    class="flex gap-3 items-start bg-pink-50 rounded-xl p-4 border border-pink-200"
+                >
+                    <span class="text-2xl shrink-0">⏰</span>
+                    <div class="text-sm text-gray-700">
+                        <p class="font-black mb-1">
+                            「今見ないと消えちゃう！」
+                        </p>
+                        <p class="text-gray-500 leading-relaxed">
+                            24時間で消えるストーリーズは、<strong>「見逃したくない」という不安</strong>を使って何度もアプリを開かせる仕掛け。これを英語で<strong>FOMO（フォーモ）＝「見逃す不安」</strong>と言うよ。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- キラリ姉さん：狙い撃ち通知 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/kirari.png"
+                        alt="キラリ姉さん"
+                        class="shrink-0 w-14 h-14 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-fuchsia-500 mb-1">
+                            キラリ姉さん
+                        </p>
+                        <div
+                            class="bg-fuchsia-50 border border-fuchsia-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「でもね、もっと怖い話があるの。<strong>SNSの通知って、"たまたま"届いてるわけじゃない。</strong>あなたが一番スマホを開きやすい時間帯を、SNSはデータで知っている。その時間を狙って通知を送ってくるの。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 狙い撃ち通知の仕掛け（強調） -->
+                <div
+                    class="bg-red-50 border-2 border-red-300 rounded-xl p-5 space-y-3"
+                >
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🎯</span>
+                        <p class="font-black text-red-700">
+                            狙い撃ち通知のしくみ
+                        </p>
+                    </div>
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        SNSは、あなたがいつスマホを開いたか、いつ一番長く使ったかを<strong>全部記録している</strong>。
+                    </p>
+                    <div class="bg-white rounded-lg p-4 text-sm space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-red-100 text-red-500 font-black text-xs px-2 py-1 rounded-full"
+                                >ステップ1</span
+                            >
+                            <span class="text-gray-700"
+                                >あなたの行動データを集める（何時に開く？
+                                何分使う？）</span
+                            >
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-red-100 text-red-500 font-black text-xs px-2 py-1 rounded-full"
+                                >ステップ2</span
+                            >
+                            <span class="text-gray-700"
+                                >「この子は夜8時に一番開く」とパターンを分析する</span
+                            >
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-red-100 text-red-500 font-black text-xs px-2 py-1 rounded-full"
+                                >ステップ3</span
+                            >
+                            <span class="text-gray-700"
+                                ><strong
+                                    >夜8時を狙って「○○さんがいいねしました」と通知を送る</strong
+                                ></span
+                            >
+                        </div>
+                    </div>
+                    <p class="text-sm text-red-600 font-bold leading-relaxed">
+                        「たまたま通知が来た」と思っていたのに、実は<strong>あなたが一番開きやすい瞬間を狙い撃ちされていた</strong>ということ。
+                    </p>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「"たまたま"じゃなくて、<strong>狙われてた</strong>のか…！」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- キラリ姉さん -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/kirari.png"
+                        alt="キラリ姉さん"
+                        class="shrink-0 w-14 h-14 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-fuchsia-500 mb-1">
+                            キラリ姉さん
+                        </p>
+                        <div
+                            class="bg-fuchsia-50 border border-fuchsia-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「SNSは、みんながたくさん使えば使うほど広告がたくさん表示できて、お金が入るしくみ。だから<strong>できるだけ何度もアプリを開かせたい</strong>の。通知は、そのための一番強力な武器なんだよ。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ポン太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/assistant.png"
+                        alt="ポン太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-stone-500 mb-1">
+                            ポン太
+                        </p>
+                        <div
+                            class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「ブラジルと当たるのもモロッコと当たるのも、どっちもきついよね。」
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 場面5：罠から抜け出すヒント -->
+            <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+                <div class="flex items-center gap-2 mb-2">
+                    <span
+                        class="bg-pink-500 text-white text-xs font-black px-3 py-1 rounded-full"
+                        >場面 5</span
+                    >
+                    <h2 class="font-black text-gray-800">
+                        罠を知れば、自分で選べる
+                    </h2>
+                </div>
+
+                <!-- くえり -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/kueri.png"
+                        alt="くえり"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-pink-500 mb-1">
+                            くえり
+                        </p>
+                        <div
+                            class="bg-white border border-pink-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「じゃあ、もうSNSは使っちゃだめってこと…？」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- キラリ姉さん -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/kirari.png"
+                        alt="キラリ姉さん"
+                        class="shrink-0 w-14 h-14 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-fuchsia-500 mb-1">
+                            キラリ姉さん
+                        </p>
+                        <div
+                            class="bg-fuchsia-50 border border-fuchsia-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「そんなことないよ。インスタは使い方しだいで<strong>とても良い道具</strong>にもなるの。わたしもインスタのおかげで好きなことを発信できてるし、すてきな出会いもあった。大事なのは、<strong>罠があると知ったうえで、自分で選ぶ</strong>こと。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- インスタの良い面 -->
+                <div class="bg-blue-50 rounded-xl p-5 border border-blue-200">
+                    <p class="font-black text-blue-700 mb-3">
+                        💡 インスタの良いところ
+                    </p>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div class="flex gap-2 items-start">
+                            <span class="text-blue-500 font-bold shrink-0"
+                                >✓</span
+                            >
+                            <span
+                                >離れている友だちや家族とつながりを保てる</span
+                            >
+                        </div>
+                        <div class="flex gap-2 items-start">
+                            <span class="text-blue-500 font-bold shrink-0"
+                                >✓</span
+                            >
+                            <span
+                                >好きなことの情報を集めたり、同じ趣味の人と出会える</span
+                            >
+                        </div>
+                        <div class="flex gap-2 items-start">
+                            <span class="text-blue-500 font-bold shrink-0"
+                                >✓</span
+                            >
+                            <span
+                                >自分の作品や活動を発信して、世界中の人に見てもらえる</span
+                            >
+                        </div>
+                        <div class="flex gap-2 items-start">
+                            <span class="text-blue-500 font-bold shrink-0"
+                                >✓</span
+                            >
+                            <span
+                                >災害時の情報共有など、社会の役に立つこともある</span
+                            >
+                        </div>
+                    </div>
+                    <p class="text-xs text-blue-600 font-bold mt-3">
+                        インスタ自体が悪いわけじゃない。罠のしくみを知って、自分でコントロールすることが大事だよ。
+                    </p>
+                </div>
+
+                <!-- 6つのヒント -->
+                <div class="bg-green-50 rounded-xl p-5 border border-green-200">
+                    <p class="font-black text-green-700 mb-4">
+                        ✅ 罠から抜け出す6つのヒント
+                    </p>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div class="flex gap-3 items-start">
+                            <span
+                                class="shrink-0 bg-green-500 text-white font-black rounded-full w-6 h-6 flex items-center justify-center text-xs"
+                                >1</span
+                            >
+                            <div>
+                                <p class="font-black">通知をオフにする</p>
+                                <p class="text-gray-500 text-xs mt-0.5">
+                                    狙い撃ち通知に振り回されなくなる。「自分のタイミング」でアプリを開こう。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 items-start">
+                            <span
+                                class="shrink-0 bg-green-500 text-white font-black rounded-full w-6 h-6 flex items-center justify-center text-xs"
+                                >2</span
+                            >
+                            <div>
+                                <p class="font-black">時間制限を設定する</p>
+                                <p class="text-gray-500 text-xs mt-0.5">
+                                    スクリーンタイムやアプリの使用時間リマインダーを使って、「ここまで」を自分で決める。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 items-start">
+                            <span
+                                class="shrink-0 bg-green-500 text-white font-black rounded-full w-6 h-6 flex items-center justify-center text-xs"
+                                >3</span
+                            >
+                            <div>
+                                <p class="font-black">
+                                    モヤッとする相手はミュートする
+                                </p>
+                                <p class="text-gray-500 text-xs mt-0.5">
+                                    比較してつらくなる相手のフォローを外す・ミュートする。自分の心を守るのは悪いことじゃない。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 items-start">
+                            <span
+                                class="shrink-0 bg-green-500 text-white font-black rounded-full w-6 h-6 flex items-center justify-center text-xs"
+                                >4</span
+                            >
+                            <div>
+                                <p class="font-black">
+                                    モヤッとしたら、立ち止まる
+                                </p>
+                                <p class="text-gray-500 text-xs mt-0.5">
+                                    「あ、今モヤッとしたな」と感じたら、一度スマホを置いてみよう。「この投稿はその人の楽しい瞬間だけなんだな」と気づけたら、それだけで見え方が変わるよ。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 items-start">
+                            <span
+                                class="shrink-0 bg-green-500 text-white font-black rounded-full w-6 h-6 flex items-center justify-center text-xs"
+                                >5</span
+                            >
+                            <div>
+                                <p class="font-black">
+                                    他人と比べるのではなく、「昨日の自分」「なりたい自分」と比べる
+                                </p>
+                                <p class="text-gray-500 text-xs mt-0.5">
+                                    他人との"横の比較"ではなく、過去の自分→今の自分→なりたい自分という"縦の軸"で考えよう。「昨日の自分より、少しだけ上手くなった！」「将来どんな自分になりたいかな？」と想像してみるのもいいね。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 items-start">
+                            <span
+                                class="shrink-0 bg-green-500 text-white font-black rounded-full w-6 h-6 flex items-center justify-center text-xs"
+                                >6</span
+                            >
+                            <div>
+                                <p class="font-black">
+                                    自分が夢中になれることを見つけて打ち込む
+                                </p>
+                                <p class="text-gray-500 text-xs mt-0.5">
+                                    スポーツ、絵、音楽、プログラミング、何でもいい。自分が本当に好きなことに一生けんめい打ち込んでいるとき、他人のキラキラは気にならなくなる。それが比較から抜け出す一番の方法だよ。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- くえりの締め -->
+                <div
+                    class="bg-pink-50 border-2 border-pink-300 rounded-2xl p-5"
+                >
+                    <div class="flex items-start gap-3">
+                        <img
+                            src="../images/kueri.png"
+                            alt="くえり"
+                            class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                        />
+                        <div>
+                            <p class="text-xs font-bold text-pink-500 mb-1">
+                                くえり
+                            </p>
+                            <div class="text-sm text-gray-700 leading-relaxed">
+                                「罠があるとわかったら、少し気持ちが楽になった。<br />
+                                <br />
+                                モヤモヤしてたのは、わたしが弱いからじゃなくて、<strong>モヤモヤするように作られていた</strong>から。<br />
+                                <br />
+                                他人のキラキラと比べるんじゃなくて、<strong>昨日の自分よりちょっとだけ成長すること</strong>。<strong>将来なりたい自分に向かって進むこと</strong>。それがわたしの「じぶん軸」だ。」
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「うん。YouTubeも、SNSも、しくみを知れば自分で選べる。それが<strong>『考える力』</strong>だよな。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ポン太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/assistant.png"
+                        alt="ポン太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-stone-500 mb-1">
+                            ポン太
+                        </p>
+                        <div
+                            class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「人間の世界はたぬきのワナ以上に心理的ワナ多すぎ。」
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- やってみよう -->
+            <section class="bg-white rounded-2xl shadow-sm p-6 space-y-6">
+                <h2 class="font-black text-gray-800">🖊 やってみよう</h2>
+
+                <!-- Q1 -->
+                <div class="space-y-3">
+                    <p class="font-bold text-gray-700 text-sm">
+                        Q1.
+                        インスタの投稿が"キラキラ"して見えるのはなぜ？（3択）
+                    </p>
+                    <div class="space-y-2 text-sm">
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-pink-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-pink-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q1"
+                                value="a"
+                                class="accent-pink-500"
+                            />
+                            <span
+                                >①
+                                みんなの生活が本当にキラキラしているから</span
+                            >
+                        </label>
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-pink-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-pink-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q1"
+                                value="b"
+                                class="accent-pink-500"
+                            />
+                            <span>② 楽しい瞬間だけを選んで載せているから</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-pink-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-pink-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q1"
+                                value="c"
+                                class="accent-pink-500"
+                            />
+                            <span>③ カメラの性能がいいから</span>
+                        </label>
+                    </div>
+                    <button
+                        onclick="checkQ1()"
+                        class="bg-pink-500 hover:bg-pink-600 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors"
+                    >
+                        答え合わせ
+                    </button>
+                    <div
+                        id="result-q1"
+                        class="hidden text-sm font-bold px-4 py-3 rounded-xl"
+                    ></div>
+                </div>
+
+                <hr class="border-gray-100" />
+
+                <!-- Q2 -->
+                <div class="space-y-3">
+                    <p class="font-bold text-gray-700 text-sm">
+                        Q2.
+                        SNSがあなたの"一番スマホを開きやすい時間"に通知を送るのはなぜ？（3択）
+                    </p>
+                    <div class="space-y-2 text-sm">
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-pink-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-pink-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q2"
+                                value="a"
+                                class="accent-pink-500"
+                            />
+                            <span
+                                >①
+                                便利なタイミングで届けてくれる親切な機能だから</span
+                            >
+                        </label>
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-pink-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-pink-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q2"
+                                value="b"
+                                class="accent-pink-500"
+                            />
+                            <span>② できるだけ何度もアプリを開かせるため</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-pink-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-pink-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q2"
+                                value="c"
+                                class="accent-pink-500"
+                            />
+                            <span>③ 電波が一番つながりやすい時間だから</span>
+                        </label>
+                    </div>
+                    <button
+                        onclick="checkQ2()"
+                        class="bg-pink-500 hover:bg-pink-600 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors"
+                    >
+                        答え合わせ
+                    </button>
+                    <div
+                        id="result-q2"
+                        class="hidden text-sm font-bold px-4 py-3 rounded-xl"
+                    ></div>
+                </div>
+
+                <hr class="border-gray-100" />
+
+                <!-- Q3 -->
+                <div class="space-y-3">
+                    <p class="font-bold text-gray-700 text-sm">
+                        Q3. SNSを見てモヤモヤしたこと、ある？ それはどんなとき？
+                    </p>
+                    <textarea
+                        id="q3-input"
+                        rows="2"
+                        placeholder="たとえば「友だちの旅行の写真を見て、うらやましくなった」など…"
+                        class="w-full border border-gray-200 rounded-xl p-3 text-sm text-gray-700 focus:outline-none focus:border-pink-400 resize-none"
+                    ></textarea>
+                    <button
+                        onclick="showQ3Answer()"
+                        class="bg-gray-500 hover:bg-gray-600 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors"
+                    >
+                        こたえのれいを見る
+                    </button>
+                    <div
+                        id="result-q3"
+                        class="hidden bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-gray-700 space-y-2"
+                    >
+                        <p class="font-black text-gray-600 mb-2">
+                            💬 こたえのれい
+                        </p>
+                        <ul
+                            class="space-y-1 list-disc list-inside text-gray-600"
+                        >
+                            <li>
+                                友だちが遊んでいる写真を見て「自分だけ誘われてない」と感じた
+                            </li>
+                            <li>
+                                おしゃれな投稿を見て、自分の毎日がつまらなく思えた
+                            </li>
+                            <li>
+                                いいねが少なくて、自分の写真がダメだったのかなと思った
+                            </li>
+                        </ul>
+                        <p class="text-gray-400 text-xs mt-2">
+                            モヤモヤするのは自然なこと。大事なのは「なぜモヤモヤしたか」に気づけることだよ。
+                        </p>
+                    </div>
+                </div>
+
+                <hr class="border-gray-100" />
+
+                <!-- Q4 -->
+                <div class="space-y-3">
+                    <p class="font-bold text-gray-700 text-sm">
+                        Q4.
+                        罠から抜け出すために、明日からじぶんでやってみることを1つ書こう。
+                    </p>
+                    <textarea
+                        id="q4-input"
+                        rows="3"
+                        placeholder="たとえば「通知をオフにする」「夢中になれることに時間を使う」など…"
+                        class="w-full border border-gray-200 rounded-xl p-3 text-sm text-gray-700 focus:outline-none focus:border-pink-400 resize-none"
+                    ></textarea>
+                    <button
+                        onclick="showQ4Answer()"
+                        class="bg-gray-500 hover:bg-gray-600 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors"
+                    >
+                        こたえのれいを見る
+                    </button>
+                    <div
+                        id="result-q4"
+                        class="hidden bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-gray-700"
+                    >
+                        <p class="font-black text-gray-600 mb-2">
+                            💬 こたえのれい
+                        </p>
+                        <ul
+                            class="space-y-1 list-disc list-inside text-gray-600"
+                        >
+                            <li>
+                                SNSの通知をオフにして、自分のタイミングで開く
+                            </li>
+                            <li>スクリーンタイムで1日30分までに設定する</li>
+                            <li>モヤッとする相手をミュートしてみる</li>
+                            <li>SNSを見る時間を、好きなことに使ってみる</li>
+                            <li>「将来なりたい自分」をノートに書いてみる</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 保護者向けセクション -->
+            <section
+                class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-4"
+            >
+                <div class="flex items-center gap-2">
+                    <span class="text-lg">👨‍👩‍👧</span>
+                    <h2 class="font-black text-slate-700">保護者の方へ</h2>
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    このページでは、インスタ等のSNSが若者に与える「比較による劣等感」「承認欲求への依存」「中毒性の設計」「FOMO（見逃す不安）と狙い撃ち通知」について、子ども向けに解説しました。同時に、正しく使えば良い道具にもなることも伝えています。より詳しく知りたい方向けに、参考ページをご紹介します。
+                </p>
+
+                <div class="space-y-3">
+                    <a
+                        href="https://nagoya-hidamarikokoro.jp/blog/sns/"
+                        target="_blank"
+                        rel="noopener"
+                        class="flex items-start gap-3 bg-white rounded-xl p-4 border border-slate-200 hover:border-pink-300 hover:shadow-sm transition-all group"
+                    >
+                        <span class="shrink-0 text-xl mt-0.5">🧠</span>
+                        <div class="flex-1">
+                            <p
+                                class="font-bold text-sm text-slate-800 group-hover:text-pink-600"
+                            >
+                                SNSと心の疲れ「なぜ"見ているだけ"なのに消耗するのか」
+                            </p>
+                            <p class="text-xs text-slate-500 mt-0.5">
+                                無意識の比較・情報処理の負荷がメンタルヘルスに与える影響と、使用時間の制限などの対策を解説
+                            </p>
+                            <p class="text-xs text-slate-400 mt-1">
+                                nagoya-hidamarikokoro.jp
+                            </p>
+                        </div>
+                        <span
+                            class="text-slate-300 group-hover:text-pink-400 text-sm shrink-0"
+                            >↗</span
+                        >
+                    </a>
+                </div>
+            </section>
+
+            <!-- ナビゲーション -->
+            <section class="flex justify-between items-center pt-4">
+                <a
+                    href="../index.html"
+                    class="text-gray-400 hover:text-gray-600 text-sm font-bold"
+                    >← レッスン一らんへ</a
+                >
+            </section>
+        </main>
+
+        <!-- フッター -->
+        <footer class="text-center py-8 text-gray-400 text-sm">
+            <p>ながのデータ探検隊 | 子どもコース</p>
+        </footer>
+
+        <script>
+            function checkQ1() {
+                const selected = document.querySelector(
+                    'input[name="q1"]:checked',
+                );
+                const result = document.getElementById("result-q1");
+                result.classList.remove("hidden");
+                if (selected && selected.value === "b") {
+                    result.textContent =
+                        "⭕ せいかい！ みんなの投稿は「人生のハイライト集」。楽しい瞬間だけを選んで載せているから、キラキラして見えるんだ。";
+                    result.className =
+                        "text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200";
+                } else {
+                    result.textContent =
+                        "❌ もう一かい！ ヒント：キラリ姉さんは「10枚撮って一番いい1枚だけ使う」と言っていたよ。";
+                    result.className =
+                        "text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200";
+                }
+            }
+
+            function checkQ2() {
+                const selected = document.querySelector(
+                    'input[name="q2"]:checked',
+                );
+                const result = document.getElementById("result-q2");
+                result.classList.remove("hidden");
+                if (selected && selected.value === "b") {
+                    result.textContent =
+                        "⭕ せいかい！ あなたが一番スマホを開きやすい時間を狙って通知を送ることで、何度もアプリを開かせているんだ。";
+                    result.className =
+                        "text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200";
+                } else {
+                    result.textContent =
+                        "❌ もう一かい！ ヒント：SNSは、あなたがいつスマホを開くか記録しているよ。なぜだろう？";
+                    result.className =
+                        "text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200";
+                }
+            }
+
+            function showQ3Answer() {
+                document.getElementById("result-q3").classList.remove("hidden");
+            }
+
+            function showQ4Answer() {
+                document.getElementById("result-q4").classList.remove("hidden");
+            }
+        </script>
+    </body>
+</html>
