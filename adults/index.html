@@ -43,12 +43,17 @@
     <div class="max-w-4xl mx-auto px-6 py-16 relative">
       <p class="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-3">Adult Course</p>
       <h1 class="text-4xl sm:text-5xl font-black text-white mb-4 leading-tight">
-        データを<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-violet-300">使いこなす</span>力をつけよう
+        そのExcel、<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-violet-300">次の人に引き継げますか？</span>
       </h1>
-      <p class="text-indigo-200 text-sm leading-relaxed max-w-sm mb-10">
-        長野県の人口データで、データ分析の基本を学びます。<br>
-        スプレッドシートが初めての方でも大丈夫です。
+      <p class="text-indigo-200 text-sm leading-relaxed max-w-2xl mb-6">
+        毎月の集計に時間がかかる。担当者が異動すると誰も触れない。AIに渡したいのに表の形がバラバラ。<br>
+        このコースでは、そんな困りごとをダミーの業務データで体感しながら、長野県の実データで整える練習をします。
       </p>
+      <div class="flex flex-wrap gap-2 text-xs font-bold">
+        <span class="bg-white/10 text-indigo-100 px-3 py-1 rounded-full border border-white/10">引き継ぎ</span>
+        <span class="bg-white/10 text-indigo-100 px-3 py-1 rounded-full border border-white/10">集計の時短</span>
+        <span class="bg-white/10 text-indigo-100 px-3 py-1 rounded-full border border-white/10">AIで使えるデータ</span>
+      </div>
     </div>
   </div>
 
@@ -66,29 +71,105 @@
       <span class="text-2xl shrink-0">👋</span>
       <div class="flex-1 text-sm text-indigo-800">
         <p class="font-bold mb-0.5">はじめての方へ</p>
-        <p class="text-indigo-600">レッスン1から順番に進めましょう。スプレッドシートが初めてでも大丈夫です。</p>
+        <p class="text-indigo-600">レッスン1では、まずダミーの売上データで「困る表」を見ます。そのあと長野県の実データで手を動かします。</p>
       </div>
       <button @click="welcome = false" class="text-indigo-300 hover:text-indigo-700 shrink-0 transition-colors text-lg leading-none">✕</button>
     </div>
 
-    <!-- 進め方 -->
-    <div class="grid grid-cols-3 gap-3">
-      <div class="bg-white rounded-2xl border border-slate-200 p-4 text-center">
-        <div class="text-2xl mb-2">📖</div>
-        <p class="font-bold text-slate-700 text-sm">読む</p>
-        <p class="text-slate-400 text-xs mt-1">説明を読む</p>
+    <!-- Pain points -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
+      <div>
+        <h2 class="font-black text-slate-800 text-lg mb-1">こんな困りごとはありませんか？</h2>
+        <p class="text-sm text-slate-500">このコースは「スプレッドシートを勉強したい人」だけでなく、「仕事で困っている人」のための内容です。</p>
       </div>
-      <div class="bg-white rounded-2xl border border-slate-200 p-4 text-center">
-        <div class="text-2xl mb-2">✋</div>
-        <p class="font-bold text-slate-700 text-sm">やる</p>
-        <p class="text-slate-400 text-xs mt-1">手を動かす</p>
+      <div class="grid md:grid-cols-3 gap-3">
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+          <p class="text-2xl mb-2">⏰</p>
+          <p class="font-bold text-slate-800 text-sm mb-1">毎月同じ集計に時間がかかる</p>
+          <p class="text-xs text-slate-500 leading-relaxed">コピー、貼り付け、手直しが多く、月末になると残業になる。</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+          <p class="text-2xl mb-2">🧩</p>
+          <p class="font-bold text-slate-800 text-sm mb-1">担当者がいないと直せない</p>
+          <p class="text-xs text-slate-500 leading-relaxed">色分けやメモに依存していて、引き継ぎ後に誰も触れなくなる。</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+          <p class="text-2xl mb-2">🤖</p>
+          <p class="font-bold text-slate-800 text-sm mb-1">AIに渡したいのに渡せない</p>
+          <p class="text-xs text-slate-500 leading-relaxed">列名や形式がバラバラで、CopilotやChatGPTにそのまま見せられない。</p>
+        </div>
       </div>
-      <div class="bg-white rounded-2xl border border-slate-200 p-4 text-center">
-        <div class="text-2xl mb-2">✅</div>
-        <p class="font-bold text-slate-700 text-sm">確認する</p>
-        <p class="text-slate-400 text-xs mt-1">クイズで確認</p>
+    </section>
+
+    <!-- Before after -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
+      <div>
+        <h2 class="font-black text-slate-800 text-lg mb-1">このコースで目指す変化</h2>
+        <p class="text-sm text-slate-500">抽象的な「データ活用」ではなく、現場で起こる変化をはっきりさせます。</p>
       </div>
-    </div>
+      <div class="overflow-hidden rounded-2xl border border-slate-200">
+        <table class="w-full text-sm">
+          <thead class="bg-slate-100 text-slate-700">
+            <tr>
+              <th class="text-left px-4 py-3 font-bold">Before</th>
+              <th class="text-left px-4 py-3 font-bold">After</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="bg-white">
+              <td class="px-4 py-3 text-slate-600">毎月2時間かかる集計作業</td>
+              <td class="px-4 py-3 text-slate-800 font-bold">関数やピボットで5分に近づける</td>
+            </tr>
+            <tr class="bg-slate-50">
+              <td class="px-4 py-3 text-slate-600">引き継ぎ不能なファイル</td>
+              <td class="px-4 py-3 text-slate-800 font-bold">誰でも更新できる表の形にする</td>
+            </tr>
+            <tr class="bg-white">
+              <td class="px-4 py-3 text-slate-600">AIに渡しても使えないデータ</td>
+              <td class="px-4 py-3 text-slate-800 font-bold">AIが読みやすい列と形式にそろえる</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- AI and workflow -->
+    <section class="grid md:grid-cols-[1.5fr_1fr] gap-4">
+      <div class="bg-gradient-to-r from-indigo-600 to-violet-600 rounded-2xl p-6 text-white">
+        <p class="text-xs font-bold uppercase tracking-widest text-indigo-100 mb-2">AI Ready</p>
+        <h2 class="font-black text-xl mb-2">AIを使う前に、まず表の形を整える</h2>
+        <p class="text-sm text-indigo-100 leading-relaxed">
+          CopilotやChatGPTに業務データを見せるとき、列名があいまい、数字が文字列、小計行が混ざる、という状態では正確に読めません。<br>
+          このコースで学ぶ「きれいなデータ」は、AI活用の前提条件でもあります。
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl border border-slate-200 p-6">
+        <h2 class="font-black text-slate-800 mb-3 text-lg">進め方</h2>
+        <div class="space-y-3 text-sm">
+          <div class="flex items-start gap-3">
+            <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-black text-xs flex items-center justify-center shrink-0">1</span>
+            <p class="text-slate-600 leading-relaxed">ダミーの売上データで、困る症状を見つける</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-black text-xs flex items-center justify-center shrink-0">2</span>
+            <p class="text-slate-600 leading-relaxed">長野県の実データで、実際に整える練習をする</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-black text-xs flex items-center justify-center shrink-0">3</span>
+            <p class="text-slate-600 leading-relaxed">個人技ではなく、チームの入力ルールとして考える</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team rules -->
+    <section class="bg-amber-50 border border-amber-200 rounded-2xl p-6">
+      <h2 class="font-black text-amber-900 text-lg mb-2">きれいなデータは個人技ではなく、チームのルールで決まる</h2>
+      <p class="text-sm text-amber-800 leading-relaxed">
+        データが汚れる原因は、入力する人・整える人・見る人が別で、困りごとが共有されにくいことです。<br>
+        このコースでは、関数や操作だけでなく、入力ルールの統一や責任者の明確化がなぜ必要かも扱います。
+      </p>
+    </section>
 
     <!-- Lesson list -->
     <div>
@@ -102,46 +183,61 @@
             <div class="bg-indigo-600 text-white rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">1</div>
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-2 flex-wrap mb-1">
-                <h3 class="font-black text-slate-800 group-hover:text-indigo-700 transition-colors">「神Excel」ってなに？</h3>
+                <h3 class="font-black text-slate-800 group-hover:text-indigo-700 transition-colors">もらった表が使えない。なぜ？</h3>
                 <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">公開中</span>
               </div>
-              <p class="text-sm text-slate-500">分析できないデータの問題点を見つけよう。</p>
+              <p class="text-sm text-slate-500">ダミー売上データで「困る表」の症状を見つけ、あとから「神Excel」という名前を知ろう。</p>
               <div class="flex gap-2 mt-2 flex-wrap">
-                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">データの基本</span>
+                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">ダミー売上データ</span>
                 <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">神Excel</span>
+                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">AI前提</span>
               </div>
             </div>
             <span class="text-indigo-400 text-xl group-hover:translate-x-1 transition-transform shrink-0">→</span>
           </div>
         </a>
 
-        <!-- L2 -->
-        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
+        <!-- L2 active -->
+        <a href="lesson02/index.html"
+          class="group block bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-lg transition-all duration-200 p-5">
           <div class="flex items-start gap-4">
-            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">2</div>
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-black text-slate-400">データを「きれいな形」に整える</h3>
-                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
+            <div class="bg-indigo-600 text-white rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">2</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 flex-wrap mb-1">
+                <h3 class="font-black text-slate-800 group-hover:text-indigo-700 transition-colors">その集計ミス、データが原因だった</h3>
+                <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">公開中</span>
               </div>
-              <p class="text-sm text-slate-400">全角数字・日付・書式の統一方法を学ぼう。</p>
+              <p class="text-sm text-slate-500">前処理の2時間が、月いくら・年いくらになるのかをコスト感覚でつかもう。</p>
+              <div class="flex gap-2 mt-2 flex-wrap">
+                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">コスト試算</span>
+                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">残業</span>
+                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">組織課題</span>
+              </div>
             </div>
+            <span class="text-indigo-400 text-xl group-hover:translate-x-1 transition-transform shrink-0">→</span>
           </div>
-        </div>
+        </a>
 
-        <!-- L3 -->
-        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
+        <!-- L3 active -->
+        <a href="lesson03/index.html"
+          class="group block bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-lg transition-all duration-200 p-5">
           <div class="flex items-start gap-4">
-            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">3</div>
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-black text-slate-400">スプレッドシートのクレンジング機能</h3>
-                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
+            <div class="bg-indigo-600 text-white rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">3</div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 flex-wrap mb-1">
+                <h3 class="font-black text-slate-800 group-hover:text-indigo-700 transition-colors">1行1件・1列1種類——データの基本ルール</h3>
+                <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">公開中</span>
               </div>
-              <p class="text-sm text-slate-400">スプレッドシートの機能で効率よくきれいにしよう。</p>
+              <p class="text-sm text-slate-500">悪い表と良い表を見比べて、構造のルールを体で覚えよう。</p>
+              <div class="flex gap-2 mt-2 flex-wrap">
+                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">tidy data</span>
+                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">ダミー売上データ</span>
+                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">比較学習</span>
+              </div>
             </div>
+            <span class="text-indigo-400 text-xl group-hover:translate-x-1 transition-transform shrink-0">→</span>
           </div>
-        </div>
+        </a>
 
         <!-- L4 -->
         <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
@@ -149,10 +245,10 @@
             <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">4</div>
             <div class="flex-1">
               <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-black text-slate-400">ピボットテーブルで集計する</h3>
+                <h3 class="font-black text-slate-400">数字・日付・テキストの正しい入れ方</h3>
                 <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
               </div>
-              <p class="text-sm text-slate-400">市町村ごとの人口をまとめて集計しよう。</p>
+              <p class="text-sm text-slate-400">入力規則を使って、まちがえられない仕組みを作ろう。</p>
             </div>
           </div>
         </div>
@@ -163,10 +259,80 @@
             <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">5</div>
             <div class="flex-1">
               <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-black text-slate-400">グラフで見える化する</h3>
+                <h3 class="font-black text-slate-400">フィルターとコピペで前処理する</h3>
                 <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
               </div>
-              <p class="text-sm text-slate-400">人口の推移をグラフにして、変化を発見しよう。</p>
+              <p class="text-sm text-slate-400">長野県の実データを使って、不要行の削除や値のみ貼り付けを練習しよう。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- L6 -->
+        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
+          <div class="flex items-start gap-4">
+            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">6</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-black text-slate-400">スプレッドシートの自動クレンジング機能</h3>
+                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
+              </div>
+              <p class="text-sm text-slate-400">TRIMやSUBSTITUTEなどで、手作業を減らそう。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- L7 -->
+        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
+          <div class="flex items-start gap-4">
+            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">7</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-black text-slate-400">ピボットテーブルで集計する</h3>
+                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
+              </div>
+              <p class="text-sm text-slate-400">整ったデータを数クリックで集計して、前処理の価値を実感しよう。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- L8 -->
+        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
+          <div class="flex items-start gap-4">
+            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">8</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-black text-slate-400">グラフで変化を見える化する</h3>
+                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
+              </div>
+              <p class="text-sm text-slate-400">棒グラフと折れ線を使い分けて、伝わる可視化を作ろう。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- L9 -->
+        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
+          <div class="flex items-start gap-4">
+            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">9</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-black text-slate-400">AIにデータを渡す——何を準備すれば使えるか</h3>
+                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
+              </div>
+              <p class="text-sm text-slate-400">CSV、列名、型のそろえ方を、AIへの相談シーンで学ぼう。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- L10 -->
+        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
+          <div class="flex items-start gap-4">
+            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">10</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <h3 class="font-black text-slate-400">チームの入力ルールを作る</h3>
+                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
+              </div>
+              <p class="text-sm text-slate-400">「やる人と困る人が違う」問題に、ルールと責任者で向き合おう。</p>
             </div>
           </div>
         </div>

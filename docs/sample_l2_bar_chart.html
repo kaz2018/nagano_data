@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>【試作サンプル】L2 ページ内ぼうグラフ（市と村の比較）</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+  </style>
+  <!--
+    ===========================================================================
+    Copilot 向け「動く参照サンプル」（本番ページではありません）。
+    指示書: docs/copilot_task_kids_data_embed.md と合わせて使ってください。
+
+    ★ L2 は L1 と狙いが違う ★
+      L1 = 表を読む       → docs/sample_l1_data_table.html（並び替え表）
+      L2 = 棒グラフで比べる → このファイル（ページ内に棒グラフを描画）
+
+    このファイルが示すもの:
+      - データ（lesson02_cities_2025.csv）を「横棒グラフ」としてページ内に描画
+      - 棒の長さ = 人口に比例（バニラJS + Tailwindのみ。グラフライブラリ不要）
+      - 「市」と「村」を色分け（青=市 / グレー=村）
+        → Q3「いちばん多い市といちばん少ない市の差」で村を混同させないため
+      - 最大の棒をハイライト（いちばん多い市が一目で分かる）
+      - 並び替えボタンで「多いじゅん / 元のじゅん」を切り替え
+      - L2テーマ色（青 / blue）
+
+    本番では:
+      - この棒グラフをデータカードの直後に置く
+      - 既存の「📊 スプレッドシートをひらこう」「🛠️ グラフのつくりかた」は
+        ページ下部の「📊 自分でもグラフを作ってみよう（発展）」に格下げ
+      - 「やってみよう」の問題文を「上のグラフを見て答えよう」に変更
+    ===========================================================================
+  -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
+</head>
+
+<body class="bg-green-50 min-h-screen">
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <section class="text-center">
+      <div class="inline-block bg-blue-100 text-blue-700 text-sm font-bold px-4 py-1 rounded-full mb-3">試作サンプル</div>
+      <h1 class="text-2xl font-black text-gray-800">L2 ページ内ぼうグラフ</h1>
+      <p class="text-gray-500 text-sm mt-1">市と村の人口を、ぼうの長さでくらべよう</p>
+    </section>
+
+    <!-- ▼▼▼ ここが本番に入れる「ぼうグラフ」セクション ▼▼▼ -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 長野県の市と村の人口（2025年）</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        ぼうが長いほど人口が多いよ。<strong class="text-blue-700">青いぼうが「市」</strong>、<strong class="text-gray-500">グレーのぼうが「村」</strong>。<br />
+        長野市のぼうと、麻績村・筑北村のぼうの長さをくらべてみよう。市と村でこんなにちがうんだね！
+      </p>
+
+      <!-- 凡例 + 並び替えボタン -->
+      <div class="flex flex-wrap items-center gap-4 text-xs">
+        <span class="flex items-center gap-1"><span class="inline-block w-3 h-3 rounded bg-blue-500"></span>市</span>
+        <span class="flex items-center gap-1"><span class="inline-block w-3 h-3 rounded bg-gray-400"></span>村</span>
+        <button id="sortBtn" onclick="toggleSort()"
+          class="ml-auto bg-blue-500 hover:bg-blue-600 text-white font-bold px-3 py-1.5 rounded-lg transition-colors">
+          人口が多いじゅんにならべる
+        </button>
+      </div>
+
+      <div id="chart" class="space-y-1.5"></div>
+    </section>
+    <!-- ▲▲▲ ぼうグラフセクションここまで ▲▲▲ -->
+
+  </main>
+
+  <script>
+    // === レッスンごとに差し替える部分 ============================================
+    // テーマ色（L2=青）
+    const THEME = {
+      barCity: 'bg-blue-500',        // 市の棒
+      barVillage: 'bg-gray-400',     // 村の棒
+      barMax: 'bg-blue-600',         // 最大（いちばん多い市）の棒
+    };
+
+    // データ（本番は lesson02_cities_2025.csv から生成）
+    // type: 'city'=市 / 'village'=村。CSVの市町村名が「村」で終わるものを village にする。
+    const DATA = [
+      { name: '長野市', pop: 361045, type: 'city' },
+      { name: '松本市', pop: 237005, type: 'city' },
+      { name: '上田市', pop: 149869, type: 'city' },
+      { name: '岡谷市', pop: 45301, type: 'city' },
+      { name: '飯田市', pop: 93397, type: 'city' },
+      { name: '諏訪市', pop: 47032, type: 'city' },
+      { name: '須坂市', pop: 48350, type: 'city' },
+      { name: '小諸市', pop: 40274, type: 'city' },
+      { name: '伊那市', pop: 63758, type: 'city' },
+      { name: '駒ヶ根市', pop: 31092, type: 'city' },
+      { name: '中野市', pop: 40447, type: 'city' },
+      { name: '大町市', pop: 24426, type: 'city' },
+      { name: '飯山市', pop: 17946, type: 'city' },
+      { name: '茅野市', pop: 55078, type: 'city' },
+      { name: '塩尻市', pop: 65668, type: 'city' },
+      { name: '佐久市', pop: 96856, type: 'city' },
+      { name: '千曲市', pop: 57525, type: 'city' },
+      { name: '東御市', pop: 29055, type: 'city' },
+      { name: '安曇野市', pop: 92801, type: 'city' },
+      { name: '麻績村', pop: 2311, type: 'village' },
+      { name: '筑北村', pop: 3788, type: 'village' },
+    ];
+    // === 差し替える部分ここまで =================================================
+
+    // --- 汎用ロジック（他レッスンの棒グラフでも使い回せる）----------------------
+    let sorted = false;
+
+    const maxPop = Math.max(...DATA.map(d => d.pop));
+    // いちばん多い「市」を特定（村は対象外。Q3の混同を防ぐ意図と一致）
+    const maxCityPop = Math.max(...DATA.filter(d => d.type === 'city').map(d => d.pop));
+
+    function toggleSort() {
+      sorted = !sorted;
+      document.getElementById('sortBtn').textContent =
+        sorted ? 'もとのじゅんにもどす' : '人口が多いじゅんにならべる';
+      render();
+    }
+
+    function render() {
+      const rows = sorted ? [...DATA].sort((a, b) => b.pop - a.pop) : DATA;
+      const chart = document.getElementById('chart');
+      chart.innerHTML = rows.map(d => {
+        const pct = (d.pop / maxPop) * 100;                 // 棒の長さ（最大=100%）
+        const isMaxCity = d.type === 'city' && d.pop === maxCityPop;
+        const barColor = isMaxCity ? THEME.barMax
+                       : d.type === 'village' ? THEME.barVillage
+                       : THEME.barCity;
+        const labelColor = d.type === 'village' ? 'text-gray-500' : 'text-gray-700';
+        // 棒が短すぎて数字が乗らない村は、棒の外（右）に数字を出す
+        const showInside = pct > 22;
+        return `
+          <div class="flex items-center gap-2">
+            <div class="w-20 shrink-0 text-right text-xs font-bold ${labelColor}">${d.name}</div>
+            <div class="flex-1 flex items-center">
+              <div class="${barColor} h-6 rounded-r flex items-center justify-end pr-2 transition-all duration-500"
+                   style="width: ${Math.max(pct, 0.6)}%">
+                ${showInside ? `<span class="text-white text-xs font-bold">${d.pop.toLocaleString()}</span>` : ''}
+              </div>
+              ${showInside ? '' : `<span class="text-xs text-gray-500 ml-1">${d.pop.toLocaleString()}</span>`}
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    render();
+  </script>
+</body>
+
+</html>

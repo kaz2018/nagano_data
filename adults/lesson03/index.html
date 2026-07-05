@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>レッスン3: 1行1件・1列1種類——データの基本ルール | ながのデータ探検隊・大人コース</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function lesson3() {
+      return {
+        tidyView: false,
+        q1: null, q2: null, q3: null,
+        r1: null, r2: null, r3: null,
+        checkQ1() { this.r1 = this.q1 === 'b' ? 'ok' : 'ng'; },
+        checkQ2() { this.r2 = this.q2 === 'c' ? 'ok' : 'ng'; },
+        checkQ3() { this.r3 = this.q3 === 'a' ? 'ok' : 'ng'; },
+      };
+    }
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+    [x-cloak] { display: none !important; }
+    .xtable { border-collapse: collapse; }
+    .xtable td { border: 1px solid #cbd5e1; padding: 6px 12px; font-size: 12px; white-space: nowrap; }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
+</head>
+
+<body class="bg-slate-50 min-h-screen" x-data="lesson3()">
+
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-slate-200">
+    <div class="max-w-3xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="../index.html" class="text-slate-500 hover:text-slate-900 text-sm font-bold transition-colors">
+        ← 一覧へ
+      </a>
+      <div class="flex items-center gap-1.5">
+        <div class="w-7 h-1.5 bg-indigo-600 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-indigo-600 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-indigo-600 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-slate-200 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-slate-200 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-slate-200 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-slate-200 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-slate-200 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-slate-200 rounded-full"></div>
+        <div class="w-7 h-1.5 bg-slate-200 rounded-full"></div>
+        <span class="text-xs text-slate-400 ml-2 font-bold">3 / 10</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="bg-gradient-to-r from-indigo-600 to-violet-600 text-white">
+    <div class="max-w-3xl mx-auto px-6 py-10">
+      <div class="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">レッスン 3</div>
+      <h1 class="text-3xl font-black mb-2">1行1件・1列1種類——データの基本ルール</h1>
+      <p class="text-indigo-200 text-sm">人間が読むための表と、データとして使うための表はちがうと体で覚えます</p>
+    </div>
+  </div>
+
+  <main class="max-w-3xl mx-auto px-6 py-8 space-y-6">
+
+    <section class="bg-white rounded-2xl border border-slate-200 p-6">
+      <h2 class="font-black text-slate-800 mb-3">🎯 このレッスンでわかること</h2>
+      <ul class="space-y-2 text-sm text-slate-600">
+        <li class="flex gap-2 items-start">
+          <span class="text-indigo-500 font-black shrink-0">✓</span>1行1件・1列1種類の意味がわかる
+        </li>
+        <li class="flex gap-2 items-start">
+          <span class="text-indigo-500 font-black shrink-0">✓</span>人間が読むための表と、集計しやすい表の違いがわかる
+        </li>
+        <li class="flex gap-2 items-start">
+          <span class="text-indigo-500 font-black shrink-0">✓</span>L4以降で入力規則や前処理を学ぶ土台ができる
+        </li>
+      </ul>
+    </section>
+
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
+      <div>
+        <h2 class="font-black text-slate-800 mb-1">きれいに見える表でも、使いやすいとは限らない</h2>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          L2では、表の乱れが毎月のコストになると見ました。<br>
+          でも問題は、全角数字や空欄だけではありません。<strong>表の作り方そのもの</strong>が、集計しにくさを生むこともあります。
+        </p>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm">
+          <p class="font-bold text-slate-700 mb-1">💡 レッスン1でやったことを思い出してください</p>
+          <p class="text-slate-600 leading-relaxed">
+            L1で長野県のデータをきれいにしたとき、1行に1市町村・1列に1種類の情報を並べた形が完成しました。<br>
+            あの形こそが、このレッスンで学ぶ「データとして使うための表」の基本ルールそのものです。
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-4 text-sm">
+        <p class="font-bold text-indigo-800 mb-1">今日の結論</p>
+        <p class="text-indigo-700 leading-relaxed">
+          データとして使う表は、<strong>1行に1件、1列に1種類</strong>が基本です。<br>
+          この形になっていると、並び替え・フィルター・ピボット・グラフ・AI活用まで全部つながります。
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-5">
+      <div>
+        <h2 class="font-black text-slate-800 mb-1">悪い表と良い表を見比べよう</h2>
+        <p class="text-slate-500 text-sm">同じ売上データでも、表の形を変えるだけで使いやすさが大きく変わります。</p>
+      </div>
+
+      <div class="flex gap-2">
+        <button @click="tidyView = false"
+          :class="!tidyView ? 'bg-red-500 text-white shadow-md' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'"
+          class="px-4 py-2 rounded-full text-sm font-bold transition-all duration-200">
+          人間が読むための表
+        </button>
+        <button @click="tidyView = true"
+          :class="tidyView ? 'bg-emerald-600 text-white shadow-md' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'"
+          class="px-4 py-2 rounded-full text-sm font-bold transition-all duration-200">
+          データとして使うための表
+        </button>
+      </div>
+
+      <div x-show="!tidyView" class="space-y-4">
+        <div class="rounded-xl overflow-hidden border border-red-200 shadow-sm">
+          <div class="bg-red-50 px-4 py-2">
+            <p class="text-sm font-bold text-red-800">人間が読むための表（見た目はわかりやすい）</p>
+          </div>
+          <div class="bg-white p-4 overflow-x-auto">
+            <table class="xtable">
+              <tbody>
+                <tr>
+                  <td colspan="6" style="background:#fee2e2;font-weight:bold;text-align:center;color:#991b1b;">2025年上期 店舗別売上まとめ</td>
+                </tr>
+                <tr>
+                  <td style="background:#fee2e2;font-weight:bold;color:#991b1b;">店舗ID</td>
+                  <td style="background:#fee2e2;font-weight:bold;color:#991b1b;">店舗名</td>
+                  <td style="background:#fee2e2;font-weight:bold;color:#991b1b;">4月売上</td>
+                  <td style="background:#fee2e2;font-weight:bold;color:#991b1b;">5月売上</td>
+                  <td style="background:#fee2e2;font-weight:bold;color:#991b1b;">6月売上</td>
+                  <td style="background:#fee2e2;font-weight:bold;color:#991b1b;">合計</td>
+                </tr>
+                <tr><td>ST01</td><td>松本店</td><td>540000</td><td>558000</td><td>561000</td><td>1659000</td></tr>
+                <tr><td>ST02</td><td>長野店</td><td>612000</td><td>605000</td><td>598000</td><td>1815000</td></tr>
+                <tr><td>ST03</td><td>上田店</td><td>423000</td><td>418000</td><td>420000</td><td>1261000</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-3 text-sm">
+          <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+            <p class="font-bold text-red-800 mb-1">月が列に増え続ける</p>
+            <p class="text-red-700 leading-relaxed">7月、8月が来るたびに列が増え、表の形がどんどん横に広がります。</p>
+          </div>
+          <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+            <p class="font-bold text-red-800 mb-1">合計が混ざる</p>
+            <p class="text-red-700 leading-relaxed">元データと集計結果が同じ表に入り、あとで再集計するときにじゃまになります。</p>
+          </div>
+          <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+            <p class="font-bold text-red-800 mb-1">AIにも説明しづらい</p>
+            <p class="text-red-700 leading-relaxed">1行が「店舗1件」なのか「店舗×月1件」なのかがあいまいです。</p>
+          </div>
+        </div>
+
+        <a href="../data/lesson03_sales_bad_structure.csv"
+          class="inline-flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors">
+          📄 悪い形のCSVを開く
+        </a>
+      </div>
+
+      <div x-show="tidyView" x-cloak class="space-y-4">
+        <div class="rounded-xl overflow-hidden border border-emerald-200 shadow-sm">
+          <div class="bg-emerald-50 px-4 py-2">
+            <p class="text-sm font-bold text-emerald-800">データとして使うための表（集計しやすい）</p>
+          </div>
+          <div class="bg-white p-4 overflow-x-auto">
+            <table class="xtable">
+              <tbody>
+                <tr>
+                  <td style="background:#d1fae5;font-weight:bold;color:#065f46;">店舗ID</td>
+                  <td style="background:#d1fae5;font-weight:bold;color:#065f46;">店舗名</td>
+                  <td style="background:#d1fae5;font-weight:bold;color:#065f46;">月</td>
+                  <td style="background:#d1fae5;font-weight:bold;color:#065f46;">売上</td>
+                </tr>
+                <tr><td>ST01</td><td>松本店</td><td>2025-04</td><td>540000</td></tr>
+                <tr><td>ST01</td><td>松本店</td><td>2025-05</td><td>558000</td></tr>
+                <tr><td>ST01</td><td>松本店</td><td>2025-06</td><td>561000</td></tr>
+                <tr><td>ST02</td><td>長野店</td><td>2025-04</td><td>612000</td></tr>
+                <tr><td>ST02</td><td>長野店</td><td>2025-05</td><td>605000</td></tr>
+                <tr><td>ST02</td><td>長野店</td><td>2025-06</td><td>598000</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-3 text-sm">
+          <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+            <p class="font-bold text-emerald-800 mb-1">1行 = 1件</p>
+            <p class="text-emerald-700 leading-relaxed">「1店舗の1か月分の売上」という単位が、すべての行でそろっています。</p>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+            <p class="font-bold text-emerald-800 mb-1">1列 = 1種類</p>
+            <p class="text-emerald-700 leading-relaxed">月は「月」、売上は「売上」の列だけに入るので、ルールがぶれません。</p>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+            <p class="font-bold text-emerald-800 mb-1">そのまま使い回せる</p>
+            <p class="text-emerald-700 leading-relaxed">フィルター、ピボット、グラフ、AIへの受け渡しが同じ形のままでできます。</p>
+          </div>
+        </div>
+
+        <a href="../data/lesson03_sales_tidy.csv"
+          class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors">
+          📄 良い形のCSVを開く
+        </a>
+      </div>
+    </section>
+
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-5">
+      <div>
+        <h2 class="font-black text-slate-800 mb-1">2つのルールを体で覚える</h2>
+        <p class="text-slate-500 text-sm">この2つが、これからのレッスンの土台です。</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-white border-2 border-indigo-200 rounded-2xl p-5">
+          <p class="text-xs font-bold text-indigo-600 mb-2">ルール 1</p>
+          <h3 class="font-black text-slate-800 mb-2">1行1件</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            1行には、同じ粒度のデータを1件だけ入れます。<br>
+            今回なら「1店舗の1か月分の売上」が1件です。
+          </p>
+        </div>
+        <div class="bg-white border-2 border-indigo-200 rounded-2xl p-5">
+          <p class="text-xs font-bold text-indigo-600 mb-2">ルール 2</p>
+          <h3 class="font-black text-slate-800 mb-2">1列1種類</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            1つの列には、1つの意味だけを入れます。<br>
+            「月」の列には月だけ、「売上」の列には数字だけが入る状態です。
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm">
+        <p class="font-bold text-amber-800 mb-1">人間が読むための表を否定しているわけではありません</p>
+        <p class="text-amber-700 leading-relaxed">
+          上司に見せる資料や印刷用の表としては、月が横に並ぶ形が便利なこともあります。<br>
+          ただし、その前の元データは「使うための形」で持っておくのが安全です。
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-5">
+      <div>
+        <h2 class="font-black text-slate-800 mb-1">次のレッスンにつながる視点</h2>
+        <p class="text-slate-500 text-sm">良い形がわかったら、次はその形を壊さない入力方法を作ります。</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-3 text-sm">
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+          <p class="font-bold text-slate-800 mb-1">L4でやること</p>
+          <p class="text-slate-600 leading-relaxed">数字・日付・テキストの入力規則を作って、そもそも間違えにくい表にします。</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+          <p class="font-bold text-slate-800 mb-1">L5以降でやること</p>
+          <p class="text-slate-600 leading-relaxed">この形を前提に、長野県の実データを前処理し、ピボットやグラフに進みます。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-5">
+      <h2 class="font-black text-slate-800">やってみよう</h2>
+
+      <div class="bg-slate-50 rounded-xl p-5 space-y-3 border border-slate-100">
+        <p class="font-bold text-slate-800 text-sm">問題 1</p>
+        <p class="text-slate-700 text-sm leading-relaxed">「1行1件」とは、どういう意味ですか？</p>
+        <div class="space-y-2">
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q1" value="a" x-model="q1" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">① 1行に1人だけ入力する</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q1" value="b" x-model="q1" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">② 1行に同じ粒度のデータを1件だけ入れる</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q1" value="c" x-model="q1" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">③ 1行おきに空白を入れる</span>
+          </label>
+        </div>
+        <button @click="checkQ1()" :disabled="!q1"
+          :class="q1 ? 'bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer' : 'bg-slate-200 text-slate-400 cursor-not-allowed'"
+          class="px-5 py-2 rounded-lg text-sm font-bold transition-all duration-200">
+          答え合わせ
+        </button>
+        <div x-show="r1 !== null" x-cloak
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 translate-y-1"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          :class="r1 === 'ok' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-700'"
+          class="border rounded-xl p-3 text-sm font-bold leading-relaxed">
+          <span x-show="r1 === 'ok'">⭕ 正解！今回なら「1店舗の1か月分の売上」が1件です。</span>
+          <span x-show="r1 === 'ng'">❌ もう一度！1行が何を表すかに注目してみましょう。</span>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 rounded-xl p-5 space-y-3 border border-slate-100">
+        <p class="font-bold text-slate-800 text-sm">問題 2</p>
+        <p class="text-slate-700 text-sm leading-relaxed">「4月売上」「5月売上」「6月売上」と月ごとに列を増やす表が扱いにくい理由として、いちばん近いものはどれですか？</p>
+        <div class="space-y-2">
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q2" value="a" x-model="q2" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">① 月ごとに色を変えにくいから</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q2" value="b" x-model="q2" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">② 文字数が長くなるから</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q2" value="c" x-model="q2" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">③ 月が増えるたびに表の形が変わり、集計しにくくなるから</span>
+          </label>
+        </div>
+        <button @click="checkQ2()" :disabled="!q2"
+          :class="q2 ? 'bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer' : 'bg-slate-200 text-slate-400 cursor-not-allowed'"
+          class="px-5 py-2 rounded-lg text-sm font-bold transition-all duration-200">
+          答え合わせ
+        </button>
+        <div x-show="r2 !== null" x-cloak
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 translate-y-1"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          :class="r2 === 'ok' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-700'"
+          class="border rounded-xl p-3 text-sm font-bold leading-relaxed">
+          <span x-show="r2 === 'ok'">⭕ 正解！月が増えるたびに列が増えると、表のルールがぶれやすくなります。</span>
+          <span x-show="r2 === 'ng'">❌ もう一度！「人間が読むための表」の困りごとを見直してみましょう。</span>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 rounded-xl p-5 space-y-3 border border-slate-100">
+        <p class="font-bold text-slate-800 text-sm">問題 3</p>
+        <p class="text-slate-700 text-sm leading-relaxed">「データとして使うための表」で、月の情報はどこに入れるのがよいですか？</p>
+        <div class="space-y-2">
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q3" value="a" x-model="q3" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">① 「月」という1つの列に入れる</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q3" value="b" x-model="q3" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">② 月ごとに別シートを作る</span>
+          </label>
+          <label class="flex items-start gap-2 cursor-pointer group">
+            <input type="radio" name="q3" value="c" x-model="q3" class="mt-0.5 accent-indigo-600" />
+            <span class="text-sm text-slate-700 group-hover:text-slate-900">③ タイトル行にまとめて書く</span>
+          </label>
+        </div>
+        <button @click="checkQ3()" :disabled="!q3"
+          :class="q3 ? 'bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer' : 'bg-slate-200 text-slate-400 cursor-not-allowed'"
+          class="px-5 py-2 rounded-lg text-sm font-bold transition-all duration-200">
+          答え合わせ
+        </button>
+        <div x-show="r3 !== null" x-cloak
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 translate-y-1"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          :class="r3 === 'ok' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-700'"
+          class="border rounded-xl p-3 text-sm font-bold leading-relaxed">
+          <span x-show="r3 === 'ok'">⭕ 正解！「月」の列を1つ作ると、月が増えても表の形が変わりません。</span>
+          <span x-show="r3 === 'ng'">❌ もう一度！「1列1種類」の意味を思い出してみましょう。</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="flex justify-between items-center pt-2 pb-10">
+      <a href="../lesson02/index.html" class="text-slate-400 hover:text-slate-700 text-sm font-bold transition-colors">
+        ← レッスン2へ
+      </a>
+      <span class="bg-slate-200 text-slate-500 font-bold px-6 py-3 rounded-xl text-sm">
+        レッスン4は準備中
+      </span>
+    </div>
+
+  </main>
+
+  <footer class="text-center py-6 text-slate-400 text-sm border-t border-slate-200">
+    <p>ながのデータ探検隊 | 大人コース</p>
+  </footer>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b1f3fc535d864483bdbbf325e9597364"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

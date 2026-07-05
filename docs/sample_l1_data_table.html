@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>【試作サンプル】L1 ページ内データ表（並び替え・ハイライト）</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+  </style>
+  <!--
+    ===========================================================================
+    これは Copilot 向けの「動く参照サンプル」です（本番ページではありません）。
+    指示書: docs/copilot_task_kids_data_embed.md と合わせて使ってください。
+
+    このファイルが示すもの:
+      - CSVデータをページ内の <table> として埋め込む形
+      - 列見出しタップで「昇順 → 降順 → 元順」にトグルで並び替え（▲▼表示）
+      - 数値列の最大値セルをハイライト（一番多い村が一目で分かる）
+      - バニラJS + Tailwind のみ。外部ライブラリ追加なし
+      - L1テーマ色（緑 / green）
+
+    本番では:
+      - data の中身は kids/data のCSVから生成する（L1は nagano_population_raw.csv の
+        「村」で終わる35行 × 2017〜2025年総人口）
+      - 表の前後に既存のデータカード・やってみよう等を配置
+      - renderTable() / sortBy() の部分は他レッスンへ THEME と data を差し替えて流用する
+    ===========================================================================
+  -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
+</head>
+
+<body class="bg-green-50 min-h-screen">
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <section class="text-center">
+      <div class="inline-block bg-green-100 text-green-700 text-sm font-bold px-4 py-1 rounded-full mb-3">試作サンプル</div>
+      <h1 class="text-2xl font-black text-gray-800">L1 ページ内データ表</h1>
+      <p class="text-gray-500 text-sm mt-1">列の名前をタップすると並びかわるよ</p>
+    </section>
+
+    <!-- ▼▼▼ ここが本番に入れる「データ表」セクション ▼▼▼ -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 長野県の村の人口（2017〜2025年）</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        35の村のデータだよ。<strong class="text-green-700">列の名前（見出し）をタップ</strong>すると、その数で大きいじゅん・小さいじゅんに並びかわるよ。<br />
+        「2025年」をタップして、一番上にくる村を見てみよう！ いちばん多いところは<span class="bg-green-200 px-1 rounded">色つき</span>になるよ。
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-green-100">
+        <table class="w-full text-sm text-right whitespace-nowrap">
+          <thead>
+            <tr id="tableHead" class="bg-green-100 text-green-800"></tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-400">タップするたびに「大きいじゅん → 小さいじゅん → もとのじゅん」とかわるよ。</p>
+    </section>
+    <!-- ▲▲▲ データ表セクションここまで ▲▲▲ -->
+
+  </main>
+
+  <script>
+    // === レッスンごとに差し替える部分 ============================================
+    // テーマ色（L1=緑）。他レッスンはここを blue / purple / orange 等に変えるだけ。
+    const THEME = {
+      head: 'bg-green-100 text-green-800',   // 見出し行
+      highlight: 'bg-green-200 font-bold',   // 最大値セル
+      rowHover: 'hover:bg-green-50',
+    };
+
+    // 表の列定義。key はデータのプロパティ名、type は 'text'（文字順）/'number'（数値順）
+    const COLUMNS = [
+      { key: 'name', label: '村の名前', type: 'text' },
+      { key: '2017', label: '2017年', type: 'number' },
+      { key: '2018', label: '2018年', type: 'number' },
+      { key: '2019', label: '2019年', type: 'number' },
+      { key: '2020', label: '2020年', type: 'number' },
+      { key: '2021', label: '2021年', type: 'number' },
+      { key: '2022', label: '2022年', type: 'number' },
+      { key: '2023', label: '2023年', type: 'number' },
+      { key: '2024', label: '2024年', type: 'number' },
+      { key: '2025', label: '2025年', type: 'number' },
+    ];
+
+    // データ（本番は kids/data のCSVから生成。L1は nagano_population_raw.csv の村35行）
+    const DATA = [
+      { name: '川上村', 2017: 3925, 2018: 3900, 2019: 3850, 2020: 3861, 2021: 3837, 2022: 3734, 2023: 3694, 2024: 3627, 2025: 3518 },
+      { name: '南牧村', 2017: 3098, 2018: 3071, 2019: 3025, 2020: 3013, 2021: 3086, 2022: 2987, 2023: 2959, 2024: 2941, 2025: 2900 },
+      { name: '南相木村', 2017: 986, 2018: 963, 2019: 936, 2020: 909, 2021: 958, 2022: 931, 2023: 928, 2024: 893, 2025: 888 },
+      { name: '北相木村', 2017: 768, 2018: 750, 2019: 750, 2020: 727, 2021: 738, 2022: 711, 2023: 696, 2024: 683, 2025: 669 },
+      { name: '青木村', 2017: 4266, 2018: 4192, 2019: 4154, 2020: 4101, 2021: 4114, 2022: 4077, 2023: 4024, 2024: 3935, 2025: 3868 },
+      { name: '原村', 2017: 7592, 2018: 7630, 2019: 7677, 2020: 7709, 2021: 7662, 2022: 7668, 2023: 7690, 2024: 7719, 2025: 7716 },
+      { name: '南箕輪村', 2017: 15276, 2018: 15355, 2019: 15454, 2020: 15609, 2021: 15875, 2022: 15955, 2023: 16133, 2024: 16234, 2025: 16179 },
+      { name: '中川村', 2017: 4783, 2018: 4717, 2019: 4697, 2020: 4643, 2021: 4637, 2022: 4587, 2023: 4534, 2024: 4486, 2025: 4444 },
+      { name: '宮田村', 2017: 8761, 2018: 8721, 2019: 8745, 2020: 8667, 2021: 8589, 2022: 8522, 2023: 8454, 2024: 8410, 2025: 8367 },
+      { name: '阿智村', 2017: 6477, 2018: 6414, 2019: 6280, 2020: 6197, 2021: 6034, 2022: 5951, 2023: 5856, 2024: 5790, 2025: 5742 },
+      { name: '平谷村', 2017: 453, 2018: 436, 2019: 417, 2020: 404, 2021: 385, 2022: 380, 2023: 377, 2024: 366, 2025: 368 },
+      { name: '根羽村', 2017: 939, 2018: 916, 2019: 876, 2020: 861, 2021: 845, 2022: 855, 2023: 838, 2024: 797, 2025: 778 },
+      { name: '下條村', 2017: 3752, 2018: 3698, 2019: 3672, 2020: 3625, 2021: 3548, 2022: 3465, 2023: 3410, 2024: 3337, 2025: 3280 },
+      { name: '売木村', 2017: 560, 2018: 532, 2019: 529, 2020: 520, 2021: 540, 2022: 530, 2023: 518, 2024: 496, 2025: 495 },
+      { name: '天龍村', 2017: 1314, 2018: 1277, 2019: 1212, 2020: 1168, 2021: 1169, 2022: 1130, 2023: 1094, 2024: 1051, 2025: 991 },
+      { name: '泰阜村', 2017: 1655, 2018: 1629, 2019: 1586, 2020: 1577, 2021: 1536, 2022: 1508, 2023: 1481, 2024: 1431, 2025: 1378 },
+      { name: '喬木村', 2017: 6283, 2018: 6236, 2019: 6118, 2020: 6067, 2021: 5958, 2022: 5819, 2023: 5752, 2024: 5684, 2025: 5600 },
+      { name: '豊丘村', 2017: 6553, 2018: 6496, 2019: 6466, 2020: 6441, 2021: 6410, 2022: 6389, 2023: 6305, 2024: 6269, 2025: 6202 },
+      { name: '大鹿村', 2017: 1023, 2018: 1000, 2019: 966, 2020: 957, 2021: 1012, 2022: 977, 2023: 962, 2024: 922, 2025: 908 },
+      { name: '木祖村', 2017: 2870, 2018: 2803, 2019: 2775, 2020: 2693, 2021: 2667, 2022: 2612, 2023: 2533, 2024: 2475, 2025: 2412 },
+      { name: '王滝村', 2017: 806, 2018: 778, 2019: 760, 2020: 736, 2021: 732, 2022: 713, 2023: 681, 2024: 657, 2025: 639 },
+      { name: '大桑村', 2017: 3725, 2018: 3674, 2019: 3578, 2020: 3482, 2021: 3429, 2022: 3348, 2023: 3257, 2024: 3182, 2025: 3066 },
+      { name: '麻績村', 2017: 2756, 2018: 2713, 2019: 2648, 2020: 2603, 2021: 2569, 2022: 2481, 2023: 2435, 2024: 2368, 2025: 2311 },
+      { name: '生坂村', 2017: 1791, 2018: 1743, 2019: 1676, 2020: 1663, 2021: 1639, 2022: 1621, 2023: 1615, 2024: 1567, 2025: 1531 },
+      { name: '山形村', 2017: 8368, 2018: 8406, 2019: 8377, 2020: 8314, 2021: 8400, 2022: 8321, 2023: 8270, 2024: 8260, 2025: 8223 },
+      { name: '朝日村', 2017: 4447, 2018: 4411, 2019: 4380, 2020: 4366, 2021: 4249, 2022: 4176, 2023: 4130, 2024: 4088, 2025: 4033 },
+      { name: '筑北村', 2017: 4592, 2018: 4511, 2019: 4378, 2020: 4232, 2021: 4145, 2022: 4082, 2023: 3985, 2024: 3858, 2025: 3788 },
+      { name: '松川村', 2017: 9860, 2018: 9768, 2019: 9686, 2020: 9583, 2021: 9598, 2022: 9557, 2023: 9500, 2024: 9477, 2025: 9541 },
+      { name: '白馬村', 2017: 9207, 2018: 9223, 2019: 9422, 2020: 9462, 2021: 8617, 2022: 8473, 2023: 8743, 2024: 9117, 2025: 9486 },
+      { name: '小谷村', 2017: 2873, 2018: 2820, 2019: 2817, 2020: 2801, 2021: 2637, 2022: 2565, 2023: 2592, 2024: 2594, 2025: 2679 },
+      { name: '高山村', 2017: 6920, 2018: 6858, 2019: 6789, 2020: 6692, 2021: 6597, 2022: 6462, 2023: 6390, 2024: 6266, 2025: 6154 },
+      { name: '木島平村', 2017: 4590, 2018: 4501, 2019: 4460, 2020: 4364, 2021: 4354, 2022: 4285, 2023: 4216, 2024: 4140, 2025: 4014 },
+      { name: '野沢温泉村', 2017: 3517, 2018: 3502, 2019: 3510, 2020: 3526, 2021: 3293, 2022: 3228, 2023: 3217, 2024: 3300, 2025: 3358 },
+      { name: '小川村', 2017: 2549, 2018: 2511, 2019: 2441, 2020: 2342, 2021: 2219, 2022: 2186, 2023: 2147, 2024: 2096, 2025: 2031 },
+      { name: '栄村', 2017: 1899, 2018: 1819, 2019: 1742, 2020: 1686, 2021: 1649, 2022: 1595, 2023: 1545, 2024: 1494, 2025: 1463 },
+    ];
+    // === 差し替える部分ここまで =================================================
+
+    // --- 以下はそのまま全レッスンで使い回せる汎用ロジック -----------------------
+    // ソート状態: sortKey=並び替え中の列, dir = 'desc'|'asc'|null(元順)
+    let sortKey = null;
+    let dir = null;
+
+    // 各数値列の最大値を事前計算（ハイライト用）
+    const maxByKey = {};
+    COLUMNS.filter(c => c.type === 'number').forEach(c => {
+      maxByKey[c.key] = Math.max(...DATA.map(d => d[c.key]));
+    });
+
+    function sortBy(key) {
+      const col = COLUMNS.find(c => c.key === key);
+      if (sortKey !== key) {
+        // 別の列を押した → まず大きいじゅん（文字列は昇順）
+        sortKey = key;
+        dir = 'desc';
+      } else if (dir === 'desc') {
+        dir = 'asc';
+      } else if (dir === 'asc') {
+        sortKey = null; // 元のじゅんに戻す
+        dir = null;
+      } else {
+        dir = 'desc';
+      }
+      render();
+    }
+
+    function currentRows() {
+      if (!sortKey) return DATA;                 // 元順
+      const col = COLUMNS.find(c => c.key === sortKey);
+      const rows = [...DATA];
+      rows.sort((a, b) => {
+        let av = a[sortKey], bv = b[sortKey];
+        let cmp = col.type === 'number' ? av - bv : String(av).localeCompare(String(bv), 'ja');
+        return dir === 'desc' ? -cmp : cmp;
+      });
+      return rows;
+    }
+
+    function arrowFor(key) {
+      if (sortKey !== key) return '';
+      return dir === 'desc' ? ' ▼' : dir === 'asc' ? ' ▲' : '';
+    }
+
+    function render() {
+      // ヘッダー
+      const head = document.getElementById('tableHead');
+      head.className = THEME.head;
+      head.innerHTML = COLUMNS.map(c => {
+        const align = c.type === 'text' ? 'text-left' : 'text-right';
+        return `<th class="px-3 py-2 ${align} font-bold cursor-pointer select-none hover:underline"
+                    onclick="sortBy('${c.key}')">${c.label}${arrowFor(c.key)}</th>`;
+      }).join('');
+
+      // ボディ
+      const body = document.getElementById('tableBody');
+      body.innerHTML = currentRows().map(row => {
+        const cells = COLUMNS.map(c => {
+          const align = c.type === 'text' ? 'text-left font-bold text-gray-700' : 'text-right text-gray-600';
+          const isMax = c.type === 'number' && row[c.key] === maxByKey[c.key];
+          const hl = isMax ? THEME.highlight : '';
+          const val = c.type === 'number' ? row[c.key].toLocaleString() : row[c.key];
+          return `<td class="px-3 py-2 ${align} ${hl}">${val}</td>`;
+        }).join('');
+        return `<tr class="border-t border-green-50 ${THEME.rowHover}">${cells}</tr>`;
+      }).join('');
+    }
+
+    render();
+  </script>
+</body>
+
+</html>

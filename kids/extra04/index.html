@@ -1,0 +1,1531 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>番外編：ほんとうの自由ってなに？ | ながのデータ探検隊</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                font-family: "Noto Sans JP", sans-serif;
+            }
+        </style>
+        <script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"
+        ></script>
+    </head>
+
+    <body class="bg-sky-50 min-h-screen">
+        <!-- ヘッダー -->
+        <header class="bg-white shadow-sm">
+            <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+                <a
+                    href="../index.html"
+                    class="text-gray-400 hover:text-gray-600 text-sm"
+                    >← レッスン一らんへ</a
+                >
+                <span class="text-gray-300">|</span>
+                <span class="text-sm font-bold text-sky-500">★ 番外編</span>
+            </div>
+        </header>
+
+        <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+            <!-- タイトル -->
+            <section class="text-center">
+                <div
+                    class="inline-block bg-sky-100 text-sky-600 text-sm font-bold px-4 py-1 rounded-full mb-3"
+                >
+                    ★ 番外編
+                </div>
+                <h1 class="text-3xl font-black text-gray-800 mb-2">
+                    ほんとうの自由ってなに？
+                </h1>
+                <p class="text-gray-500">ルールがないのが自由なの？</p>
+            </section>
+
+            <!-- 導入キャラ会話 -->
+            <section class="space-y-3">
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「あーあ、宿題もルールもぜんぶなくなればいいのに。そしたら朝から晩まで自由にゲームやりまくれるのにな〜。」
+                        </div>
+                    </div>
+                </div>
+                <!-- ？？？（ホーホー先生） -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="？？？"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ？？？
+                        </p>
+                        <div
+                            class="bg-white border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「ホッホッ。……それは、ほんとうの自由かな？」
+                        </div>
+                    </div>
+                </div>
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「だれ！？」
+                        </div>
+                    </div>
+                </div>
+                <!-- ポン太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/assistant.png"
+                        alt="ポン太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-stone-500 mb-1">
+                            ポン太
+                        </p>
+                        <div
+                            class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「フクロウは首が270度まわる。」
+                        </div>
+                    </div>
+                </div>
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-white border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「わたしはホーホー。『自由ってなんだろう』を、300年くらい考えているフクロウじゃ。ねむい、、、。きみが言った自由、ちょっといっしょに実験してみんか？」
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- このレッスンでわかること -->
+            <section class="bg-white rounded-2xl shadow-sm p-6">
+                <h2 class="font-black text-gray-800 mb-3">
+                    🎯 このレッスンでわかること
+                </h2>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                    <li class="flex gap-2">
+                        <span class="text-sky-500 font-bold">✓</span>
+                        「ルールがない＝自由」ではない理由がわかる
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-sky-500 font-bold">✓</span>
+                        ルールがみんなの自由を守っていることがわかる
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-sky-500 font-bold">✓</span>
+                        話し合いに参加して意見を言うことが、自分の自由を手に入れる権利だとわかる
+                    </li>
+                    <li class="flex gap-2">
+                        <span class="text-sky-500 font-bold">✓</span>
+                        「やりたい」気持ちの中には、外から作られたものがあると見ぬけるようになる
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 場面1：もしもルールがぜんぶなくなったら -->
+            <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+                <div class="flex items-center gap-2 mb-2">
+                    <span
+                        class="bg-sky-500 text-white text-xs font-black px-3 py-1 rounded-full"
+                        >場面 1</span
+                    >
+                    <h2 class="font-black text-gray-800">
+                        もしもルールがぜんぶなくなったら
+                    </h2>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「では想像してごらん。今日から世界のルールが、ぜーんぶなくなった。宿題もなし、時間割もなし、法律もなし。きみは何をする？」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「やった！ ゲームやりまくる！ お菓子も食べまくる！
+                            最高じゃん！」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「ふむ。じゃが、ルールがないのは<strong>きみだけじゃない</strong>。みんなルールなしじゃ。……そこへ、体の大きい上級生がやってきて、こう言った。『お、いいゲーム機持ってんじゃん。もらってくぜ!』。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「ええっ！？ それはダメだよ、ぼくのだもん！」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「ほう？
+                            『人のものを取ってはいけない』——それは<strong>ルール</strong>じゃな。ルールがない世界では、取るのも自由。きみはそれを『ダメ』と言えんのじゃよ。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ポン太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/assistant.png"
+                        alt="ポン太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-stone-500 mb-1">
+                            ポン太
+                        </p>
+                        <div
+                            class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「落ちてるドングリは取り放題。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「そっか……。ルールがないと、力の強いやつだけが自由で、ぼくみたいな子どもは、いつも取られる側になっちゃうんだ。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「そのとおり。<strong>ルールのない自由は、いちばん強い1人だけの自由</strong>。しかもその強い者も、もっと強い者が来たら取られる。つまり——だれの自由も守られないんじゃ。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- まとめボックス -->
+                <div
+                    class="bg-sky-50 border border-sky-200 rounded-xl p-4 text-sm text-sky-800 space-y-1"
+                >
+                    <p class="font-black text-sky-700">💡 ここがポイント</p>
+                    <p class="leading-relaxed">
+                        「やりたい放題」の世界では、結局、だれかに支配される世界になってしまう。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 場面2：ルールは自由を守る発明 -->
+            <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+                <div class="flex items-center gap-2 mb-2">
+                    <span
+                        class="bg-sky-500 text-white text-xs font-black px-3 py-1 rounded-full"
+                        >場面 2</span
+                    >
+                    <h2 class="font-black text-gray-800">
+                        ルールは自由を守る発明
+                    </h2>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「じゃあ先生、ルールって、ぼくらをしばるためじゃなくて……」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「うむ。<strong>みんなの自由を守るための発明</strong>なんじゃ。『人のものを取らない』というルールがあるから、きみは安心してゲーム機で遊べる。『順番を守る』というルールがあるから、小さい子もすべり台で遊べる。ルールは自由の反対じゃない。<strong>自由を守るためのもの</strong>なんじゃよ。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ポン太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/assistant.png"
+                        alt="ポン太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-stone-500 mb-1">
+                            ポン太
+                        </p>
+                        <div
+                            class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「ルールえらい。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「でもさ、先生。学校のルールって、守らされてる感じがしてイヤなときもあるよ。『廊下を走るな』とか『宿題やれ』とか、勝手に決められてるじゃん。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「ホッホッ、いい質問じゃ。じつはそこが、いちばん大事なところでな——」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- まとめボックス -->
+                <div
+                    class="bg-sky-50 border border-sky-200 rounded-xl p-4 text-sm text-sky-800 space-y-1"
+                >
+                    <p class="font-black text-sky-700">💡 ここがポイント</p>
+                    <p class="leading-relaxed">
+                        ルールは自由の反対じゃなくて、みんなの自由を守るための発明。でも「守らされてる」と感じるのはなぜだろう？
+                    </p>
+                </div>
+            </section>
+
+            <!-- 場面3：話し合いに参加することが、きみの自由の権利 -->
+            <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+                <div class="flex items-center gap-2 mb-2">
+                    <span
+                        class="bg-sky-500 text-white text-xs font-black px-3 py-1 rounded-full"
+                        >場面 3</span
+                    >
+                    <h2 class="font-black text-gray-800">
+                        話し合いに参加することが、きみの自由の権利
+                    </h2>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「ルールには2種類ある。<strong>だれかに押しつけられたルール</strong>と、<strong>みんなで話し合って決めたルール</strong>じゃ。押しつけられたルールに従うだけなら、それは王様の家来と同じ。じゃが、自分も話し合いに参加して決めたルールなら——それに従うことは、<strong>自分で決めたことに従う</strong>ということ。つまり自由なんじゃ。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「わかった！
+                            じゃあ掃除当番の話し合いで『ぼくは掃除やりたくないです！』って意見を言えばいいんだね！」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「ホッホッ、ちょっと待った。それは意見ではなくて、<strong>わがまま</strong>じゃな。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「え、ちがうの？
+                            自分の思ったことを言うのが意見でしょ？」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「話し合いというのはな、『自分の得』を取り合う場所じゃない。<strong>『みんなにとって一番いい答え』をさがす場所</strong>なんじゃ。だから意見を言うときは、こう考える。『ぼくだけじゃなくて、<strong>クラスのみんなが納得できるやり方</strong>はどれだろう？』とな。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「うーん……。たとえば『掃除やりたくない』じゃなくて、『同じ人ばかり大変にならないように、当番を順番に回すのはどう？』って言う、とか？」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「そう、それじゃ！
+                            それなら掃除がきらいなでい太も、まじめにやっている子も、みんなが納得できる。<strong>みんなのことも考えた意見</strong>が集まって決まったルールなら、全員が『自分たちで決めたルール』と思える。だからみんなが自由になれるんじゃよ。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「だまってると『押しつけられる側』のまま。でも、自分の得だけ言ってもダメで……<strong>みんなが一番納得できる答えのために意見を言う</strong>のか。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「うむ。それこそが、きみの自由を手に入れるための<strong>権利</strong>なんじゃ。話し合いに参加しなかった人は、ほかの人が決めたルールの中で生きるしかない。じゃが、みんなで話し合えばみんなで納得できる。<br />
+                            ほれ、友だちとドッジボールをするとき、『小さい子は当てられてもセーフにしよう』ってみんなで決めたりするじゃろう？
+                            あれこそ立派な『自分たちでルールを決める』じゃ。だれか一人が決めてしまうのではなく、みんなで決めるから楽しく遊べるんじゃよ。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ポン太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/assistant.png"
+                        alt="ポン太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-stone-500 mb-1">
+                            ポン太
+                        </p>
+                        <div
+                            class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「タヌキの世界は弱肉強食。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- まとめボックス -->
+                <div
+                    class="bg-sky-50 border border-sky-200 rounded-xl p-4 text-sm text-sky-800 space-y-1"
+                >
+                    <p class="font-black text-sky-700">💡 ここがポイント</p>
+                    <p class="leading-relaxed">
+                        話し合いは「自分の得」を取り合う場所じゃなくて、「みんなが一番納得できる答え」をさがす場所。そこに参加して意見を言うことが、自分の自由を手に入れるための権利。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 場面4：その「やりたい」は、ほんとうにきみのもの？ -->
+            <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+                <div class="flex items-center gap-2 mb-2">
+                    <span
+                        class="bg-sky-500 text-white text-xs font-black px-3 py-1 rounded-full"
+                        >場面 4</span
+                    >
+                    <h2 class="font-black text-gray-800">
+                        その「やりたい」は、ほんとうにきみのもの？
+                    </h2>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「さて、最後にいちばんむずかしい話じゃ。でい太、きみはさっき『ゲームやりまくりたい、お菓子食べまくりたい』と言ったな。それは……<strong>ほんとうにきみの中から出てきた『やりたい』かな？</strong>」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「え？ どういうこと？
+                            ぼくがやりたいんだから、ぼくの気持ちでしょ？」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「では聞くが、テレビでお菓子のCMを見たあと、急にそのお菓子が食べたくなったことはないか？
+                            YouTubeを1本見終わったら、おすすめに出てきた次の動画が見たくなったことは？」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「……ある。見る前は、見たいなんて思ってなかったのに。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「その『やりたい』は、きみの中から生まれたんじゃなくて、<strong>他の何かによって作られたもの</strong>かもしれん。前に『インスタのわな』で学んだじゃろう？
+                            アプリやCMは、きみの『やりたい』を作り出すプロじゃ。作られた『やりたい』に引っぱられて動くのは、自由に見えて、じつは<strong>あやつられている</strong>のと同じなんじゃよ。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「じゃあ、どうすればいいの？
+                            ぼくの「やりたい」は全部ウソの気持ちってこと？」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「いや、そうではない。ほんものの『やりたい』も、ちゃんときみの中にある。だから、まずは自分にこう聞いてみるんじゃ。<strong
+                                >『これは、ほんとうにぼくがやりたいこと？
+                                それとも、やりたいと思わされてること？』</strong
+                            >とな。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「うーん……。自分に聞いたら、わかるのかな？」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「試しにやってみよう。でい太、きみが『何年たってもやりたい』と思うことはなんじゃ？」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「スキー！
+                            かっこいい技ができるように、もっとうまくなりたい！」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「では、おすすめに出てきた動画を2時間見ることは？
+                            3年後もやりたいかな？」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「……ううん。見おわったあと、『あー時間むだにした』って思うもん。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「ほら、もう答えが出た。<strong>あとで『やってよかった』と思えるのが、ほんものの『やりたい』。あとで『時間をむだにした』と思うのが、他のものによって作られた『やりたい』</strong>じゃ。自分に聞けば、きみはちゃんと見分けられるんじゃよ。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「たしかに……。でもさ先生、動画を見てる<strong>そのとき</strong>は、やめられないんだよ。『次も見たい』って思っちゃって。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「そう、そこが怖いところじゃ。あやつられている<strong>まっ最中</strong>のきみは、冷静に選べない。じゃから——<strong>冷静なときのきみが、先に決めておく</strong>んじゃ。『動画は1日1時間。そのあとはスキーの練習』とな。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「あ、そうか。ねぼうしないように、目覚ましをセットしておくのと同じだ！」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「うまいこと言うのう。自分ルールは、がまんのためのものじゃない。
+                            <strong
+                                >ほんとうにやりたいこと（スキー）を、
+                                他の何かによって作られた『やりたい』（ダラダラ動画）から守るための武器</strong
+                            >なんじゃ。
+                            自分で決めたルールを守るとき、きみはアプリにもCMにもあやつられておらん。自分のやることを決めるのは、自分。それが、いちばん強い自由じゃよ。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ポン太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/assistant.png"
+                        alt="ポン太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-stone-500 mb-1">
+                            ポン太
+                        </p>
+                        <div
+                            class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「Marionette / BOOWY」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- まとめボックス -->
+                <div
+                    class="bg-sky-50 border border-sky-200 rounded-xl p-4 text-sm text-sky-800 space-y-1"
+                >
+                    <p class="font-black text-sky-700">💡 ここがポイント</p>
+                    <p class="leading-relaxed">
+                        見分け方は「あとでどう思うか」。あとで「やってよかった」なら本物のやりたいこと、「時間をむだにした」なら外から作られたやりたいこと。やり始めてしまうと冷静に選べないから、冷静なときの自分が先にルールを決めておく。自分ルールは、本当にやりたいことを守るための武器だよ。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 場面5：自由な人ってどんな人？ -->
+            <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+                <div class="flex items-center gap-2 mb-2">
+                    <span
+                        class="bg-sky-500 text-white text-xs font-black px-3 py-1 rounded-full"
+                        >場面 5</span
+                    >
+                    <h2 class="font-black text-gray-800">
+                        自由な人ってどんな人？
+                    </h2>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「先生、わかってきたよ。ほんとうの自由って『なんでもやりたい放題』じゃないんだね。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left font-sans"
+                        >
+                            「うむ。まとめると、こうじゃ。<br />
+                            <br />
+                            <strong
+                                >①
+                                ルールのない自由は、結局だれの自由も守られない。</strong
+                            ><br />
+                            <strong
+                                >②
+                                みんなで話し合って決めたルールは、みんなの自由を守る。話し合いに参加して意見を言うことが、きみの自由を手に入れるための権利。</strong
+                            ><br />
+                            <strong
+                                >③
+                                『やりたい』の中には、つぎの２つがあるぞ。</strong
+                            >
+                            <ul class="list-disc list-inside ml-4 my-1">
+                                <li>
+                                    <strong>本当に自分がやりたいもの</strong>
+                                </li>
+                                <li>
+                                    <strong
+                                        >他の何かによって作られたもの</strong
+                                    >
+                                </li>
+                            </ul>
+                            <strong
+                                >立ち止まって自分に聞き、ほんとうに自分のやりたいことをできる人が、ほんとうに自由な人じゃ。</strong
+                            >」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- でい太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/main_character.png"
+                        alt="でい太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-amber-600 mb-1">
+                            でい太
+                        </p>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「なんでもできる人じゃなくて、<strong>みんなで決めたルールの中で、ほんとうに自分のやりたいことをできる人</strong>が自由な人、か。よーし、じゃあ今日は帰ってゲームやりまくる…………って、あれ？
+                            今の『やりたい』、ほんとうにぼくの気持ちかな？」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ホーホー先生 -->
+                <div class="flex items-start gap-3 flex-row-reverse">
+                    <img
+                        src="../images/owl.png"
+                        alt="ホーホー先生"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-sky-600 mb-1">
+                            ホーホー先生
+                        </p>
+                        <div
+                            class="bg-sky-50 border border-sky-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left"
+                        >
+                            「ホッホッ！
+                            その『あれ？』が言えるようになったら、もう大丈夫じゃ。ではまた、どこかの森で。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ポン太 -->
+                <div class="flex items-start gap-3">
+                    <img
+                        src="../images/assistant.png"
+                        alt="ポン太"
+                        class="shrink-0 w-10 h-10 rounded-full object-cover shadow"
+                    />
+                    <div>
+                        <p class="text-xs font-bold text-stone-500 mb-1">
+                            ポン太
+                        </p>
+                        <div
+                            class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed"
+                        >
+                            「自分が本当は何をしたいのか、わからない大人もいるよね。」
+                        </div>
+                    </div>
+                </div>
+
+                <!-- まとめボックス (大) -->
+                <div
+                    class="bg-sky-100 border-2 border-sky-300 rounded-2xl p-6 text-sky-900 shadow-sm space-y-2"
+                >
+                    <p class="font-black text-lg text-sky-800">
+                        💡 ほんとうの自由とは
+                    </p>
+                    <p class="font-black text-base leading-relaxed">
+                        ほんとうに自由な人は、なんでもできる人じゃない。<br />
+                        <strong
+                            >みんなで決めたルールの中で、ほんとうに自分のやりたいことをできる人</strong
+                        >。
+                    </p>
+                </div>
+            </section>
+
+            <!-- やってみよう -->
+            <section class="bg-white rounded-2xl shadow-sm p-6 space-y-6">
+                <h2 class="font-black text-gray-800">🖊 やってみよう</h2>
+
+                <!-- Q1 -->
+                <div class="space-y-3">
+                    <p class="font-bold text-gray-700 text-sm">
+                        Q1.
+                        ルールが1つもない世界で、いちばん「自由」になれるのはだれ？（3択）
+                    </p>
+                    <div class="space-y-2 text-sm">
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-sky-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-sky-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q1"
+                                value="a"
+                                class="accent-sky-500"
+                            />
+                            <span>① みんな</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-sky-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-sky-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q1"
+                                value="b"
+                                class="accent-sky-500"
+                            />
+                            <span>② 力のいちばん強い人</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-sky-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-sky-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q1"
+                                value="c"
+                                class="accent-sky-500"
+                            />
+                            <span>③ だれもいない</span>
+                        </label>
+                    </div>
+                    <button
+                        onclick="checkQ1()"
+                        class="bg-sky-500 hover:bg-sky-600 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors"
+                    >
+                        答え合わせ
+                    </button>
+                    <div
+                        id="result-q1"
+                        class="hidden text-sm font-bold px-4 py-3 rounded-xl"
+                    ></div>
+                </div>
+
+                <hr class="border-gray-100" />
+
+                <!-- Q2 -->
+                <div class="space-y-3">
+                    <p class="font-bold text-gray-700 text-sm">
+                        Q2.
+                        クラスのルールに納得できないとき、「自由」につながる行動はどれ？（3択）
+                    </p>
+                    <div class="space-y-2 text-sm">
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-sky-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-sky-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q2"
+                                value="a"
+                                class="accent-sky-500"
+                            />
+                            <span>① だまってがまんする</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-sky-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-sky-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q2"
+                                value="b"
+                                class="accent-sky-500"
+                            />
+                            <span>② こっそりルールを破る</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-sky-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-sky-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q2"
+                                value="c"
+                                class="accent-sky-500"
+                            />
+                            <span
+                                >③
+                                話し合いで「みんなが納得できるやり方」を意見として言う</span
+                            >
+                        </label>
+                    </div>
+                    <button
+                        onclick="checkQ2()"
+                        class="bg-sky-500 hover:bg-sky-600 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors"
+                    >
+                        答え合わせ
+                    </button>
+                    <div
+                        id="result-q2"
+                        class="hidden text-sm font-bold px-4 py-3 rounded-xl"
+                    ></div>
+                </div>
+
+                <hr class="border-gray-100" />
+
+                <!-- Q3 -->
+                <div class="space-y-3">
+                    <p class="font-bold text-gray-700 text-sm">
+                        Q3.
+                        ホーホー先生の言う「ほんとうに自由な人」はどんな人？（3択）
+                    </p>
+                    <div class="space-y-2 text-sm">
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-sky-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-sky-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q3"
+                                value="a"
+                                class="accent-sky-500"
+                            />
+                            <span>① なんでもやりたい放題できる人</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-sky-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-sky-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q3"
+                                value="b"
+                                class="accent-sky-500"
+                            />
+                            <span>② ルールに何も考えず全部従う人</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-3 bg-gray-50 hover:bg-sky-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-sky-300 transition-colors"
+                        >
+                            <input
+                                type="radio"
+                                name="q3"
+                                value="c"
+                                class="accent-sky-500"
+                            />
+                            <span
+                                >③
+                                立ち止まって自分に聞き、ほんとうに自分のやりたいことができる人</span
+                            >
+                        </label>
+                    </div>
+                    <button
+                        onclick="checkQ3()"
+                        class="bg-sky-500 hover:bg-sky-600 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors"
+                    >
+                        答え合わせ
+                    </button>
+                    <div
+                        id="result-q3"
+                        class="hidden text-sm font-bold px-4 py-3 rounded-xl"
+                    ></div>
+                </div>
+
+                <hr class="border-gray-100" />
+
+                <!-- Q4 -->
+                <div class="space-y-3">
+                    <p class="font-bold text-gray-700 text-sm">
+                        Q4.
+                        きみの「自分ルール」を1つ作ってみよう。ほんとうにやりたいことを守るためのルールだよ。
+                    </p>
+                    <textarea
+                        id="q4-input"
+                        rows="3"
+                        placeholder="たとえば「ゲームは宿題が終わってから1時間まで」など…"
+                        class="w-full border border-gray-200 rounded-xl p-3 text-sm text-gray-700 focus:outline-none focus:border-sky-400 resize-none"
+                    ></textarea>
+                    <button
+                        onclick="showQ4Answer()"
+                        class="bg-gray-500 hover:bg-gray-600 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors"
+                    >
+                        こたえのれいを見る
+                    </button>
+                    <div
+                        id="result-q4"
+                        class="hidden bg-gray-50 border border-gray-200 rounded-xl p-4 text-sm text-gray-700"
+                    >
+                        <p class="font-black text-gray-600 mb-2">
+                            💬 こたえのれい
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            （れい）「ゲームは宿題が終わってから1時間まで。そのぶん、週末は思いっきりスキーの練習をする」——ポイントは、がまんのためじゃなくて、自分がほんとうにやりたいこと（スキー）を守るためのルールにすることだよ。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 保護者向けセクション -->
+            <section
+                class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-4"
+            >
+                <div class="flex items-center gap-2">
+                    <span class="text-lg">👨‍👩‍👧</span>
+                    <h2 class="font-black text-slate-700">保護者の方へ</h2>
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    このページでは、ルソー『社会契約論』（第1編第8章）における自由の3段階を、子ども向けの会話で紹介しました。
+                </p>
+                <ul
+                    class="list-disc list-inside ml-4 text-sm text-slate-600 space-y-1"
+                >
+                    <li>第1段階：自然的自由（欲望のままに行動する自由）</li>
+                    <li>
+                        第2段階：社会的自由（みんなで決めたルールのもとで守られる自由、他人に支配されない）
+                    </li>
+                    <li>
+                        第3段階：道徳的自由（自分で自分に課したルールに従う自由、何かに操られるのではなく自分で行動を選ぶ）
+                    </li>
+                </ul>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    場面3の「みんなが一番納得できる答えをさがす」は、ルソーの「一般意志」（私利私欲の総和ではなく、全体にとっての最善を目指す意志）の考え方に基づいています。話し合いへの参加を通じてルールを「自分たちのもの」にすることが自由の条件である、という主張です。
+                </p>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    場面4は、同じくルソーの「欲望に操られて生きるのは奴隷状態であり、自分で決めたルールに従うことが自由である」という道徳的自由の考え方を、わかりやすく置きかえたものです。
+                    現代は高度に発達したマーケティング技術によって、本来自分には必要でないものまで欲しくなったり、見たくなったりさせられてしまいます。
+                    そのため、本当に自分に必要なものは何なのか、たまに立ち止まって考えてみてほしいと思い盛り込みました。少し難しい内容ですが、大人に成長する過程で思い出してもらえればと思います。
+                </p>
+            </section>
+
+            <!-- ナビゲーション -->
+            <section class="flex justify-between items-center pt-4">
+                <a
+                    href="../index.html"
+                    class="text-gray-400 hover:text-gray-600 text-sm font-bold"
+                    >← レッスン一らんへ</a
+                >
+            </section>
+        </main>
+
+        <!-- フッター -->
+        <footer class="text-center py-8 text-gray-400 text-sm">
+            <p>ながのデータ探検隊 | 子どもコース</p>
+        </footer>
+
+        <script>
+            function checkQ1() {
+                const selected = document.querySelector(
+                    'input[name="q1"]:checked',
+                );
+                const result = document.getElementById("result-q1");
+                result.classList.remove("hidden");
+                if (selected && selected.value === "c") {
+                    result.textContent =
+                        "⭕ せいかい！ 力のいちばん強い人も、もっと強い人が来たら取られる側になる。ルールがない世界では、だれの自由も守られないんだ。";
+                    result.className =
+                        "text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200";
+                } else {
+                    result.textContent =
+                        "❌ もう一かい！ ヒント：力の強い人は自由に見えるけど、もっと強い人が来たらどうなるかな？";
+                    result.className =
+                        "text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200";
+                }
+            }
+
+            function checkQ2() {
+                const selected = document.querySelector(
+                    'input[name="q2"]:checked',
+                );
+                const result = document.getElementById("result-q2");
+                result.classList.remove("hidden");
+                if (selected && selected.value === "c") {
+                    result.textContent =
+                        "⭕ せいかい！ 話し合いに参加して意見を言うことが、自分の自由を手に入れるための権利。ポイントは「自分の得」じゃなくて「みんなが一番納得できる答え」を考えて言うことだよ。";
+                    result.className =
+                        "text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200";
+                } else {
+                    result.textContent =
+                        "❌ もう一かい！ ヒント：だまっていると「押しつけられる側」のまま。こっそり破っても、ルールは変わらないよ。";
+                    result.className =
+                        "text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200";
+                }
+            }
+
+            function checkQ3() {
+                const selected = document.querySelector(
+                    'input[name="q3"]:checked',
+                );
+                const result = document.getElementById("result-q3");
+                result.classList.remove("hidden");
+                if (selected && selected.value === "c") {
+                    result.textContent =
+                        "⭕ せいかい！ 「これは本当に自分がやりたいこと？」と立ち止まって自分に聞いて、自分で決められる人が、ほんとうに自由な人だよ。";
+                    result.className =
+                        "text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200";
+                } else {
+                    result.textContent =
+                        "❌ もう一かい！ ヒント：やりたい放題は場面1で、何も考えず従うだけは「王様の家来」だったよね。";
+                    result.className =
+                        "text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200";
+                }
+            }
+
+            function showQ4Answer() {
+                document.getElementById("result-q4").classList.remove("hidden");
+            }
+        </script>
+    </body>
+</html>
