@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📮 質問・要望フォーム | ながのデータ探検隊</title>
+  <meta name="description" content="ながのデータ探検隊への質問やご要望をお送りいただくフォームです。" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+    /* ハニーポット用の画面外配置スタイル */
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+    }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
+</head>
+<body class="bg-amber-50 min-h-screen flex flex-col">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <a href="../index.html" class="max-w-4xl mx-auto px-6 py-4 flex items-center gap-3 block hover:opacity-80 transition-opacity">
+      <span class="text-3xl">📊</span>
+      <div>
+        <span class="text-xl font-black text-gray-800 block">ながのデータ探検隊</span>
+        <span class="text-xs text-gray-500 block">長野県の人口データで学ぶデータ分析</span>
+      </div>
+    </a>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="max-w-2xl mx-auto px-6 py-12 flex-1 w-full">
+
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-black text-gray-800 mb-3">📮 質問・要望フォーム</h1>
+      <p class="text-gray-600 text-sm">
+        わからないこと、「こんなレッスンがほしい」などのアイデア、<br class="hidden sm:inline" />
+        動かないところ（不具合）があったら、お気軽におくってね。
+      </p>
+    </div>
+
+    <!-- 送信成功時のメッセージエリア（初期状態は非表示） -->
+    <div id="success-message" class="bg-white rounded-3xl shadow-sm p-8 text-center hidden">
+      <div class="text-6xl mb-4">🎉</div>
+      <h2 class="text-2xl font-black text-green-600 mb-4">送信しました！</h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        メッセージをおくってくれてありがとう！<br />
+        みんなから届いた内容は、これからのサイトづくりに役立てるね。
+      </p>
+      <a href="../index.html" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl px-8 py-3 transition-colors">
+        トップページにもどる
+      </a>
+    </div>
+
+    <!-- フォーム本体 -->
+    <form id="contact-form" class="bg-white rounded-3xl shadow-sm p-8 space-y-6">
+
+      <!-- ページパラメータ用の隠しフィールド -->
+      <input type="hidden" id="page-field" name="page" value="" />
+
+      <!-- ハニーポット（スパム対策） -->
+      <div class="hp-field">
+        <label for="website-hp">ウェブサイト</label>
+        <input type="text" id="website-hp" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <!-- 経過時間記録用の隠しフィールド -->
+      <input type="hidden" id="elapsed-field" name="elapsed" value="0" />
+
+      <!-- 種別 -->
+      <div class="space-y-2">
+        <span class="block text-sm font-bold text-gray-700">おくる内容のしゅるい（どれか１つ選んでね）</span>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="flex items-center gap-2 bg-amber-50/50 border border-amber-200/60 rounded-xl p-3 cursor-pointer hover:bg-amber-50 transition-colors">
+            <input type="radio" name="type" value="質問" class="w-4 h-4 text-amber-600 accent-amber-500" checked />
+            <span class="text-sm font-bold text-gray-700">🙋 質問（しつもん）</span>
+          </label>
+          <label class="flex items-center gap-2 bg-amber-50/50 border border-amber-200/60 rounded-xl p-3 cursor-pointer hover:bg-amber-50 transition-colors">
+            <input type="radio" name="type" value="要望" class="w-4 h-4 text-amber-600 accent-amber-500" />
+            <span class="text-sm font-bold text-gray-700">💡 要望（ようぼう）</span>
+          </label>
+          <label class="flex items-center gap-2 bg-amber-50/50 border border-amber-200/60 rounded-xl p-3 cursor-pointer hover:bg-amber-50 transition-colors">
+            <input type="radio" name="type" value="不具合の報告" class="w-4 h-4 text-amber-600 accent-amber-500" />
+            <span class="text-sm font-bold text-gray-700">🐛 不具合のほうこく</span>
+          </label>
+          <label class="flex items-center gap-2 bg-amber-50/50 border border-amber-200/60 rounded-xl p-3 cursor-pointer hover:bg-amber-50 transition-colors">
+            <input type="radio" name="type" value="その他" class="w-4 h-4 text-amber-600 accent-amber-500" />
+            <span class="text-sm font-bold text-gray-700">💬 その他</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- お名前 -->
+      <div class="space-y-2">
+        <label for="name-field" class="block text-sm font-bold text-gray-700 flex items-center justify-between">
+          <span>お名前・ニックネーム（書かなくてもいいよ）</span>
+          <span class="text-xs text-gray-400 font-normal">最大 100 文字</span>
+        </label>
+        <input type="text" id="name-field" name="name" maxlength="100" placeholder="ニックネームでOK！本名じゃなくて大丈夫だよ。"
+          class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-shadow" />
+      </div>
+
+      <!-- メールアドレス -->
+      <div class="space-y-2">
+        <label for="email-field" class="block text-sm font-bold text-gray-700 flex items-center justify-between">
+          <span>返信用メールアドレス（おへんじがほしいときだけ書いてね）</span>
+          <span class="text-xs text-gray-400 font-normal">最大 254 文字</span>
+        </label>
+        <input type="email" id="email-field" name="email" maxlength="254" placeholder="example@example.com"
+          class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-shadow" />
+      </div>
+
+      <!-- 内容 -->
+      <div class="space-y-2">
+        <label for="message-field" class="block text-sm font-bold text-gray-700 flex items-center justify-between">
+          <span class="flex items-center gap-1">内容（ないよう）<span class="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded font-bold">必須</span></span>
+          <span class="text-xs text-gray-400 font-normal">最大 1000 文字</span>
+        </label>
+        <textarea id="message-field" name="message" rows="6" maxlength="1000" required
+          placeholder="質問や、やってほしいことなどを書いてね。&#10;（例：レッスン3の折れ線グラフの作り方がわかりません）"
+          class="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-shadow"></textarea>
+      </div>
+
+      <!-- エラー表示エリア -->
+      <div id="error-message" class="text-red-500 text-sm font-bold hidden"></div>
+
+      <!-- 送信ボタン -->
+      <div class="text-center pt-2">
+        <button type="submit" id="submit-button"
+          class="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl px-12 py-3.5 transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 disabled:bg-gray-300 disabled:cursor-not-allowed">
+          送信する
+        </button>
+      </div>
+
+    </form>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="text-center py-8 text-gray-400 text-sm border-t border-amber-100 bg-white/50">
+    <p>ながのデータ探検隊 | 長野県のデータで学ぶデータ分析教育</p>
+  </footer>
+
+  <script>
+    // デプロイ後に GAS ウェブアプリの URL に差し替える
+    const GAS_ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbwtbMcj23mmgPgdNmr6WQb2GnTcfKJRAX3xHGE0rTafaAblvb5xwFnnw6WCT2LOv_0/exec';
+
+    // 読み込み時刻の記録
+    const loadTime = Date.now();
+
+    // 読み込み時の初期化処理
+    window.addEventListener('DOMContentLoaded', () => {
+      // URLパラメータの ?from= から遷移元ページ情報を取得
+      const urlParams = new URLSearchParams(window.location.search);
+      const fromParam = urlParams.get('from') || '';
+      // 英数字、スラッシュ(/)、ハイフン(-)、アンダースコア(_)のみにサニタイズ
+      const sanitizedFrom = fromParam.replace(/[^a-zA-Z0-9\/_-]/g, '').slice(0, 50);
+      document.getElementById('page-field').value = sanitizedFrom;
+    });
+
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-button');
+    const errorArea = document.getElementById('error-message');
+    const successArea = document.getElementById('success-message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // エラーエリアのリセット
+      errorArea.classList.add('hidden');
+      errorArea.textContent = '';
+
+      // GAS_ENDPOINT_URL の設定チェック
+      if (GAS_ENDPOINT_URL === 'PASTE_GAS_WEBAPP_URL_HERE') {
+        showError('送信できません。フォームの準備（GAS設定）が終わっていません。');
+        return;
+      }
+
+      // バリデーション：内容の空チェック
+      const messageField = document.getElementById('message-field');
+      const messageVal = messageField.value.trim();
+      if (!messageVal) {
+        showError('内容（ないよう）を書いてね。');
+        return;
+      }
+
+      // 経過秒数を計算して hidden にセット
+      const elapsedSeconds = Math.floor((Date.now() - loadTime) / 1000);
+      document.getElementById('elapsed-field').value = elapsedSeconds;
+
+      // 送信処理中のUI変更
+      submitBtn.disabled = true;
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = '送信中...';
+
+      try {
+        const formData = new FormData(form);
+
+        // 重要: カスタムヘッダーは一切つけずに application/x-www-form-urlencoded で送信する
+        const response = await fetch(GAS_ENDPOINT_URL, {
+          method: 'POST',
+          body: new URLSearchParams(formData)
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const result = await response.json();
+
+        if (result.status === 'ok') {
+          // 成功時：フォームを隠して完了メッセージを表示
+          form.classList.add('hidden');
+          successArea.classList.remove('hidden');
+        } else {
+          // サーバー側エラー（文字数オーバー等）
+          let reasonMsg = '送信できませんでした。時間をおいてもう一度ためしてね。';
+          if (result.reason === 'empty') {
+            reasonMsg = '内容が空っぽです。メッセージを入力してください。';
+          } else if (result.reason === 'too_long') {
+            reasonMsg = '内容が長すぎます。1000文字以内で入力してください。';
+          }
+          showError(reasonMsg);
+          resetSubmitButton(originalText);
+        }
+
+      } catch (err) {
+        console.error('Submission error:', err);
+        showError('送信できませんでした。時間をおいてもう一度ためしてね。');
+        resetSubmitButton(originalText);
+      }
+    });
+
+    function showError(msg) {
+      errorArea.textContent = msg;
+      errorArea.classList.remove('hidden');
+      errorArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function resetSubmitButton(originalText) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  </script>
+</body>
+</html>
