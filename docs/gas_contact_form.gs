@@ -45,7 +45,7 @@ function doPost(e) {
 
     return jsonResponse({ status: 'ok' });
   } catch (err) {
-    return jsonResponse({ status: 'error', reason: 'server' });
+    return jsonResponse({ status: 'error', reason: 'server', message: err.message, stack: err.stack });
   }
 }
 
