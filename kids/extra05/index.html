@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>番外編：ゲームのわな | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+    data-cf-beacon='{"token": "b1f3fc535d864483bdbbf325e9597364"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+
+<body class="bg-indigo-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+      <span class="text-gray-300">|</span>
+      <span class="text-sm font-bold text-indigo-500">★ 番外編</span>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <!-- タイトル -->
+    <section class="text-center">
+      <div class="inline-block bg-indigo-100 text-indigo-600 text-sm font-bold px-4 py-1 rounded-full mb-3">★ 番外編</div>
+      <h1 class="text-3xl font-black text-gray-800 mb-2">ゲームのわな</h1>
+      <p class="text-gray-500">「あと1回だけ」が、なぜやめられないの？</p>
+    </section>
+
+    <!-- 導入キャラ会話 -->
+    <section class="space-y-3">
+      <div class="flex items-start gap-3">
+        <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「最近、毎日学校から帰ったら真っ先にゲームのログインボーナスをチェックしちゃうんだ。忘れると『あー、もったいないことした』って気持ちになって。しかも、一度アプリを開くと、気づいたら1時間くらいたってる…。なんでこんなにやめられないんだろう。」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+          <div class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「オレは毎朝、まず巣の外にどんぐりが増えてないか確認する。」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「そのしくみ、ちゃんとくわしい人に聞いてみたいな。カーマ博士に聞いてみよう。」
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="font-black text-gray-800 mb-3">🎯 このレッスンでわかること</h2>
+      <ul class="space-y-2 text-gray-600 text-sm">
+        <li class="flex gap-2"><span class="text-indigo-500 font-bold">✓</span> なぜゲームが「あと1回だけ」でやめられないか、しくみがわかる</li>
+        <li class="flex gap-2"><span class="text-indigo-500 font-bold">✓</span> ゲーム会社の「本音」がわかる</li>
+        <li class="flex gap-2"><span class="text-indigo-500 font-bold">✓</span> ゲームには頭を育てるいい面もあることがわかる</li>
+        <li class="flex gap-2"><span class="text-indigo-500 font-bold">✓</span> 自分の目標に「ゲームのしくみ」を役立てる方法がわかる</li>
+      </ul>
+    </section>
+
+    <!-- 場面1 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="bg-indigo-500 text-white text-xs font-black px-3 py-1 rounded-full">場面 1</span>
+        <h2 class="font-black text-gray-800">毎日ログインしたくなるわけ</h2>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「カーマ博士！ 聞きたいことがあるんだ。毎日ログインボーナスをチェックしないと落ち着かない気持ちになるんだけど、これって何なの？」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3 flex-row-reverse">
+        <div class="shrink-0 w-14 h-14 rounded-full bg-indigo-100 flex items-center justify-center text-2xl shadow">🎮</div>
+        <div class="text-right">
+          <p class="text-xs font-bold text-indigo-600 mb-1">カーマ博士</p>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+            「正直に話そう。それは<strong>わざと</strong>そう感じるように作られているんだ。」
+          </div>
+        </div>
+      </div>
+
+      <!-- 仕掛けカード3枚 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 my-4">
+        <div class="bg-indigo-50/50 border border-indigo-200 rounded-xl p-4">
+          <div class="text-2xl mb-2">🔥</div>
+          <h3 class="font-black text-indigo-900 text-sm mb-1">連続ログインボーナス</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">毎日開かないと記録が消えるから、休みたくても休めない気持ちにさせる</p>
+        </div>
+        <div class="bg-indigo-50/50 border border-indigo-200 rounded-xl p-4">
+          <div class="text-2xl mb-2">🏆</div>
+          <h3 class="font-black text-indigo-900 text-sm mb-1">ランキング・フレンド機能</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">友だちや知らない人と比べさせることで、負けたくない気持ちを利用する</p>
+        </div>
+        <div class="bg-indigo-50/50 border border-indigo-200 rounded-xl p-4">
+          <div class="text-2xl mb-2">⏳</div>
+          <h3 class="font-black text-indigo-900 text-sm mb-1">終わらないクエスト・シーズンパス</h3>
+          <p class="text-xs text-gray-600 leading-relaxed">「あと少しで次のごほうび」を延々と用意して、やめる区切りをなくす</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3 flex-row-reverse">
+        <div class="shrink-0 w-14 h-14 rounded-full bg-indigo-100 flex items-center justify-center text-2xl shadow">🎮</div>
+        <div class="text-right">
+          <p class="text-xs font-bold text-indigo-600 mb-1">カーマ博士</p>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+            「正直に言うとね、みんなに<strong>長く・毎日</strong>遊んでもらうほど、ゲーム会社は儲かる仕組みなんだ。だから、なるべく<strong>やめるタイミングをなくす</strong>ように設計しているんだよ。」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「YouTubeやインスタと同じだ…！ やめさせない工夫を、みんなしてるんだね。」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+          <div class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「タヌキの世界にランキングがなくてよかった。」
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-4 text-sm text-indigo-950">
+        <p class="font-black mb-1 flex items-center gap-1 text-indigo-700">💡 ここがポイント</p>
+        <p class="leading-relaxed">
+          ログインボーナスもランキングも、「毎日・長く遊んでもらう」ためにわざと作られたしくみ。YouTubeやインスタと同じ「やめさせない工夫」。
+        </p>
+      </div>
+    </section>
+
+    <!-- 場面2 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="bg-indigo-500 text-white text-xs font-black px-3 py-1 rounded-full">場面 2</span>
+        <h2 class="font-black text-gray-800">一度始めるとやめられないわけ</h2>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「ログインしたあと、『ちょっとだけ』のつもりが、気づいたら1時間もたってるのはなぜなんだろう？」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3 flex-row-reverse">
+        <div class="shrink-0 w-14 h-14 rounded-full bg-indigo-100 flex items-center justify-center text-2xl shadow">🎮</div>
+        <div class="text-right">
+          <p class="text-xs font-bold text-indigo-600 mb-1">カーマ博士</p>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+            「それは、ゲームの中の『ごほうび』の出し方に秘密があるんだ。たとえば、無料でひける宝箱や、無料ガチャは、何が当たるか<strong>完全にランダム</strong>だよね？」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「うん、次はいいのが出るかもって、つい開けちゃう。」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3 flex-row-reverse">
+        <div class="shrink-0 w-14 h-14 rounded-full bg-indigo-100 flex items-center justify-center text-2xl shadow">🎮</div>
+        <div class="text-right">
+          <p class="text-xs font-bold text-indigo-600 mb-1">カーマ博士</p>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+            「そうなんだ。『次こそ当たるかも』と思わせることで、脳が興奮するように作られているんだ。これを<strong>『可変報酬（かへんほうしゅう）』</strong>と呼ぶんだよ。もし当たるタイミングが決まっていたら、人はそんなに夢中にならない。<strong>いつ当たるかわからない</strong>からこそ、何度も引きたくなってしまうんだね。」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3 flex-row-reverse">
+        <div class="shrink-0 w-14 h-14 rounded-full bg-indigo-100 flex items-center justify-center text-2xl shadow">🎮</div>
+        <div class="text-right">
+          <p class="text-xs font-bold text-indigo-600 mb-1">カーマ博士</p>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+            「実はこれ、スロットマシンやくじ引きと<strong>まったく同じしくみ</strong>なんだ。」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+          <div class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「オレも『次のどんぐりは大きいかも』って思うと、つい掘っちゃう。」
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-4 text-sm text-indigo-950">
+        <p class="font-black mb-1 flex items-center gap-1 text-indigo-700">💡 ここがポイント</p>
+        <p class="leading-relaxed">
+          「あと1回だけ」でやめられないのは、ごほうびが当たるかどうかランダムだから。当たるタイミングがわからないからこそ、脳がもっと引きたくなるようにできている（可変報酬）。
+        </p>
+      </div>
+    </section>
+
+    <!-- 場面3 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="bg-indigo-500 text-white text-xs font-black px-3 py-1 rounded-full">場面 3</span>
+        <h2 class="font-black text-gray-800">ゲームが育てる力</h2>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「じゃあゲームって、悪いことしかないの…？」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3 flex-row-reverse">
+        <div class="shrink-0 w-14 h-14 rounded-full bg-indigo-100 flex items-center justify-center text-2xl shadow">🎮</div>
+        <div class="text-right">
+          <p class="text-xs font-bold text-indigo-600 mb-1">カーマ博士</p>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+            「そんなことはないよ！ ぼくはゲームを作るプログラマーの仕事に誇りを持っているんだ。ゲームには、きみの力を育てる、いいところもたくさんあるんだよ。」
+          </div>
+        </div>
+      </div>
+
+      <!-- いい面カード4枚 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 my-4">
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xl">🧠</span>
+            <h3 class="font-black text-blue-900 text-sm">記憶力</h3>
+          </div>
+          <p class="text-xs text-blue-800 leading-relaxed">マップ・アイテム・手順を頭の中で整理して覚える力が鍛えられる</p>
+        </div>
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xl">🧩</span>
+            <h3 class="font-black text-blue-900 text-sm">思考力・問題解決力</h3>
+          </div>
+          <p class="text-xs text-blue-800 leading-relaxed">パズルや戦略ゲームで「次の一手」を考える力がつく</p>
+        </div>
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xl">🗺️</span>
+            <h3 class="font-black text-blue-900 text-sm">空間認識力</h3>
+          </div>
+          <p class="text-xs text-blue-800 leading-relaxed">3Dゲームの世界で位置や距離をつかむ力が育つ</p>
+        </div>
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xl">🤝</span>
+            <h3 class="font-black text-blue-900 text-sm">協調性</h3>
+          </div>
+          <p class="text-xs text-blue-800 leading-relaxed">チームプレイで役割を分担したり、仲間に声をかけたりする力がつく</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3 flex-row-reverse">
+        <div class="shrink-0 w-14 h-14 rounded-full bg-indigo-100 flex items-center justify-center text-2xl shadow">🎮</div>
+        <div class="text-right">
+          <p class="text-xs font-bold text-indigo-600 mb-1">カーマ博士</p>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+            「大事なのは、遊び方。<strong>夢中になれる力そのものは、きみの武器になる</strong>んだよ。」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「夢中になる力を、他のことにも使えたらすごいことになりそう。」
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-4 text-sm text-indigo-950">
+        <p class="font-black mb-1 flex items-center gap-1 text-indigo-700">💡 ここがポイント</p>
+        <p class="leading-relaxed">
+          ゲームには記憶力・思考力・空間認識力・協調性を育てる力がある。夢中になる力そのものは、使い方しだいで武器になる。
+        </p>
+      </div>
+    </section>
+
+    <!-- 場面4 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="bg-indigo-500 text-white text-xs font-black px-3 py-1 rounded-full">場面 4</span>
+        <h2 class="font-black text-gray-800">自分の目標をゲーム化しよう</h2>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「ゲームに夢中になれる力を、勉強とか他のことにも使えないかな。」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3 flex-row-reverse">
+        <div class="shrink-0 w-14 h-14 rounded-full bg-indigo-100 flex items-center justify-center text-2xl shadow">🎮</div>
+        <div class="text-right">
+          <p class="text-xs font-bold text-indigo-600 mb-1">カーマ博士</p>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+            「それ、できるんだよ。ゲームのしくみを、<strong>自分の目標のために逆に使う</strong>んだ。これを<strong>『ゲーミフィケーション』</strong>というんだ。」
+          </div>
+        </div>
+      </div>
+
+      <!-- 応用例カード4枚 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 my-4">
+        <div class="bg-indigo-50/50 border border-indigo-200 rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xl">📖</span>
+            <h3 class="font-black text-indigo-900 text-sm">読書クエスト</h3>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">読んだページ数で自分をレベルアップ。10冊読んだら『読書レベル5』達成！</p>
+        </div>
+        <div class="bg-indigo-50/50 border border-indigo-200 rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xl">⛷️</span>
+            <h3 class="font-black text-indigo-900 text-sm">連続記録（ストリーク）</h3>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">毎日ちょっとでも練習した日をカレンダーに記録。連続記録が途切れないようにがんばる</p>
+        </div>
+        <div class="bg-indigo-50/50 border border-indigo-200 rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xl">📝</span>
+            <h3 class="font-black text-indigo-900 text-sm">宿題クエスト</h3>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">「今日のクエスト：宿題を終わらせる」のように、やることをクエスト化して「クリア」の達成感を味わう</p>
+        </div>
+        <div class="bg-indigo-50/50 border border-indigo-200 rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xl">🏅</span>
+            <h3 class="font-black text-indigo-900 text-sm">じぶん実績</h3>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed">「毎日5分勉強」「1週間休まず練習」など、自分だけの「実績」を作ってクリアするたびに自分をほめる</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3 flex-row-reverse">
+        <div class="shrink-0 w-14 h-14 rounded-full bg-indigo-100 flex items-center justify-center text-2xl shadow">🎮</div>
+        <div class="text-right">
+          <p class="text-xs font-bold text-indigo-600 mb-1">カーマ博士</p>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+            「連続記録もランキングも、ゲーム会社が使っているのと同じしくみなんだ。でも、それを<strong>自分をコントロールする側</strong>で使えば、こんどはきみの味方になるよ。」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「よし！ データ探検隊のミッションも、麻績村の謎を解く『レベルアップクエスト』だと思ってがんばるぞ！」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+          <div class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「オレも『どんぐり100個クエスト』やってる。」
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-4 text-sm text-indigo-950">
+        <p class="font-black mb-1 flex items-center gap-1 text-indigo-700">💡 ここがポイント</p>
+        <p class="leading-relaxed">
+          レベル・クエスト・連続記録は、自分の目標のためにも使える。ゲーム会社に使われる側から、自分で使う側になろう。
+        </p>
+      </div>
+    </section>
+
+    <!-- 場面5 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="bg-indigo-500 text-white text-xs font-black px-3 py-1 rounded-full">場面 5</span>
+        <h2 class="font-black text-gray-800">わなを知れば、自分で選べる</h2>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「じゃあ、もうゲームはやっちゃだめってこと？」
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3 flex-row-reverse">
+        <div class="shrink-0 w-14 h-14 rounded-full bg-indigo-100 flex items-center justify-center text-2xl shadow">🎮</div>
+        <div class="text-right">
+          <p class="text-xs font-bold text-indigo-600 mb-1">カーマ博士</p>
+          <div class="bg-indigo-50 border border-indigo-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+            「そんなことはないよ。ゲームは楽しいし、力を育ててくれる、すばらしい道具なんだ。大事なのは、<strong>わながあると知ったうえで、自分で選ぶ</strong>ことだよ。」
+          </div>
+        </div>
+      </div>
+
+      <!-- ヒントボックス -->
+      <div class="bg-green-50 border border-green-200 rounded-xl p-4 my-4 text-sm text-green-950">
+        <h3 class="font-black text-green-800 mb-2 flex items-center gap-1.5">💡 ゲームと上手に付き合うヒント</h3>
+        <ol class="list-decimal list-inside space-y-1.5 text-xs sm:text-sm text-green-900 leading-relaxed">
+          <li>遊ぶ前に「何を・何分やるか」決める</li>
+          <li>課金する前に24時間待ってみる（その気持ちが本当に大事かどうか、時間をおいて考える）</li>
+          <li>ランキングやフレンド機能の通知はオフにする</li>
+          <li>「あと1回だけ」と思ったら、それがわなのサイン。ゲームのしくみを、自分の目標のために使ってみる</li>
+        </ol>
+      </div>
+
+      <!-- でい太の締め -->
+      <div class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-4 my-4 text-sm text-amber-950">
+        <p class="font-black text-amber-800 mb-1 flex items-center gap-1">✨ でい太の気づき</p>
+        <p class="leading-relaxed">
+          「わなを知れば、かかりにくくなる。ゲームが悪いんじゃない。しくみを知った今のぼくたちは、遊ぶ側から、使いこなす側になれる。それが『考える力』だよ。」
+        </p>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <img src="../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+          <div class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「カーマ博士、次はどんぐりゲーム作って。」
+          </div>
+        </div>
+      </div>
+
+      <!-- 全体まとめボックス -->
+      <div class="bg-indigo-100 border-2 border-indigo-300 rounded-xl p-5 text-indigo-950 font-bold text-center text-sm md:text-base shadow-sm">
+        💡 ゲームのしくみを知れば、遊ばされる側から、自分の目標のために使う側になれる。
+      </div>
+    </section>
+
+    <!-- やってみよう -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-6">
+      <h2 class="font-black text-gray-800 text-xl border-b pb-3 flex items-center gap-2">
+        ✏️ やってみよう
+      </h2>
+
+      <!-- Q1 -->
+      <div class="space-y-3">
+        <p class="font-bold text-gray-800 text-sm">Q1. 無料の宝箱やガチャで「あと1回だけ」と思ってしまうのはなぜ？</p>
+        <div class="space-y-2">
+          <label class="flex items-center gap-2 p-3 rounded-xl border border-gray-200 hover:bg-gray-50 cursor-pointer text-sm">
+            <input type="radio" name="q1" value="a" class="text-indigo-600 focus:ring-indigo-500">
+            <span>a. 絶対に当たるように仕組まれているから</span>
+          </label>
+          <label class="flex items-center gap-2 p-3 rounded-xl border border-gray-200 hover:bg-gray-50 cursor-pointer text-sm">
+            <input type="radio" name="q1" value="b" class="text-indigo-600 focus:ring-indigo-500">
+            <span>b. 当たるかどうかがランダムで、いつ当たるかわからないから</span>
+          </label>
+          <label class="flex items-center gap-2 p-3 rounded-xl border border-gray-200 hover:bg-gray-50 cursor-pointer text-sm">
+            <input type="radio" name="q1" value="c" class="text-indigo-600 focus:ring-indigo-500">
+            <span>c. お金を返してもらえないから</span>
+          </label>
+        </div>
+        <button onclick="checkQ1()" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors">
+          答え合わせ
+        </button>
+        <div id="q1-result" class="hidden p-3 rounded-xl text-sm font-bold border"></div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="space-y-3 pt-4 border-t border-gray-100">
+        <p class="font-bold text-gray-800 text-sm">Q2. 毎日ログインボーナスがあったり、ランキングで友だちと比べさせたりするのはなぜ？</p>
+        <div class="space-y-2">
+          <label class="flex items-center gap-2 p-3 rounded-xl border border-gray-200 hover:bg-gray-50 cursor-pointer text-sm">
+            <input type="radio" name="q2" value="a" class="text-indigo-600 focus:ring-indigo-500">
+            <span>a. プレイヤーが喜ぶ親切な機能だから</span>
+          </label>
+          <label class="flex items-center gap-2 p-3 rounded-xl border border-gray-200 hover:bg-gray-50 cursor-pointer text-sm">
+            <input type="radio" name="q2" value="b" class="text-indigo-600 focus:ring-indigo-500">
+            <span>b. できるだけ毎日・長く遊んでもらうため</span>
+          </label>
+          <label class="flex items-center gap-2 p-3 rounded-xl border border-gray-200 hover:bg-gray-50 cursor-pointer text-sm">
+            <input type="radio" name="q2" value="c" class="text-indigo-600 focus:ring-indigo-500">
+            <span>c. ゲームのバグを直すため</span>
+          </label>
+        </div>
+        <button onclick="checkQ2()" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors">
+          答え合わせ
+        </button>
+        <div id="q2-result" class="hidden p-3 rounded-xl text-sm font-bold border"></div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="space-y-3 pt-4 border-t border-gray-100">
+        <p class="font-bold text-gray-800 text-sm">Q3. ゲームで身についた（身につきそうな）力があるとしたら、何だと思う？</p>
+        <button onclick="showQ3Answer()" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors">
+          こたえのれいを見る
+        </button>
+        <div id="q3-result" class="hidden p-3 rounded-xl text-sm bg-indigo-50 text-indigo-900 border border-indigo-200 leading-relaxed">
+          （れい）マップを覚える記憶力、次の一手を考える思考力、チームで声をかけあう協調性など、遊びながら育つ力はたくさんあるよ。
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="space-y-3 pt-4 border-t border-gray-100">
+        <p class="font-bold text-gray-800 text-sm">Q4. 自分の目標を1つ、クエストや実績みたいに書いてみよう。</p>
+        <button onclick="showQ4Answer()" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors">
+          こたえのれいを見る
+        </button>
+        <div id="q4-result" class="hidden p-3 rounded-xl text-sm bg-indigo-50 text-indigo-900 border border-indigo-200 leading-relaxed">
+          （れい）「読書レベル5（10冊読む）」「毎日5分勉強クエスト」「1週間休まず練習の実績」など。ポイントは、目標を「小さく区切って」「達成感が見える形」にすることだよ。
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 保護者の方へ -->
+    <section class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-3 text-slate-700">
+      <h2 class="font-black text-slate-800 text-lg flex items-center gap-2">
+        👨‍👩‍👧 保護者の方へ
+      </h2>
+      <p class="text-sm leading-relaxed">
+        このページでは、スマホゲーム・ソシャゲに使われている「可変報酬（ランダムなごほうびによる依存性）」「連続ログインボーナス」「終わりのない設計」など、ゲーム業界で実際に使われている設計手法を子ども向けに解説しました。同時に、記憶力・思考力・空間認識力・協調性など、ゲームが育てる力があることや、ゲームのしくみを自分の目標達成（ゲーミフィケーション）に応用する方法もあわせて伝えています。
+      </p>
+      <p class="text-sm leading-relaxed">
+        なお、ゲームへの過度な依存については、世界保健機関（WHO）が国際疾病分類（ICD-11）に「Gaming Disorder（ゲーム行動症）」として位置づけています。ご家庭でのプレイ時間の管理やペアレンタルコントロールの設定について、より詳しく知りたい方向けの参考ページは、後日こちらに追加予定です。
+      </p>
+      <p class="text-sm leading-relaxed">
+        番外編1「YouTubeのわな」・番外編3「インスタのわな」とあわせてお読みいただくと、シリーズとしてつながる構成になっています。
+      </p>
+    </section>
+
+    <!-- ナビゲーション -->
+    <div class="text-center pt-4">
+      <a href="../index.html" class="inline-block bg-white hover:bg-gray-50 border border-gray-200 text-gray-600 font-bold px-6 py-3 rounded-xl text-sm shadow-sm transition-colors">
+        ← レッスン一らんへもどる
+      </a>
+    </div>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | 子どもコース</p>
+  </footer>
+
+  <script>
+    function checkQ1() {
+      const selected = document.querySelector('input[name="q1"]:checked');
+      const result = document.getElementById('q1-result');
+      if (!selected) {
+        result.className = 'p-3 rounded-xl text-sm font-bold bg-amber-50 text-amber-700 border border-amber-200 block';
+        result.textContent = 'こたえを ひとつ えらんでね！';
+        return;
+      }
+      if (selected.value === 'b') {
+        result.className = 'p-3 rounded-xl text-sm font-bold bg-green-50 text-green-700 border border-green-200 block';
+        result.textContent = '⭕ せいかい！ いつ当たるかわからない「ランダムのごほうび」だからこそ、脳がもっと引きたくなっちゃうんだ。これを「可変報酬」って言うよ。';
+      } else {
+        result.className = 'p-3 rounded-xl text-sm font-bold bg-red-50 text-red-600 border border-red-200 block';
+        result.textContent = '❌ もう一かい！ ヒント：カーマ博士は「当たるタイミングが決まっていたら、そんなに夢中にならない」って言ってたね。';
+      }
+    }
+
+    function checkQ2() {
+      const selected = document.querySelector('input[name="q2"]:checked');
+      const result = document.getElementById('q2-result');
+      if (!selected) {
+        result.className = 'p-3 rounded-xl text-sm font-bold bg-amber-50 text-amber-700 border border-amber-200 block';
+        result.textContent = 'こたえを ひとつ えらんでね！';
+        return;
+      }
+      if (selected.value === 'b') {
+        result.className = 'p-3 rounded-xl text-sm font-bold bg-green-50 text-green-700 border border-green-200 block';
+        result.textContent = '⭕ せいかい！ 毎日・長く遊んでもらうほど、ゲーム会社は儲かるしくみになっているんだ。';
+      } else {
+        result.className = 'p-3 rounded-xl text-sm font-bold bg-red-50 text-red-600 border border-red-200 block';
+        result.textContent = '❌ もう一かい！ ヒント：YouTubeやインスタの「わな」と同じで、やめるタイミングをなくす工夫だったね。';
+      }
+    }
+
+    function showQ3Answer() {
+      const result = document.getElementById('q3-result');
+      result.classList.remove('hidden');
+    }
+
+    function showQ4Answer() {
+      const result = document.getElementById('q4-result');
+      result.classList.remove('hidden');
+    }
+  </script>
+
+</body>
+
+</html>
