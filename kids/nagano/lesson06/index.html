@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>レッスン6: 何パーセントへった？ | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../../js/kids-visuals.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
+</head>
+<body class="bg-green-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 pt-3 pb-2">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+        <span class="text-gray-300">|</span>
+        <span class="text-sm font-bold text-amber-600">レッスン 6 / 10</span>
+      </div>
+      <nav class="flex gap-1.5 mt-2 text-xs font-bold">
+        <a href="../../nagano/index.html" class="px-2.5 py-1 rounded-full bg-green-100 text-green-700">🏔 長野県編</a>
+        <a href="../../penguins/index.html" class="px-2.5 py-1 rounded-full text-gray-400 hover:bg-gray-100">🐧 ペンギン研究所</a>
+        <a href="../../extra/index.html" class="px-2.5 py-1 rounded-full text-gray-400 hover:bg-gray-100">💡 番外編</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <!-- タイトル -->
+    <section class="text-center">
+      <div class="inline-block bg-amber-100 text-amber-700 text-sm font-bold px-4 py-1 rounded-full mb-3">レッスン 6</div>
+      <h1 class="text-3xl font-black text-gray-800 mb-2">何パーセントへった？</h1>
+      <p class="text-gray-500">「ひき算のあとにわり算」で変化の割合を計算しよう</p>
+    </section>
+
+    <!-- キャラクター会話 -->
+    <section class="space-y-3">
+      <div class="flex items-start gap-3">
+        <img src="../../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「麻績村は445人へったけど、もともと人数がちがうから「大きい市と比べていいの？」って思わない？ <strong>パーセント</strong>で表せば、どこの村が一番へっているかを正しくくらべられるよ！」
+          </div>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <img src="../../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+          <div class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「パーセントって、セールで30%オフとかに使うやつ？」
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="font-black text-gray-800 mb-3">🎯 このレッスンでわかること</h2>
+      <ul class="space-y-2 text-gray-600 text-sm">
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 「パーセント（%）」で変化の大きさをあらわすことができる</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 変化率の計算式がわかる</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 大きい市と小さい村では、変化率がちがうことがわかる</li>
+      </ul>
+    </section>
+
+    <!-- 説明 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📖 パーセントって何？</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        レッスン5では「何人へったか」を調べたね。でも、1万人へった市と1000人へった村、どちらが「大きく」へったのかな？
+      </p>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        もとの人数が50万人の市が1万人へっても2%だけど、もとの人数が1000人の村が200人へったら20%になるよ。
+        <strong>「もとの数に比べてどのくらい？」</strong>をあらわすのがパーセントです。
+      </p>
+
+      <div class="bg-amber-50 rounded-xl p-4 text-sm text-amber-800 space-y-2">
+        <p class="font-bold">📝 変化率の計算しき</p>
+        <p class="font-mono text-base text-center py-2">（へんか ÷ もとの人口）× 100 ＝ 変化率（%）</p>
+        <p>スプレッドシートでは：</p>
+        <p class="font-mono bg-amber-100 px-2 py-1 rounded">＝ROUND（（C2－B2）／B2×100, 1）</p>
+        <p class="text-xs mt-1">※ ROUND(..., 1) は小数第1位まで四捨五入してくれる関数だよ。</p>
+      </div>
+
+      <div class="bg-amber-500 text-white rounded-xl p-4 text-sm">
+        <p class="font-bold mb-1">📂 レッスン6のデータ（レッスン5とおなじデータだよ！）</p>
+        <p class="text-amber-100 leading-relaxed">レッスン5でつくった「へんか」の列に、さらに「変化率」の列をたしてみよう。同じデータでも新しいことが見えてくるよ！</p>
+      </div>
+    </section>
+
+    <!-- 変化率の表 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 どの市町村が何パーセント変わった？</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">「変化率(%)」の列を見ると、もとの人口にくらべてどのくらい変わったかが分かるよ。<strong class="text-amber-700">変化率(%)</strong>を見て、いちばんへった村をさがしてみよう。</p>
+      <div id="lesson6-summary" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm"></div>
+      <div class="overflow-x-auto rounded-xl border border-amber-100">
+        <table class="min-w-full text-sm whitespace-nowrap">
+          <thead><tr id="lesson6-table-head" class="bg-amber-100 text-amber-800"></tr></thead>
+          <tbody id="lesson6-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- やりかた -->
+    <section id="lesson6-advanced-howto" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">🛠️ じぶんでも変化率を計算してみよう</h2>
+
+      <div class="space-y-4">
+        <div class="flex gap-4">
+          <div class="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">1</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">E列に「変化率」の列をつくる</p>
+            <p class="text-gray-600 text-sm mt-1">E1のセルに「変化率(%)」と入力しよう。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">2</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">E2に計算式を入力する</p>
+            <p class="text-gray-600 text-sm mt-1">E2に <span class="font-mono bg-gray-100 px-2 py-0.5 rounded text-xs">=ROUND((C2-B2)/B2*100,1)</span> と入力してEnterを押そう。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">3</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">E2の式を77行めまでコピーする</p>
+            <p class="text-gray-600 text-sm mt-1">E2をつかんでE78まで引っ張ろう。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">4</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">E列をならびかえる</p>
+            <p class="text-gray-600 text-sm mt-1">E列を昇順（小さい順）にならびかえると、いちばん変化率が大きく「へった」村が上にくるよ。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 rounded-xl p-4 text-sm text-blue-800">
+        <p class="font-bold mb-1">💡 発見してみよう</p>
+        <p>大きい市（長野市・松本市）と小さい村、変化率はどちらが大きいかな？</p>
+      </div>
+    </section>
+
+    <!-- やってみよう -->
+    <section id="lesson6-quiz" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
+      <p class="text-gray-600 text-sm">上の表を見て、もんだいにこたえてみよう！（小数第1位まで）</p>
+
+      <div class="space-y-6">
+
+        <!-- もんだい1 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 1. 変化率がいちばん大きく「へった」村はどこですか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-amber-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-amber-300 transition-colors">
+              <input type="radio" name="q6_1" value="a" class="accent-amber-500" />
+              <span>① 麻績村</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-amber-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-amber-300 transition-colors">
+              <input type="radio" name="q6_1" value="b" class="accent-amber-500" />
+              <span>② 天龍村</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-amber-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-amber-300 transition-colors">
+              <input type="radio" name="q6_1" value="c" class="accent-amber-500" />
+              <span>③ 売木村</span>
+            </label>
+          </div>
+          <button onclick="check6_1()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result1" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい2 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 2. 御代田町の変化率はおよそ何パーセントですか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-amber-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-amber-300 transition-colors">
+              <input type="radio" name="q6_2" value="a" class="accent-amber-500" />
+              <span>① 約2.3%ふえた</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-amber-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-amber-300 transition-colors">
+              <input type="radio" name="q6_2" value="b" class="accent-amber-500" />
+              <span>② 約8.5%ふえた</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-amber-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-amber-300 transition-colors">
+              <input type="radio" name="q6_2" value="c" class="accent-amber-500" />
+              <span>③ 約15%ふえた</span>
+            </label>
+          </div>
+          <button onclick="check6_2()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result2" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい3 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 3. 南箕輪村の変化率はおよそ何パーセントですか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-amber-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-amber-300 transition-colors">
+              <input type="radio" name="q6_3" value="a" class="accent-amber-500" />
+              <span>① 約1.2%ふえた</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-amber-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-amber-300 transition-colors">
+              <input type="radio" name="q6_3" value="b" class="accent-amber-500" />
+              <span>② 約5.9%ふえた</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-amber-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-amber-300 transition-colors">
+              <input type="radio" name="q6_3" value="c" class="accent-amber-500" />
+              <span>③ 約12%ふえた</span>
+            </label>
+          </div>
+          <button onclick="check6_3()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result3" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="lesson6-advanced-sheet" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 もっとやってみたい人へ</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">上の表だけでも比べられるよ。じぶんで式を入れてパーセントを出したい人は、レッスン5のシートで試してみよう。</p>
+      <a href="https://docs.google.com/spreadsheets/d/1HjTbRqW85qg22EHLtht3GaLi-SZp9woBu0hmIykIaxk/copy" target="_blank" rel="noopener" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをコピーする
+      </a>
+    </section>
+
+    <script>
+      loadKidsCsv('../data/lesson05_change.csv').then((rows) => {
+        const data = rows.map((row) => {
+          const start = Number(row['2017年_総人口']);
+          const end = Number(row['2025年_総人口']);
+          const rate = Number((((end - start) / start) * 100).toFixed(1));
+          return { name: row['市町村名'], rate };
+        });
+        const lowestVillage = data.filter((row) => row.name.endsWith('村')).sort((a, b) => a.rate - b.rate)[0];
+        const miyada = data.find((row) => row.name === '御代田町');
+        const minamiminowa = data.find((row) => row.name === '南箕輪村');
+        document.getElementById('lesson6-summary').innerHTML = `
+          <div class="rounded-xl bg-amber-50 p-4">
+            <p class="text-xs font-bold text-amber-700">いちばんへった村</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${lowestVillage.name}</p>
+            <p class="text-xs text-gray-500">${lowestVillage.rate}%</p>
+          </div>
+          <div class="rounded-xl bg-white border border-amber-100 p-4">
+            <p class="text-xs font-bold text-amber-700">御代田町</p>
+            <p class="mt-1 text-lg font-black text-gray-800">+${miyada.rate}%</p>
+            <p class="text-xs text-gray-500">レッスンの答えで使うよ</p>
+          </div>
+          <div class="rounded-xl bg-white border border-amber-100 p-4">
+            <p class="text-xs font-bold text-amber-700">南箕輪村</p>
+            <p class="mt-1 text-lg font-black text-gray-800">+${minamiminowa.rate}%</p>
+            <p class="text-xs text-gray-500">こちらも見てみよう</p>
+          </div>
+        `;
+      });
+
+      initKidsSortableTable({
+        csvUrl: '../data/lesson05_change.csv',
+        headId: 'lesson6-table-head',
+        bodyId: 'lesson6-table-body',
+        defaultSort: { key: 'rate', direction: 'asc' },
+        columns: [
+          { key: 'name', label: '市町村名', type: 'text', align: 'left' },
+          { key: 'start', label: '2017年', type: 'number', align: 'right' },
+          { key: 'end', label: '2025年', type: 'number', align: 'right' },
+          { key: 'rate', label: '変化率(%)', type: 'number', align: 'right', render: (value) => `${value > 0 ? '+' : ''}${Number(value).toFixed(1)}%` },
+        ],
+        transformRow: (row) => {
+          const start = Number(row['2017年_総人口']);
+          const end = Number(row['2025年_総人口']);
+          return {
+            name: row['市町村名'],
+            start,
+            end,
+            rate: Number((((end - start) / start) * 100).toFixed(1)),
+          };
+        },
+        theme: {
+          rowBorderClass: 'border-amber-50',
+          rowHoverClass: 'hover:bg-amber-50',
+          maxCellClass: 'bg-amber-200 text-amber-900 font-bold',
+        },
+      });
+
+      moveKidsSectionsAfter({
+        markerId: 'lesson6-quiz',
+        sectionIds: ['lesson6-advanced-sheet', 'lesson6-advanced-howto'],
+      });
+
+      function showResult(id, ok, okMsg, ngMsg) {
+        const result = document.getElementById(id);
+        result.classList.remove('hidden');
+        if (ok) {
+          result.textContent = okMsg;
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+        } else {
+          result.textContent = ngMsg;
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+        }
+      }
+      function check6_1() {
+        const s = document.querySelector('input[name="q6_1"]:checked');
+        showResult('result1', s && s.value === 'b', '⭕ せいかい！ 天龍村がいちばん変化率が大きくへったよ！', '❌ もう一かい！ ヒント：変化率(%)の列で、いちばん小さい村を見てみよう。');
+      }
+      function check6_2() {
+        const s = document.querySelector('input[name="q6_2"]:checked');
+        showResult('result2', s && s.value === 'b', '⭕ せいかい！ 御代田町は約8.5%ふえたんだね！', '❌ もう一かい！ ヒント：御代田町の変化率の列の数字を確認しよう。');
+      }
+      function check6_3() {
+        const s = document.querySelector('input[name="q6_3"]:checked');
+        showResult('result3', s && s.value === 'b', '⭕ せいかい！ 南箕輪村は約5.9%ふえたよ！', '❌ もう一かい！ ヒント：南箕輪村の変化率の列の数字を確認しよう。');
+      }
+    </script>
+
+    <!-- ナビゲーション -->
+    <div class="flex justify-between items-center pt-2">
+      <a href="../lesson05/index.html" class="text-gray-400 hover:text-gray-600 text-sm">← まえのレッスンへ</a>
+      <a href="../lesson07/index.html" class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-5 py-2 rounded-xl text-sm transition-colors">つぎのレッスンへ →</a>
+    </div>
+
+  </main>
+
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | こどもコース</p>
+  </footer>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b1f3fc535d864483bdbbf325e9597364"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

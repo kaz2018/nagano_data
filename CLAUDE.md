@@ -16,6 +16,110 @@ HTML を新規作成するときは、必ず `</head>` の直前に以下の2つ
 
 ---
 
+## サイト構成とフォルダ規約
+
+**本番**: https://nagano-data.willbefree-k-m.workers.dev/ （Cloudflare Workers の静的アセット配信）
+
+サイトは**テーマ**で分かれている。年齢では分けない（トップページの入り口もテーマ単位）。
+
+```
+nagano_data/
+├── index.html              # トップ（テーマの入り口）
+├── 404.html                # 見つからないページの案内
+├── _redirects              # 旧URLの301転送（Cloudflare）
+├── assets/images/          # トップページなど、サイト共通の画像
+├── kids/                   # こどもコース（小学生〜）
+│   ├── index.html          #   3テーマのハブ
+│   ├── images/             #   3テーマ共通の画像（でい太・ポン太・仙人ほか）
+│   ├── js/                 #   3テーマ共通の JS
+│   ├── nagano/             #   🏔 長野県編
+│   │   ├── index.html
+│   │   ├── data/           #     このコース専用データ
+│   │   └── lesson01〜10/
+│   ├── penguins/           #   🐧 ペンギン研究所
+│   │   ├── index.html
+│   │   ├── data/
+│   │   └── lesson01〜08/
+│   └── extra/              #   💡 番外編
+│       ├── index.html
+│       └── trash / youtube / instagram / games / freedom/
+├── adults/                 # しごととデータ（中学生〜大人）
+└── contact/
+```
+
+### コース追加の型
+
+新しいコースは `kids/<コース名>/` に作り、必ずこの形にする。
+
+- `index.html` — コースの入り口（必須）
+- `data/` — そのコース専用のデータ。共通ディレクトリには置かない
+- `lessonNN/` — **順序が内容に固有な**連続レッスンだけ連番にする
+- `<slug>/` — **順序が編集判断で変わる**単発コンテンツはスラッグ名（連番は禁止）
+
+番外編が `extra01` ではなくスラッグ（`trash` / `youtube` …）なのはこのため。
+表示順は `kids/extra/index.html` の中だけに存在し、並べ替えてもフォルダ名は変わらない。
+
+共通アセットは `kids/images/` と `kids/js/` の2つだけ。コース固有の画像・データをここに置かない。
+
+### 番外編の並び順
+
+| # | スラッグ | タイトル | 色 |
+|---|---------|---------|----|
+| 1 | `trash` | 信州ごみ減らし大作戦！ | teal |
+| 2 | `youtube` | YouTubeのわな | red |
+| 3 | `instagram` | インスタのわな | pink |
+| 4 | `games` | ゲームのわな | indigo |
+| 5 | `freedom` | ほんとうの自由ってなに？ | sky |
+
+**データを読む話 → 3つの「わな」 → 自由とは何かを考える**、という流れ。
+追加するときは、この流れのどこに入るかを考えて並べる。
+
+### 共通ヘッダー
+
+こどもコースの全レッスンページのヘッダーに、3テーマへのナビを入れる。現在地だけ色つきのピルにする。
+
+```html
+<header class="bg-white shadow-sm">
+  <div class="max-w-3xl mx-auto px-6 pt-3 pb-2">
+    <div class="flex items-center gap-3">
+      <!-- 既存の「← レッスン一らんへ」＋レッスン番号 -->
+    </div>
+    <nav class="flex gap-1.5 mt-2 text-xs font-bold">
+      <a href="../../nagano/index.html" class="px-2.5 py-1 rounded-full bg-green-100 text-green-700">🏔 長野県編</a>
+      <a href="../../penguins/index.html" class="px-2.5 py-1 rounded-full text-gray-400 hover:bg-gray-100">🐧 ペンギン研究所</a>
+      <a href="../../extra/index.html" class="px-2.5 py-1 rounded-full text-gray-400 hover:bg-gray-100">💡 番外編</a>
+    </nav>
+  </div>
+</header>
+```
+
+現在地の色：長野県編 `bg-green-100 text-green-700` ／ ペンギン研究所 `bg-sky-100 text-sky-700` ／ 番外編 `bg-red-100 text-red-600`
+
+### URL を変えるとき
+
+本番は **Cloudflare Workers の静的アセット配信**。サーバ側リダイレクトが使えるので、
+公開済みのページを移動したら **ルートの `_redirects` に301を追記する**。HTMLのスタブは作らない。
+
+```
+# [旧パス] [新パス] [ステータス]
+/kids/lesson01   /kids/nagano/lesson01/   301
+/kids/lesson01/* /kids/nagano/lesson01/   301
+```
+
+- 末尾スラッシュなしと配下（`*`）の2行を書く。片方だけだと取りこぼす
+- パスは**ルートからの絶対パス**（`/kids/...`）で書く
+- 上限は静的2,000件・動的（`*` を含む）100件
+- 仕様: https://developers.cloudflare.com/workers/static-assets/redirects/
+
+**注意**: `_redirects` が効くのは静的アセットとして返るリクエストだけ。
+Worker のコードが処理したレスポンスには適用されない。
+
+存在しないパスは `404.html` が受ける。ただし Workers Static Assets では
+**wrangler 設定の `not_found_handling: "404-page"` が必要**（この設定ファイルは本リポジトリ外）。
+未設定だと素っ気ない404が返るだけで、`_redirects` による転送自体には影響しない。
+
+---
+
 ## ページの動作確認
 
 子どもコースのページは `fetch()` でCSVを読むため、**HTMLファイルを直接ひらく（`file://`）と動かない**。
@@ -57,7 +161,7 @@ CSVファイルは `utf-8-sig` エンコーディングで読み込む（BOM付�
 
 ```python
 import csv
-with open('kids/data/lesson02_cities_2025.csv', encoding='utf-8-sig') as f:
+with open('kids/nagano/data/lesson02_cities_2025.csv', encoding='utf-8-sig') as f:
     rows = list(csv.DictReader(f))
 ```
 
@@ -169,7 +273,7 @@ L10（最終章）のみ でい太→ポン太→でい太→ものしり仙人 
 
 でい太のおじさんが麻績村在住という設定で、「なぜ村が縮んでいるのか」をデータで調べるのが全体の動機。
 
-### チャプター構成（kids/index.html）
+### チャプター構成（kids/nagano/index.html）
 
 | 章 | レッスン | サブタイトル |
 |---|---|---|
@@ -314,7 +418,7 @@ JS で描く SVG や棒グラフの色は、必ず `style="background-color: #..
 | P5 | ドリーム島 | どの島にもそろっていない | ジェンツーがビスコー島にしかいないから | 自由記述 → 模範解答表示 |
 | P6 | どのしゅるいもオス | ジェンツーペンギン（差805g） | ジェンツーのメス | 自由記述 → 模範解答表示 |
 | P7 | 11ぴき | 2ひき | 4,177g | 自由記述 → 模範解答表示 |
-| P8 | 浅くなっている（右下がり） | 3しゅるいとも右上がり | ジェンツーが右下にかたまっているから | 自由記述 → 模範解答表示 |
+| P8 | 薄くなっている（右下がり） | 3しゅるいとも右上がり | ジェンツーが右下にかたまっているから | 自由記述 → 模範解答表示 |
 
 ### P4〜P6 で使う主な数
 
@@ -333,7 +437,7 @@ JS で描く SVG や棒グラフの色は、必ず `style="background-color: #..
 
 | 内容 | 値 |
 |---|---|
-| 列ごとの空らん | せいべつ11／くちばしの長さ・深さ・ひれ・体重 各2／しゅるい・島・年 0 |
+| 列ごとの空らん | せいべつ11／くちばしの長さ・厚さ・ひれ・体重 各2／しゅるい・島・年 0 |
 | 空らんがある行 | 11行（うち2行は測定値がぜんぶ空、9行はせいべつのみ空） |
 | 正しいへいきん体重 | 1,437,000g ÷ 342ひき = 4,202g |
 | 0でうめた場合 | 1,437,000g ÷ 344ひき = 4,177g（25g 軽くずれる） |
@@ -342,7 +446,7 @@ JS で描く SVG や棒グラフの色は、必ず `style="background-color: #..
 
 | 範囲 | 相関 | グラフの向き |
 |---|---|---|
-| 342ぴき全体 | −0.24 | 右下がり |
+| 342ひき全体 | −0.24 | 右下がり |
 | アデリーの中 | +0.39 | 右上がり |
 | ヒゲの中 | +0.65 | 右上がり |
 | ジェンツーの中 | +0.64 | 右上がり |
@@ -350,15 +454,15 @@ JS で描く SVG や棒グラフの色は、必ず `style="background-color: #..
 この符号の逆転は `penguins.py` の assert で常時検証している（崩れたらデータ生成時にエラーで落ちる）。
 ページ側は `renderKidsScatter()` を `trend: 'all'`（1色・全体）と `trend: 'each'`（しゅるい別）で切りかえ、
 向きが逆転するのを目で見せるのがクライマックス。P8 は最終回なので、会話は
-でい太→ポン太→でい太→ものしり仙人の4者構成＋`bg-amber-50 border-2 border-amber-300` のボックスで囲む（長野コースL10と同じ扱い）。
+でい太→ポン太→でい太→ものしり仙人の4者構成。
 
 ---
 
-## 大人コース
+## しごととデータ（旧・大人コース）
 
 ### 基本方針
 
-- ディレクトリ: `adults/`
+- ディレクトリ: `adults/`（表示名は「しごととデータ」。ディレクトリ名は旧URL維持のため変更しない）
 - **文章レベル**: 中学2〜3年生が読めること。短文・改行多め・平易な日本語
 - **テーマカラー**: インディゴ（`indigo-600` / `indigo-900`）
 - **技術スタック**: Tailwind CSS + Alpine.js（子どもコースとは異なるモダンデザイン）
@@ -404,7 +508,7 @@ adults/
 
 `x-cloak` は `x-show` で初期状態が非表示になる要素にのみ付ける（body全体には付けない）。
 
-### やってみよう（大人コース）UIパターン
+### やってみよう（しごととデータ）UIパターン
 
 子どもコースと異なり Alpine.js で状態管理する：
 
@@ -432,7 +536,7 @@ adults/
 <p class="text-xs text-indigo-600 font-bold">元のデータは閲覧のみです。「ファイル → コピーを作成」で自分のドライブにコピーしてから使ってください。</p>
 ```
 
-### スプレッドシート URL（大人コース）
+### スプレッドシート URL（しごととデータ）
 
 | レッスン | 種別 | URL |
 |---------|------|-----|
@@ -441,7 +545,7 @@ adults/
 | L1 | きれいなデータ（clean） | https://docs.google.com/spreadsheets/d/1Lfe_jTcJ_Od_R5XO3Yzba0annsaHAHFwpHESYYzvHmY/edit?gid=1772913169#gid=1772913169 |
 | L2 | 人口データ（2023〜2025年・77市町村） | https://docs.google.com/spreadsheets/d/1FWIY49b3a9GZJrW6p003DpAvHyZjLGOZDzP5aS7DEPg/edit?gid=294120410#gid=294120410 |
 
-### 正解一覧（大人コース）
+### 正解一覧（しごととデータ）
 
 | レッスン | Q1 | Q2 | Q3 |
 |---------|----|----|-----|

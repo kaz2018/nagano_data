@@ -4,7 +4,8 @@
 - **主な学習者**: 麻績村・筑北村の小学生
 - **対象**: 長野県内の小学生〜大人
 - **言語**: 日本語のみ
-- **デプロイ先**: GitHub Pages（https://kaz2018.github.io/nagano_data/）
+- **デプロイ先**: Cloudflare Workers の静的アセット配信（https://nagano-data.willbefree-k-m.workers.dev/）
+- **旧URL**: GitHub Pages（https://kaz2018.github.io/nagano_data/）からの移行済み
 - **更新日**: 2026-03-19（会話セッション5終了時点）
 
 ---
@@ -56,7 +57,7 @@
 | フロントエンド | HTML + Tailwind CSS (CDN) |
 | フォント | Noto Sans JP (Google Fonts) |
 | スプレッドシート | Google Sheets（コピー用リンク提供） |
-| ホスティング | GitHub Pages |
+| ホスティング | Cloudflare Workers（静的アセット配信） |
 | データ処理 | Python (uv環境、pandas / openpyxl) |
 
 ---
@@ -94,35 +95,36 @@ CSVファイルはすべて BOM 付き UTF-8 (`utf-8-sig`) で作成・読み込
 
 ```
 nagano_data/
-├── index.html              # トップページ（コース選択）
-├── kids/
-│   ├── index.html          # 子ども向けコース一覧（トップ画像あり・レッスンごとの個別色）
-│   ├── images/
-│   │   └── kids_top_image.png             # コース一覧トップ画像
-│   ├── lesson01/index.html # レッスン1: 長野県ってどんなところ？
-│   ├── lesson02/index.html # レッスン2: 市の人口をくらべよう
-│   ├── lesson03/index.html # レッスン3: 人口はどうかわってきた？
-│   ├── lesson04/index.html # レッスン4: ならびかえていちばんをさがそう
-│   ├── lesson05/index.html # レッスン5: ふえた？へった？
-│   ├── lesson06/index.html # レッスン6: 何パーセントへった？
-│   ├── lesson07/index.html # レッスン7: おとことおんな
-│   ├── lesson08/index.html # レッスン8: ぜんぶ合わせたら？
-│   ├── lesson09/index.html # レッスン9: このままだとどうなる？
-│   ├── lesson10/index.html # レッスン10: じぶんで調べてみよう
-│   └── data/
-│       ├── nagano_population_raw.csv          # ワイド形式（77市町村×9年・教材ベース）
-│       ├── nagano_population_long.csv         # ロング形式（693行・分析用）
-│       ├── nagano_population_long_2025only.csv# 2025年のみ（77行・総人口・男・女）
-│       ├── lesson02_cities_2025.csv           # レッスン2用（19市＋麻績村・筑北村）
-│       ├── lesson03_population_trend.csv      # レッスン3用（6村×9年）
-│       ├── lesson04_all_2025.csv              # レッスン4・8用（77市町村・2025年）
-│       ├── lesson05_change.csv                # レッスン5・6・9用（77市町村・2017年＆2025年）
-│       ├── lesson07_gender_2025.csv           # レッスン7用（77市町村・男・女・2025年）
-│       └── raw/                               # 長野県公式Excelファイル原本
-├── adults/                 # フェーズ2（未着手）
-├── assets/
-│   ├── css/
-│   └── images/
+├── index.html              # トップページ（テーマの入り口）
+├── 404.html                # 見つからないページの案内
+├── _redirects              # 旧URLの301転送（Cloudflare）
+├── assets/images/          # サイト共通の画像
+├── kids/                   # こどもコース（小学生〜）
+│   ├── index.html          #   3テーマのハブ
+│   ├── images/             #   3テーマ共通の画像（でい太・ポン太・仙人ほか）
+│   ├── js/kids-visuals.js  #   3テーマ共通の可視化スクリプト
+│   ├── nagano/             #   🏔 長野県編（全10レッスン）
+│   │   ├── index.html
+│   │   ├── lesson01〜10/
+│   │   └── data/
+│   │       ├── nagano_population_raw.csv          # ワイド形式（77市町村×9年・教材ベース）
+│   │       ├── nagano_population_long.csv         # ロング形式（693行・分析用）
+│   │       ├── nagano_population_long_2025only.csv# 2025年のみ（77行・総人口・男・女）
+│   │       ├── lesson02_cities_2025.csv           # レッスン2用（19市＋麻績村・筑北村）
+│   │       ├── lesson03_population_trend.csv      # レッスン3用（6村×9年）
+│   │       ├── lesson04_all_2025.csv              # レッスン4・8用（77市町村・2025年）
+│   │       ├── lesson05_change.csv                # レッスン5・6・9用（77市町村・2017年＆2025年）
+│   │       ├── lesson07_gender_2025.csv           # レッスン7用（77市町村・男・女・2025年）
+│   │       └── raw/                               # 長野県公式Excelファイル原本
+│   ├── penguins/           #   🐧 ペンギン研究所（全8レッスン）
+│   │   ├── index.html
+│   │   ├── lesson01〜08/
+│   │   └── data/
+│   └── extra/              #   💡 番外編（全5話）
+│       ├── index.html
+│       └── trash / youtube / instagram / games / freedom/
+├── adults/                 # しごととデータ（中学生〜大人・3レッスン完成）
+├── contact/                # 質問・要望フォーム
 └── docs/
     ├── requirements.md     # 本ファイル
     ├── data_sources.md     # データ出典・仕様

@@ -56,7 +56,7 @@
 
 ### 未着手
 
-- [ ] GitHub Pagesの設定・デプロイ確認
+- [x] デプロイ（Cloudflare Workers の静的アセット配信へ移行済み: https://nagano-data.willbefree-k-m.workers.dev/ ／ 上の GitHub Pages の記録は当時のもの）
 - [ ] 動作確認・リンクチェック（全レッスン）
 
 ---

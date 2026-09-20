@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>大人向けコース | ながのデータ探検隊</title>
+  <title>しごととデータ | ながのデータ探検隊</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     function courseIndex() {
@@ -11,328 +11,284 @@
     }
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=IBM+Plex+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Noto Sans JP', sans-serif; }
+    /* Nord Light Theme Custom Properties */
+    :root {
+      --nord0: #2e3440;
+      --nord1: #3b4252;
+      --nord2: #434c5e;
+      --nord3: #4c566a;
+      --nord4: #d8dee9;
+      --nord5: #e5e9f0;
+      --nord6: #eceff4;
+      --nord7: #8fbcbb;
+      --nord8: #88c0d0;
+      --nord9: #81a1c1;
+      --nord10: #5e81ac;
+      --nord11: #bf616a;
+      --nord12: #d08770;
+      --nord13: #ebcb8b;
+      --nord14: #a3be8c;
+      --nord15: #b48ead;
+    }
+    body {
+      font-family: 'IBM Plex Sans JP', sans-serif;
+      background-color: var(--nord6);
+      color: var(--nord1);
+    }
+    code, pre, .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
     [x-cloak] { display: none !important; }
   </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
 </head>
 
-<body class="bg-slate-50 min-h-screen" x-data="courseIndex()">
+<body class="min-h-screen antialiased flex flex-col" x-data="courseIndex()">
 
-  <!-- Sticky header -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-slate-200">
-    <div class="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between">
-      <a href="../index.html" class="text-slate-500 hover:text-slate-900 text-sm font-bold transition-colors flex items-center gap-1">
-        ← トップへ
-      </a>
+  <!-- Nord Light Header -->
+  <header class="bg-white text-[#2e3440] h-12 flex items-center px-4 sticky top-0 z-50 border-b border-[#d8dee9] shadow-sm">
+    <div class="max-w-5xl w-full mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="text-[#5e81ac] hover:text-[#434c5e] text-xs flex items-center gap-1 font-medium transition-colors">
+          <span>←</span>
+          <span>トップへ</span>
+        </a>
+        <div class="h-4 w-px bg-[#d8dee9]"></div>
+        <span class="font-bold text-sm tracking-tight text-[#2e3440]">ながのデータ探検隊</span>
+        <span class="text-xs text-[#4c566a]">/ しごととデータ</span>
+      </div>
       <div class="flex items-center gap-2">
-        <span class="font-black text-slate-800 text-sm">ながのデータ探検隊</span>
-        <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-2 py-0.5 rounded-full">大人コース</span>
+        <span class="bg-[#eceff4] text-[#5e81ac] text-[11px] px-2 py-0.5 border border-[#d8dee9] rounded font-mono font-medium">nord light edition</span>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
-  <div class="bg-gradient-to-br from-indigo-900 via-indigo-800 to-slate-900 overflow-hidden relative">
-    <!-- Background decoration -->
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-8 right-12 text-9xl">📊</div>
-    </div>
-    <div class="max-w-4xl mx-auto px-6 py-16 relative">
-      <p class="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-3">Adult Course</p>
-      <h1 class="text-4xl sm:text-5xl font-black text-white mb-4 leading-tight">
-        そのExcel、<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-violet-300">次の人に引き継げますか？</span>
+  <!-- Nord Light Hero -->
+  <div class="bg-white text-[#2e3440] border-b border-[#d8dee9] relative overflow-hidden">
+    <!-- Light ice-blue glow decoration -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-[#88c0d0]/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto px-6 py-14 sm:py-16 relative">
+      <p class="text-[#5e81ac] text-xs font-semibold uppercase tracking-wider mb-3 font-mono">Data at Work / 中学生〜大人むけ</p>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-light text-[#2e3440] mb-4 leading-tight tracking-tight">
+        そのExcel、<br>
+        <span class="font-bold text-[#5e81ac]">次の人に引き継げますか？</span>
       </h1>
-      <p class="text-indigo-200 text-sm leading-relaxed max-w-2xl mb-6">
-        毎月の集計に時間がかかる。担当者が異動すると誰も触れない。AIに渡したいのに表の形がバラバラ。<br>
+      <p class="text-[#4c566a] text-sm sm:text-base leading-relaxed max-w-2xl mb-8">
+        毎月の集計に時間がかかる。担当者が異動すると誰も触れない。AIに渡したいのに表の形がバラバラ。<br class="hidden sm:inline">
         このコースでは、そんな困りごとをダミーの業務データで体感しながら、長野県の実データで整える練習をします。
       </p>
-      <div class="flex flex-wrap gap-2 text-xs font-bold">
-        <span class="bg-white/10 text-indigo-100 px-3 py-1 rounded-full border border-white/10">引き継ぎ</span>
-        <span class="bg-white/10 text-indigo-100 px-3 py-1 rounded-full border border-white/10">集計の時短</span>
-        <span class="bg-white/10 text-indigo-100 px-3 py-1 rounded-full border border-white/10">AIで使えるデータ</span>
+      <div class="flex flex-wrap gap-2 text-xs font-medium">
+        <span class="bg-[#eceff4] text-[#434c5e] px-3 py-1 border border-[#d8dee9] rounded">業務引き継ぎ</span>
+        <span class="bg-[#eceff4] text-[#5e81ac] px-3 py-1 border border-[#d8dee9] rounded font-medium">集計の時短</span>
+        <span class="bg-[#eceff4] text-[#2e3440] px-3 py-1 border border-[#d8dee9] rounded">AIで使えるデータ構造</span>
       </div>
     </div>
   </div>
 
-  <main class="max-w-4xl mx-auto px-6 py-10 space-y-6">
+  <main class="max-w-5xl w-full mx-auto px-6 py-10 space-y-8 flex-1">
 
-    <!-- Welcome banner (dismissible) -->
+    <!-- Nord Light Inline Notification (Frost Accent) -->
     <div x-show="welcome" x-cloak
-      x-transition:enter="transition ease-out duration-300"
-      x-transition:enter-start="opacity-0 -translate-y-2"
+      x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-1"
       x-transition:enter-end="opacity-100 translate-y-0"
-      x-transition:leave="transition ease-in duration-200"
+      x-transition:leave="transition ease-in duration-150"
       x-transition:leave-start="opacity-100 translate-y-0"
-      x-transition:leave-end="opacity-0 -translate-y-2"
-      class="bg-indigo-50 border border-indigo-200 rounded-2xl p-4 flex items-start gap-3">
-      <span class="text-2xl shrink-0">👋</span>
-      <div class="flex-1 text-sm text-indigo-800">
-        <p class="font-bold mb-0.5">はじめての方へ</p>
-        <p class="text-indigo-600">レッスン1では、まずダミーの売上データで「困る表」を見ます。そのあと長野県の実データで手を動かします。</p>
+      x-transition:leave-end="opacity-0 -translate-y-1"
+      class="bg-[#f0f4f8] border border-[#d8dee9] border-l-4 border-l-[#5e81ac] p-4 rounded-r-lg flex items-start gap-3">
+      <span class="text-[#5e81ac] font-bold text-base leading-tight">ℹ</span>
+      <div class="flex-1 text-xs sm:text-sm text-[#2e3440]">
+        <p class="font-bold text-[#5e81ac] mb-0.5">はじめての方へ</p>
+        <p class="text-[#4c566a]">レッスン1では、まずダミーの売上データで「困る表」の症状を見ます。そのあと長野県の実データで手を動かしてきれいに整えます。</p>
       </div>
-      <button @click="welcome = false" class="text-indigo-300 hover:text-indigo-700 shrink-0 transition-colors text-lg leading-none">✕</button>
+      <button @click="welcome = false" class="text-[#4c566a] hover:text-[#2e3440] shrink-0 transition-colors text-base px-1 leading-none font-bold" title="閉じる">✕</button>
     </div>
 
-    <!-- Pain points -->
-    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
+    <!-- Pain points (Nord Light Cards) -->
+    <section class="bg-white border border-[#d8dee9] rounded-xl p-6 sm:p-8 space-y-5 shadow-sm">
       <div>
-        <h2 class="font-black text-slate-800 text-lg mb-1">こんな困りごとはありませんか？</h2>
-        <p class="text-sm text-slate-500">このコースは「スプレッドシートを勉強したい人」だけでなく、「仕事で困っている人」のための内容です。</p>
+        <h2 class="font-bold text-[#2e3440] text-lg mb-1">こんな困りごとはありませんか？</h2>
+        <p class="text-xs sm:text-sm text-[#4c566a]">このコースは「スプレッドシートの操作を覚える」だけでなく、「実務の現場で困っている人」のための内容です。</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-3">
-        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-          <p class="text-2xl mb-2">⏰</p>
-          <p class="font-bold text-slate-800 text-sm mb-1">毎月同じ集計に時間がかかる</p>
-          <p class="text-xs text-slate-500 leading-relaxed">コピー、貼り付け、手直しが多く、月末になると残業になる。</p>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="border border-[#e5e9f0] bg-[#f8fafc] rounded-lg p-5">
+          <p class="text-2xl mb-3">⏰</p>
+          <p class="font-bold text-[#2e3440] text-sm mb-1">毎月同じ集計に時間がかかる</p>
+          <p class="text-xs text-[#4c566a] leading-relaxed">コピー、貼り付け、手直しが多く、月末になるとルーチン残業が発生してしまう。</p>
         </div>
-        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-          <p class="text-2xl mb-2">🧩</p>
-          <p class="font-bold text-slate-800 text-sm mb-1">担当者がいないと直せない</p>
-          <p class="text-xs text-slate-500 leading-relaxed">色分けやメモに依存していて、引き継ぎ後に誰も触れなくなる。</p>
+        <div class="border border-[#e5e9f0] bg-[#f8fafc] rounded-lg p-5">
+          <p class="text-2xl mb-3">🧩</p>
+          <p class="font-bold text-[#2e3440] text-sm mb-1">担当者がいないと直せない</p>
+          <p class="text-xs text-[#4c566a] leading-relaxed">属人的な色分けやメモに依存しており、引き継ぎ後に誰もメンテナンスできなくなる。</p>
         </div>
-        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-          <p class="text-2xl mb-2">🤖</p>
-          <p class="font-bold text-slate-800 text-sm mb-1">AIに渡したいのに渡せない</p>
-          <p class="text-xs text-slate-500 leading-relaxed">列名や形式がバラバラで、CopilotやChatGPTにそのまま見せられない。</p>
+        <div class="border border-[#e5e9f0] bg-[#f8fafc] rounded-lg p-5">
+          <p class="text-2xl mb-3">🤖</p>
+          <p class="font-bold text-[#2e3440] text-sm mb-1">AIに渡したいのに渡せない</p>
+          <p class="text-xs text-[#4c566a] leading-relaxed">列名やセル形式が不揃いで、CopilotやChatGPTなどの生成AIにそのまま読み込ませられない。</p>
         </div>
       </div>
     </section>
 
-    <!-- Before after -->
-    <section class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
+    <!-- Before / After (Nord Light Structured Table) -->
+    <section class="bg-white border border-[#d8dee9] rounded-xl p-6 sm:p-8 space-y-5 shadow-sm">
       <div>
-        <h2 class="font-black text-slate-800 text-lg mb-1">このコースで目指す変化</h2>
-        <p class="text-sm text-slate-500">抽象的な「データ活用」ではなく、現場で起こる変化をはっきりさせます。</p>
+        <h2 class="font-bold text-[#2e3440] text-lg mb-1">このコースで目指す変化</h2>
+        <p class="text-xs sm:text-sm text-[#4c566a]">抽象的な「データ活用」ではなく、日々の業務現場で起こる具体的な変化を定義します。</p>
       </div>
-      <div class="overflow-hidden rounded-2xl border border-slate-200">
-        <table class="w-full text-sm">
-          <thead class="bg-slate-100 text-slate-700">
-            <tr>
-              <th class="text-left px-4 py-3 font-bold">Before</th>
-              <th class="text-left px-4 py-3 font-bold">After</th>
+      <div class="overflow-x-auto border border-[#d8dee9] rounded-lg">
+        <table class="w-full text-xs sm:text-sm text-left border-collapse">
+          <thead>
+            <tr class="bg-[#e5e9f0] text-[#2e3440] border-b border-[#d8dee9]">
+              <th class="py-2.5 px-4 font-bold w-1/2 uppercase tracking-wider text-xs font-mono text-[#4c566a]">Before (現状の課題)</th>
+              <th class="py-2.5 px-4 font-bold w-1/2 uppercase tracking-wider text-xs font-mono text-[#5e81ac]">After (整えた後の状態)</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-slate-200">
-            <tr class="bg-white">
-              <td class="px-4 py-3 text-slate-600">毎月2時間かかる集計作業</td>
-              <td class="px-4 py-3 text-slate-800 font-bold">関数やピボットで5分に近づける</td>
+          <tbody class="divide-y divide-[#e5e9f0] bg-white">
+            <tr class="hover:bg-[#f8fafc] transition-colors">
+              <td class="py-3.5 px-4 text-[#4c566a]">毎月2時間かかる集計作業</td>
+              <td class="py-3.5 px-4 text-[#2e3440] font-bold bg-[#f0f7ec]">関数やピボットテーブルで5分に短縮</td>
             </tr>
-            <tr class="bg-slate-50">
-              <td class="px-4 py-3 text-slate-600">引き継ぎ不能なファイル</td>
-              <td class="px-4 py-3 text-slate-800 font-bold">誰でも更新できる表の形にする</td>
+            <tr class="hover:bg-[#f8fafc] transition-colors">
+              <td class="py-3.5 px-4 text-[#4c566a]">引き継ぎ不能なブラックボックス表</td>
+              <td class="py-3.5 px-4 text-[#2e3440] font-bold bg-[#f0f7ec]">構造ルールが決まり誰でも更新できる表の形に改善</td>
             </tr>
-            <tr class="bg-white">
-              <td class="px-4 py-3 text-slate-600">AIに渡しても使えないデータ</td>
-              <td class="px-4 py-3 text-slate-800 font-bold">AIが読みやすい列と形式にそろえる</td>
+            <tr class="hover:bg-[#f8fafc] transition-colors">
+              <td class="py-3.5 px-4 text-[#4c566a]">AIに渡してもエラーになるデータ</td>
+              <td class="py-3.5 px-4 text-[#2e3440] font-bold bg-[#f0f7ec]">AIが即座に解釈できる1行1件・1列1種類の形式に統一</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- AI and workflow -->
-    <section class="grid md:grid-cols-[1.5fr_1fr] gap-4">
-      <div class="bg-gradient-to-r from-indigo-600 to-violet-600 rounded-2xl p-6 text-white">
-        <p class="text-xs font-bold uppercase tracking-widest text-indigo-100 mb-2">AI Ready</p>
-        <h2 class="font-black text-xl mb-2">AIを使う前に、まず表の形を整える</h2>
-        <p class="text-sm text-indigo-100 leading-relaxed">
-          CopilotやChatGPTに業務データを見せるとき、列名があいまい、数字が文字列、小計行が混ざる、という状態では正確に読めません。<br>
-          このコースで学ぶ「きれいなデータ」は、AI活用の前提条件でもあります。
-        </p>
+    <!-- AI and workflow (Nord Light 2-Column Section) -->
+    <section class="grid md:grid-cols-[1.4fr_1fr] gap-4">
+      <div class="bg-[#5e81ac] text-white rounded-xl p-6 sm:p-7 flex flex-col justify-between shadow-sm border-t-4 border-[#88c0d0]">
+        <div>
+          <p class="text-[#eceff4] text-xs font-bold uppercase tracking-wider mb-2 font-mono">AI Ready Architecture</p>
+          <h2 class="font-bold text-xl mb-3">AIを使う前に、まず表の形を整える</h2>
+          <p class="text-sm text-[#e5e9f0] leading-relaxed">
+            CopilotやChatGPTに業務データを見せるとき、列名があいまい、数値が文字列、小計行が混在している状態では正確に読み取れません。<br>
+            このコースで学ぶ「きれいなデータ構造」は、AI活用における必須の前提条件です。
+          </p>
+        </div>
       </div>
-      <div class="bg-white rounded-2xl border border-slate-200 p-6">
-        <h2 class="font-black text-slate-800 mb-3 text-lg">進め方</h2>
-        <div class="space-y-3 text-sm">
+      <div class="bg-white border border-[#d8dee9] rounded-xl p-6 sm:p-7 shadow-sm">
+        <h2 class="font-bold text-[#2e3440] mb-4 text-base">コースの進め方</h2>
+        <div class="space-y-4 text-xs sm:text-sm">
           <div class="flex items-start gap-3">
-            <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-black text-xs flex items-center justify-center shrink-0">1</span>
-            <p class="text-slate-600 leading-relaxed">ダミーの売上データで、困る症状を見つける</p>
+            <span class="w-6 h-6 bg-[#5e81ac] text-white font-mono font-bold text-xs flex items-center justify-center rounded shrink-0">1</span>
+            <p class="text-[#4c566a] leading-relaxed pt-0.5">ダミーの売上データで、困る症状を発見する</p>
           </div>
           <div class="flex items-start gap-3">
-            <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-black text-xs flex items-center justify-center shrink-0">2</span>
-            <p class="text-slate-600 leading-relaxed">長野県の実データで、実際に整える練習をする</p>
+            <span class="w-6 h-6 bg-[#5e81ac] text-white font-mono font-bold text-xs flex items-center justify-center rounded shrink-0">2</span>
+            <p class="text-[#4c566a] leading-relaxed pt-0.5">長野県の実データで、実際に整える演習を行う</p>
           </div>
           <div class="flex items-start gap-3">
-            <span class="w-7 h-7 rounded-full bg-indigo-600 text-white font-black text-xs flex items-center justify-center shrink-0">3</span>
-            <p class="text-slate-600 leading-relaxed">個人技ではなく、チームの入力ルールとして考える</p>
+            <span class="w-6 h-6 bg-[#5e81ac] text-white font-mono font-bold text-xs flex items-center justify-center rounded shrink-0">3</span>
+            <p class="text-[#4c566a] leading-relaxed pt-0.5">個人技ではなく、チーム共通の入力ルールとして定着させる</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Team rules -->
-    <section class="bg-amber-50 border border-amber-200 rounded-2xl p-6">
-      <h2 class="font-black text-amber-900 text-lg mb-2">きれいなデータは個人技ではなく、チームのルールで決まる</h2>
-      <p class="text-sm text-amber-800 leading-relaxed">
-        データが汚れる原因は、入力する人・整える人・見る人が別で、困りごとが共有されにくいことです。<br>
-        このコースでは、関数や操作だけでなく、入力ルールの統一や責任者の明確化がなぜ必要かも扱います。
+    <!-- Team rules (Nord Light Callout) -->
+    <section class="bg-[#fef9ed] border border-[#ebcb8b] border-l-4 border-l-[#d08770] rounded-r-xl p-6 shadow-sm">
+      <h2 class="font-bold text-[#8a531e] text-base mb-2">きれいなデータは個人技ではなく、組織のルールで決まる</h2>
+      <p class="text-xs sm:text-sm text-[#6e461f] leading-relaxed">
+        データが汚れる原因は、入力する人・整える人・分析する人が別々に作業し、現場の困りごとが共有されない構造にあります。<br class="hidden sm:inline">
+        このコースでは、ツールの操作方法だけでなく、入力ルールの標準化や責任の明確化がなぜ必要なのかも扱います。
       </p>
     </section>
 
-    <!-- Lesson list -->
-    <div>
-      <h2 class="font-black text-slate-800 mb-4 text-lg">レッスン一覧</h2>
+    <!-- Lesson list (Nord Light Clickable Cards) -->
+    <div class="space-y-4">
+      <div class="flex items-center justify-between border-b border-[#d8dee9] pb-2">
+        <h2 class="font-bold text-[#2e3440] text-base">レッスン一覧</h2>
+        <span class="text-xs text-[#5e81ac] font-mono font-medium">全3レッスン公開中</span>
+      </div>
+
       <div class="space-y-3">
 
         <!-- L1 active -->
         <a href="lesson01/index.html"
-          class="group block bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-lg transition-all duration-200 p-5">
+          class="group block bg-white border border-[#d8dee9] hover:border-[#5e81ac] rounded-xl transition-all p-5 sm:p-6 shadow-sm hover:shadow-md">
           <div class="flex items-start gap-4">
-            <div class="bg-indigo-600 text-white rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">1</div>
+            <div class="bg-[#5e81ac] text-white w-10 h-10 flex items-center justify-center font-mono font-bold text-sm rounded-lg shrink-0">01</div>
             <div class="flex-1 min-w-0">
-              <div class="flex items-center gap-2 flex-wrap mb-1">
-                <h3 class="font-black text-slate-800 group-hover:text-indigo-700 transition-colors">もらった表が使えない。なぜ？</h3>
-                <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">公開中</span>
+              <div class="flex items-center gap-2 flex-wrap mb-1.5">
+                <h3 class="font-bold text-[#2e3440] group-hover:text-[#5e81ac] transition-colors text-base">もらった表が使えない。なぜ？</h3>
+                <span class="bg-[#eef7ee] text-[#3d6e27] border border-[#a3be8c]/50 text-xs px-2 py-0.5 rounded font-medium">公開中</span>
               </div>
-              <p class="text-sm text-slate-500">ダミー売上データで「困る表」の症状を見つけ、あとから「神Excel」という名前を知ろう。</p>
-              <div class="flex gap-2 mt-2 flex-wrap">
-                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">ダミー売上データ</span>
-                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">神Excel</span>
-                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">AI前提</span>
+              <p class="text-xs sm:text-sm text-[#4c566a] leading-relaxed mb-3">ダミー売上データで「困る表」の症状を見つけ、あとから「神Excel」という名前を知ろう。</p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="bg-[#eceff4] text-[#434c5e] border border-[#d8dee9] text-[11px] px-2 py-0.5 rounded font-mono">ダミー売上データ</span>
+                <span class="bg-[#eceff4] text-[#434c5e] border border-[#d8dee9] text-[11px] px-2 py-0.5 rounded font-mono">神Excel</span>
+                <span class="bg-[#eceff4] text-[#434c5e] border border-[#d8dee9] text-[11px] px-2 py-0.5 rounded font-mono">AI前提</span>
               </div>
             </div>
-            <span class="text-indigo-400 text-xl group-hover:translate-x-1 transition-transform shrink-0">→</span>
+            <span class="text-[#5e81ac] text-xl group-hover:translate-x-1 transition-transform shrink-0 pt-1">→</span>
           </div>
         </a>
 
         <!-- L2 active -->
         <a href="lesson02/index.html"
-          class="group block bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-lg transition-all duration-200 p-5">
+          class="group block bg-white border border-[#d8dee9] hover:border-[#5e81ac] rounded-xl transition-all p-5 sm:p-6 shadow-sm hover:shadow-md">
           <div class="flex items-start gap-4">
-            <div class="bg-indigo-600 text-white rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">2</div>
+            <div class="bg-[#5e81ac] text-white w-10 h-10 flex items-center justify-center font-mono font-bold text-sm rounded-lg shrink-0">02</div>
             <div class="flex-1 min-w-0">
-              <div class="flex items-center gap-2 flex-wrap mb-1">
-                <h3 class="font-black text-slate-800 group-hover:text-indigo-700 transition-colors">その集計ミス、データが原因だった</h3>
-                <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">公開中</span>
+              <div class="flex items-center gap-2 flex-wrap mb-1.5">
+                <h3 class="font-bold text-[#2e3440] group-hover:text-[#5e81ac] transition-colors text-base">その集計ミス、データが原因だった</h3>
+                <span class="bg-[#eef7ee] text-[#3d6e27] border border-[#a3be8c]/50 text-xs px-2 py-0.5 rounded font-medium">公開中</span>
               </div>
-              <p class="text-sm text-slate-500">前処理の2時間が、月いくら・年いくらになるのかをコスト感覚でつかもう。</p>
-              <div class="flex gap-2 mt-2 flex-wrap">
-                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">コスト試算</span>
-                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">残業</span>
-                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">組織課題</span>
+              <p class="text-xs sm:text-sm text-[#4c566a] leading-relaxed mb-3">前処理の2時間が、月いくら・年いくらになるのかをコスト感覚でつかもう。</p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="bg-[#eceff4] text-[#434c5e] border border-[#d8dee9] text-[11px] px-2 py-0.5 rounded font-mono">コスト試算</span>
+                <span class="bg-[#eceff4] text-[#434c5e] border border-[#d8dee9] text-[11px] px-2 py-0.5 rounded font-mono">残業削減</span>
+                <span class="bg-[#eceff4] text-[#434c5e] border border-[#d8dee9] text-[11px] px-2 py-0.5 rounded font-mono">組織課題</span>
               </div>
             </div>
-            <span class="text-indigo-400 text-xl group-hover:translate-x-1 transition-transform shrink-0">→</span>
+            <span class="text-[#5e81ac] text-xl group-hover:translate-x-1 transition-transform shrink-0 pt-1">→</span>
           </div>
         </a>
 
         <!-- L3 active -->
         <a href="lesson03/index.html"
-          class="group block bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-lg transition-all duration-200 p-5">
+          class="group block bg-white border border-[#d8dee9] hover:border-[#5e81ac] rounded-xl transition-all p-5 sm:p-6 shadow-sm hover:shadow-md">
           <div class="flex items-start gap-4">
-            <div class="bg-indigo-600 text-white rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">3</div>
+            <div class="bg-[#5e81ac] text-white w-10 h-10 flex items-center justify-center font-mono font-bold text-sm rounded-lg shrink-0">03</div>
             <div class="flex-1 min-w-0">
-              <div class="flex items-center gap-2 flex-wrap mb-1">
-                <h3 class="font-black text-slate-800 group-hover:text-indigo-700 transition-colors">1行1件・1列1種類——データの基本ルール</h3>
-                <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-full">公開中</span>
+              <div class="flex items-center gap-2 flex-wrap mb-1.5">
+                <h3 class="font-bold text-[#2e3440] group-hover:text-[#5e81ac] transition-colors text-base">1行1件・1列1種類——データの基本ルール</h3>
+                <span class="bg-[#eef7ee] text-[#3d6e27] border border-[#a3be8c]/50 text-xs px-2 py-0.5 rounded font-medium">公開中</span>
               </div>
-              <p class="text-sm text-slate-500">悪い表と良い表を見比べて、構造のルールを体で覚えよう。</p>
-              <div class="flex gap-2 mt-2 flex-wrap">
-                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">tidy data</span>
-                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">ダミー売上データ</span>
-                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-0.5 rounded-full">比較学習</span>
+              <p class="text-xs sm:text-sm text-[#4c566a] leading-relaxed mb-3">悪い表と良い表を見比べて、構造のルール（tidy data）を体で覚えよう。</p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="bg-[#eceff4] text-[#434c5e] border border-[#d8dee9] text-[11px] px-2 py-0.5 rounded font-mono">tidy data</span>
+                <span class="bg-[#eceff4] text-[#434c5e] border border-[#d8dee9] text-[11px] px-2 py-0.5 rounded font-mono">ダミー売上データ</span>
+                <span class="bg-[#eceff4] text-[#434c5e] border border-[#d8dee9] text-[11px] px-2 py-0.5 rounded font-mono">比較学習</span>
               </div>
             </div>
-            <span class="text-indigo-400 text-xl group-hover:translate-x-1 transition-transform shrink-0">→</span>
+            <span class="text-[#5e81ac] text-xl group-hover:translate-x-1 transition-transform shrink-0 pt-1">→</span>
           </div>
         </a>
 
-        <!-- L4 -->
-        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
+        <!-- 今後追加予定 (Nord Light Muted Card) -->
+        <div class="bg-[#f8fafc] border border-dashed border-[#c2cad6] rounded-xl p-5 sm:p-6">
           <div class="flex items-start gap-4">
-            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">4</div>
+            <div class="bg-[#e5e9f0] text-[#4c566a] w-10 h-10 flex items-center justify-center font-mono text-sm rounded-lg shrink-0 font-bold">＋</div>
             <div class="flex-1">
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-black text-slate-400">数字・日付・テキストの正しい入れ方</h3>
-                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
-              </div>
-              <p class="text-sm text-slate-400">入力規則を使って、まちがえられない仕組みを作ろう。</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- L5 -->
-        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
-          <div class="flex items-start gap-4">
-            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">5</div>
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-black text-slate-400">フィルターとコピペで前処理する</h3>
-                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
-              </div>
-              <p class="text-sm text-slate-400">長野県の実データを使って、不要行の削除や値のみ貼り付けを練習しよう。</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- L6 -->
-        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
-          <div class="flex items-start gap-4">
-            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">6</div>
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-black text-slate-400">スプレッドシートの自動クレンジング機能</h3>
-                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
-              </div>
-              <p class="text-sm text-slate-400">TRIMやSUBSTITUTEなどで、手作業を減らそう。</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- L7 -->
-        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
-          <div class="flex items-start gap-4">
-            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">7</div>
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-black text-slate-400">ピボットテーブルで集計する</h3>
-                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
-              </div>
-              <p class="text-sm text-slate-400">整ったデータを数クリックで集計して、前処理の価値を実感しよう。</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- L8 -->
-        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
-          <div class="flex items-start gap-4">
-            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">8</div>
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-black text-slate-400">グラフで変化を見える化する</h3>
-                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
-              </div>
-              <p class="text-sm text-slate-400">棒グラフと折れ線を使い分けて、伝わる可視化を作ろう。</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- L9 -->
-        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
-          <div class="flex items-start gap-4">
-            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">9</div>
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-black text-slate-400">AIにデータを渡す——何を準備すれば使えるか</h3>
-                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
-              </div>
-              <p class="text-sm text-slate-400">CSV、列名、型のそろえ方を、AIへの相談シーンで学ぼう。</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- L10 -->
-        <div class="bg-white rounded-2xl border border-dashed border-slate-200 p-5 opacity-60">
-          <div class="flex items-start gap-4">
-            <div class="bg-slate-100 text-slate-400 rounded-xl w-11 h-11 flex items-center justify-center font-black text-lg shrink-0">10</div>
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-1">
-                <h3 class="font-black text-slate-400">チームの入力ルールを作る</h3>
-                <span class="bg-slate-100 text-slate-400 text-xs font-bold px-2 py-0.5 rounded-full">準備中</span>
-              </div>
-              <p class="text-sm text-slate-400">「やる人と困る人が違う」問題に、ルールと責任者で向き合おう。</p>
+              <h3 class="font-bold text-[#434c5e] mb-1.5 text-base">今後追加予定のテーマ</h3>
+              <p class="text-xs sm:text-sm text-[#4c566a] leading-relaxed">
+                数字・日付の正しい入れ方 ／ フィルターとコピペによる前処理 ／ 自動クレンジング機能 ／ ピボットテーブルでの集計 ／ グラフでの見える化 ／ AIにデータを渡す準備 ／ チームの入力ルールづくり。
+              </p>
+              <p class="text-xs text-[#4c566a]/70 mt-2">
+                「このテーマを先に読みたい」というご要望は、下のフォームからお送りください。優先して公開します。
+              </p>
             </div>
           </div>
         </div>
@@ -340,27 +296,32 @@
       </div>
     </div>
 
-    <!-- 質問・要望フォームへのリンク -->
-    <section class="bg-white rounded-2xl border border-slate-200 p-6 mt-6">
-      <div class="sm:flex items-center justify-between gap-4">
+    <!-- 質問・要望フォームへのリンク (Nord Light Action Card) -->
+    <section class="bg-white border border-[#d8dee9] rounded-xl p-6 sm:p-7 shadow-sm">
+      <div class="sm:flex items-center justify-between gap-6">
         <div class="mb-4 sm:mb-0">
-          <h3 class="font-black text-slate-800 text-lg mb-1 flex items-center gap-2">
+          <h3 class="font-bold text-[#2e3440] text-base mb-1 flex items-center gap-2">
             <span>📮 質問・要望フォーム</span>
           </h3>
-          <p class="text-sm text-slate-500">
+          <p class="text-xs sm:text-sm text-[#4c566a]">
             学習内容に関する質問、サイトへの要望、不具合の報告などはこちらからお送りください。
           </p>
         </div>
-        <a href="../contact/index.html?from=adults" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl text-sm transition-colors whitespace-nowrap">
-          フォームを開く →
+        <a href="../contact/index.html?from=adults" class="inline-flex items-center justify-center gap-2 bg-[#5e81ac] hover:bg-[#434c5e] text-white font-bold px-5 py-3 rounded-lg text-sm transition-colors shrink-0 shadow-sm">
+          <span>フォームを開く</span>
+          <span class="text-base">→</span>
         </a>
       </div>
     </section>
 
   </main>
 
-  <footer class="text-center py-8 text-slate-400 text-sm border-t border-slate-200 mt-6">
-    <p>ながのデータ探検隊 | 大人コース</p>
+  <!-- Nord Light Footer -->
+  <footer class="bg-white border-t border-[#d8dee9] py-8 text-center text-[#4c566a] text-xs">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>ながのデータ探検隊 | しごととデータ</p>
+      <p class="font-mono text-[#5e81ac]">Nord Light Palette</p>
+    </div>
   </footer>
 
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b1f3fc535d864483bdbbf325e9597364"}'></script><!-- End Cloudflare Web Analytics -->

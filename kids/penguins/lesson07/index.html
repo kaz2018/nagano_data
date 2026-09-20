@@ -20,10 +20,17 @@
 
   <!-- ヘッダー -->
   <header class="bg-white shadow-sm">
-    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
-      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
-      <span class="text-gray-300">|</span>
-      <span class="text-sm font-bold text-slate-600">🐧 レッスン 7</span>
+    <div class="max-w-3xl mx-auto px-6 pt-3 pb-2">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+        <span class="text-gray-300">|</span>
+        <span class="text-sm font-bold text-slate-600">🐧 レッスン 7</span>
+      </div>
+      <nav class="flex gap-1.5 mt-2 text-xs font-bold">
+        <a href="../../nagano/index.html" class="px-2.5 py-1 rounded-full text-gray-400 hover:bg-gray-100">🏔 長野県編</a>
+        <a href="../../penguins/index.html" class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-700">🐧 ペンギン研究所</a>
+        <a href="../../extra/index.html" class="px-2.5 py-1 rounded-full text-gray-400 hover:bg-gray-100">💡 番外編</a>
+      </nav>
     </div>
   </header>
 
@@ -118,7 +125,7 @@
         <div class="space-y-3">
           <div>
             <h2 class="font-black text-gray-800">🔍 どの列に、いくつ空らんがある？</h2>
-            <p class="text-xs text-gray-500 mt-1">344ぴきぜんぶを、列ごとに数えたよ。</p>
+            <p class="text-xs text-gray-500 mt-1">344ひきぜんぶを、列ごとに数えたよ。</p>
           </div>
           <div id="peng7-missing-cards" class="grid grid-cols-2 sm:grid-cols-4 gap-2"></div>
           <p class="text-xs text-gray-500">💡 色がついているのが「空らんがある列」。白いのは「ぜんぶうまっている列」だよ。</p>
@@ -274,7 +281,7 @@
               まず<strong>数える</strong>。いくつ空らんがあるか分からないと、何も決められないから。<br />
               つぎに<strong>消さずに残す</strong>。勝手に0でうめたり、行ごと消したりしない。<br />
               計算するときは、その列が空らんの子を<strong>その計算からだけ外す</strong>。体重が空らんでも、しゅるいや島はちゃんと書いてあるから、べつの調べものには使えるよね。<br />
-              そして<strong>人に伝えるときに書いておく</strong>。「344ぴきのうち、体重がはかれた342ぴきで計算しました」と一言そえるだけで、そのへいきんは信じてもらえる数になるんだ。
+              そして<strong>人に伝えるときに書いておく</strong>。「344ひきのうち、体重がはかれた342ひきで計算しました」と一言そえるだけで、そのへいきんは信じてもらえる数になるんだ。
             </p>
           </div>
         </div>
@@ -367,7 +374,7 @@
       document.getElementById('result4').classList.remove('hidden');
     }
 
-    const P7_COLUMNS = ['しゅるい', '島', 'くちばしの長さ(mm)', 'くちばしの深さ(mm)', 'ひれの長さ(mm)', '体重(g)', 'せいべつ', '年'];
+    const P7_COLUMNS = ['しゅるい', '島', 'くちばしの長さ(mm)', 'くちばしの厚さ(mm)', 'ひれの長さ(mm)', '体重(g)', 'せいべつ', '年'];
 
     (async function initP7() {
       try {
@@ -411,7 +418,7 @@
         const allBlank = blankRows.filter(({ row }) =>
           isBlank(row, '体重(g)') && isBlank(row, 'ひれの長さ(mm)')).length;
         document.getElementById('peng7-rows-note').innerHTML =
-          `344ぴきのうち、空らんがある子は <strong>${blankRows.length}ぴき</strong>だけ。<br />` +
+          `344ひきのうち、空らんがある子は <strong>${blankRows.length}ぴき</strong>だけ。<br />` +
           `そのうち <strong>${allBlank}ひき</strong>は、はかった数がぜんぶ空らん。のこりの ${blankRows.length - allBlank}ひきは、` +
           `<strong>せいべつだけ</strong>が分からない子だよ。体重もひれの長さもちゃんと記録されているから、体重を調べるときには使えるね。`;
 

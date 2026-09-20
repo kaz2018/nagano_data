@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>レッスン2: 市の人口をくらべよう | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../../js/kids-visuals.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
+</head>
+
+<body class="bg-green-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 pt-3 pb-2">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+        <span class="text-gray-300">|</span>
+        <span class="text-sm font-bold text-green-600">レッスン 2 / 10</span>
+      </div>
+      <nav class="flex gap-1.5 mt-2 text-xs font-bold">
+        <a href="../../nagano/index.html" class="px-2.5 py-1 rounded-full bg-green-100 text-green-700">🏔 長野県編</a>
+        <a href="../../penguins/index.html" class="px-2.5 py-1 rounded-full text-gray-400 hover:bg-gray-100">🐧 ペンギン研究所</a>
+        <a href="../../extra/index.html" class="px-2.5 py-1 rounded-full text-gray-400 hover:bg-gray-100">💡 番外編</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <!-- タイトル -->
+    <section class="text-center">
+      <div class="inline-block bg-green-100 text-green-700 text-sm font-bold px-4 py-1 rounded-full mb-3">レッスン 2</div>
+      <h1 class="text-3xl font-black text-gray-800 mb-2">市の人口をくらべよう</h1>
+      <p class="text-gray-500">ぼうグラフをつくってみよう</p>
+    </section>
+
+    <!-- キャラクター会話 -->
+    <section class="space-y-3">
+      <div class="flex items-start gap-3">
+        <img src="../../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「今度は<strong>市</strong>の人口をくらべよう。大きな市と小さな村では、人口がどのくらいちがうんだろう？ ぼうグラフにしたら一目でわかるよ！」
+          </div>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <img src="../../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+          <div class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「スイカって野菜なんだよ。これマメな。」
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="font-black text-gray-800 mb-3">🎯 このレッスンでわかること</h2>
+      <ul class="space-y-2 text-gray-600 text-sm">
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> ぼうグラフがどんなグラフかわかる</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> スプレッドシートでグラフのつくりかたがわかる</li>
+        <li class="flex gap-2"><span class="text-green-500 font-bold">✓</span> 長野県でいちばん人口が多い市がわかる</li>
+      </ul>
+    </section>
+
+    <!-- 説明 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📖 ぼうグラフってなに？</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        「ぼうグラフ」は、数の大きさをぼうの高さであらわしたグラフです。<br />
+        ぼうが高いほど、数が大きいことを意味します。
+      </p>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        たとえば、市町村ごとの人口をぼうグラフにすると、<strong>どの市町村が多くてどの市町村が少ないか</strong>がひと目でわかります。
+      </p>
+      <div class="bg-amber-50 rounded-xl p-4 text-sm text-amber-800">
+        <p class="font-bold mb-1">📝 ポイント</p>
+        <p>今回は<strong>2025年の人口</strong>をつかって、長野県の19市と麻績村・筑北村をくらべてみよう。</p>
+      </div>
+
+      <div class="bg-blue-600 text-white rounded-xl p-4 text-sm">
+        <p class="font-bold mb-1">📂 レッスン2のデータ（レッスン1とはちがうよ！）</p>
+        <p class="text-blue-100 leading-relaxed">長野県の<strong class="text-white">市</strong>の人口データを集めたよ。レッスン1の「村」とくらべて、どんなちがいがあるかな？</p>
+      </div>
+    </section>
+
+    <!-- ぼうグラフ -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 長野県の市と村の人口（2025年）</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        ぼうが長いほど人口が多いよ。<strong class="text-blue-700">青いぼうが「市」</strong>、<strong class="text-gray-500">グレーのぼうが「村」</strong>。<br />
+        長野市のぼうと、麻績村・筑北村のぼうをくらべてみよう。市と村でどのくらいちがうかな？
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 text-xs">
+        <span class="flex items-center gap-1"><span class="inline-block w-3 h-3 rounded bg-blue-500"></span>市</span>
+        <span class="flex items-center gap-1"><span class="inline-block w-3 h-3 rounded bg-gray-400"></span>村</span>
+        <button id="lesson2-sort-btn" type="button"
+          class="ml-auto bg-blue-500 hover:bg-blue-600 text-white font-bold px-3 py-1.5 rounded-lg transition-colors">
+          人口が多いじゅんにならべる
+        </button>
+      </div>
+
+      <div id="lesson2-summary" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm"></div>
+      <div id="lesson2-chart" class="space-y-1.5"></div>
+    </section>
+
+    <!-- グラフのつくりかた -->
+    <section id="lesson2-advanced-howto" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">🛠️ じぶんでもグラフを作ってみよう</h2>
+
+      <div class="space-y-4">
+
+        <div class="flex gap-4">
+          <div
+            class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">
+            1</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">A列とB列をぜんぶえらぶ</p>
+            <p class="text-gray-600 text-sm mt-1">いちばん上の「市町村名」のセル（A1）をクリックして、そのまま右下の最後のセル（B22）までドラッグしよう。全部のデータがえらばれるよ。
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div
+            class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">
+            2</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">グラフをそう入する</p>
+            <p class="text-gray-600 text-sm mt-1">上のメニューから「そう入」→「グラフ」をおそう。</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div
+            class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shrink-0">
+            3</div>
+          <div>
+            <p class="font-bold text-gray-800 text-sm">グラフのしゅるいを「棒グラフ」にする</p>
+            <p class="text-gray-600 text-sm mt-1">グラフエディタが出てきたら「グラフのしゅるい」から「棒グラフ」をえらぼう。ぼうが横むきのときは「縦棒グラフ」にするとわかりやすいよ。</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="bg-blue-50 rounded-xl p-4 text-sm text-blue-800">
+        <p class="font-bold mb-1">💡 ヒント</p>
+        <p>グラフができたら、タイトルを「長野県の市町村の人口（2025年）」などに変えてみよう！</p>
+      </div>
+    </section>
+
+    <!-- やってみよう -->
+    <section id="lesson2-quiz" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
+      <p class="text-gray-600 text-sm">上のグラフを見て、もんだいにこたえてみよう！</p>
+
+      <div class="space-y-6">
+
+        <!-- もんだい1 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 1. 2025年にいちばん人口が多い市はどこですか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q2_1" value="a" class="accent-green-500" />
+              <span>① 松本市</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q2_1" value="b" class="accent-green-500" />
+              <span>② 長野市</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q2_1" value="c" class="accent-green-500" />
+              <span>③ 上田市</span>
+            </label>
+          </div>
+          <button onclick="check2_1()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result1" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい2 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 2. 2番めに人口が多い市はどこですか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q2_2" value="a" class="accent-green-500" />
+              <span>① 上田市</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q2_2" value="b" class="accent-green-500" />
+              <span>② 松本市</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q2_2" value="c" class="accent-green-500" />
+              <span>③ 飯田市</span>
+            </label>
+          </div>
+          <button onclick="check2_2()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result2" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい3 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 3. いちばん多い市といちばん少ない市の人口の差はどのくらいですか？（3択）</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q2_3" value="a" class="accent-green-500" />
+              <span>① 約34,000人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q2_3" value="b" class="accent-green-500" />
+              <span>② 約343,000人</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-green-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-green-300 transition-colors">
+              <input type="radio" name="q2_3" value="c" class="accent-green-500" />
+              <span>③ 約134,000人</span>
+            </label>
+          </div>
+          <button onclick="check2_3()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result3" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="lesson2-advanced-sheet" class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📊 もっとやってみたい人へ</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">上のグラフだけでも答えられるよ。じぶんでグラフを作ったり、数字をさわったりしたい人はスプレッドシートもひらいてみよう。</p>
+
+      <a href="https://docs.google.com/spreadsheets/d/1GAt8JexG_lT5njSKnFgZaVUeL-ma5vsAwJvGPzaT3Kc/copy"
+        target="_blank" rel="noopener"
+        class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをコピーする
+      </a>
+
+      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
+        <p class="font-bold text-gray-700">コピーのしかた</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>ボタンをおす</li>
+          <li>「コピーを作成」をおす</li>
+          <li>じぶんのGoogleドライブにほぞんされるよ</li>
+        </ol>
+      </div>
+    </section>
+
+    <script>
+      loadKidsCsv('../data/lesson02_cities_2025.csv').then((rows) => {
+        const cities = rows
+          .filter((row) => !row['市町村名'].endsWith('村'))
+          .map((row) => ({ name: row['市町村名'], pop: Number(row['2025年_総人口']) }))
+          .sort((a, b) => b.pop - a.pop);
+        const maxCity = cities[0];
+        const minCity = cities[cities.length - 1];
+        document.getElementById('lesson2-summary').innerHTML = `
+          <div class="rounded-xl bg-blue-50 p-4">
+            <p class="text-xs font-bold text-blue-700">いちばん多い市</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${maxCity.name}</p>
+            <p class="text-xs text-gray-500">${maxCity.pop.toLocaleString('ja-JP')}人</p>
+          </div>
+          <div class="rounded-xl bg-white border border-blue-100 p-4">
+            <p class="text-xs font-bold text-blue-700">いちばん少ない市</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${minCity.name}</p>
+            <p class="text-xs text-gray-500">${minCity.pop.toLocaleString('ja-JP')}人</p>
+          </div>
+          <div class="rounded-xl bg-white border border-blue-100 p-4">
+            <p class="text-xs font-bold text-blue-700">市どうしの差</p>
+            <p class="mt-1 text-lg font-black text-gray-800">${(maxCity.pop - minCity.pop).toLocaleString('ja-JP')}人</p>
+            <p class="text-xs text-gray-500">村はここに入れないよ</p>
+          </div>
+        `;
+      });
+
+      initKidsBarChart({
+        csvUrl: '../data/lesson02_cities_2025.csv',
+        containerId: 'lesson2-chart',
+        sortButtonId: 'lesson2-sort-btn',
+        transformRows: (rows) => rows.map((row) => ({
+          name: row['市町村名'],
+          value: Number(row['2025年_総人口']),
+          type: row['市町村名'].endsWith('村') ? 'village' : 'city',
+        })),
+        theme: {
+          cityBarClass: 'bg-blue-500',
+          villageBarClass: 'bg-gray-400',
+          maxBarClass: 'bg-blue-600',
+        },
+      });
+
+      moveKidsSectionsAfter({
+        markerId: 'lesson2-quiz',
+        sectionIds: ['lesson2-advanced-sheet', 'lesson2-advanced-howto'],
+      });
+
+      function check2_1() {
+        const selected = document.querySelector('input[name="q2_1"]:checked');
+        const result = document.getElementById('result1');
+        result.classList.remove('hidden');
+        if (selected && selected.value === 'b') {
+          result.textContent = '⭕ せいかい！ 長野市がいちばん人口が多い市だよ！';
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+        } else {
+          result.textContent = '❌ もう一かい！ ヒント：グラフのいちばん高いぼうを見てみよう。';
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+        }
+      }
+      function check2_2() {
+        const selected = document.querySelector('input[name="q2_2"]:checked');
+        const result = document.getElementById('result2');
+        result.classList.remove('hidden');
+        if (selected && selected.value === 'b') {
+          result.textContent = '⭕ せいかい！ 2番めは松本市だよ！';
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+        } else {
+          result.textContent = '❌ もう一かい！ ヒント：グラフで2番めに高いぼうを見てみよう。';
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+        }
+      }
+      function check2_3() {
+        const selected = document.querySelector('input[name="q2_3"]:checked');
+        const result = document.getElementById('result3');
+        result.classList.remove('hidden');
+        if (selected && selected.value === 'b') {
+          result.textContent = '⭕ せいかい！ 約343,099人もちがうんだね！';
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+        } else {
+          result.textContent = '❌ もう一かい！ ヒント：いちばん高いぼうといちばん低いぼうの数字を確認してみよう。';
+          result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+        }
+      }
+    </script>
+
+    <!-- ナビゲーション -->
+    <div class="flex justify-between items-center pt-4">
+      <a href="../lesson01/index.html" class="text-gray-400 hover:text-gray-600 text-sm">← まえのレッスンへ</a>
+      <a href="../lesson03/index.html"
+        class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        つぎのレッスンへ →
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | こどもコース</p>
+  </footer>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b1f3fc535d864483bdbbf325e9597364"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+
+</html>

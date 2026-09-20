@@ -1,0 +1,45 @@
+# 2026-09 フォルダ構成の整理にともなう旧URLの転送（301 = 恒久的な移動）
+#
+# 構文: [旧パス] [新パス] [ステータス]
+# 仕様: https://developers.cloudflare.com/workers/static-assets/redirects/
+# 上限: 静的2,000件・動的100件。ここでは動的（* を含む）を30件使用。
+#
+# 各パスに2行あるのは、末尾スラッシュなし（/kids/lesson01）と
+# 配下すべて（/kids/lesson01/ ・ /kids/lesson01/index.html）の両方を拾うため。
+
+# --- 長野県編: kids/lessonNN/ → kids/nagano/lessonNN/ ---
+/kids/lesson01   /kids/nagano/lesson01/   301
+/kids/lesson01/* /kids/nagano/lesson01/   301
+/kids/lesson02   /kids/nagano/lesson02/   301
+/kids/lesson02/* /kids/nagano/lesson02/   301
+/kids/lesson03   /kids/nagano/lesson03/   301
+/kids/lesson03/* /kids/nagano/lesson03/   301
+/kids/lesson04   /kids/nagano/lesson04/   301
+/kids/lesson04/* /kids/nagano/lesson04/   301
+/kids/lesson05   /kids/nagano/lesson05/   301
+/kids/lesson05/* /kids/nagano/lesson05/   301
+/kids/lesson06   /kids/nagano/lesson06/   301
+/kids/lesson06/* /kids/nagano/lesson06/   301
+/kids/lesson07   /kids/nagano/lesson07/   301
+/kids/lesson07/* /kids/nagano/lesson07/   301
+/kids/lesson08   /kids/nagano/lesson08/   301
+/kids/lesson08/* /kids/nagano/lesson08/   301
+/kids/lesson09   /kids/nagano/lesson09/   301
+/kids/lesson09/* /kids/nagano/lesson09/   301
+/kids/lesson10   /kids/nagano/lesson10/   301
+/kids/lesson10/* /kids/nagano/lesson10/   301
+
+# --- 番外編: kids/extraNN/ → kids/extra/<スラッグ>/ ---
+/kids/extra01    /kids/extra/youtube/     301
+/kids/extra01/*  /kids/extra/youtube/     301
+/kids/extra02    /kids/extra/trash/       301
+/kids/extra02/*  /kids/extra/trash/       301
+/kids/extra03    /kids/extra/instagram/   301
+/kids/extra03/*  /kids/extra/instagram/   301
+/kids/extra04    /kids/extra/freedom/     301
+/kids/extra04/*  /kids/extra/freedom/     301
+/kids/extra05    /kids/extra/games/       301
+/kids/extra05/*  /kids/extra/games/       301
+
+# --- 移動した画像 ---
+/kids/images/compressed_image_timebank.jpg /assets/images/compressed_image_timebank.jpg 301

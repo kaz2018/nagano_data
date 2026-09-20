@@ -20,10 +20,17 @@
 
   <!-- ヘッダー -->
   <header class="bg-white shadow-sm">
-    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
-      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
-      <span class="text-gray-300">|</span>
-      <span class="text-sm font-bold text-orange-600">🐧 レッスン 8</span>
+    <div class="max-w-3xl mx-auto px-6 pt-3 pb-2">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+        <span class="text-gray-300">|</span>
+        <span class="text-sm font-bold text-orange-600">🐧 レッスン 8</span>
+      </div>
+      <nav class="flex gap-1.5 mt-2 text-xs font-bold">
+        <a href="../../nagano/index.html" class="px-2.5 py-1 rounded-full text-gray-400 hover:bg-gray-100">🏔 長野県編</a>
+        <a href="../../penguins/index.html" class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-700">🐧 ペンギン研究所</a>
+        <a href="../../extra/index.html" class="px-2.5 py-1 rounded-full text-gray-400 hover:bg-gray-100">💡 番外編</a>
+      </nav>
     </div>
   </header>
 
@@ -37,13 +44,13 @@
     </section>
 
     <!-- 会話吹き出し（最終回・4人） -->
-    <section class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-5 space-y-3">
+    <section class="space-y-3">
       <!-- でい太 -->
       <div class="flex items-start gap-3">
         <img src="../../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
         <div>
           <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
-          <div class="bg-white border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
             「ここまでで、ちらばりグラフも、グループ分けも、空らんのあつかいもおぼえた。もうこわいものなしだ！」
           </div>
         </div>
@@ -53,7 +60,7 @@
         <img src="../../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
         <div>
           <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
-          <div class="bg-white border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+          <div class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
             「そういうこと言うと、だいたい最後になんか出てくるんだよね。」
           </div>
         </div>
@@ -63,8 +70,8 @@
         <img src="../../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
         <div>
           <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
-          <div class="bg-white border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
-            「……あれ。くちばしの長さと深さでグラフを作ったら、<strong>右下がり</strong>になった。長いくちばしほど浅いってこと？ なんか変だぞ？」
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「……あれ。くちばしの長さと厚さでグラフを作ったら、<strong>右下がり</strong>になった。長いくちばしほど薄いってこと？ なんか変だぞ？」
           </div>
         </div>
       </div>
@@ -73,7 +80,7 @@
         <img src="../../images/harmit.png" alt="ものしり仙人" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
         <div class="text-right">
           <p class="text-xs font-bold text-blue-600 mb-1">ものしり仙人</p>
-          <div class="bg-white border border-blue-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+          <div class="bg-blue-50 border border-blue-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
             「よう見つけた。それこそがデータの世界でいちばん有名なわな、<strong>シンプソンのパラドックス</strong>じゃ。<strong>ぜんぶまとめて見たときと、グループに分けて見たときで、答えの向きがひっくり返る</strong>。最後の探検じゃ。自分の目でたしかめてみよ。」
           </div>
         </div>
@@ -92,13 +99,13 @@
 
     <!-- 説明 -->
     <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
-      <h2 class="font-black text-gray-800">📖 くちばしの「長さ」と「深さ」</h2>
+      <h2 class="font-black text-gray-800">📖 くちばしの「長さ」と「厚さ」</h2>
       <p class="text-gray-600 text-sm leading-relaxed">
-        ペンギンのくちばしには、<strong>長さ</strong>（先までの長さ）と<strong>深さ</strong>（上下の厚み）という2つの測り方があります。
+        ペンギンのくちばしには、<strong>長さ</strong>（先までの長さ）と<strong>厚さ</strong>（上下の厚み）という2つの測り方があります。
         ふつうに考えれば、大きなくちばしは長くて厚いはず。だから右上がりになりそうですよね。
       </p>
       <p class="text-gray-600 text-sm leading-relaxed">
-        ところが、344ぴきをぜんぶまとめてグラフにすると、なぜか<strong>右下がり</strong>になります。
+        ところが、344ひきをぜんぶまとめてグラフにすると、なぜか<strong>右下がり</strong>になります。
         「長いくちばしほど、うすい」——そんなはずはありません。いったい何が起きているのでしょう。
       </p>
       <div class="bg-amber-50 rounded-xl p-4 text-sm text-amber-800">
@@ -109,14 +116,14 @@
       <!-- データカード -->
       <div class="bg-orange-600 text-white rounded-xl p-4 text-sm">
         <p class="font-bold mb-1">📂 レッスン8のデータ（レッスン7とはちがうよ！）</p>
-        <p class="text-orange-100 leading-relaxed">今回使うのは<strong class="text-white">くちばしの長さと深さ</strong>のセットだよ。レッスン7で学んだとおり、どちらかが空らんの子は<strong class="text-white">外して</strong>ある。ちゃんと「何ひきで計算したか」を意識しながら見てみよう。</p>
+        <p class="text-orange-100 leading-relaxed">今回使うのは<strong class="text-white">くちばしの長さと厚さ</strong>のセットだよ。レッスン7で学んだとおり、どちらかが空らんの子は<strong class="text-white">外して</strong>ある。ちゃんと「何ひきで計算したか」を意識しながら見てみよう。</p>
       </div>
     </section>
 
     <!-- 可視化 -->
     <section class="bg-white rounded-2xl shadow-sm p-6 space-y-5">
       <div>
-        <h2 class="font-black text-gray-800">📊 くちばしの長さ と 深さ</h2>
+        <h2 class="font-black text-gray-800">📊 くちばしの長さ と 厚さ</h2>
         <p class="text-xs text-gray-500 mt-1">ボタンで見え方を切りかえて、線の向きをくらべよう。</p>
       </div>
 
@@ -173,15 +180,15 @@
       <div class="space-y-6">
         <!-- もんだい 1 -->
         <div class="space-y-3">
-          <p class="font-bold text-gray-700 text-sm">もんだい 1. 「ぜんぶ同じ色で見る」とき、くちばしが長い子ほど深さはどうなっている？</p>
+          <p class="font-bold text-gray-700 text-sm">もんだい 1. 「ぜんぶ同じ色で見る」とき、くちばしが長い子ほど厚さはどうなっている？</p>
           <div class="space-y-2 text-sm">
             <label class="flex items-center gap-3 bg-gray-50 hover:bg-orange-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-orange-300 transition-colors">
               <input type="radio" name="q8_1" value="a" class="accent-orange-500" />
-              <span>① 深くなっている（右上がり）</span>
+              <span>① 厚くなっている（右上がり）</span>
             </label>
             <label class="flex items-center gap-3 bg-gray-50 hover:bg-orange-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-orange-300 transition-colors">
               <input type="radio" name="q8_1" value="b" class="accent-orange-500" />
-              <span>② 浅くなっている（右下がり）</span>
+              <span>② 薄くなっている（右下がり）</span>
             </label>
             <label class="flex items-center gap-3 bg-gray-50 hover:bg-orange-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-orange-300 transition-colors">
               <input type="radio" name="q8_1" value="c" class="accent-orange-500" />
@@ -200,15 +207,15 @@
 
         <!-- もんだい 2 -->
         <div class="space-y-3">
-          <p class="font-bold text-gray-700 text-sm">もんだい 2. 「しゅるいで色分けして見る」とき、それぞれのしゅるいの<strong>中</strong>では、くちばしが長い子ほど深さはどうなっている？</p>
+          <p class="font-bold text-gray-700 text-sm">もんだい 2. 「しゅるいで色分けして見る」とき、それぞれのしゅるいの<strong>中</strong>では、くちばしが長い子ほど厚さはどうなっている？</p>
           <div class="space-y-2 text-sm">
             <label class="flex items-center gap-3 bg-gray-50 hover:bg-orange-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-orange-300 transition-colors">
               <input type="radio" name="q8_2" value="a" class="accent-orange-500" />
-              <span>① 3しゅるいとも深くなっている（右上がり）</span>
+              <span>① 3しゅるいとも厚くなっている（右上がり）</span>
             </label>
             <label class="flex items-center gap-3 bg-gray-50 hover:bg-orange-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-orange-300 transition-colors">
               <input type="radio" name="q8_2" value="b" class="accent-orange-500" />
-              <span>② 3しゅるいとも浅くなっている（右下がり）</span>
+              <span>② 3しゅるいとも薄くなっている（右下がり）</span>
             </label>
             <label class="flex items-center gap-3 bg-gray-50 hover:bg-orange-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-orange-300 transition-colors">
               <input type="radio" name="q8_2" value="c" class="accent-orange-500" />
@@ -235,7 +242,7 @@
             </label>
             <label class="flex items-center gap-3 bg-gray-50 hover:bg-orange-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-orange-300 transition-colors">
               <input type="radio" name="q8_3" value="b" class="accent-orange-500" />
-              <span>② ジェンツーは「長いけど浅い」くちばしの子ばかりで、そのかたまりが右下に大きくはなれているから</span>
+              <span>② ジェンツーは「長いけど薄い」くちばしの子ばかりで、そのかたまりが右下に大きくはなれているから</span>
             </label>
             <label class="flex items-center gap-3 bg-gray-50 hover:bg-orange-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-orange-300 transition-colors">
               <input type="radio" name="q8_3" value="c" class="accent-orange-500" />
@@ -352,19 +359,19 @@
     function checkP8_1() {
       const el = document.querySelector('input[name="q8_1"]:checked');
       const ok = el && el.value === 'b';
-      showResult('result1', ok, '⭕ せいかい！ ぜんぶまとめると右下がり。「長いくちばしほど浅い」という、へんな答えが出てくるね。', '❌ もう一かい！ ヒント：「ぜんぶ同じ色で見る」にして、グレーの線がどちらを向いているか見てみよう。');
+      showResult('result1', ok, '⭕ せいかい！ ぜんぶまとめると右下がり。「長いくちばしほど薄い」という、へんな答えが出てくるね。', '❌ もう一かい！ ヒント：「ぜんぶ同じ色で見る」にして、グレーの線がどちらを向いているか見てみよう。');
     }
 
     function checkP8_2() {
       const el = document.querySelector('input[name="q8_2"]:checked');
       const ok = el && el.value === 'a';
-      showResult('result2', ok, '⭕ せいかい！ 3しゅるいとも右上がり。しゅるいの中では、ちゃんと「長いくちばしほど深い」んだ。まとめたときと向きが逆だね！', '❌ もう一かい！ ヒント：「しゅるいで色分けして見る」にして、3本の線それぞれの向きを見てみよう。');
+      showResult('result2', ok, '⭕ せいかい！ 3しゅるいとも右上がり。しゅるいの中では、ちゃんと「長いくちばしほど厚い」んだ。まとめたときと向きが逆だね！', '❌ もう一かい！ ヒント：「しゅるいで色分けして見る」にして、3本の線それぞれの向きを見てみよう。');
     }
 
     function checkP8_3() {
       const el = document.querySelector('input[name="q8_3"]:checked');
       const ok = el && el.value === 'b';
-      showResult('result3', ok, '⭕ せいかい！ ジェンツーのかたまりはグラフの右下（長くて浅い）にある。この大きなかたまりが「右下がり」の線を作ってしまうんだ。中身がちがうものをまぜると、こういうことが起きる。', '❌ もう一かい！ ヒント：色分けしたとき、水色（ジェンツー）のかたまりがグラフのどこにあるか見てみよう。');
+      showResult('result3', ok, '⭕ せいかい！ ジェンツーのかたまりはグラフの右下（長くて薄い）にある。この大きなかたまりが「右下がり」の線を作ってしまうんだ。中身がちがうものをまぜると、こういうことが起きる。', '❌ もう一かい！ ヒント：色分けしたとき、水色（ジェンツー）のかたまりがグラフのどこにあるか見てみよう。');
     }
 
     function showP8Answer() {
@@ -391,8 +398,8 @@
     function peng8Direction(points) {
       const fit = kidsLinearFit(points);
       return fit && fit.slope >= 0
-        ? { word: '右上がり ↗', detail: '長いほど深い', color: 'text-emerald-700' }
-        : { word: '右下がり ↘', detail: '長いほど浅い', color: 'text-red-600' };
+        ? { word: '右上がり ↗', detail: '長いほど厚い', color: 'text-emerald-700' }
+        : { word: '右下がり ↘', detail: '長いほど薄い', color: 'text-red-600' };
     }
 
     function renderPeng8() {
@@ -410,7 +417,7 @@
       document.getElementById('peng8-legend').innerHTML = groups.map((g) => `
         <span class="flex items-center gap-1.5">
           <span class="w-3 h-3 rounded-full inline-block" style="background-color: ${g.color}"></span>
-          <span class="text-gray-600">${g.key === P8_ALL_KEY ? `${p8Points.length}ぴきぜんぶ（しゅるいを区別しない）` : g.key}</span>
+          <span class="text-gray-600">${g.key === P8_ALL_KEY ? `${p8Points.length}ひきぜんぶ（しゅるいを区別しない）` : g.key}</span>
         </span>
       `).join('');
 
@@ -422,10 +429,10 @@
         trendColor: P8_ALL_COLOR,
         pointRadius: 4,
         xAxis: { min: 30, max: 60, step: 5, label: 'くちばしの長さ（mm）' },
-        yAxis: { min: 13, max: 22, step: 1, label: 'くちばしの深さ（mm）' },
+        yAxis: { min: 13, max: 22, step: 1, label: 'くちばしの厚さ（mm）' },
         onSelect: (point) => {
           document.getElementById('peng8-readout').textContent =
-            `${point.species}：長さ ${point.x}mm ／ 深さ ${point.y}mm`;
+            `${point.species}：長さ ${point.x}mm ／ 厚さ ${point.y}mm`;
         },
       });
 
@@ -436,7 +443,7 @@
         panel.className = 'rounded-xl p-4 text-sm leading-relaxed bg-red-50 border border-red-200 text-red-900';
         panel.innerHTML =
           `<p class="font-black mb-1">ぜんぶまとめて見ると…… <span class="${d.color}">${d.word}</span></p>` +
-          `<p>342ぴきを1本の線でまとめると「くちばしが${d.detail}」という結果になる。` +
+          `<p>342ひきを1本の線でまとめると「くちばしが${d.detail}」という結果になる。` +
           `でも本当にそうかな？ <strong>「しゅるいで色分けして見る」</strong>を押してみよう。</p>`;
       } else {
         const rows = P8_SPECIES.map((sp) => {
@@ -466,7 +473,7 @@
         const rows = await loadKidsCsv('../data/lesson08_bill.csv');
         p8Points = rows.map((r) => ({
           x: Number(r['くちばしの長さ(mm)']),
-          y: Number(r['くちばしの深さ(mm)']),
+          y: Number(r['くちばしの厚さ(mm)']),
           group: r['しゅるい'],
           species: r['しゅるい'],
         }));
