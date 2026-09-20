@@ -187,3 +187,133 @@ function moveKidsSectionsAfter({ markerId, sectionIds }) {
     .forEach((section) => fragment.appendChild(section));
   marker.after(fragment);
 }
+
+// --- ペンギン研究所 共通 ------------------------------------------------
+
+// しゅるいの色はレッスンをまたいで固定する（P4以降）
+const KIDS_SPECIES_COLORS = {
+  'アデリーペンギン': '#4f46e5',
+  'ヒゲペンギン': '#db2777',
+  'ジェンツーペンギン': '#0891b2',
+};
+
+// 最小二乗法で直線をもとめる（ちらばりグラフの「だいたいの向き」用）
+function kidsLinearFit(points) {
+  const n = points.length;
+  if (n < 2) return null;
+  const sumX = points.reduce((total, p) => total + p.x, 0);
+  const sumY = points.reduce((total, p) => total + p.y, 0);
+  const sumXX = points.reduce((total, p) => total + p.x * p.x, 0);
+  const sumXY = points.reduce((total, p) => total + p.x * p.y, 0);
+  const denominator = n * sumXX - sumX * sumX;
+  if (denominator === 0) return null;
+  const slope = (n * sumXY - sumX * sumY) / denominator;
+  return { slope, intercept: (sumY - slope * sumX) / n };
+}
+
+/**
+ * ちらばりグラフ（散布図）を SVG で描く。
+ * Tailwind の色クラスは実行時生成だと効かないので、色は必ず16進で受け取る。
+ *
+ * points     : [{ x, y, group, label? }]
+ * xAxis/yAxis: { min, max, step, label, format?(value) }
+ * groups     : [{ key, color }]  凡例と色の対応
+ * trend      : 'none' | 'all' | 'each'
+ * onSelect   : (point, index) => void  点をタップしたときに呼ばれる
+ */
+function renderKidsScatter({
+  containerId,
+  points,
+  xAxis,
+  yAxis,
+  groups,
+  visibleGroups = null,
+  trend = 'none',
+  trendColor = '#94a3b8',
+  pointRadius = 4,
+  onSelect = null,
+}) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const width = 640;
+  const height = 420;
+  const pad = { left: 62, right: 16, top: 16, bottom: 48 };
+  const plotWidth = width - pad.left - pad.right;
+  const plotHeight = height - pad.top - pad.bottom;
+
+  const toSvgX = (value) => pad.left + ((value - xAxis.min) / (xAxis.max - xAxis.min)) * plotWidth;
+  const toSvgY = (value) => pad.top + plotHeight - ((value - yAxis.min) / (yAxis.max - yAxis.min)) * plotHeight;
+
+  const colorOf = Object.fromEntries(groups.map((g) => [g.key, g.color]));
+  const shown = points.filter((p) => !visibleGroups || visibleGroups.includes(p.group));
+  container.kidsScatterPoints = shown;
+
+  const ticks = (axis) => {
+    const values = [];
+    for (let v = axis.min; v <= axis.max + 1e-9; v += axis.step) values.push(Math.round(v * 1000) / 1000);
+    return values;
+  };
+  const formatTick = (axis, value) => (axis.format ? axis.format(value) : String(value));
+
+  const gridX = ticks(xAxis).map((v) => `
+    <line x1="${toSvgX(v)}" y1="${pad.top}" x2="${toSvgX(v)}" y2="${pad.top + plotHeight}" stroke="#e2e8f0" stroke-width="1" />
+    <text x="${toSvgX(v)}" y="${pad.top + plotHeight + 20}" text-anchor="middle" font-size="12" fill="#94a3b8">${formatTick(xAxis, v)}</text>
+  `).join('');
+
+  const gridY = ticks(yAxis).map((v) => `
+    <line x1="${pad.left}" y1="${toSvgY(v)}" x2="${pad.left + plotWidth}" y2="${toSvgY(v)}" stroke="#e2e8f0" stroke-width="1" />
+    <text x="${pad.left - 8}" y="${toSvgY(v) + 4}" text-anchor="end" font-size="12" fill="#94a3b8">${formatTick(yAxis, v)}</text>
+  `).join('');
+
+  const trendGroups = trend === 'each'
+    ? groups.filter((g) => !visibleGroups || visibleGroups.includes(g.key)).map((g) => ({
+        color: g.color,
+        data: shown.filter((p) => p.group === g.key),
+      }))
+    : trend === 'all'
+      ? [{ color: trendColor, data: shown }]
+      : [];
+
+  const trendLines = trendGroups.map(({ color, data }) => {
+    const fit = kidsLinearFit(data);
+    if (!fit) return '';
+    const xStart = Math.min(...data.map((p) => p.x));
+    const xEnd = Math.max(...data.map((p) => p.x));
+    const clampY = (value) => Math.min(yAxis.max, Math.max(yAxis.min, value));
+    return `<line x1="${toSvgX(xStart)}" y1="${toSvgY(clampY(fit.slope * xStart + fit.intercept))}"
+                  x2="${toSvgX(xEnd)}" y2="${toSvgY(clampY(fit.slope * xEnd + fit.intercept))}"
+                  stroke="${color}" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 5" opacity="0.85" />`;
+  }).join('');
+
+  const dots = shown.map((p, index) => `
+    <circle data-kids-point="${index}" cx="${toSvgX(p.x)}" cy="${toSvgY(p.y)}" r="${pointRadius}"
+      fill="${colorOf[p.group] || '#94a3b8'}" fill-opacity="0.7" stroke="#ffffff" stroke-width="0.8"
+      class="cursor-pointer hover:fill-opacity-100" />
+  `).join('');
+
+  container.innerHTML = `
+    <svg viewBox="0 0 ${width} ${height}" class="w-full h-auto" role="img"
+      aria-label="${xAxis.label} と ${yAxis.label} のちらばりグラフ">
+      ${gridX}
+      ${gridY}
+      <line x1="${pad.left}" y1="${pad.top + plotHeight}" x2="${pad.left + plotWidth}" y2="${pad.top + plotHeight}" stroke="#cbd5e1" stroke-width="2" />
+      <line x1="${pad.left}" y1="${pad.top}" x2="${pad.left}" y2="${pad.top + plotHeight}" stroke="#cbd5e1" stroke-width="2" />
+      ${trendLines}
+      ${dots}
+      <text x="${pad.left + plotWidth / 2}" y="${height - 6}" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748b">${xAxis.label}</text>
+      <text x="14" y="${pad.top + plotHeight / 2}" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748b"
+        transform="rotate(-90 14 ${pad.top + plotHeight / 2})">${yAxis.label}</text>
+    </svg>
+  `;
+
+  if (onSelect && !container.kidsScatterBound) {
+    container.addEventListener('click', (event) => {
+      const dot = event.target.closest('[data-kids-point]');
+      if (!dot) return;
+      const index = Number(dot.dataset.kidsPoint);
+      onSelect(container.kidsScatterPoints[index], index);
+    });
+    container.kidsScatterBound = true;
+  }
+}

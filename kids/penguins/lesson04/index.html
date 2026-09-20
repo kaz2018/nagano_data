@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ペンギン研究所 レッスン4: ひれが長い子は、重い？ | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../../js/kids-visuals.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
+</head>
+
+<body class="bg-sky-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+      <span class="text-gray-300">|</span>
+      <span class="text-sm font-bold text-violet-600">🐧 レッスン 4</span>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <!-- タイトル -->
+    <section class="text-center">
+      <div class="inline-block bg-violet-100 text-violet-700 text-sm font-bold px-4 py-1 rounded-full mb-3">🐧 レッスン 4</div>
+      <h1 class="text-3xl font-black text-gray-800 mb-2">ひれが長い子は、重い？</h1>
+      <p class="text-gray-500">2つの数を、いっぺんに見よう</p>
+    </section>
+
+    <!-- 会話吹き出し -->
+    <section class="space-y-3">
+      <!-- でい太 -->
+      <div class="flex items-start gap-3">
+        <img src="../../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「ここまでは『体重』だけを見てきたよね。でもデータには、ひれの長さもくちばしの大きさものってる。ひれが長い子って、やっぱり体も重いのかな？」
+          </div>
+        </div>
+      </div>
+      <!-- ポン太 -->
+      <div class="flex items-start gap-3">
+        <img src="../../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+          <div class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「オレのしっぽ、長いほうだと思うんだよね。だれもはかってくれないけど。」
+          </div>
+        </div>
+      </div>
+      <!-- ものしり仙人 -->
+      <div class="flex items-start gap-3 flex-row-reverse">
+        <img src="../../images/harmit.png" alt="ものしり仙人" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div class="text-right">
+          <p class="text-xs font-bold text-blue-600 mb-1">ものしり仙人</p>
+          <div class="bg-blue-50 border border-blue-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+            「よし、2つの数をいっぺんに見る道具を教えよう。よこに1つめの数、たてに2つめの数をとって、ペンギン1ぴきにつき点を1つ打つ。これを<strong>ちらばりグラフ（散布図）</strong>という。点のならび方に、答えが出るのじゃ。」
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="font-black text-gray-800 mb-3">🎯 このレッスンでわかること</h2>
+      <ul class="space-y-2 text-gray-600 text-sm">
+        <li class="flex gap-2"><span class="text-violet-500 font-bold">✓</span> ちらばりグラフ（散布図）の読み方がわかる</li>
+        <li class="flex gap-2"><span class="text-violet-500 font-bold">✓</span> 2つの数に「つながり」があるか、目で見て判断できる</li>
+        <li class="flex gap-2"><span class="text-violet-500 font-bold">✓</span> 点のかたまりから、しゅるいのちがいが見えてくる</li>
+      </ul>
+    </section>
+
+    <!-- 説明 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📖 点1つが、ペンギン1ぴき</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        ちらばりグラフは、<strong>よこ（横軸）に1つめの数、たて（縦軸）に2つめの数</strong>をとって、点をうつグラフです。
+        今回はよこに「ひれの長さ」、たてに「体重」をとります。点1つが、ペンギン1ぴきです。
+      </p>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        点が<strong>右上がり</strong>にならんでいたら「よこの数が大きいほど、たての数も大きい」ということ。
+        <strong>右下がり</strong>なら、その逆。バラバラに散っていたら、2つの数にはあまりつながりがない、ということです。
+      </p>
+      <div class="bg-amber-50 rounded-xl p-4 text-sm text-amber-800">
+        <p class="font-bold mb-1">📝 ポイント</p>
+        <p>点の「ならび方の向き」を見よう。右上がり・右下がり・バラバラ。どれに近いかな？</p>
+      </div>
+
+      <!-- データカード -->
+      <div class="bg-violet-600 text-white rounded-xl p-4 text-sm">
+        <p class="font-bold mb-1">📂 レッスン4のデータ（レッスン3とはちがうよ！）</p>
+        <p class="text-violet-100 leading-relaxed">レッスン3は体重<strong class="text-white">だけ</strong>のデータだったけど、今回は1ぴきについて<strong class="text-white">「ひれの長さ」と「体重」の2つ</strong>がセットになっているよ。両方ともはかれた子だけを集めたデータだよ。</p>
+      </div>
+    </section>
+
+    <!-- 可視化：ちらばりグラフ -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-6">
+      <div>
+        <h2 class="font-black text-gray-800">📊 ひれの長さ と 体重</h2>
+        <p class="text-xs text-gray-500 mt-1">点をタップすると、その1ぴきの数がわかるよ。</p>
+      </div>
+
+      <!-- エラーボックス -->
+      <div id="peng4-error" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+        <p class="font-bold mb-1">⚠️ データをよみこめなかったよ</p>
+        <p class="leading-relaxed">インターネットにつながっているか確かめて、ページをもういちどひらいてみてね。なおらないときは、おうちの人か先生に教えてね。</p>
+      </div>
+
+      <div id="peng4-chart-area" class="space-y-4">
+
+        <!-- きろくカード -->
+        <div id="peng4-record-cards" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <!-- JSで生成 -->
+        </div>
+
+        <!-- フィルターボタン -->
+        <div class="flex flex-wrap items-center gap-2 pt-1">
+          <span class="text-xs font-bold text-gray-500">ひょうじ：</span>
+          <button type="button" onclick="setPeng4Filter('all')" id="peng4-btn-all"
+            class="px-3 py-1 rounded-full text-xs font-bold transition-colors bg-violet-600 text-white">
+            ぜんぶ
+          </button>
+          <button type="button" onclick="setPeng4Filter('アデリーペンギン')" id="peng4-btn-adelie"
+            class="px-3 py-1 rounded-full text-xs font-bold transition-colors bg-violet-50 text-violet-700 hover:bg-violet-100">
+            アデリーペンギン
+          </button>
+          <button type="button" onclick="setPeng4Filter('ヒゲペンギン')" id="peng4-btn-chinstrap"
+            class="px-3 py-1 rounded-full text-xs font-bold transition-colors bg-violet-50 text-violet-700 hover:bg-violet-100">
+            ヒゲペンギン
+          </button>
+          <button type="button" onclick="setPeng4Filter('ジェンツーペンギン')" id="peng4-btn-gentoo"
+            class="px-3 py-1 rounded-full text-xs font-bold transition-colors bg-violet-50 text-violet-700 hover:bg-violet-100">
+            ジェンツーペンギン
+          </button>
+        </div>
+
+        <!-- 凡例＋向きの線トグル -->
+        <div class="flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div class="flex flex-wrap items-center gap-4">
+            <span class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full inline-block" style="background-color: #4f46e5"></span>
+              <span class="text-gray-600">アデリーペンギン</span>
+            </span>
+            <span class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full inline-block" style="background-color: #db2777"></span>
+              <span class="text-gray-600">ヒゲペンギン</span>
+            </span>
+            <span class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full inline-block" style="background-color: #0891b2"></span>
+              <span class="text-gray-600">ジェンツーペンギン</span>
+            </span>
+          </div>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="peng4-trend" onchange="renderPeng4()" class="accent-violet-500" />
+            <span class="font-bold text-gray-600">だいたいの向きの線を出す</span>
+          </label>
+        </div>
+
+        <!-- グラフ本体 -->
+        <div class="border border-violet-100 rounded-xl p-2 sm:p-4 bg-white">
+          <div id="peng4-scatter"></div>
+          <p id="peng4-readout" class="text-xs text-center text-gray-500 pt-2 min-h-[1.5rem]">
+            点をタップすると、そのペンギンのひれの長さと体重がわかるよ。
+          </p>
+        </div>
+
+        <p class="text-xs text-gray-500">💡 まず「ぜんぶ」で全体の向きを見て、つぎにしゅるいをひとつずつ選んでみよう。かたまりの位置がちがうのがわかるよ。</p>
+      </div>
+    </section>
+
+    <!-- やってみよう -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-6">
+      <div>
+        <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
+        <p class="text-xs text-gray-400 mt-1">上のグラフとカードを見て答えてみよう！</p>
+      </div>
+
+      <div class="space-y-6">
+        <!-- もんだい 1 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 1. 「ぜんぶ」でグラフを見たとき、ひれが長い子ほど体重はどうなっている？</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-violet-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-violet-300 transition-colors">
+              <input type="radio" name="q4_1" value="a" class="accent-violet-500" />
+              <span>① 重くなっている（右上がり）</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-violet-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-violet-300 transition-colors">
+              <input type="radio" name="q4_1" value="b" class="accent-violet-500" />
+              <span>② 軽くなっている（右下がり）</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-violet-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-violet-300 transition-colors">
+              <input type="radio" name="q4_1" value="c" class="accent-violet-500" />
+              <span>③ まったくかんけいがない（バラバラ）</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-violet-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-violet-300 transition-colors">
+              <input type="radio" name="q4_1" value="d" class="accent-violet-500" />
+              <span>④ グラフでは調べられない</span>
+            </label>
+          </div>
+          <button onclick="checkP4_1()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result1" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい 2 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 2. いちばんひれが長かった子の、ひれの長さは？</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-violet-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-violet-300 transition-colors">
+              <input type="radio" name="q4_2" value="a" class="accent-violet-500" />
+              <span>① 172mm</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-violet-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-violet-300 transition-colors">
+              <input type="radio" name="q4_2" value="b" class="accent-violet-500" />
+              <span>② 217mm</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-violet-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-violet-300 transition-colors">
+              <input type="radio" name="q4_2" value="c" class="accent-violet-500" />
+              <span>③ 221mm</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-violet-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-violet-300 transition-colors">
+              <input type="radio" name="q4_2" value="d" class="accent-violet-500" />
+              <span>④ 231mm</span>
+            </label>
+          </div>
+          <button onclick="checkP4_2()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result2" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい 3 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 3. グラフの右上のほう（ひれが長くて重い）に集まっているのは、おもにどのしゅるい？</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-violet-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-violet-300 transition-colors">
+              <input type="radio" name="q4_3" value="a" class="accent-violet-500" />
+              <span>① アデリーペンギン</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-violet-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-violet-300 transition-colors">
+              <input type="radio" name="q4_3" value="b" class="accent-violet-500" />
+              <span>② ヒゲペンギン</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-violet-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-violet-300 transition-colors">
+              <input type="radio" name="q4_3" value="c" class="accent-violet-500" />
+              <span>③ ジェンツーペンギン</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-violet-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-violet-300 transition-colors">
+              <input type="radio" name="q4_3" value="d" class="accent-violet-500" />
+              <span>④ 3しゅるいがまざっている</span>
+            </label>
+          </div>
+          <button onclick="checkP4_3()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result3" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい 4 (自由記述) -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 4（かんがえてみよう）. ひれが長い子ほど重いのは、どうしてだと思う？ 自分のことばで考えてみよう。</p>
+          <div>
+            <button onclick="showP4Answer()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">
+              こたえのれいを見る
+            </button>
+          </div>
+          <div id="result4" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-gray-700 leading-relaxed space-y-2">
+            <p class="font-bold text-amber-800">💡 こたえのれい</p>
+            <p>
+              ひれは体の一部だから、体が大きい子はひれも大きくなる。だから「ひれが長い＝体が大きい＝重い」となりやすいんだ。<br />
+              でも気をつけて。「ひれを長くのばしたら、体重がふえる」わけじゃないよね。<br />
+              2つの数がいっしょに動いていても、<strong>かた方がもう片方の原因とはかぎらない</strong>。<br />
+              このグラフでは「体の大きさ」というもとの理由が、ひれの長さと体重の両方を動かしているんだ。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 発展セクション（スプレッドシート） -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-3">
+      <h2 class="font-black text-gray-800">📊 もっとやってみたい人へ</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">上のグラフだけでも答えられるよ。じぶんでちらばりグラフを作ってみたい人は、もとのデータをスプレッドシートで開いてみよう。</p>
+      <a href="../data/lesson04_flipper_mass.csv" download
+        class="inline-block bg-violet-500 hover:bg-violet-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        ⬇️ このレッスンのデータをダウンロード
+      </a>
+      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
+        <p class="font-bold text-gray-700">ちらばりグラフの作りかた</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>ダウンロードしたファイルをスプレッドシートで開く</li>
+          <li>「ひれの長さ」と「体重」の2つの列をえらぶ</li>
+          <li>メニューの「挿入 → グラフ」で、グラフの種類を「散布図」にする</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 出典セクション -->
+    <section class="bg-white/60 rounded-xl p-4 text-xs text-gray-500 leading-relaxed">
+      <p class="font-bold text-gray-600 mb-1">📚 データのしゅってん</p>
+      <p>
+        このレッスンのデータは <a href="https://allisonhorst.github.io/palmerpenguins/" target="_blank" rel="noopener" class="text-violet-600 hover:underline font-bold">palmerpenguins</a>（Horst, Hill &amp; Gorman, 2020／CC0）です。
+        もとの記録は、南極のパーマー基地で Kristen Gorman 博士たちが 2007〜2009年に1ぴきずつ集めたものです。
+      </p>
+    </section>
+
+    <!-- ナビゲーション -->
+    <div class="flex justify-between items-center pt-2">
+      <a href="../lesson03/index.html" class="text-gray-400 hover:text-gray-600 text-sm">← まえのレッスンへ</a>
+      <a href="../lesson05/index.html" class="bg-violet-500 hover:bg-violet-600 text-white font-bold px-5 py-2 rounded-xl text-sm transition-colors">つぎのレッスンへ →</a>
+    </div>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | こどもコース・ペンギン研究所</p>
+  </footer>
+
+  <script>
+    function showResult(id, ok, okMsg, ngMsg) {
+      const result = document.getElementById(id);
+      result.classList.remove('hidden');
+      if (ok) {
+        result.textContent = okMsg;
+        result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+      } else {
+        result.textContent = ngMsg;
+        result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+      }
+    }
+
+    function showPengError(errorId, hideIds, err) {
+      console.error('[penguins] データの読み込みに失敗しました:', err);
+      const box = document.getElementById(errorId);
+      if (box) box.classList.remove('hidden');
+      hideIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+      });
+    }
+
+    function checkP4_1() {
+      const el = document.querySelector('input[name="q4_1"]:checked');
+      const ok = el && el.value === 'a';
+      showResult('result1', ok, '⭕ せいかい！ 点は左下から右上へならんでいるね。ひれが長い子ほど重い、という関係があるよ。', '❌ もう一かい！ ヒント：「だいたいの向きの線を出す」にチェックを入れて、線がどちらを向いているか見てみよう。');
+    }
+
+    function checkP4_2() {
+      const el = document.querySelector('input[name="q4_2"]:checked');
+      const ok = el && el.value === 'd';
+      showResult('result2', ok, '⭕ せいかい！ 231mmのジェンツーペンギン。グラフのいちばん右にいる子だよ。', '❌ もう一かい！ ヒント：グラフの上の「ひれがいちばん長い子」カードを見てみよう。');
+    }
+
+    function checkP4_3() {
+      const el = document.querySelector('input[name="q4_3"]:checked');
+      const ok = el && el.value === 'c';
+      showResult('result3', ok, '⭕ せいかい！ 右上のかたまりはジェンツーペンギン。しゅるいをひとつずつ表示すると、かたまりの位置がはっきり分かれるね。', '❌ もう一かい！ ヒント：しゅるいのボタンをひとつずつ押して、どこにかたまりが出るかくらべてみよう。');
+    }
+
+    function showP4Answer() {
+      document.getElementById('result4').classList.remove('hidden');
+    }
+
+    // ちらばりグラフ用のグローバル状態
+    let p4Points = [];
+    let p4Filter = 'all';
+
+    const P4_SPECIES = ['アデリーペンギン', 'ヒゲペンギン', 'ジェンツーペンギン'];
+    const P4_GROUPS = P4_SPECIES.map((key) => ({ key, color: KIDS_SPECIES_COLORS[key] }));
+
+    function setPeng4Filter(filter) {
+      p4Filter = filter;
+      const btnMap = {
+        'all': 'peng4-btn-all',
+        'アデリーペンギン': 'peng4-btn-adelie',
+        'ヒゲペンギン': 'peng4-btn-chinstrap',
+        'ジェンツーペンギン': 'peng4-btn-gentoo',
+      };
+      Object.entries(btnMap).forEach(([key, id]) => {
+        const btn = document.getElementById(id);
+        btn.className = key === filter
+          ? 'px-3 py-1 rounded-full text-xs font-bold transition-colors bg-violet-600 text-white'
+          : 'px-3 py-1 rounded-full text-xs font-bold transition-colors bg-violet-50 text-violet-700 hover:bg-violet-100';
+      });
+      document.getElementById('peng4-readout').textContent = '点をタップすると、そのペンギンのひれの長さと体重がわかるよ。';
+      renderPeng4();
+    }
+
+    function renderPeng4() {
+      const withTrend = document.getElementById('peng4-trend').checked;
+      renderKidsScatter({
+        containerId: 'peng4-scatter',
+        points: p4Points,
+        visibleGroups: p4Filter === 'all' ? null : [p4Filter],
+        groups: P4_GROUPS,
+        trend: withTrend ? (p4Filter === 'all' ? 'all' : 'each') : 'none',
+        trendColor: '#7c3aed',
+        xAxis: { min: 170, max: 235, step: 10, label: 'ひれの長さ（mm）' },
+        yAxis: { min: 2500, max: 6500, step: 500, label: '体重（g）', format: (v) => formatKidsNumber(v) },
+        onSelect: (point) => {
+          document.getElementById('peng4-readout').textContent =
+            `${point.group}：ひれの長さ ${point.x}mm ／ 体重 ${formatKidsNumber(point.y)}g`;
+        },
+      });
+    }
+
+    (async function initP4() {
+      try {
+        const rows = await loadKidsCsv('../data/lesson04_flipper_mass.csv');
+        p4Points = rows.map((r) => ({
+          x: Number(r['ひれの長さ(mm)']),
+          y: Number(r['体重(g)']),
+          group: r['しゅるい'],
+        }));
+
+        // きろくカード（ひれが長い・短い・いちばん重い）
+        const longest = p4Points.reduce((a, b) => (b.x > a.x ? b : a));
+        const shortest = p4Points.reduce((a, b) => (b.x < a.x ? b : a));
+        const heaviest = p4Points.reduce((a, b) => (b.y > a.y ? b : a));
+
+        const card = (title, main, sub, group) => `
+          <div class="border border-violet-100 bg-violet-50/50 rounded-2xl p-4 space-y-1">
+            <p class="text-[10px] font-bold text-violet-500">${title}</p>
+            <p class="text-xl font-black text-gray-800">${main}</p>
+            <p class="text-xs text-gray-500">${sub}</p>
+            <p class="text-xs font-bold" style="color: ${KIDS_SPECIES_COLORS[group]}">${group}</p>
+          </div>
+        `;
+
+        document.getElementById('peng4-record-cards').innerHTML = [
+          card('ひれがいちばん長い子', `${longest.x}mm`, `体重 ${formatKidsNumber(longest.y)}g`, longest.group),
+          card('ひれがいちばん短い子', `${shortest.x}mm`, `体重 ${formatKidsNumber(shortest.y)}g`, shortest.group),
+          card('いちばん重い子', `${formatKidsNumber(heaviest.y)}g`, `ひれの長さ ${heaviest.x}mm`, heaviest.group),
+        ].join('');
+
+        renderPeng4();
+      } catch (err) {
+        showPengError('peng4-error', ['peng4-chart-area'], err);
+      }
+    })();
+  </script>
+</body>
+
+</html>

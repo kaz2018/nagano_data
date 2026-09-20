@@ -8,7 +8,7 @@ GitHub Pages でホスティングし、実際の長野県オープンデータ�
 | コース | 対象 | ツール | 状態 |
 |--------|------|--------|------|
 | 子ども向け（長野県編） | 小学生〜 | Google Sheets / Web | 進行中 |
-| 子ども向け・ペンギン研究所 | 小学生〜 | Web / Google Sheets | 第1章（P1〜P3）完成 |
+| 子ども向け・ペンギン研究所 | 小学生〜 | Web / Google Sheets | 全8レッスン（P1〜P8）完成 |
 | 大人向け | 高校生〜社会人 | Google Sheets → Python | 進行中 |
 
 ## 子ども向けレッスン
@@ -45,6 +45,12 @@ GitHub Pages でホスティングし、実際の長野県オープンデータ�
 | `kids/penguins/data/penguins_ja.csv` | 344行 | 日本語化データ（P1教材・スプレッドシート原稿） |
 | `kids/penguins/data/lesson02_species_mass.csv` | 3行 | しゅるい別集計（P2平均体重教材） |
 | `kids/penguins/data/lesson03_mass.csv` | 342行 | 体重測定データ（P3ヒストグラム教材） |
+| `kids/penguins/data/lesson04_flipper_mass.csv` | 342行 | ひれの長さ×体重（P4散布図教材） |
+| `kids/penguins/data/lesson05_island_mass.csv` | 344行 | 島×しゅるい×体重（P5クロス集計教材・空らん保持） |
+| `kids/penguins/data/lesson06_sex.csv` | 6行 | しゅるい×せいべつ集計（P6比較教材） |
+| `kids/penguins/data/lesson08_bill.csv` | 342行 | くちばしの長さ×深さ（P8シンプソンのパラドックス教材） |
+
+※ P7（欠損値）は専用ファイルを作らず `penguins_ja.csv` をそのまま読む（空らん自体が教材のため）。
 
 ## フォルダ構成
 
@@ -60,6 +66,11 @@ nagano_data/
 │       ├── lesson01/       # P1: 表の読み方
 │       ├── lesson02/       # P2: 平均体重
 │       ├── lesson03/       # P3: ちらばり（ヒストグラム）
+│       ├── lesson04/       # P4: 散布図（ひれ×体重）
+│       ├── lesson05/       # P5: 島ごとの比較（クロス集計）
+│       ├── lesson06/       # P6: オス・メスの比較
+│       ├── lesson07/       # P7: 欠損値のあつかい
+│       ├── lesson08/       # P8: シンプソンのパラドックス
 │       └── data/           # ペンギンデータ
 ├── adults/                 # 大人向け
 ├── assets/                 # CSS・画像

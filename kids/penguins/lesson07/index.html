@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ペンギン研究所 レッスン7: 空っぽのマス、どうする？ | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../../js/kids-visuals.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
+</head>
+
+<body class="bg-sky-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+      <span class="text-gray-300">|</span>
+      <span class="text-sm font-bold text-slate-600">🐧 レッスン 7</span>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <!-- タイトル -->
+    <section class="text-center">
+      <div class="inline-block bg-slate-200 text-slate-700 text-sm font-bold px-4 py-1 rounded-full mb-3">🐧 レッスン 7</div>
+      <h1 class="text-3xl font-black text-gray-800 mb-2">空っぽのマス、どうする？</h1>
+      <p class="text-gray-500">データに書かれていないこと</p>
+    </section>
+
+    <!-- 会話吹き出し -->
+    <section class="space-y-3">
+      <!-- でい太 -->
+      <div class="flex items-start gap-3">
+        <img src="../../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「レッスン6で『せいべつが書かれていない子がいる』って出てきたよね。気になって元のデータを見にいったら……ところどころマスが空っぽなんだ。これ、どうすればいいの？」
+          </div>
+        </div>
+      </div>
+      <!-- ポン太 -->
+      <div class="flex items-start gap-3">
+        <img src="../../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+          <div class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「空っぽか。オレの腹と同じだな。」
+          </div>
+        </div>
+      </div>
+      <!-- ものしり仙人 -->
+      <div class="flex items-start gap-3 flex-row-reverse">
+        <img src="../../images/harmit.png" alt="ものしり仙人" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div class="text-right">
+          <p class="text-xs font-bold text-blue-600 mb-1">ものしり仙人</p>
+          <div class="bg-blue-50 border border-blue-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+            「それは<strong>欠損値（けっそんち）</strong>というものじゃ。はかれなかった、書きわすれた、記録が消えた……理由はいろいろある。ここで絶対にやってはならんことが一つ。<strong>空らんを勝手に0でうめてはいかん。</strong>0は『はかったら0だった』という意味になってしまうからの。」
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="font-black text-gray-800 mb-3">🎯 このレッスンでわかること</h2>
+      <ul class="space-y-2 text-gray-600 text-sm">
+        <li class="flex gap-2"><span class="text-slate-500 font-bold">✓</span> 本物のデータには「空らん」があるとわかる</li>
+        <li class="flex gap-2"><span class="text-slate-500 font-bold">✓</span> 空らんを0でうめると答えがずれることを、数でたしかめられる</li>
+        <li class="flex gap-2"><span class="text-slate-500 font-bold">✓</span> 空らんを見つけたときの正しいあつかい方がわかる</li>
+      </ul>
+    </section>
+
+    <!-- 説明 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📖 「0」と「わからない」はちがう</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        たとえば体重のマスが空らんだったとき。それは「体重が0gだった」という意味ではありません。
+        <strong>「はかれなかったので、わからない」</strong>という意味です。この2つは、まったくの別ものです。
+      </p>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        もし空らんを0でうめてしまうと、へいきんを出したときに「いないはずの0gのペンギン」が計算にまざりこみ、
+        答えが本当の数より<strong>軽いほう</strong>にずれてしまいます。
+      </p>
+      <div class="bg-amber-50 rounded-xl p-4 text-sm text-amber-800">
+        <p class="font-bold mb-1">📝 ポイント</p>
+        <p>空らんは「うめる」のではなく、まず「数える」。いくつ空らんがあるかを知ってから、どうするか決めよう。</p>
+      </div>
+
+      <!-- データカード -->
+      <div class="bg-slate-600 text-white rounded-xl p-4 text-sm">
+        <p class="font-bold mb-1">📂 レッスン7のデータ（レッスン6とはちがうよ！）</p>
+        <p class="text-slate-200 leading-relaxed">今回は、レッスン1で見た<strong class="text-white">いちばん元のデータ</strong>にもどるよ。きれいに整える前の、344行まるごと。ここまでのレッスンでは、じつは空らんのある子をこっそり外して計算していたんだ。その子たちに、やっと会いにいくよ。</p>
+      </div>
+    </section>
+
+    <!-- 可視化 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-8">
+
+      <!-- エラーボックス -->
+      <div id="peng7-error" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+        <p class="font-bold mb-1">⚠️ データをよみこめなかったよ</p>
+        <p class="leading-relaxed">インターネットにつながっているか確かめて、ページをもういちどひらいてみてね。なおらないときは、おうちの人か先生に教えてね。</p>
+      </div>
+
+      <div id="peng7-viz-area" class="space-y-8">
+
+        <!-- (a) 列ごとの空らんの数 -->
+        <div class="space-y-3">
+          <div>
+            <h2 class="font-black text-gray-800">🔍 どの列に、いくつ空らんがある？</h2>
+            <p class="text-xs text-gray-500 mt-1">344ぴきぜんぶを、列ごとに数えたよ。</p>
+          </div>
+          <div id="peng7-missing-cards" class="grid grid-cols-2 sm:grid-cols-4 gap-2"></div>
+          <p class="text-xs text-gray-500">💡 色がついているのが「空らんがある列」。白いのは「ぜんぶうまっている列」だよ。</p>
+        </div>
+
+        <!-- (b) 空らんのある行 -->
+        <div class="space-y-3">
+          <div>
+            <h2 class="font-black text-gray-800">📋 空らんがある子を、ぜんいん出してみる</h2>
+            <p class="text-xs text-gray-500 mt-1">下の表の <span class="bg-red-100 text-red-600 font-bold px-1.5 py-0.5 rounded">空らん</span> が、記録が残っていないところだよ。</p>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs border-collapse">
+              <thead>
+                <tr id="peng7-rows-head" class="bg-slate-100 text-slate-700"></tr>
+              </thead>
+              <tbody id="peng7-rows-body"></tbody>
+            </table>
+          </div>
+          <div id="peng7-rows-note" class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm text-slate-700 leading-relaxed"></div>
+        </div>
+
+        <!-- (c) へいきんの出し方くらべ -->
+        <div class="space-y-3">
+          <div>
+            <h2 class="font-black text-gray-800">⚖️ へいきん体重を、2つのやり方で出してみる</h2>
+            <p class="text-xs text-gray-500 mt-1">同じデータなのに、やり方で答えが変わるよ。</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- 正しいやり方 -->
+            <div class="border-2 border-emerald-200 bg-emerald-50/50 rounded-2xl p-4 space-y-2">
+              <p class="text-xs font-black text-emerald-700">⭕ 正しいやり方</p>
+              <p class="text-xs text-gray-600">空らんの子は<strong>数にふくめない</strong></p>
+              <p class="text-3xl font-black text-emerald-700" id="peng7-avg-correct">—</p>
+              <p class="text-xs text-gray-500" id="peng7-calc-correct">—</p>
+            </div>
+            <!-- まちがったやり方 -->
+            <div class="border-2 border-red-200 bg-red-50/50 rounded-2xl p-4 space-y-2">
+              <p class="text-xs font-black text-red-600">❌ やってはいけないやり方</p>
+              <p class="text-xs text-gray-600">空らんを<strong>0g</strong>としてうめる</p>
+              <p class="text-3xl font-black text-red-600" id="peng7-avg-wrong">—</p>
+              <p class="text-xs text-gray-500" id="peng7-calc-wrong">—</p>
+            </div>
+          </div>
+
+          <div id="peng7-gap" class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-900 leading-relaxed"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- やってみよう -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-6">
+      <div>
+        <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
+        <p class="text-xs text-gray-400 mt-1">上の表とカードを見て答えてみよう！</p>
+      </div>
+
+      <div class="space-y-6">
+        <!-- もんだい 1 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 1. 「せいべつ」が空らんの子は、何ひきいる？</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-slate-100 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-slate-400 transition-colors">
+              <input type="radio" name="q7_1" value="a" class="accent-slate-500" />
+              <span>① 2ひき</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-slate-100 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-slate-400 transition-colors">
+              <input type="radio" name="q7_1" value="b" class="accent-slate-500" />
+              <span>② 9ひき</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-slate-100 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-slate-400 transition-colors">
+              <input type="radio" name="q7_1" value="c" class="accent-slate-500" />
+              <span>③ 11ぴき</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-slate-100 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-slate-400 transition-colors">
+              <input type="radio" name="q7_1" value="d" class="accent-slate-500" />
+              <span>④ 344ひき</span>
+            </label>
+          </div>
+          <button onclick="checkP7_1()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result1" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい 2 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 2. 「体重」が空らんの子は、何ひきいる？</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-slate-100 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-slate-400 transition-colors">
+              <input type="radio" name="q7_2" value="a" class="accent-slate-500" />
+              <span>① 0ひき（ぜんぶうまっている）</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-slate-100 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-slate-400 transition-colors">
+              <input type="radio" name="q7_2" value="b" class="accent-slate-500" />
+              <span>② 2ひき</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-slate-100 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-slate-400 transition-colors">
+              <input type="radio" name="q7_2" value="c" class="accent-slate-500" />
+              <span>③ 11ぴき</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-slate-100 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-slate-400 transition-colors">
+              <input type="radio" name="q7_2" value="d" class="accent-slate-500" />
+              <span>④ 13ひき</span>
+            </label>
+          </div>
+          <button onclick="checkP7_2()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result2" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい 3 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 3. 空らんを0gとしてうめ、344でわってしまったときのへいきん体重は？</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-slate-100 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-slate-400 transition-colors">
+              <input type="radio" name="q7_3" value="a" class="accent-slate-500" />
+              <span>① 4,177g</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-slate-100 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-slate-400 transition-colors">
+              <input type="radio" name="q7_3" value="b" class="accent-slate-500" />
+              <span>② 4,202g</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-slate-100 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-slate-400 transition-colors">
+              <input type="radio" name="q7_3" value="c" class="accent-slate-500" />
+              <span>③ 4,227g</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-slate-100 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-slate-400 transition-colors">
+              <input type="radio" name="q7_3" value="d" class="accent-slate-500" />
+              <span>④ 変わらない</span>
+            </label>
+          </div>
+          <button onclick="checkP7_3()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result3" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい 4 (自由記述) -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 4（かんがえてみよう）. データに空らんを見つけたら、どうするのがよさそう？ 自分のことばで考えてみよう。</p>
+          <div>
+            <button onclick="showP7Answer()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">
+              こたえのれいを見る
+            </button>
+          </div>
+          <div id="result4" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-gray-700 leading-relaxed space-y-2">
+            <p class="font-bold text-amber-800">💡 こたえのれい</p>
+            <p>
+              まず<strong>数える</strong>。いくつ空らんがあるか分からないと、何も決められないから。<br />
+              つぎに<strong>消さずに残す</strong>。勝手に0でうめたり、行ごと消したりしない。<br />
+              計算するときは、その列が空らんの子を<strong>その計算からだけ外す</strong>。体重が空らんでも、しゅるいや島はちゃんと書いてあるから、べつの調べものには使えるよね。<br />
+              そして<strong>人に伝えるときに書いておく</strong>。「344ぴきのうち、体重がはかれた342ぴきで計算しました」と一言そえるだけで、そのへいきんは信じてもらえる数になるんだ。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 発展セクション -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-3">
+      <h2 class="font-black text-gray-800">📊 もっとやってみたい人へ</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">上の表とカードだけでも答えられるよ。じぶんで空らんをさがしてみたい人は、元のデータを開いてみよう。</p>
+      <a href="../data/penguins_ja.csv" download
+        class="inline-block bg-slate-600 hover:bg-slate-700 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        ⬇️ 元のデータ（344行）をダウンロード
+      </a>
+      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
+        <p class="font-bold text-gray-700">スプレッドシートで空らんを数えるには</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li><code class="bg-white px-1 rounded border">=COUNTBLANK(F2:F345)</code> で、その列の空らんの数が出る</li>
+          <li><code class="bg-white px-1 rounded border">=AVERAGE(F2:F345)</code> は空らんを<strong>自動でとばして</strong>くれる（正しいやり方）</li>
+          <li><code class="bg-white px-1 rounded border">=SUM(F2:F345)/344</code> にすると、空らんを0あつかいしたのと同じことになる（まちがったやり方）</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 出典セクション -->
+    <section class="bg-white/60 rounded-xl p-4 text-xs text-gray-500 leading-relaxed">
+      <p class="font-bold text-gray-600 mb-1">📚 データのしゅってん</p>
+      <p>
+        このレッスンのデータは <a href="https://allisonhorst.github.io/palmerpenguins/" target="_blank" rel="noopener" class="text-slate-600 hover:underline font-bold">palmerpenguins</a>（Horst, Hill &amp; Gorman, 2020／CC0）です。
+        もとの記録は、南極のパーマー基地で Kristen Gorman 博士たちが 2007〜2009年に1ぴきずつ集めたものです。
+      </p>
+    </section>
+
+    <!-- ナビゲーション -->
+    <div class="flex justify-between items-center pt-2">
+      <a href="../lesson06/index.html" class="text-gray-400 hover:text-gray-600 text-sm">← まえのレッスンへ</a>
+      <a href="../lesson08/index.html" class="bg-slate-600 hover:bg-slate-700 text-white font-bold px-5 py-2 rounded-xl text-sm transition-colors">つぎのレッスンへ →</a>
+    </div>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | こどもコース・ペンギン研究所</p>
+  </footer>
+
+  <script>
+    function showResult(id, ok, okMsg, ngMsg) {
+      const result = document.getElementById(id);
+      result.classList.remove('hidden');
+      if (ok) {
+        result.textContent = okMsg;
+        result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+      } else {
+        result.textContent = ngMsg;
+        result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+      }
+    }
+
+    function showPengError(errorId, hideIds, err) {
+      console.error('[penguins] データの読み込みに失敗しました:', err);
+      const box = document.getElementById(errorId);
+      if (box) box.classList.remove('hidden');
+      hideIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+      });
+    }
+
+    function checkP7_1() {
+      const el = document.querySelector('input[name="q7_1"]:checked');
+      const ok = el && el.value === 'c';
+      showResult('result1', ok, '⭕ せいかい！ せいべつの空らんは11ぴき。いちばん多い列だったね。', '❌ もう一かい！ ヒント：上の「せいべつ」のカードに書いてある数を見てみよう。');
+    }
+
+    function checkP7_2() {
+      const el = document.querySelector('input[name="q7_2"]:checked');
+      const ok = el && el.value === 'b';
+      showResult('result2', ok, '⭕ せいかい！ 体重の空らんは2ひき。この2ひきは、くちばしもひれもぜんぶ空らんだったね。', '❌ もう一かい！ ヒント：上の「体重(g)」のカードを見てみよう。11ぴきは「せいべつ」のほうだよ。');
+    }
+
+    function checkP7_3() {
+      const el = document.querySelector('input[name="q7_3"]:checked');
+      const ok = el && el.value === 'a';
+      showResult('result3', ok, '⭕ せいかい！ 4,177g。正しい4,202gより25gも軽くなってしまうよ。いないはずの「0gのペンギン」が2ひきまざったせいだね。', '❌ もう一かい！ ヒント：赤いカード（やってはいけないやり方）の数字を見てみよう。');
+    }
+
+    function showP7Answer() {
+      document.getElementById('result4').classList.remove('hidden');
+    }
+
+    const P7_COLUMNS = ['しゅるい', '島', 'くちばしの長さ(mm)', 'くちばしの深さ(mm)', 'ひれの長さ(mm)', '体重(g)', 'せいべつ', '年'];
+
+    (async function initP7() {
+      try {
+        const rows = await loadKidsCsv('../data/penguins_ja.csv');
+        const isBlank = (row, column) => !row[column] || !row[column].trim();
+
+        // (a) 列ごとの空らんの数
+        document.getElementById('peng7-missing-cards').innerHTML = P7_COLUMNS.map((column) => {
+          const blanks = rows.filter((row) => isBlank(row, column)).length;
+          const cardClass = blanks > 0
+            ? 'border-2 border-red-200 bg-red-50 rounded-xl p-3 text-center'
+            : 'border border-gray-200 bg-white rounded-xl p-3 text-center';
+          const numberClass = blanks > 0 ? 'text-2xl font-black text-red-600' : 'text-2xl font-black text-gray-300';
+          return `
+            <div class="${cardClass}">
+              <p class="text-[10px] font-bold text-gray-500 leading-tight min-h-[2rem] flex items-center justify-center">${column}</p>
+              <p class="${numberClass}">${blanks}</p>
+              <p class="text-[10px] text-gray-400">空らん</p>
+            </div>
+          `;
+        }).join('');
+
+        // (b) 空らんがある行だけを表に出す
+        const blankRows = rows
+          .map((row, index) => ({ row, number: index + 1 }))
+          .filter(({ row }) => P7_COLUMNS.some((column) => isBlank(row, column)));
+
+        document.getElementById('peng7-rows-head').innerHTML =
+          `<th class="px-2 py-2 text-left font-bold whitespace-nowrap">何ばんめ</th>` +
+          P7_COLUMNS.map((column) => `<th class="px-2 py-2 text-left font-bold whitespace-nowrap">${column}</th>`).join('');
+
+        document.getElementById('peng7-rows-body').innerHTML = blankRows.map(({ row, number }) => `
+          <tr class="border-t border-slate-200 hover:bg-slate-50">
+            <td class="px-2 py-2 text-gray-400 font-bold whitespace-nowrap">${number}</td>
+            ${P7_COLUMNS.map((column) => (isBlank(row, column)
+              ? `<td class="px-2 py-2"><span class="bg-red-100 text-red-600 font-bold px-1.5 py-0.5 rounded whitespace-nowrap">空らん</span></td>`
+              : `<td class="px-2 py-2 text-gray-600 whitespace-nowrap">${row[column]}</td>`)).join('')}
+          </tr>
+        `).join('');
+
+        const allBlank = blankRows.filter(({ row }) =>
+          isBlank(row, '体重(g)') && isBlank(row, 'ひれの長さ(mm)')).length;
+        document.getElementById('peng7-rows-note').innerHTML =
+          `344ぴきのうち、空らんがある子は <strong>${blankRows.length}ぴき</strong>だけ。<br />` +
+          `そのうち <strong>${allBlank}ひき</strong>は、はかった数がぜんぶ空らん。のこりの ${blankRows.length - allBlank}ひきは、` +
+          `<strong>せいべつだけ</strong>が分からない子だよ。体重もひれの長さもちゃんと記録されているから、体重を調べるときには使えるね。`;
+
+        // (c) へいきん体重の出し方くらべ
+        const masses = rows.filter((row) => !isBlank(row, '体重(g)')).map((row) => Number(row['体重(g)']));
+        const total = masses.reduce((sum, value) => sum + value, 0);
+        const correct = Math.round(total / masses.length);
+        const wrong = Math.round(total / rows.length);
+
+        document.getElementById('peng7-avg-correct').textContent = `${formatKidsNumber(correct)}g`;
+        document.getElementById('peng7-calc-correct').textContent =
+          `${formatKidsNumber(total)}g ÷ ${masses.length}ひき`;
+        document.getElementById('peng7-avg-wrong').textContent = `${formatKidsNumber(wrong)}g`;
+        document.getElementById('peng7-calc-wrong').textContent =
+          `${formatKidsNumber(total)}g ÷ ${rows.length}ひき`;
+        document.getElementById('peng7-gap').innerHTML =
+          `<strong>2つの答えの差：${formatKidsNumber(correct - wrong)}g</strong><br />` +
+          `たし算した合計は同じなのに、<strong>わる数がちがう</strong>だけでこれだけずれる。` +
+          `空らんの子を0gあつかいすると、いないはずの「0gのペンギン」が${rows.length - masses.length}ひきまざって、へいきんが軽いほうへひっぱられてしまうんだ。`;
+      } catch (err) {
+        showPengError('peng7-error', ['peng7-viz-area'], err);
+      }
+    })();
+  </script>
+</body>
+
+</html>

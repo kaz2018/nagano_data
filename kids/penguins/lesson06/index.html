@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ペンギン研究所 レッスン6: オスとメス、どうちがう？ | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../../js/kids-visuals.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
+</head>
+
+<body class="bg-sky-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+      <span class="text-gray-300">|</span>
+      <span class="text-sm font-bold text-rose-600">🐧 レッスン 6</span>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <!-- タイトル -->
+    <section class="text-center">
+      <div class="inline-block bg-rose-100 text-rose-700 text-sm font-bold px-4 py-1 rounded-full mb-3">🐧 レッスン 6</div>
+      <h1 class="text-3xl font-black text-gray-800 mb-2">オスとメス、どうちがう？</h1>
+      <p class="text-gray-500">もっと細かく分けてみよう</p>
+    </section>
+
+    <!-- 会話吹き出し -->
+    <section class="space-y-3">
+      <!-- でい太 -->
+      <div class="flex items-start gap-3">
+        <img src="../../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「島で分けたら見え方が変わったよね。じゃあ、オスとメスで分けたらどうなるんだろう？ データには『せいべつ』の列もあるんだ。」
+          </div>
+        </div>
+      </div>
+      <!-- ポン太 -->
+      <div class="flex items-start gap-3">
+        <img src="../../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+          <div class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「オレ、オスのタヌキだよ。ちなみに。前も言ったけど。」
+          </div>
+        </div>
+      </div>
+      <!-- ものしり仙人 -->
+      <div class="flex items-start gap-3 flex-row-reverse">
+        <img src="../../images/harmit.png" alt="ものしり仙人" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div class="text-right">
+          <p class="text-xs font-bold text-blue-600 mb-1">ものしり仙人</p>
+          <div class="bg-blue-50 border border-blue-200 rounded-2xl rounded-tr-none px-4 py-3 text-sm text-gray-700 leading-relaxed text-left">
+            「しゅるいで分け、島で分け、こんどはせいべつで分ける。<strong>分け方を変えるたびに、ちがう景色が見えてくる</strong>。これがデータのおもしろいところじゃ。ただし、分けるほど1グループのひき数は減る。そこは気をつけるのじゃぞ。」
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="font-black text-gray-800 mb-3">🎯 このレッスンでわかること</h2>
+      <ul class="space-y-2 text-gray-600 text-sm">
+        <li class="flex gap-2"><span class="text-rose-500 font-bold">✓</span> 2つの条件（しゅるい×せいべつ）で分けてくらべられる</li>
+        <li class="flex gap-2"><span class="text-rose-500 font-bold">✓</span> グループどうしの「差」を数で言えるようになる</li>
+        <li class="flex gap-2"><span class="text-rose-500 font-bold">✓</span> グループをまぜてへいきんを出すと何が起きるか、わかる</li>
+      </ul>
+    </section>
+
+    <!-- 説明 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📖 しゅるい × せいべつ の6グループ</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        3しゅるい × オス・メスで、ぜんぶで<strong>6つのグループ</strong>ができます。
+        グループごとにへいきんを出して、となりどうしでくらべてみましょう。
+      </p>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        くらべるときは、<strong>「どちらが大きいか」だけでなく「どれくらいちがうか」</strong>も数で言えるようにします。
+        レッスン5の長野コースでやった「ひき算」の出番です。
+      </p>
+      <div class="bg-amber-50 rounded-xl p-4 text-sm text-amber-800">
+        <p class="font-bold mb-1">📝 ポイント</p>
+        <p>オスとメスの差は、しゅるいによって大きさがちがうよ。どのしゅるいの差がいちばん大きいかな？</p>
+      </div>
+
+      <!-- データカード -->
+      <div class="bg-rose-600 text-white rounded-xl p-4 text-sm">
+        <p class="font-bold mb-1">📂 レッスン6のデータ（レッスン5とはちがうよ！）</p>
+        <p class="text-rose-100 leading-relaxed">レッスン5は1ぴきずつのデータだったけど、今回は<strong class="text-white">しゅるいとせいべつでまとめたあとの数</strong>だよ。じつは、せいべつが書かれていない子がすこしいて、その子たちはこの集計から外してあるんだ。……その子たちはどうなるの？ それは次のレッスンで。</p>
+      </div>
+    </section>
+
+    <!-- 可視化 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-5">
+      <div>
+        <h2 class="font-black text-gray-800">📊 オスとメスのへいきん</h2>
+        <p class="text-xs text-gray-500 mt-1">ボタンで、くらべる項目を切りかえられるよ。</p>
+      </div>
+
+      <!-- エラーボックス -->
+      <div id="peng6-error" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+        <p class="font-bold mb-1">⚠️ データをよみこめなかったよ</p>
+        <p class="leading-relaxed">インターネットにつながっているか確かめて、ページをもういちどひらいてみてね。なおらないときは、おうちの人か先生に教えてね。</p>
+      </div>
+
+      <div id="peng6-viz-area" class="space-y-5">
+        <!-- 項目きりかえ -->
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-xs font-bold text-gray-500">くらべる項目：</span>
+          <button type="button" onclick="setPeng6Metric('mass')" id="peng6-btn-mass"
+            class="px-3 py-1 rounded-full text-xs font-bold transition-colors bg-rose-600 text-white">
+            へいきん体重
+          </button>
+          <button type="button" onclick="setPeng6Metric('flipper')" id="peng6-btn-flipper"
+            class="px-3 py-1 rounded-full text-xs font-bold transition-colors bg-rose-50 text-rose-700 hover:bg-rose-100">
+            へいきんひれの長さ
+          </button>
+        </div>
+
+        <!-- 凡例 -->
+        <div class="flex flex-wrap items-center gap-4 text-xs">
+          <span class="flex items-center gap-1.5">
+            <span class="w-3 h-3 rounded inline-block" style="background-color: #0d9488"></span>
+            <span class="text-gray-600">オス</span>
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="w-3 h-3 rounded inline-block" style="background-color: #e11d48"></span>
+            <span class="text-gray-600">メス</span>
+          </span>
+        </div>
+
+        <!-- グラフ -->
+        <div id="peng6-bars" class="space-y-5 border border-rose-100 rounded-xl p-4"></div>
+
+        <p class="text-xs text-gray-500">💡 それぞれのしゅるいの右はしに、オスとメスの<strong>差</strong>が書いてあるよ。</p>
+      </div>
+    </section>
+
+    <!-- やってみよう -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-6">
+      <div>
+        <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
+        <p class="text-xs text-gray-400 mt-1">上のグラフを見て答えてみよう！</p>
+      </div>
+
+      <div class="space-y-6">
+        <!-- もんだい 1 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 1. 3しゅるいとも、へいきん体重が重いのはどっち？</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-rose-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-rose-300 transition-colors">
+              <input type="radio" name="q6_1" value="a" class="accent-rose-500" />
+              <span>① どのしゅるいもオス</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-rose-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-rose-300 transition-colors">
+              <input type="radio" name="q6_1" value="b" class="accent-rose-500" />
+              <span>② どのしゅるいもメス</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-rose-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-rose-300 transition-colors">
+              <input type="radio" name="q6_1" value="c" class="accent-rose-500" />
+              <span>③ しゅるいによってちがう</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-rose-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-rose-300 transition-colors">
+              <input type="radio" name="q6_1" value="d" class="accent-rose-500" />
+              <span>④ ぜんぶ同じ</span>
+            </label>
+          </div>
+          <button onclick="checkP6_1()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result1" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい 2 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 2. オスとメスのへいきん体重の差が、いちばん大きいしゅるいは？</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-rose-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-rose-300 transition-colors">
+              <input type="radio" name="q6_2" value="a" class="accent-rose-500" />
+              <span>① アデリーペンギン（差 674g）</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-rose-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-rose-300 transition-colors">
+              <input type="radio" name="q6_2" value="b" class="accent-rose-500" />
+              <span>② ヒゲペンギン（差 412g）</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-rose-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-rose-300 transition-colors">
+              <input type="radio" name="q6_2" value="c" class="accent-rose-500" />
+              <span>③ ジェンツーペンギン（差 805g）</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-rose-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-rose-300 transition-colors">
+              <input type="radio" name="q6_2" value="d" class="accent-rose-500" />
+              <span>④ 3しゅるいとも同じ差</span>
+            </label>
+          </div>
+          <button onclick="checkP6_2()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result2" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい 3 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 3. ジェンツーペンギンの<strong>メス</strong>と、アデリーペンギンの<strong>オス</strong>。へいきん体重が重いのはどっち？</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-rose-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-rose-300 transition-colors">
+              <input type="radio" name="q6_3" value="a" class="accent-rose-500" />
+              <span>① ジェンツーのメス</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-rose-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-rose-300 transition-colors">
+              <input type="radio" name="q6_3" value="b" class="accent-rose-500" />
+              <span>② アデリーのオス</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-rose-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-rose-300 transition-colors">
+              <input type="radio" name="q6_3" value="c" class="accent-rose-500" />
+              <span>③ ちょうど同じ</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-rose-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-rose-300 transition-colors">
+              <input type="radio" name="q6_3" value="d" class="accent-rose-500" />
+              <span>④ くらべられない</span>
+            </label>
+          </div>
+          <button onclick="checkP6_3()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result3" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい 4 (自由記述) -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 4（かんがえてみよう）. もし「アデリーペンギンのへいきん体重は3,701g」とだけ聞いたら、どんなことを見落とすかな？</p>
+          <div>
+            <button onclick="showP6Answer()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">
+              こたえのれいを見る
+            </button>
+          </div>
+          <div id="result4" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-gray-700 leading-relaxed space-y-2">
+            <p class="font-bold text-amber-800">💡 こたえのれい</p>
+            <p>
+              3,701g という数は、オス（4,043g）とメス（3,369g）をまぜたあとの数。<br />
+              じっさいには、その体重ちょうどのアデリーペンギンが多いわけではなくて、<strong>重いグループと軽いグループが2つある</strong>んだ。<br />
+              へいきんは1つの数にまとめてくれるけれど、まとめたとたんに「オスとメスで674gもちがう」という大事な事実が消えてしまう。<br />
+              だから「このへいきんは、何をまぜて作った数なんだろう？」と考えるくせをつけよう。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 発展セクション -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-3">
+      <h2 class="font-black text-gray-800">📊 もっとやってみたい人へ</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">上のグラフだけでも答えられるよ。じぶんで集計しなおしてみたい人は、もとのデータを開いてみよう。</p>
+      <a href="../data/lesson06_sex.csv" download
+        class="inline-block bg-rose-500 hover:bg-rose-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        ⬇️ このレッスンのデータをダウンロード
+      </a>
+      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
+        <p class="font-bold text-gray-700">やってみるとおもしろいこと</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>オスの行とメスの行で、へいきん体重をひき算して「差」を出す</li>
+          <li>差を、もとのへいきんでわって「何％ちがうか」を出してみる</li>
+          <li>「ひれの長さ」でも同じことをして、体重とくらべる</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 出典セクション -->
+    <section class="bg-white/60 rounded-xl p-4 text-xs text-gray-500 leading-relaxed">
+      <p class="font-bold text-gray-600 mb-1">📚 データのしゅってん</p>
+      <p>
+        このレッスンのデータは <a href="https://allisonhorst.github.io/palmerpenguins/" target="_blank" rel="noopener" class="text-rose-600 hover:underline font-bold">palmerpenguins</a>（Horst, Hill &amp; Gorman, 2020／CC0）です。
+        もとの記録は、南極のパーマー基地で Kristen Gorman 博士たちが 2007〜2009年に1ぴきずつ集めたものです。
+      </p>
+    </section>
+
+    <!-- ナビゲーション -->
+    <div class="flex justify-between items-center pt-2">
+      <a href="../lesson05/index.html" class="text-gray-400 hover:text-gray-600 text-sm">← まえのレッスンへ</a>
+      <a href="../lesson07/index.html" class="bg-rose-500 hover:bg-rose-600 text-white font-bold px-5 py-2 rounded-xl text-sm transition-colors">つぎのレッスンへ →</a>
+    </div>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | こどもコース・ペンギン研究所</p>
+  </footer>
+
+  <script>
+    function showResult(id, ok, okMsg, ngMsg) {
+      const result = document.getElementById(id);
+      result.classList.remove('hidden');
+      if (ok) {
+        result.textContent = okMsg;
+        result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+      } else {
+        result.textContent = ngMsg;
+        result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+      }
+    }
+
+    function showPengError(errorId, hideIds, err) {
+      console.error('[penguins] データの読み込みに失敗しました:', err);
+      const box = document.getElementById(errorId);
+      if (box) box.classList.remove('hidden');
+      hideIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+      });
+    }
+
+    function checkP6_1() {
+      const el = document.querySelector('input[name="q6_1"]:checked');
+      const ok = el && el.value === 'a';
+      showResult('result1', ok, '⭕ せいかい！ 3しゅるいとも、オスのほうが重かったよ。ひれの長さでも同じだったね。', '❌ もう一かい！ ヒント：3つのしゅるいで、上下のバーの長さをくらべてみよう。');
+    }
+
+    function checkP6_2() {
+      const el = document.querySelector('input[name="q6_2"]:checked');
+      const ok = el && el.value === 'c';
+      showResult('result2', ok, '⭕ せいかい！ ジェンツーペンギンの差は805g。もともと体が大きいしゅるいは、差も大きくなりやすいんだ。', '❌ もう一かい！ ヒント：それぞれのしゅるいの右はしに書いてある「差」をくらべてみよう。');
+    }
+
+    function checkP6_3() {
+      const el = document.querySelector('input[name="q6_3"]:checked');
+      const ok = el && el.value === 'a';
+      showResult('result3', ok, '⭕ せいかい！ ジェンツーのメス4,680g ＞ アデリーのオス4,043g。しゅるいのちがいのほうが、せいべつのちがいより大きいんだね。', '❌ もう一かい！ ヒント：ジェンツーのメスのバーと、アデリーのオスのバーの数字をくらべてみよう。');
+    }
+
+    function showP6Answer() {
+      document.getElementById('result4').classList.remove('hidden');
+    }
+
+    const P6_SPECIES = ['アデリーペンギン', 'ヒゲペンギン', 'ジェンツーペンギン'];
+    const P6_SEX_COLORS = { 'オス': '#0d9488', 'メス': '#e11d48' };
+    const P6_METRICS = {
+      mass: { column: 'へいきん体重(g)', unit: 'g', base: 2500, label: 'へいきん体重' },
+      flipper: { column: 'へいきんひれの長さ(mm)', unit: 'mm', base: 170, label: 'へいきんひれの長さ' },
+    };
+    let p6Rows = [];
+    let p6Metric = 'mass';
+
+    function setPeng6Metric(metric) {
+      p6Metric = metric;
+      [['mass', 'peng6-btn-mass'], ['flipper', 'peng6-btn-flipper']].forEach(([key, id]) => {
+        document.getElementById(id).className = key === metric
+          ? 'px-3 py-1 rounded-full text-xs font-bold transition-colors bg-rose-600 text-white'
+          : 'px-3 py-1 rounded-full text-xs font-bold transition-colors bg-rose-50 text-rose-700 hover:bg-rose-100';
+      });
+      renderPeng6();
+    }
+
+    function renderPeng6() {
+      const metric = P6_METRICS[p6Metric];
+      const valueOf = (species, sex) => {
+        const row = p6Rows.find((r) => r['しゅるい'] === species && r['せいべつ'] === sex);
+        return row ? Number(row[metric.column]) : null;
+      };
+      const countOf = (species, sex) => {
+        const row = p6Rows.find((r) => r['しゅるい'] === species && r['せいべつ'] === sex);
+        return row ? Number(row['ひき数']) : 0;
+      };
+
+      const allValues = P6_SPECIES.flatMap((sp) => ['オス', 'メス'].map((sx) => valueOf(sp, sx)));
+      const maxValue = Math.max(...allValues);
+      const widthOf = (value) => ((value - metric.base) / (maxValue - metric.base)) * 100;
+      const show = (value) => `${formatKidsNumber(value)}${metric.unit}`;
+
+      document.getElementById('peng6-bars').innerHTML = P6_SPECIES.map((sp) => {
+        const male = valueOf(sp, 'オス');
+        const female = valueOf(sp, 'メス');
+        const gap = Math.round((male - female) * 10) / 10;
+
+        const bar = (sex, value, count) => `
+          <div class="flex items-center gap-2">
+            <div class="w-10 shrink-0 text-right text-xs font-bold" style="color: ${P6_SEX_COLORS[sex]}">${sex}</div>
+            <div class="flex-1 flex items-center">
+              <div class="h-6 rounded-r flex items-center justify-end pr-2 transition-all duration-500"
+                style="width: ${Math.max(widthOf(value), 6)}%; background-color: ${P6_SEX_COLORS[sex]}">
+                <span class="text-white text-xs font-bold">${show(value)}</span>
+              </div>
+              <span class="text-[10px] text-gray-400 ml-2 shrink-0 whitespace-nowrap">${count}ひき</span>
+            </div>
+          </div>
+        `;
+
+        return `
+          <div class="space-y-1.5">
+            <div class="flex items-baseline justify-between gap-2">
+              <p class="text-sm font-black" style="color: ${KIDS_SPECIES_COLORS[sp]}">${sp}</p>
+              <p class="text-xs font-bold text-gray-500 shrink-0">差 <span class="text-gray-800">${show(gap)}</span></p>
+            </div>
+            ${bar('オス', male, countOf(sp, 'オス'))}
+            ${bar('メス', female, countOf(sp, 'メス'))}
+          </div>
+        `;
+      }).join('') + `<p class="text-[10px] text-gray-400">※ちがいを見やすくするため、バーは ${formatKidsNumber(metric.base)}${metric.unit} からのびているよ。</p>`;
+    }
+
+    (async function initP6() {
+      try {
+        p6Rows = await loadKidsCsv('../data/lesson06_sex.csv');
+        renderPeng6();
+      } catch (err) {
+        showPengError('peng6-error', ['peng6-viz-area'], err);
+      }
+    })();
+  </script>
+</body>
+
+</html>

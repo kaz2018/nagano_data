@@ -4,6 +4,7 @@ Palmer Penguins データ取得・加工スクリプト
 import csv
 import io
 import os
+import statistics
 import sys
 import urllib.request
 
@@ -13,6 +14,10 @@ RAW_PATH = os.path.join(DATA_DIR, "penguins_raw.csv")
 JA_PATH = os.path.join(DATA_DIR, "penguins_ja.csv")
 L2_PATH = os.path.join(DATA_DIR, "lesson02_species_mass.csv")
 L3_PATH = os.path.join(DATA_DIR, "lesson03_mass.csv")
+L4_PATH = os.path.join(DATA_DIR, "lesson04_flipper_mass.csv")
+L5_PATH = os.path.join(DATA_DIR, "lesson05_island_mass.csv")
+L6_PATH = os.path.join(DATA_DIR, "lesson06_sex.csv")
+L8_PATH = os.path.join(DATA_DIR, "lesson08_bill.csv")
 
 SPECIES_MAP = {
     "Adelie": "アデリーペンギン",
@@ -159,6 +164,79 @@ def main():
         writer.writerows(l3_rows)
     print(f"Generated: {L3_PATH} ({len(l3_rows)} rows)")
 
+    # 4. lesson04_flipper_mass.csv 生成
+    # ひれの長さ・体重の両方がそろっている342行
+    l4_headers = ["しゅるい", "ひれの長さ(mm)", "体重(g)"]
+    l4_rows = [
+        {
+            "しゅるい": r["しゅるい"],
+            "ひれの長さ(mm)": r["ひれの長さ(mm)"],
+            "体重(g)": r["体重(g)"],
+        }
+        for r in ja_rows
+        if r["ひれの長さ(mm)"] != "" and r["体重(g)"] != ""
+    ]
+    with open(L4_PATH, "w", encoding="utf-8-sig", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=l4_headers)
+        writer.writeheader()
+        writer.writerows(l4_rows)
+    print(f"Generated: {L4_PATH} ({len(l4_rows)} rows)")
+
+    # 5. lesson05_island_mass.csv 生成
+    # 344行すべて。体重の欠損は空欄のまま残す（0で埋めない）
+    l5_headers = ["島", "しゅるい", "体重(g)"]
+    l5_rows = [
+        {"島": r["島"], "しゅるい": r["しゅるい"], "体重(g)": r["体重(g)"]}
+        for r in ja_rows
+    ]
+    with open(L5_PATH, "w", encoding="utf-8-sig", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=l5_headers)
+        writer.writeheader()
+        writer.writerows(l5_rows)
+    print(f"Generated: {L5_PATH} ({len(l5_rows)} rows)")
+
+    # 6. lesson06_sex.csv 生成
+    # しゅるい×せいべつの集計6行。せいべつが空欄の11行は集計から除く
+    l6_headers = ["しゅるい", "せいべつ", "ひき数", "へいきん体重(g)", "へいきんひれの長さ(mm)"]
+    l6_rows = []
+    for sp in target_species:
+        for sex in ["オス", "メス"]:
+            sub = [r for r in ja_rows if r["しゅるい"] == sp and r["せいべつ"] == sex]
+            masses = [float(r["体重(g)"]) for r in sub if r["体重(g)"]]
+            flippers = [float(r["ひれの長さ(mm)"]) for r in sub if r["ひれの長さ(mm)"]]
+            l6_rows.append({
+                "しゅるい": sp,
+                "せいべつ": sex,
+                "ひき数": len(sub),
+                "へいきん体重(g)": round(sum(masses) / len(masses)),
+                "へいきんひれの長さ(mm)": f"{round(sum(flippers) / len(flippers), 1):.1f}",
+            })
+    with open(L6_PATH, "w", encoding="utf-8-sig", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=l6_headers)
+        writer.writeheader()
+        writer.writerows(l6_rows)
+    print(f"Generated: {L6_PATH} ({len(l6_rows)} rows)")
+
+    # 7. lesson08_bill.csv 生成
+    # くちばしの長さ・深さの両方がそろっている342行
+    l8_headers = ["しゅるい", "くちばしの長さ(mm)", "くちばしの深さ(mm)"]
+    l8_rows = [
+        {
+            "しゅるい": r["しゅるい"],
+            "くちばしの長さ(mm)": r["くちばしの長さ(mm)"],
+            "くちばしの深さ(mm)": r["くちばしの深さ(mm)"],
+        }
+        for r in ja_rows
+        if r["くちばしの長さ(mm)"] != "" and r["くちばしの深さ(mm)"] != ""
+    ]
+    with open(L8_PATH, "w", encoding="utf-8-sig", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=l8_headers)
+        writer.writeheader()
+        writer.writerows(l8_rows)
+    print(f"Generated: {L8_PATH} ({len(l8_rows)} rows)")
+
+    # レッスン7は penguins_ja.csv をそのまま読む（空欄を教材にするため新規ファイルなし）
+
     # --- 検証 (assert) ---
     print("\n--- Running validations ---")
 
@@ -211,6 +289,52 @@ def main():
     assert min_mass == 2700, f"Expected min mass 2700, got {min_mass}"
     assert max_mass == 6300, f"Expected max mass 6300, got {max_mass}"
 
+    # lesson04_flipper_mass.csv
+    assert len(l4_rows) == 342, f"Expected 342 rows in L4, got {len(l4_rows)}"
+    l4_flippers = [float(r["ひれの長さ(mm)"]) for r in l4_rows]
+    assert (min(l4_flippers), max(l4_flippers)) == (172.0, 231.0), \
+        f"Unexpected flipper range in L4: {min(l4_flippers)}-{max(l4_flippers)}"
+
+    # lesson05_island_mass.csv
+    assert len(l5_rows) == 344, f"Expected 344 rows in L5, got {len(l5_rows)}"
+    l5_cross = {}
+    for r in l5_rows:
+        key = (r["島"], r["しゅるい"])
+        l5_cross[key] = l5_cross.get(key, 0) + 1
+    assert l5_cross == {
+        ("ビスコー島", "アデリーペンギン"): 44,
+        ("ビスコー島", "ジェンツーペンギン"): 124,
+        ("ドリーム島", "アデリーペンギン"): 56,
+        ("ドリーム島", "ヒゲペンギン"): 68,
+        ("トーゲルセン島", "アデリーペンギン"): 52,
+    }, f"Unexpected island x species cross tab: {l5_cross}"
+
+    # lesson06_sex.csv
+    assert len(l6_rows) == 6, f"Expected 6 rows in L6, got {len(l6_rows)}"
+    assert sum(r["ひき数"] for r in l6_rows) == 333, \
+        "L6 should cover 333 penguins (344 - 11 with unknown sex)"
+    l6_avg_mass = [r["へいきん体重(g)"] for r in l6_rows]
+    assert l6_avg_mass == [4043, 3369, 3939, 3527, 5485, 4680], \
+        f"Unexpected avg mass in L6: {l6_avg_mass}"
+
+    # lesson08_bill.csv
+    assert len(l8_rows) == 342, f"Expected 342 rows in L8, got {len(l8_rows)}"
+    bill_len = [float(r["くちばしの長さ(mm)"]) for r in l8_rows]
+    bill_depth = [float(r["くちばしの深さ(mm)"]) for r in l8_rows]
+    assert (min(bill_len), max(bill_len)) == (32.1, 59.6), "Unexpected bill length range"
+    assert (min(bill_depth), max(bill_depth)) == (13.1, 21.5), "Unexpected bill depth range"
+
+    # シンプソンのパラドックス（レッスン8の核心）が成立していること
+    overall_corr = statistics.correlation(bill_len, bill_depth)
+    assert overall_corr < 0, f"Expected negative overall bill correlation, got {overall_corr:.3f}"
+    for sp in target_species:
+        sub = [r for r in l8_rows if r["しゅるい"] == sp]
+        corr = statistics.correlation(
+            [float(r["くちばしの長さ(mm)"]) for r in sub],
+            [float(r["くちばしの深さ(mm)"]) for r in sub],
+        )
+        assert corr > 0, f"Expected positive bill correlation for {sp}, got {corr:.3f}"
+
     print("✅ All validations passed successfully!")
     print(f"Summary:")
     print(f"  - penguins_ja.csv: {len(ja_rows)} rows (Adelie: 152, Gentoo: 124, Chinstrap: 68)")
@@ -219,6 +343,10 @@ def main():
     print(f"  - Empty mass: {empty_mass}, Empty sex: {empty_sex}")
     print(f"  - lesson02_species_mass.csv: {len(l2_rows)} rows, avg mass: {l2_avg_mass}")
     print(f"  - lesson03_mass.csv: {len(l3_rows)} rows, min: {min_mass}, max: {max_mass}")
+    print(f"  - lesson04_flipper_mass.csv: {len(l4_rows)} rows")
+    print(f"  - lesson05_island_mass.csv: {len(l5_rows)} rows")
+    print(f"  - lesson06_sex.csv: {len(l6_rows)} rows, avg mass: {l6_avg_mass}")
+    print(f"  - lesson08_bill.csv: {len(l8_rows)} rows, overall corr: {overall_corr:.3f}")
 
 
 if __name__ == "__main__":
