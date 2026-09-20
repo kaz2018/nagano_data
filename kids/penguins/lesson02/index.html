@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ペンギン研究所 レッスン2: どのペンギンが重い？ | ながのデータ探検隊</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../../js/kids-visuals.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
+</head>
+
+<body class="bg-sky-50 min-h-screen">
+
+  <!-- ヘッダー -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+      <a href="../index.html" class="text-gray-400 hover:text-gray-600 text-sm">← レッスン一らんへ</a>
+      <span class="text-gray-300">|</span>
+      <span class="text-sm font-bold text-blue-600">🐧 レッスン 2</span>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+
+    <!-- タイトル -->
+    <section class="text-center">
+      <div class="inline-block bg-blue-100 text-blue-700 text-sm font-bold px-4 py-1 rounded-full mb-3">🐧 レッスン 2</div>
+      <h1 class="text-3xl font-black text-gray-800 mb-2">どのペンギンが重い？</h1>
+      <p class="text-gray-500">へいきんでくらべよう</p>
+    </section>
+
+    <!-- 会話吹き出し -->
+    <section class="space-y-3">
+      <!-- でい太 -->
+      <div class="flex items-start gap-3">
+        <img src="../../images/main_character.png" alt="でい太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-amber-600 mb-1">でい太</p>
+          <div class="bg-amber-50 border border-amber-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「3しゅるいのペンギン、どれがいちばん重いんだろう？ 344ひきを1ぴきずつ見てたら日がくれちゃう。こういうときは『へいきん』の出番だ！」
+          </div>
+        </div>
+      </div>
+      <!-- ポン太 -->
+      <div class="flex items-start gap-3">
+        <img src="../../images/assistant.png" alt="ポン太" class="shrink-0 w-10 h-10 rounded-full object-cover shadow" />
+        <div>
+          <p class="text-xs font-bold text-stone-500 mb-1">ポン太</p>
+          <div class="bg-stone-50 border border-stone-200 rounded-2xl rounded-tl-none px-4 py-3 text-sm text-gray-700 leading-relaxed">
+            「オレの体重？ 教えないよ。」
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- このレッスンでわかること -->
+    <section class="bg-white rounded-2xl shadow-sm p-6">
+      <h2 class="font-black text-gray-800 mb-3">🎯 このレッスンでわかること</h2>
+      <ul class="space-y-2 text-gray-600 text-sm">
+        <li class="flex gap-2"><span class="text-blue-500 font-bold">✓</span> へいきん（平均）の意味がわかる</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold">✓</span> へいきんをつかえば、たくさんのデータをまとめてくらべられる</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold">✓</span> 3しゅるいのペンギンのちがいがわかる</li>
+      </ul>
+    </section>
+
+    <!-- 説明 -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-4">
+      <h2 class="font-black text-gray-800">📖 へいきんってなに？</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        「へいきん（平均）」は、たくさんの数字を<strong>ぜんぶ足して、その個数（ひき数）でわった数</strong>のことです。<br />
+        みんなの数字をいったんぜんぶまとめて、同じ大きさになるように分け直した「まんなかの代表の数」といえます。
+      </p>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        344ひきを1ぴきずつ比べるのは大変ですが、しゅるいごとの「へいきん体重」を計算すれば、3つのグループをすっきりと比べることができます。
+      </p>
+      <div class="bg-amber-50 rounded-xl p-4 text-sm text-amber-800">
+        <p class="font-bold mb-1">📝 ポイント</p>
+        <p>へいきんは『ぜんぶ足して、ひき数でわる』ともとめられるよ。今回はしゅるいごとのへいきん体重をくらべてみよう。</p>
+      </div>
+
+      <!-- データカード -->
+      <div class="bg-blue-600 text-white rounded-xl p-4 text-sm">
+        <p class="font-bold mb-1">📂 レッスン2のデータ（レッスン1とはちがうよ！）</p>
+        <p class="text-blue-100 leading-relaxed">レッスン1は1ぴきずつの記録だったけど、今回はそれを<strong class="text-white">しゅるいごとにまとめた</strong>データだよ。344ひきが3つのグループになったんだ。どのしゅるいが重いかな？</p>
+      </div>
+    </section>
+
+    <!-- 可視化：しゅるい別へいきん体重の横棒グラフ -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-6">
+      <h2 class="font-black text-gray-800">📊 しゅるい別のへいきん体重</h2>
+
+      <!-- エラーボックス -->
+      <div id="peng2-error" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+        <p class="font-bold mb-1">⚠️ データをよみこめなかったよ</p>
+        <p class="leading-relaxed">インターネットにつながっているか確かめて、ページをもういちどひらいてみてね。なおらないときは、おうちの人か先生に教えてね。</p>
+      </div>
+
+      <div id="peng2-chart-container" class="space-y-4 pt-2">
+        <!-- JSで横棒グラフを描画 -->
+      </div>
+
+      <p id="peng2-chart-note" class="text-xs text-gray-500">💡 バーが長いほど重いよ。濃い青のバーがいちばん重いしゅるいです。</p>
+    </section>
+
+    <!-- やってみよう -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 space-y-6">
+      <div>
+        <h2 class="font-black text-gray-800">✏️ やってみよう</h2>
+        <p class="text-xs text-gray-400 mt-1">上のグラフを見て答えてみよう！</p>
+      </div>
+
+      <div class="space-y-6">
+        <!-- もんだい 1 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 1. へいきん体重がいちばん重いしゅるいはどれ？</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_1" value="a" class="accent-blue-500" />
+              <span>① アデリーペンギン</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_1" value="b" class="accent-blue-500" />
+              <span>② ヒゲペンギン</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_1" value="c" class="accent-blue-500" />
+              <span>③ ジェンツーペンギン</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_1" value="d" class="accent-blue-500" />
+              <span>④ ぜんぶ同じ</span>
+            </label>
+          </div>
+          <button onclick="checkP2_1()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result1" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい 2 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 2. ジェンツーペンギンのへいきん体重はどのくらい？</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_2" value="a" class="accent-blue-500" />
+              <span>① 約3,701g</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_2" value="b" class="accent-blue-500" />
+              <span>② 約3,733g</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_2" value="c" class="accent-blue-500" />
+              <span>③ 約5,076g</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_2" value="d" class="accent-blue-500" />
+              <span>④ 約6,300g</span>
+            </label>
+          </div>
+          <button onclick="checkP2_2()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result2" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい 3 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 3. アデリーペンギンとヒゲペンギン、へいきん体重はどのくらいちがう？</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_3" value="a" class="accent-blue-500" />
+              <span>① 約30g（ほとんど同じ）</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_3" value="b" class="accent-blue-500" />
+              <span>② 約300g</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_3" value="c" class="accent-blue-500" />
+              <span>③ 約1,300g</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_3" value="d" class="accent-blue-500" />
+              <span>④ 約3,000g</span>
+            </label>
+          </div>
+          <button onclick="checkP2_3()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result3" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+        <hr class="border-gray-100" />
+
+        <!-- もんだい 4 -->
+        <div class="space-y-3">
+          <p class="font-bold text-gray-700 text-sm">もんだい 4. ジェンツーペンギンは、アデリーペンギンよりへいきんで何gくらい重い？</p>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_4" value="a" class="accent-blue-500" />
+              <span>① 約140g</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_4" value="b" class="accent-blue-500" />
+              <span>② 約540g</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_4" value="c" class="accent-blue-500" />
+              <span>③ 約1,375g</span>
+            </label>
+            <label class="flex items-center gap-3 bg-gray-50 hover:bg-blue-50 rounded-xl p-3 cursor-pointer border border-gray-200 hover:border-blue-300 transition-colors">
+              <input type="radio" name="q2_4" value="d" class="accent-blue-500" />
+              <span>④ 約2,500g</span>
+            </label>
+          </div>
+          <button onclick="checkP2_4()" class="bg-amber-400 hover:bg-amber-500 text-white text-sm font-bold px-5 py-2 rounded-xl transition-colors">答え合わせ</button>
+          <div id="result4" class="hidden text-sm font-bold px-4 py-3 rounded-xl"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 発展セクション（スプレッドシート） -->
+    <section id="peng2-advanced-sheet" class="bg-white rounded-2xl shadow-sm p-6 space-y-3">
+      <h2 class="font-black text-gray-800">📊 もっとやってみたい人へ</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">上のグラフだけでも答えられるよ。じぶんで数字をさわってみたい人むけに、本物のスプレッドシートも用意したよ。</p>
+      <a href="https://docs.google.com/spreadsheets/d/19b6QYQtof7msFCeKfJete7267sNi5PveTyhAOCQ_G1w/copy" target="_blank" rel="noopener"
+        class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-xl transition-colors">
+        📋 スプレッドシートをコピーする
+      </a>
+      <div class="bg-gray-50 rounded-xl p-4 text-sm text-gray-600 space-y-2">
+        <p class="font-bold text-gray-700">コピーのしかた</p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>ボタンをおす</li>
+          <li>「コピーを作成」をおす</li>
+          <li>じぶんのGoogleドライブにほぞんされるよ</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 出典セクション -->
+    <section class="bg-white/60 rounded-xl p-4 text-xs text-gray-500 leading-relaxed">
+      <p class="font-bold text-gray-600 mb-1">📚 データのしゅってん</p>
+      <p>
+        このレッスンのデータは <a href="https://allisonhorst.github.io/palmerpenguins/" target="_blank" rel="noopener" class="text-blue-600 hover:underline font-bold">palmerpenguins</a>（Horst, Hill &amp; Gorman, 2020／CC0）です。
+        もとの記録は、南極のパーマー基地で Kristen Gorman 博士たちが 2007〜2009年に1ぴきずつ集めたものです。
+      </p>
+    </section>
+
+    <!-- ナビゲーション -->
+    <div class="flex justify-between items-center pt-2">
+      <a href="../lesson01/index.html" class="text-gray-400 hover:text-gray-600 text-sm">← まえのレッスンへ</a>
+      <a href="../lesson03/index.html" class="bg-blue-500 hover:bg-blue-600 text-white font-bold px-5 py-2 rounded-xl text-sm transition-colors">つぎのレッスンへ →</a>
+    </div>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="text-center py-8 text-gray-400 text-sm">
+    <p>ながのデータ探検隊 | こどもコース・ペンギン研究所</p>
+  </footer>
+
+  <script>
+    function showResult(id, ok, okMsg, ngMsg) {
+      const result = document.getElementById(id);
+      result.classList.remove('hidden');
+      if (ok) {
+        result.textContent = okMsg;
+        result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-green-50 text-green-700 border border-green-200';
+      } else {
+        result.textContent = ngMsg;
+        result.className = 'text-sm font-bold px-4 py-3 rounded-xl bg-red-50 text-red-600 border border-red-200';
+      }
+    }
+
+    function showPengError(errorId, hideIds, err) {
+      console.error('[penguins] データの読み込みに失敗しました:', err);
+      const box = document.getElementById(errorId);
+      if (box) box.classList.remove('hidden');
+      hideIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+      });
+    }
+
+    function checkP2_1() {
+      const el = document.querySelector('input[name="q2_1"]:checked');
+      const ok = el && el.value === 'c';
+      showResult('result1', ok, '⭕ せいかい！ ジェンツーペンギンがいちばん重いよ。', '❌ もう一かい！ ヒント：いちばん長いバーはどれかな？');
+    }
+
+    function checkP2_2() {
+      const el = document.querySelector('input[name="q2_2"]:checked');
+      const ok = el && el.value === 'c';
+      showResult('result2', ok, '⭕ せいかい！ 約5,076g。5kgをこえてるんだね。', '❌ もう一かい！ ヒント：ジェンツーのバーの右の数字を見てみよう。');
+    }
+
+    function checkP2_3() {
+      const el = document.querySelector('input[name="q2_3"]:checked');
+      const ok = el && el.value === 'a';
+      showResult('result3', ok, '⭕ せいかい！ たった32gのちがい。この2しゅるいは体重ではほとんど見分けられないんだ。', '❌ もう一かい！ ヒント：3,733 − 3,701 を計算してみよう。');
+    }
+
+    function checkP2_4() {
+      const el = document.querySelector('input[name="q2_4"]:checked');
+      const ok = el && el.value === 'c';
+      showResult('result4', ok, '⭕ せいかい！ 5,076 − 3,701 ＝ 約1,375g。1.4kgくらいの差だよ。', '❌ もう一かい！ ヒント：2つのバーの数字をひき算してみよう。');
+    }
+
+    // 可視化：横棒グラフの初期化
+    (async function initP2() {
+      try {
+        const rows = await loadKidsCsv('../data/lesson02_species_mass.csv');
+        const maxVal = Math.max(...rows.map(r => Number(r['へいきん体重(g)'])));
+
+        const container = document.getElementById('peng2-chart-container');
+        container.innerHTML = rows.map(r => {
+          const val = Number(r['へいきん体重(g)']);
+          const count = r['ひき数'];
+          const sp = r['しゅるい'];
+          const isMax = val === maxVal;
+          const widthPercent = (val / maxVal) * 100;
+          const barColor = isMax ? 'bg-blue-700' : 'bg-blue-500';
+
+          return `
+            <div class="space-y-1">
+              <div class="flex justify-between items-baseline text-sm">
+                <div>
+                  <span class="font-bold text-gray-800">${sp}</span>
+                  <span class="text-xs text-gray-400 ml-2">${count}ひき</span>
+                </div>
+                <span class="font-bold ${isMax ? 'text-blue-700 font-black' : 'text-gray-700'}">${formatKidsNumber(val)}g</span>
+              </div>
+              <div class="h-8 bg-blue-50 rounded-lg overflow-hidden flex items-center">
+                <div class="h-full ${barColor} rounded-lg transition-all duration-500" style="width: ${widthPercent}%"></div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } catch (err) {
+        showPengError('peng2-error', ['peng2-chart-container', 'peng2-chart-note'], err);
+      }
+    })();
+  </script>
+</body>
+
+</html>

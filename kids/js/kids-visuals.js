@@ -24,6 +24,7 @@ function formatKidsNumber(value) {
 
 async function initKidsSortableTable({
   csvUrl,
+  rows: providedRows = null,
   headId,
   bodyId,
   columns,
@@ -31,7 +32,7 @@ async function initKidsSortableTable({
   theme,
   defaultSort = null,
 }) {
-  const sourceRows = await loadKidsCsv(csvUrl);
+  const sourceRows = providedRows || await loadKidsCsv(csvUrl);
   const rows = sourceRows.map((row, index) => transformRow(row, index, sourceRows));
   const headRow = document.getElementById(headId);
   const body = document.getElementById(bodyId);
