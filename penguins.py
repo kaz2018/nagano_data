@@ -77,12 +77,12 @@ def main():
     raw_rows = list(reader)
 
     # 1. penguins_ja.csv 生成
-    # 列: しゅるい,島,くちばしの長さ(mm),くちばしの深さ(mm),ひれの長さ(mm),体重(g),せいべつ,年
+    # 列: しゅるい,島,くちばしの長さ(mm),くちばしの厚さ(mm),ひれの長さ(mm),体重(g),せいべつ,年
     ja_headers = [
         "しゅるい",
         "島",
         "くちばしの長さ(mm)",
-        "くちばしの深さ(mm)",
+        "くちばしの厚さ(mm)",
         "ひれの長さ(mm)",
         "体重(g)",
         "せいべつ",
@@ -109,7 +109,7 @@ def main():
             "しゅるい": species_ja,
             "島": island_ja,
             "くちばしの長さ(mm)": bill_length,
-            "くちばしの深さ(mm)": bill_depth,
+            "くちばしの厚さ(mm)": bill_depth,
             "ひれの長さ(mm)": flipper_length,
             "体重(g)": body_mass,
             "せいべつ": sex_ja,
@@ -218,16 +218,16 @@ def main():
     print(f"Generated: {L6_PATH} ({len(l6_rows)} rows)")
 
     # 7. lesson08_bill.csv 生成
-    # くちばしの長さ・深さの両方がそろっている342行
-    l8_headers = ["しゅるい", "くちばしの長さ(mm)", "くちばしの深さ(mm)"]
+    # くちばしの長さ・厚さの両方がそろっている342行
+    l8_headers = ["しゅるい", "くちばしの長さ(mm)", "くちばしの厚さ(mm)"]
     l8_rows = [
         {
             "しゅるい": r["しゅるい"],
             "くちばしの長さ(mm)": r["くちばしの長さ(mm)"],
-            "くちばしの深さ(mm)": r["くちばしの深さ(mm)"],
+            "くちばしの厚さ(mm)": r["くちばしの厚さ(mm)"],
         }
         for r in ja_rows
-        if r["くちばしの長さ(mm)"] != "" and r["くちばしの深さ(mm)"] != ""
+        if r["くちばしの長さ(mm)"] != "" and r["くちばしの厚さ(mm)"] != ""
     ]
     with open(L8_PATH, "w", encoding="utf-8-sig", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=l8_headers)
@@ -320,7 +320,7 @@ def main():
     # lesson08_bill.csv
     assert len(l8_rows) == 342, f"Expected 342 rows in L8, got {len(l8_rows)}"
     bill_len = [float(r["くちばしの長さ(mm)"]) for r in l8_rows]
-    bill_depth = [float(r["くちばしの深さ(mm)"]) for r in l8_rows]
+    bill_depth = [float(r["くちばしの厚さ(mm)"]) for r in l8_rows]
     assert (min(bill_len), max(bill_len)) == (32.1, 59.6), "Unexpected bill length range"
     assert (min(bill_depth), max(bill_depth)) == (13.1, 21.5), "Unexpected bill depth range"
 
@@ -331,7 +331,7 @@ def main():
         sub = [r for r in l8_rows if r["しゅるい"] == sp]
         corr = statistics.correlation(
             [float(r["くちばしの長さ(mm)"]) for r in sub],
-            [float(r["くちばしの深さ(mm)"]) for r in sub],
+            [float(r["くちばしの厚さ(mm)"]) for r in sub],
         )
         assert corr > 0, f"Expected positive bill correlation for {sp}, got {corr:.3f}"
 
