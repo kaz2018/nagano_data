@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>レッスン4: 数字・日付・テキストの正しい入れ方 | しごととデータ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    const STORES = ['松本店', '長野店', '上田店'];
+
+    // 3人が入力規則なしで入れた売上（adults/data/lesson04_sales_log.csv と同じ中身）
+    const SALES_LOG = [
+      { date: '2025/05/01', store: '松本店',     sales: '182000',     who: '佐藤' },
+      { date: '2025/05/01', store: '長野店',     sales: '205000',     who: '佐藤' },
+      { date: '2025/05/01', store: '上田店',     sales: '141000',     who: '佐藤' },
+      { date: '5/2(金)',    store: '松本店',     sales: '176000',     who: '鈴木' },
+      { date: '5/2(金)',    store: '長野 店',    sales: '198000',     who: '鈴木' },
+      { date: '5/2(金)',    store: '上田店',     sales: '139,000円',  who: '鈴木' },
+      { date: '2025/05/03', store: 'まつもと店', sales: '１８８０００', who: '田中' },
+      { date: '2025/05/03', store: '長野店',     sales: '211000',     who: '田中' },
+      { date: '2025/05/03', store: '上田店',     sales: '約14万',     who: '田中' },
+    ];
+
+    // スプレッドシートが値をどう受け取るかを、簡単に再現する
+    function cellType(raw) {
+      const v = String(raw).trim();
+      if (v === '') return 'empty';
+      if (/^-?\d+(\.\d+)?$/.test(v) || /^-?\d{1,3}(,\d{3})+(\.\d+)?$/.test(v)) return 'number';
+      let m = v.match(/^(\d{4})[\/-](\d{1,2})[\/-](\d{1,2})$/);
+      if (m && isRealDate(+m[1], +m[2], +m[3])) return 'date';
+      m = v.match(/^(\d{1,2})\/(\d{1,2})$/);
+      if (m && isRealDate(2025, +m[1], +m[2])) return 'date-noyear';
+      return 'text';
+    }
+    function isRealDate(y, mo, d) {
+      const dt = new Date(y, mo - 1, d);
+      return dt.getFullYear() === y && dt.getMonth() === mo - 1 && dt.getDate() === d;
+    }
+    function textReason(v) {
+      if (/[０-９]/.test(v)) return '全角の数字が入っているので、数字ではなく文字として扱われます。';
+      if (/[円万千]|約/.test(v)) return '単位や「約」が付いているので、数字ではなく文字として扱われます。';
+      if (/\(.+\)|（.+）|上旬|中旬|下旬|月末/.test(v)) return '曜日やあいまいな言葉が付いているので、日付として読めません。';
+      if (/\s/.test(v)) return '空白が入っています。見た目は同じでも、別の文字として扱われます。';
+      return '数字にも日付にも読めないので、文字として扱われます。';
+    }
+
+    function lesson4() {
+      return {
+        probe: '540,000円',
+        probes: ['540000', '540,000', '540,000円', '５４００００', '約54万', '2025/05/01', '5/1', '5/1(木)', '5月上旬', '松本店'],
+
+        rules: false,
+        rows: SALES_LOG.map(r => ({ ...r })),
+        draft: { date: '', store: '', sales: '' },
+        errors: [],
+        justAdded: false,
+
+        tool: 'sheets',
+
+        q1: null, q2: null, q3: null,
+        r1: null, r2: null, r3: null,
+
+        get probeType() { return cellType(this.probe); },
+        get probeLabel() {
+          return { number: '数値', date: '日付', 'date-noyear': '日付（年は自動）', text: 'テキスト（文字）', empty: '空欄' }[this.probeType];
+        },
+        get probeNote() {
+          const t = this.probeType;
+          if (t === 'number') return '計算に使えます。SUMや並び替えもそのまま効きます。';
+          if (t === 'date') return '日付として扱われます。月ごとの集計や、日付順の並び替えができます。';
+          if (t === 'date-noyear') return '日付にはなりますが、年は「入力した日の年」が自動で入ります。年をまたぐ表ではずれの原因になります。';
+          if (t === 'empty') return '何か入力してみてください。';
+          return textReason(this.probe.trim());
+        },
+        alignOf(v) {
+          const t = cellType(v);
+          return t === 'number' || t === 'date' || t === 'date-noyear' ? 'right' : 'left';
+        },
+
+        dateOk(v)  { const t = cellType(v); return t === 'date' || t === 'date-noyear'; },
+        storeOk(v) { return STORES.includes(v); },
+        salesOk(v) { return cellType(v) === 'number'; },
+        salesValue(v) { return Number(String(v).replace(/,/g, '')); },
+
+        get countedSum() {
+          return this.rows.filter(r => this.salesOk(r.sales)).reduce((s, r) => s + this.salesValue(r.sales), 0);
+        },
+        get missedRows() { return this.rows.filter(r => !this.salesOk(r.sales)).length; },
+        get storeKinds() { return new Set(this.rows.map(r => r.store)).size; },
+        get badCells() {
+          return this.rows.reduce((n, r) => n + !this.dateOk(r.date) + !this.storeOk(r.store) + !this.salesOk(r.sales), 0);
+        },
+
+        setRules(on) {
+          this.rules = on;
+          this.errors = [];
+          this.draft.store = '';
+        },
+        addRow() {
+          this.errors = [];
+          this.justAdded = false;
+          const d = { date: this.draft.date.trim(), store: this.draft.store, sales: this.draft.sales.trim() };
+          if (!d.date && !d.store && !d.sales) return;
+          if (this.rules) {
+            if (!this.dateOk(d.date))   this.errors.push('「日付」には、2025/05/04 のような日付を入力してください。');
+            if (!this.storeOk(d.store)) this.errors.push('「店舗名」は、リストから選んでください。');
+            if (!this.salesOk(d.sales)) this.errors.push('「売上（円）」には、半角の数字だけを入力してください。');
+            if (this.errors.length) return;
+          }
+          this.rows.push({ ...d, who: 'あなた' });
+          this.draft = { date: '', store: '', sales: '' };
+          this.justAdded = true;
+        },
+        resetRows() {
+          this.rows = SALES_LOG.map(r => ({ ...r }));
+          this.draft = { date: '', store: '', sales: '' };
+          this.errors = [];
+          this.justAdded = false;
+        },
+        yen(value) {
+          return new Intl.NumberFormat('ja-JP').format(value);
+        },
+
+        checkQ1() { this.r1 = this.q1 === 'c' ? 'ok' : 'ng'; },
+        checkQ2() { this.r2 = this.q2 === 'a' ? 'ok' : 'ng'; },
+        checkQ3() { this.r3 = this.q3 === 'b' ? 'ok' : 'ng'; },
+      };
+    }
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif; }
+    [x-cloak] { display: none !important; }
+    .xtable { border-collapse: collapse; }
+    .xtable td { border: 1px solid #cbd5e1; padding: 6px 12px; font-size: 13px; white-space: nowrap; position: relative; }
+    .xtable td.rownum { background: #f8fafc; color: #94a3b8; text-align: center; padding: 6px 8px; }
+    /* スプレッドシートの「無効なデータ」の印をまねた、右上の赤い三角 */
+    .xtable td.invalid { background: #fef2f2; }
+    .xtable td.invalid::after {
+      content: ''; position: absolute; top: 0; right: 0;
+      border-top: 8px solid #ef4444; border-left: 8px solid transparent;
+    }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a0c03729-de7a-4bde-af6e-9919a23b24e7"></script>
+</head>
+
+<body class="bg-white text-slate-700 min-h-screen antialiased flex flex-col" x-data="lesson4()">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-slate-200">
+    <div class="max-w-2xl mx-auto px-6 py-3 flex items-center gap-3 text-sm">
+      <a href="../index.html" class="shrink-0 text-slate-500 hover:text-indigo-600 transition-colors">← レッスン一覧</a>
+      <span class="text-slate-300">|</span>
+      <span class="min-w-0 truncate"><span class="font-bold text-slate-900">しごととデータ</span> <span class="text-slate-500">/ レッスン 4</span></span>
+    </div>
+  </header>
+
+  <main class="flex-1">
+
+    <!-- Hero -->
+    <section class="max-w-2xl mx-auto px-6 pt-20 pb-16">
+      <p class="text-sm text-slate-500 mb-6">レッスン 4</p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 leading-snug mb-6">数字・日付・テキストの<span class="inline-block">正しい入れ方</span></h1>
+      <p class="text-base text-slate-600 leading-relaxed">「気をつけて入力する」をやめて、まちがえられない表を作ります。</p>
+    </section>
+
+    <div class="max-w-2xl mx-auto px-6 pb-24 space-y-20">
+
+      <!-- このレッスンでわかること -->
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-6">このレッスンでわかること</h2>
+        <ul class="list-['✓__'] pl-7 marker:text-indigo-600 marker:font-bold space-y-3 text-base text-slate-700">
+          <li>数字・日付・テキストの「型」がわかる</li>
+          <li>型がずれると、集計からもれるとわかる</li>
+          <li>入力規則で、まちがえられない表を作れる</li>
+        </ul>
+      </section>
+
+      <!-- 導入 -->
+      <section class="space-y-6">
+        <div class="space-y-3">
+          <h2 class="text-xl font-bold text-slate-900">形は正しいのに、合計が合わない</h2>
+          <p class="leading-relaxed">
+            L3で学んだ「1行1件・1列1種類」の形で、毎日の売上を3人で入力することにしました。<br>
+            ところが月末にSUMで合計すると、なぜか金額が少なく出ます。
+          </p>
+          <p class="leading-relaxed">
+            原因は、表の形ではなく<strong class="text-slate-900">セルの中身</strong>です。<br>
+            同じ「売上」の列でも、人によって入れ方がちがっていたのです。
+          </p>
+        </div>
+        <div class="border-l-2 border-indigo-600 pl-5 space-y-1">
+          <p class="font-bold text-slate-900">今日の結論</p>
+          <p class="text-slate-600 leading-relaxed">
+            列ごとに「型」をそろえると、集計ミスがなくなります。<br>
+            そして型をそろえるのは、人の注意ではなく<strong class="text-slate-900">入力規則（仕組み）</strong>の仕事です。
+          </p>
+        </div>
+      </section>
+
+      <!-- 前半：3つの型 -->
+      <section class="space-y-6">
+        <div class="space-y-3">
+          <h2 class="text-xl font-bold text-slate-900">スプレッドシートは、値を3つの型で見ている</h2>
+          <p class="leading-relaxed">
+            セルに入れた値は、<strong class="text-slate-900">数値・日付・テキスト</strong>のどれかとして扱われます。<br>
+            計算や並び替えができるのは、数値と日付だけです。
+          </p>
+        </div>
+
+        <dl class="border-t border-slate-200">
+          <div class="border-b border-slate-200 py-6 space-y-2">
+            <dt>
+              <span class="block text-sm font-bold text-indigo-600">型 1</span>
+              <span class="block text-lg font-bold text-slate-900">数値</span>
+            </dt>
+            <dd class="leading-relaxed space-y-1">
+              <p><span class="font-bold text-emerald-600">良い例</span>　<span class="font-mono">540000</span></p>
+              <p><span class="font-bold text-red-500">ダメな例</span>　<span class="font-mono">５４００００</span>（全角）、<span class="font-mono">540,000円</span>（単位つき）、<span class="font-mono">約54万</span>（あいまい）</p>
+              <p class="text-slate-600">単位は列名に「売上（円）」と書きます。カンマは「表示形式」でつけられます。</p>
+            </dd>
+          </div>
+          <div class="border-b border-slate-200 py-6 space-y-2">
+            <dt>
+              <span class="block text-sm font-bold text-indigo-600">型 2</span>
+              <span class="block text-lg font-bold text-slate-900">日付</span>
+            </dt>
+            <dd class="leading-relaxed space-y-1">
+              <p><span class="font-bold text-emerald-600">良い例</span>　<span class="font-mono">2025/05/01</span></p>
+              <p><span class="font-bold text-red-500">ダメな例</span>　<span class="font-mono">5/1(木)</span>（曜日つき）、<span class="font-mono">5月上旬</span>、<span class="font-mono">GW明け</span></p>
+              <p class="text-slate-600">年まで入れます。曜日が見たいときも、入力せずに「表示形式」で出せます。</p>
+            </dd>
+          </div>
+          <div class="border-b border-slate-200 py-6 space-y-2">
+            <dt>
+              <span class="block text-sm font-bold text-indigo-600">型 3</span>
+              <span class="block text-lg font-bold text-slate-900">テキスト（文字）</span>
+            </dt>
+            <dd class="leading-relaxed space-y-1">
+              <p><span class="font-bold text-emerald-600">良い例</span>　<span class="font-mono">松本店</span>（いつも同じ書き方）</p>
+              <p><span class="font-bold text-red-500">ダメな例</span>　<span class="font-mono">松本 店</span>、<span class="font-mono">まつもと店</span>、<span class="font-mono">松本店（臨時）</span></p>
+              <p class="text-slate-600">人には同じ店に見えても、1文字ちがえば別の店として集計されます。補足は別の列に書きます。</p>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="border-l-2 border-slate-300 pl-5 space-y-1">
+          <p class="font-bold text-slate-900">見分けるコツ：右に寄るか、左に寄るか</p>
+          <p class="text-slate-600 leading-relaxed">
+            ExcelもGoogleスプレッドシートも、何も設定しなければ<strong class="text-slate-900">数値と日付は右寄せ、テキストは左寄せ</strong>で表示されます。<br>
+            数字のつもりの値が左に寄っていたら、テキストになっているサインです。
+          </p>
+        </div>
+
+        <!-- 型チェッカー -->
+        <div class="space-y-4 pt-4">
+          <p class="font-bold text-slate-900">セルに入れてみよう</p>
+          <div class="flex flex-wrap gap-2">
+            <template x-for="p in probes" :key="p">
+              <button @click="probe = p" x-text="p"
+                :class="probe === p ? 'bg-indigo-600 border-indigo-600 text-white' : 'border-slate-300 text-slate-700 hover:border-indigo-600 hover:text-indigo-600'"
+                class="px-3 py-1.5 rounded-full border text-sm font-bold transition-colors"></button>
+            </template>
+          </div>
+          <input x-model="probe" type="text" placeholder="自由に入力してもOK"
+            class="w-full border border-slate-300 focus:border-indigo-500 rounded-lg px-3 py-2 outline-none transition-colors" />
+
+          <div class="flex flex-wrap items-center gap-4">
+            <table class="xtable">
+              <tbody>
+                <tr>
+                  <td class="rownum">A1</td>
+                  <td class="font-mono" style="width: 11rem; min-width: 11rem;" :style="{ textAlign: alignOf(probe) }" x-text="probe"></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="text-sm text-slate-500" x-show="probeType !== 'empty'">
+              <span x-text="alignOf(probe) === 'right' ? '→ 右寄せ' : '← 左寄せ'"></span>
+            </p>
+          </div>
+
+          <div class="border-t border-b border-slate-200 py-5 space-y-1">
+            <p class="text-sm text-slate-500">この値の型</p>
+            <p class="text-2xl font-bold"
+              :class="{ 'text-emerald-600': probeType === 'number' || probeType === 'date', 'text-amber-600': probeType === 'date-noyear', 'text-red-500': probeType === 'text', 'text-slate-400': probeType === 'empty' }"
+              x-text="probeLabel"></p>
+            <p class="text-slate-600 leading-relaxed" x-text="probeNote"></p>
+          </div>
+          <p class="text-xs text-slate-400">※ CSVを読み込んだときのふるまいを簡単に再現したものです。アプリや設定によって、少しちがうことがあります。</p>
+        </div>
+      </section>
+
+      <!-- 後半：入力規則を体験する -->
+      <section class="space-y-6">
+        <div class="space-y-3">
+          <h2 class="text-xl font-bold text-slate-900">入力規則をかけてみよう</h2>
+          <p class="leading-relaxed">
+            3人が入力した売上表です。入力規則は、列ごとに「入れてよい値」を決めておく機能です。<br>
+            まずは規則なしで見て、次に規則をかけてみましょう。
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          <button @click="setRules(false)"
+            :class="!rules ? 'bg-red-500 border-red-500 text-white' : 'border-slate-300 text-slate-700 hover:border-slate-400'"
+            class="px-4 py-2 rounded-full border text-sm font-bold transition-colors">
+            入力規則なし
+          </button>
+          <button @click="setRules(true)"
+            :class="rules ? 'bg-emerald-600 border-emerald-600 text-white' : 'border-slate-300 text-slate-700 hover:border-slate-400'"
+            class="px-4 py-2 rounded-full border text-sm font-bold transition-colors">
+            入力規則あり
+          </button>
+        </div>
+
+        <div>
+          <p class="text-xs text-slate-500 font-mono mb-2">5月 売上入力.xlsx</p>
+          <div class="border border-slate-200 rounded-lg p-4 overflow-x-auto">
+            <table class="xtable">
+              <tbody>
+                <tr>
+                  <td class="rownum"></td>
+                  <td style="background:#e8edf7;font-weight:bold;color:#1e293b;">日付</td>
+                  <td style="background:#e8edf7;font-weight:bold;color:#1e293b;">店舗名</td>
+                  <td style="background:#e8edf7;font-weight:bold;color:#1e293b;">売上（円）</td>
+                  <td style="background:#e8edf7;font-weight:bold;color:#1e293b;">入力者</td>
+                </tr>
+                <template x-for="(row, i) in rows" :key="i">
+                  <tr>
+                    <td class="rownum" x-text="i + 2"></td>
+                    <td :class="{ invalid: rules && !dateOk(row.date) }" :style="{ textAlign: alignOf(row.date) }" x-text="row.date"></td>
+                    <td :class="{ invalid: rules && !storeOk(row.store) }" x-text="row.store"></td>
+                    <td :class="{ invalid: rules && !salesOk(row.sales) }" :style="{ textAlign: alignOf(row.sales) }" x-text="row.sales"></td>
+                    <td x-text="row.who"></td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <dl class="grid grid-cols-2 sm:grid-cols-3 gap-6 border-y border-slate-200 py-8">
+          <div class="col-span-2 sm:col-span-1">
+            <dt class="text-sm text-slate-500 mb-1">SUMで数えられた売上</dt>
+            <dd class="text-2xl font-bold text-slate-900 tabular-nums">¥<span x-text="yen(countedSum)"></span></dd>
+          </div>
+          <div>
+            <dt class="text-sm text-slate-500 mb-1">合計からもれた行</dt>
+            <dd class="text-2xl font-bold tabular-nums" :class="missedRows ? 'text-red-500' : 'text-emerald-600'"><span x-text="missedRows"></span> 行</dd>
+          </div>
+          <div>
+            <dt class="text-sm text-slate-500 mb-1">店舗の種類</dt>
+            <dd class="text-2xl font-bold tabular-nums" :class="storeKinds > 3 ? 'text-red-500' : 'text-emerald-600'"><span x-text="storeKinds"></span> 種類</dd>
+            <dd class="text-sm text-slate-500 mt-1">本当は3店舗</dd>
+          </div>
+        </dl>
+
+        <div x-show="rules" x-cloak class="border-l-2 border-emerald-600 pl-5 space-y-1">
+          <p class="font-bold text-slate-900">赤い印がついたセルが <span class="tabular-nums" x-text="badCells"></span> 個</p>
+          <p class="text-slate-600 leading-relaxed">
+            規則をかけても、<strong class="text-slate-900">すでに入っている値は消えません</strong>。印がつくだけです。<br>
+            でも、ここから先の入力では、まちがった値はもう入れられません。下で試してみましょう。
+          </p>
+        </div>
+
+        <!-- 1行追加してみる -->
+        <div class="space-y-4">
+          <p class="font-bold text-slate-900">1行、入力してみよう</p>
+          <p class="text-sm text-slate-600 leading-relaxed" x-show="!rules">規則なしでは、何を入れても受けつけます。わざと「5/4(日)」や「20万円」を入れてみてください。</p>
+          <p class="text-sm text-slate-600 leading-relaxed" x-show="rules" x-cloak>規則ありでは、店舗名はリストから選ぶだけ。同じように「20万円」を入れてみてください。</p>
+
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-sm text-slate-500 mb-2">日付</label>
+              <input x-model="draft.date" type="text" placeholder="2025/05/04"
+                class="w-full border border-slate-300 focus:border-indigo-500 rounded-lg px-3 py-2 outline-none transition-colors" />
+            </div>
+            <div>
+              <label class="block text-sm text-slate-500 mb-2">店舗名</label>
+              <input x-show="!rules" x-model="draft.store" type="text" placeholder="松本店"
+                class="w-full border border-slate-300 focus:border-indigo-500 rounded-lg px-3 py-2 outline-none transition-colors" />
+              <select x-show="rules" x-cloak x-model="draft.store"
+                class="w-full border border-slate-300 focus:border-indigo-500 rounded-lg px-3 py-2 outline-none transition-colors bg-white">
+                <option value="">▼ 選んでください</option>
+                <option>松本店</option>
+                <option>長野店</option>
+                <option>上田店</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm text-slate-500 mb-2">売上（円）</label>
+              <input x-model="draft.sales" type="text" inputmode="numeric" placeholder="180000"
+                class="w-full border border-slate-300 focus:border-indigo-500 rounded-lg px-3 py-2 outline-none transition-colors" />
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <button @click="addRow()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-2.5 rounded-lg transition-colors">入力する</button>
+            <button @click="resetRows()" class="text-slate-500 hover:text-indigo-600 transition-colors">表を最初にもどす</button>
+          </div>
+
+          <div x-show="errors.length" x-cloak
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 translate-y-1"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            class="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 leading-relaxed space-y-1">
+            <p class="font-bold">入力した値は無効です（入力を拒否しました）</p>
+            <template x-for="e in errors" :key="e">
+              <p class="text-sm" x-text="e"></p>
+            </template>
+          </div>
+          <p x-show="justAdded && !errors.length" x-cloak class="text-sm text-slate-500">表の最後に1行追加しました。上の数字も確かめてみましょう。</p>
+        </div>
+      </section>
+
+      <!-- 入力規則の設定方法 -->
+      <section class="space-y-6">
+        <div class="space-y-3">
+          <h2 class="text-xl font-bold text-slate-900">入力規則の設定方法</h2>
+          <p class="leading-relaxed">ExcelでもGoogleスプレッドシートでも、同じように設定できます。よく使うのは次の3つです。</p>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          <button @click="tool = 'sheets'"
+            :class="tool === 'sheets' ? 'bg-indigo-600 border-indigo-600 text-white' : 'border-slate-300 text-slate-700 hover:border-slate-400'"
+            class="px-4 py-2 rounded-full border text-sm font-bold transition-colors">
+            Googleスプレッドシート
+          </button>
+          <button @click="tool = 'excel'"
+            :class="tool === 'excel' ? 'bg-indigo-600 border-indigo-600 text-white' : 'border-slate-300 text-slate-700 hover:border-slate-400'"
+            class="px-4 py-2 rounded-full border text-sm font-bold transition-colors">
+            Excel
+          </button>
+        </div>
+
+        <!-- 共通の手順 -->
+        <ol class="border-t border-slate-200">
+          <li class="border-b border-slate-200 py-5 flex gap-4">
+            <span class="shrink-0 font-bold text-indigo-600 tabular-nums">1</span>
+            <div class="min-w-0 leading-relaxed space-y-1">
+              <p class="font-bold text-slate-900">列を選ぶ</p>
+              <p class="text-slate-600">見出しの行はふくめず、データを入れる範囲（例：C2:C1000）を選びます。</p>
+            </div>
+          </li>
+          <li class="border-b border-slate-200 py-5 flex gap-4">
+            <span class="shrink-0 font-bold text-indigo-600 tabular-nums">2</span>
+            <div class="min-w-0 leading-relaxed space-y-1">
+              <p class="font-bold text-slate-900">入力規則の画面を開く</p>
+              <p class="text-slate-600" x-show="tool === 'sheets'">メニューの「データ」→「データの入力規則」→「ルールを追加」。</p>
+              <p class="text-slate-600" x-show="tool === 'excel'" x-cloak>「データ」タブ →「データの入力規則」→「設定」タブ。</p>
+            </div>
+          </li>
+          <li class="border-b border-slate-200 py-5 flex gap-4">
+            <span class="shrink-0 font-bold text-indigo-600 tabular-nums">3</span>
+            <div class="min-w-0 leading-relaxed space-y-1">
+              <p class="font-bold text-slate-900">条件を決める</p>
+              <p class="text-slate-600">下の表を見て、列に合った条件を選びます。</p>
+            </div>
+          </li>
+          <li class="border-b border-slate-200 py-5 flex gap-4">
+            <span class="shrink-0 font-bold text-indigo-600 tabular-nums">4</span>
+            <div class="min-w-0 leading-relaxed space-y-1">
+              <p class="font-bold text-slate-900">まちがった値は「拒否」にする</p>
+              <p class="text-slate-600" x-show="tool === 'sheets'">「詳細オプション」の「無効なデータの場合」で「入力を拒否」を選びます。</p>
+              <p class="text-slate-600" x-show="tool === 'excel'" x-cloak>「エラーメッセージ」タブで、スタイルを「停止」にします。</p>
+            </div>
+          </li>
+        </ol>
+
+        <!-- 3つのルール -->
+        <dl class="border-t border-slate-200">
+          <div class="border-b border-slate-200 py-6 space-y-2">
+            <dt>
+              <span class="block text-sm font-bold text-indigo-600">売上の列</span>
+              <span class="block text-lg font-bold text-slate-900">数値だけを許可する</span>
+            </dt>
+            <dd class="text-slate-600 leading-relaxed">
+              <span x-show="tool === 'sheets'">条件「次の値以上」で <span class="font-mono">0</span> を指定します。数値でない値は受けつけません。</span>
+              <span x-show="tool === 'excel'" x-cloak>入力値の種類「整数」、データ「次の値以上」、最小値 <span class="font-mono">0</span>。「日本語入力」タブで「オフ（英語モード）」にすると、全角の入力も防げます。</span>
+            </dd>
+          </div>
+          <div class="border-b border-slate-200 py-6 space-y-2">
+            <dt>
+              <span class="block text-sm font-bold text-indigo-600">日付の列</span>
+              <span class="block text-lg font-bold text-slate-900">日付の形を固定する</span>
+            </dt>
+            <dd class="text-slate-600 leading-relaxed">
+              <span x-show="tool === 'sheets'">条件「有効な日付」を選びます。見た目の形は「表示形式」→「数字」→「日付」でそろえます。</span>
+              <span x-show="tool === 'excel'" x-cloak>入力値の種類「日付」、データ「次の値以上」、開始日 <span class="font-mono">2025/1/1</span> など。見た目の形は「セルの書式設定」でそろえます。</span>
+            </dd>
+          </div>
+          <div class="border-b border-slate-200 py-6 space-y-2">
+            <dt>
+              <span class="block text-sm font-bold text-indigo-600">店舗名の列</span>
+              <span class="block text-lg font-bold text-slate-900">リストから選ばせる</span>
+            </dt>
+            <dd class="text-slate-600 leading-relaxed">
+              <span x-show="tool === 'sheets'">条件「プルダウン」で、松本店・長野店・上田店を登録します。表記ゆれがなくなります。</span>
+              <span x-show="tool === 'excel'" x-cloak>入力値の種類「リスト」、元の値に <span class="font-mono">松本店,長野店,上田店</span> とカンマ区切りで入れます。表記ゆれがなくなります。</span>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="space-y-3">
+          <p class="leading-relaxed">上の売上表をCSVで用意しました。読み込んで、3つの規則を実際にかけてみましょう。</p>
+          <a href="../data/lesson04_sales_log.csv" class="inline-block font-bold text-indigo-600 hover:text-indigo-700 transition-colors">練習用のCSVを開く →</a>
+        </div>
+      </section>
+
+      <!-- 入力規則の注意点 -->
+      <section class="space-y-6">
+        <div class="space-y-3">
+          <h2 class="text-xl font-bold text-slate-900">入力規則だけでは防げないこと</h2>
+          <p class="leading-relaxed">便利な仕組みですが、万能ではありません。3つだけ覚えておきましょう。</p>
+        </div>
+        <dl class="border-t border-slate-200">
+          <div class="border-b border-slate-200 py-5 space-y-1">
+            <dt class="font-bold text-slate-900">「警告」だけでは止まらない</dt>
+            <dd class="text-slate-600 leading-relaxed">警告は、無視すればそのまま入力できます。確実に止めたい列は「拒否」にします。</dd>
+          </div>
+          <div class="border-b border-slate-200 py-5 space-y-1">
+            <dt class="font-bold text-slate-900">すでに入っている値は、自分で直す</dt>
+            <dd class="text-slate-600 leading-relaxed">
+              規則は、これからの入力をチェックします。前からある値は印がつくだけです。
+              <span x-show="tool === 'excel'" x-cloak>Excelでは「データの入力規則」の横の▼から「無効データのマーク」で赤丸をつけられます。</span>
+            </dd>
+          </div>
+          <div class="border-b border-slate-200 py-5 space-y-1">
+            <dt class="font-bold text-slate-900">コピー＆貼り付けで、すり抜けることがある</dt>
+            <dd class="text-slate-600 leading-relaxed">別の表から貼り付けると、規則ごと上書きされることがあります。貼り付けるときは「値のみ貼り付け」を使います。</dd>
+          </div>
+        </dl>
+
+        <div class="border-l-2 border-slate-300 pl-5 space-y-1">
+          <p class="font-bold text-slate-900">コラム：毎日たくさん入力するなら</p>
+          <p class="text-slate-600 leading-relaxed">
+            入力規則は、今日からできる対策です。<br>
+            ただ、何人もが毎日入力する業務なら、Googleフォームや業務システムから入力してもらい、表には自動でたまる形にするのが根本的な解決です。
+          </p>
+        </div>
+      </section>
+
+      <!-- 次のレッスンにつながる視点 -->
+      <section class="space-y-6">
+        <div class="space-y-3">
+          <h2 class="text-xl font-bold text-slate-900">次のレッスンにつながる視点</h2>
+          <p class="leading-relaxed">これから入るデータは守れるようになりました。次は、すでに汚れているデータを直します。</p>
+        </div>
+        <dl class="border-t border-slate-200">
+          <div class="border-b border-slate-200 py-4 flex items-baseline gap-4">
+            <dt class="shrink-0 font-bold text-indigo-600">L5〜</dt>
+            <dd class="text-slate-600 leading-relaxed">フィルターや関数を使って、長野県の実データを前処理します。</dd>
+          </div>
+          <div class="border-b border-slate-200 py-4 flex items-baseline gap-4">
+            <dt class="shrink-0 font-bold text-indigo-600">L10</dt>
+            <dd class="text-slate-600 leading-relaxed">今日の入力規則を、チームで守る入力ルールにまとめます。</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- やってみよう -->
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-6">やってみよう</h2>
+        <div class="space-y-10">
+
+          <div class="border-t border-slate-200 pt-8 space-y-4">
+            <p class="text-sm font-bold text-indigo-600">問題 1</p>
+            <p class="text-slate-900 leading-relaxed">「売上（円）」の列に入れたとき、数値として正しく集計されるのはどれですか？</p>
+            <div class="space-y-3">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="radio" name="q1" value="a" x-model="q1" class="mt-1.5 accent-indigo-600" />
+                <span>① 540,000円</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="radio" name="q1" value="b" x-model="q1" class="mt-1.5 accent-indigo-600" />
+                <span>② ５４００００</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="radio" name="q1" value="c" x-model="q1" class="mt-1.5 accent-indigo-600" />
+                <span>③ 540000</span>
+              </label>
+            </div>
+            <button @click="checkQ1()" :disabled="!q1"
+              :class="q1 ? 'bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer' : 'bg-slate-200 text-slate-400 cursor-not-allowed'"
+              class="px-5 py-2.5 rounded-lg font-bold transition-colors">
+              答え合わせ
+            </button>
+            <div x-show="r1 !== null" x-cloak
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 translate-y-1"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              :class="r1 === 'ok' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-700'"
+              class="border rounded-lg p-4 font-bold leading-relaxed">
+              <span x-show="r1 === 'ok'">⭕ 正解！単位は列名に書き、セルには半角の数字だけを入れます。</span>
+              <span x-show="r1 === 'ng'">❌ もう一度！単位や全角が混じると、テキストとして扱われます。</span>
+            </div>
+          </div>
+
+          <div class="border-t border-slate-200 pt-8 space-y-4">
+            <p class="text-sm font-bold text-indigo-600">問題 2</p>
+            <p class="text-slate-900 leading-relaxed">「松本店」「松本 店」「まつもと店」のような表記ゆれを防ぐのに、いちばん効く入力規則はどれですか？</p>
+            <div class="space-y-3">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="radio" name="q2" value="a" x-model="q2" class="mt-1.5 accent-indigo-600" />
+                <span>① リスト（プルダウン）から選ばせる</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="radio" name="q2" value="b" x-model="q2" class="mt-1.5 accent-indigo-600" />
+                <span>② 店舗名のセルに色をつける</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="radio" name="q2" value="c" x-model="q2" class="mt-1.5 accent-indigo-600" />
+                <span>③ 入力した人の名前も書いてもらう</span>
+              </label>
+            </div>
+            <button @click="checkQ2()" :disabled="!q2"
+              :class="q2 ? 'bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer' : 'bg-slate-200 text-slate-400 cursor-not-allowed'"
+              class="px-5 py-2.5 rounded-lg font-bold transition-colors">
+              答え合わせ
+            </button>
+            <div x-show="r2 !== null" x-cloak
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 translate-y-1"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              :class="r2 === 'ok' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-700'"
+              class="border rounded-lg p-4 font-bold leading-relaxed">
+              <span x-show="r2 === 'ok'">⭕ 正解！選ぶだけなら、書き方がぶれようがありません。</span>
+              <span x-show="r2 === 'ng'">❌ もう一度！「自由に書けること」そのものが表記ゆれの原因です。</span>
+            </div>
+          </div>
+
+          <div class="border-t border-slate-200 pt-8 space-y-4">
+            <p class="text-sm font-bold text-indigo-600">問題 3</p>
+            <p class="text-slate-900 leading-relaxed">入力ミスを減らすために、いちばん長く効果が続くのはどれですか？</p>
+            <div class="space-y-3">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="radio" name="q3" value="a" x-model="q3" class="mt-1.5 accent-indigo-600" />
+                <span>① 「入力に気をつけてください」と全員に連絡する</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="radio" name="q3" value="b" x-model="q3" class="mt-1.5 accent-indigo-600" />
+                <span>② 入力規則で、まちがった値を入れられないようにする</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="radio" name="q3" value="c" x-model="q3" class="mt-1.5 accent-indigo-600" />
+                <span>③ 集計担当が毎月こっそり直す</span>
+              </label>
+            </div>
+            <button @click="checkQ3()" :disabled="!q3"
+              :class="q3 ? 'bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer' : 'bg-slate-200 text-slate-400 cursor-not-allowed'"
+              class="px-5 py-2.5 rounded-lg font-bold transition-colors">
+              答え合わせ
+            </button>
+            <div x-show="r3 !== null" x-cloak
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 translate-y-1"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              :class="r3 === 'ok' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-red-50 border-red-200 text-red-700'"
+              class="border rounded-lg p-4 font-bold leading-relaxed">
+              <span x-show="r3 === 'ok'">⭕ 正解！人の注意はいつか切れます。仕組みは、担当が変わっても働き続けます。</span>
+              <span x-show="r3 === 'ng'">❌ もう一度！L2の「やる人と困る人がちがう」問題を思い出してみましょう。</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Navigation -->
+      <nav class="border-t border-slate-200 pt-10 flex items-center justify-between gap-4">
+        <a href="../lesson03/index.html" class="text-slate-500 hover:text-indigo-600 transition-colors">← レッスン3へ</a>
+        <span class="text-slate-400">レッスン5は準備中</span>
+      </nav>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200">
+    <div class="max-w-2xl mx-auto px-6 py-12 space-y-4">
+      <a href="../../contact/index.html?from=adults" class="inline-block text-base text-slate-700 hover:text-indigo-600 transition-colors">質問・要望はこちら →</a>
+      <p class="text-xs text-slate-400">ながのデータ探検隊 | しごととデータ</p>
+    </div>
+  </footer>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b1f3fc535d864483bdbbf325e9597364"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
