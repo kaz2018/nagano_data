@@ -481,11 +481,26 @@ adults/
 
 ### デザイン規約
 
-- **ヘッダー**: sticky + `backdrop-blur-sm` + `bg-white/90`
-- **ヒーロー**: `bg-gradient-to-r from-indigo-600 to-violet-600`（レッスンページ）/ `from-indigo-900 to-slate-900`（indexページ）
-- **カード**: `bg-white rounded-2xl border border-slate-200`（shadowより borderを基本に）
-- **成功色**: `emerald-600`
-- **エラー色**: `red-500`
+**余白が多く、情報をしぼったシンプルなデザイン**。`adults/index.html` が見本。
+
+- **背景・文字**: `bg-white` / 本文 `text-slate-700`・`text-base`（`text-xs` の本文は使わない）
+- **フォント**: Noto Sans JP（400・700）
+- **幅**: 本文の列は `max-w-2xl mx-auto px-6`（ヘッダー・フッターも同じ幅）
+- **余白**: セクション間は `space-y-20`。ヒーローは `pt-20 pb-16`（index は `py-24`）
+- **ヘッダー**: sticky + `backdrop-blur-sm` + `bg-white/90` + `border-b border-slate-200`。
+  レッスンページは「← レッスン一覧 | しごととデータ / レッスン N」
+- **ヒーロー**: 白地。小ラベル（`text-sm text-slate-500`）→ h1（`text-3xl sm:text-4xl font-bold text-slate-900`）→ 説明1文。グラデーションは使わない
+- **見出し**: h2 は `text-xl font-bold text-slate-900`。絵文字を付けない
+- **アクセント色**: インディゴ1色（`indigo-600`）。ボタン・番号・リンク・ラベルだけに使う
+- **カード・影を使わない**: 並びは `border-t` / `border-b border-slate-200` の細線で区切ったリストにする
+- **補足・結論の囲み**: 左線だけ（`border-l-2 border-indigo-600 pl-5`）。脇道の補足は `border-slate-300`
+- **番号付きの手順・一覧**: 番号は `font-bold text-indigo-600 tabular-nums` の文字だけ（丸いバッジにしない）
+- **ボタン**: 主ボタンは `bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-lg`。
+  それ以外のリンクは「〜を開く →」のテキストリンク
+- **スマホ**: 375px 幅で横スクロールを出さない。見出しの末尾が1〜2文字だけ次の行に落ちるときは、
+  まとまりを `<span class="inline-block">` で包む
+- **成功色**: `emerald-600`（良い例・正解）
+- **エラー色**: `red-500`（悪い例・不正解）
 
 ### Alpine.js 実装パターン
 
@@ -549,5 +564,5 @@ adults/
 
 | レッスン | Q1 | Q2 | Q3 |
 |---------|----|----|-----|
-| L1 | ②できない（全角数字・メモが混入しているから） | 4個 | 1件 |
+| L1 | ②できない（全角数字・メモが混入しているから） | 4個 | 1店舗 |
 | L2 | ②6,000円（3,000円×2時間） | ③216,000円（72,000円×3人） | ②入力する人と、あとで困る人が違うから |
